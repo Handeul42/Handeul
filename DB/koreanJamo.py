@@ -36,15 +36,15 @@ def koreanToJamo(korean_word):
             r_lst += [w]
     return r_lst
 
-f = open("2words.csv", 'r')
-w = open("2wordJamo.csv", 'w')
+f = open("3words.csv", 'r')
+w = open("6Jamo2.csv", 'w')
 d = {}
 lines = f.readlines()
 for line in lines:
     d[line] = koreanToJamo(line)
 
 for line in d:
-    if len(d[line]) == 5 :
+    if len(d[line]) == 6 :
         w.write(line.replace('\n', '') + ": " + d[line] + "\n")
 f.close()
 
