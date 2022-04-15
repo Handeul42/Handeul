@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct kWordleApp: App {
+struct KWordleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }

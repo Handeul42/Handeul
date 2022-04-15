@@ -7,20 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		737D4CBE280914FE00CD8CBD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CBD280914FE00CD8CBD /* .gitignore */; };
-		737D4CC02809152500CD8CBD /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CBF2809152500CD8CBD /* .gitattributes */; };
+		737D4CC728092C2100CD8CBD /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CC628092C2100CD8CBD /* .swiftlint.yml */; };
+		737D4CD328092F5D00CD8CBD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CD228092F5D00CD8CBD /* Game.swift */; };
+		737D4CD528092F6C00CD8CBD /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CD428092F6C00CD8CBD /* Key.swift */; };
+		737D4CD728092F7F00CD8CBD /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CD628092F7F00CD8CBD /* Answer.swift */; };
+		737D4CD92809322400CD8CBD /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CD82809322400CD8CBD /* KeyboardView.swift */; };
+		737D4CDD2809324F00CD8CBD /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CDC2809324F00CD8CBD /* KeyboardViewModel.swift */; };
+		737D4CE0280939B500CD8CBD /* constant+UIscreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CDF280939B500CD8CBD /* constant+UIscreenSize.swift */; };
+		737D4CE228093C3600CD8CBD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CE128093C3600CD8CBD /* MainView.swift */; };
+		737D4CE428093C6200CD8CBD /* AnswerBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */; };
+		737D4CE628093C7200CD8CBD /* AnswerBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CE528093C7200CD8CBD /* AnswerBoardViewModel.swift */; };
+		737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CE72809539D00CD8CBD /* WordDictManager.swift */; };
+		737D4CF928095A2E00CD8CBD /* 5Words in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CF428095A2E00CD8CBD /* 5Words */; };
+		737D4CFA28095A2E00CD8CBD /* 3words.csv in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CF528095A2E00CD8CBD /* 3words.csv */; };
+		737D4CFB28095A2E00CD8CBD /* 2words.csv in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CF628095A2E00CD8CBD /* 2words.csv */; };
+		737D4CFC28095A2E00CD8CBD /* koreanJamo.py in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CF728095A2E00CD8CBD /* koreanJamo.py */; };
+		737D4CFD28095A2E00CD8CBD /* 6Words in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CF828095A2E00CD8CBD /* 6Words */; };
 		73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B027EDCF920041036F /* kWordleApp.swift */; };
-		73FD63B327EDCF920041036F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B227EDCF920041036F /* ContentView.swift */; };
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		737D4CBD280914FE00CD8CBD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		737D4CBF2809152500CD8CBD /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		737D4CC628092C2100CD8CBD /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		737D4CD228092F5D00CD8CBD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		737D4CD428092F6C00CD8CBD /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		737D4CD628092F7F00CD8CBD /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		737D4CD82809322400CD8CBD /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		737D4CDC2809324F00CD8CBD /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
+		737D4CDF280939B500CD8CBD /* constant+UIscreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "constant+UIscreenSize.swift"; sourceTree = "<group>"; };
+		737D4CE128093C3600CD8CBD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBoardView.swift; sourceTree = "<group>"; };
+		737D4CE528093C7200CD8CBD /* AnswerBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBoardViewModel.swift; sourceTree = "<group>"; };
+		737D4CE72809539D00CD8CBD /* WordDictManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDictManager.swift; sourceTree = "<group>"; };
+		737D4CF428095A2E00CD8CBD /* 5Words */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 5Words; sourceTree = "<group>"; };
+		737D4CF528095A2E00CD8CBD /* 3words.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3words.csv; sourceTree = "<group>"; };
+		737D4CF628095A2E00CD8CBD /* 2words.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2words.csv; sourceTree = "<group>"; };
+		737D4CF728095A2E00CD8CBD /* koreanJamo.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = koreanJamo.py; sourceTree = "<group>"; };
+		737D4CF828095A2E00CD8CBD /* 6Words */ = {isa = PBXFileReference; lastKnownFileType = folder; path = 6Words; sourceTree = "<group>"; };
 		73FD63AD27EDCF920041036F /* kWordle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kWordle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FD63B027EDCF920041036F /* kWordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kWordleApp.swift; sourceTree = "<group>"; };
-		73FD63B227EDCF920041036F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		73FD63B427EDCF940041036F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73FD63B727EDCF940041036F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -36,11 +62,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		737D4CCF28092F0B00CD8CBD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				737D4CDC2809324F00CD8CBD /* KeyboardViewModel.swift */,
+				737D4CE528093C7200CD8CBD /* AnswerBoardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		737D4CD028092F1700CD8CBD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				737D4CD228092F5D00CD8CBD /* Game.swift */,
+				737D4CD428092F6C00CD8CBD /* Key.swift */,
+				737D4CD628092F7F00CD8CBD /* Answer.swift */,
+				737D4CE72809539D00CD8CBD /* WordDictManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		737D4CD128092F3C00CD8CBD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				737D4CD82809322400CD8CBD /* KeyboardView.swift */,
+				737D4CE128093C3600CD8CBD /* MainView.swift */,
+				737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		737D4CDE2809399600CD8CBD /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				737D4CDF280939B500CD8CBD /* constant+UIscreenSize.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		737D4CE9280954E300CD8CBD /* WordData */ = {
+			isa = PBXGroup;
+			children = (
+				737D4CF628095A2E00CD8CBD /* 2words.csv */,
+				737D4CF528095A2E00CD8CBD /* 3words.csv */,
+				737D4CF428095A2E00CD8CBD /* 5Words */,
+				737D4CF828095A2E00CD8CBD /* 6Words */,
+				737D4CF728095A2E00CD8CBD /* koreanJamo.py */,
+			);
+			path = WordData;
+			sourceTree = "<group>";
+		};
 		73FD63A427EDCF920041036F = {
 			isa = PBXGroup;
 			children = (
-				737D4CBD280914FE00CD8CBD /* .gitignore */,
-				737D4CBF2809152500CD8CBD /* .gitattributes */,
 				73FD63AF27EDCF920041036F /* kWordle */,
 				73FD63AE27EDCF920041036F /* Products */,
 			);
@@ -57,8 +131,13 @@
 		73FD63AF27EDCF920041036F /* kWordle */ = {
 			isa = PBXGroup;
 			children = (
+				737D4CE9280954E300CD8CBD /* WordData */,
+				737D4CDE2809399600CD8CBD /* Constants */,
+				737D4CD028092F1700CD8CBD /* Model */,
+				737D4CD128092F3C00CD8CBD /* View */,
+				737D4CCF28092F0B00CD8CBD /* ViewModel */,
 				73FD63B027EDCF920041036F /* kWordleApp.swift */,
-				73FD63B227EDCF920041036F /* ContentView.swift */,
+				737D4CC628092C2100CD8CBD /* .swiftlint.yml */,
 				73FD63B427EDCF940041036F /* Assets.xcassets */,
 				73FD63B627EDCF940041036F /* Preview Content */,
 			);
@@ -83,12 +162,15 @@
 				73FD63A927EDCF920041036F /* Sources */,
 				73FD63AA27EDCF920041036F /* Frameworks */,
 				73FD63AB27EDCF920041036F /* Resources */,
+				737D4CCD28092DC100CD8CBD /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = kWordle;
+			packageProductDependencies = (
+			);
 			productName = kWordle;
 			productReference = 73FD63AD27EDCF920041036F /* kWordle.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +199,8 @@
 				Base,
 			);
 			mainGroup = 73FD63A427EDCF920041036F;
+			packageReferences = (
+			);
 			productRefGroup = 73FD63AE27EDCF920041036F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -131,21 +215,54 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				737D4CC728092C2100CD8CBD /* .swiftlint.yml in Resources */,
+				737D4CFB28095A2E00CD8CBD /* 2words.csv in Resources */,
+				737D4CFA28095A2E00CD8CBD /* 3words.csv in Resources */,
+				737D4CFD28095A2E00CD8CBD /* 6Words in Resources */,
 				73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */,
-				737D4CBE280914FE00CD8CBD /* .gitignore in Resources */,
+				737D4CFC28095A2E00CD8CBD /* koreanJamo.py in Resources */,
+				737D4CF928095A2E00CD8CBD /* 5Words in Resources */,
 				73FD63B527EDCF940041036F /* Assets.xcassets in Resources */,
-				737D4CC02809152500CD8CBD /* .gitattributes in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		737D4CCD28092DC100CD8CBD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		73FD63A927EDCF920041036F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73FD63B327EDCF920041036F /* ContentView.swift in Sources */,
+				737D4CD528092F6C00CD8CBD /* Key.swift in Sources */,
+				737D4CE628093C7200CD8CBD /* AnswerBoardViewModel.swift in Sources */,
+				737D4CE228093C3600CD8CBD /* MainView.swift in Sources */,
+				737D4CD728092F7F00CD8CBD /* Answer.swift in Sources */,
+				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
+				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
+				737D4CE0280939B500CD8CBD /* constant+UIscreenSize.swift in Sources */,
+				737D4CE428093C6200CD8CBD /* AnswerBoardView.swift in Sources */,
+				737D4CD92809322400CD8CBD /* KeyboardView.swift in Sources */,
+				737D4CDD2809324F00CD8CBD /* KeyboardViewModel.swift in Sources */,
 				73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,8 +400,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,7 +413,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,8 +431,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,7 +444,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
