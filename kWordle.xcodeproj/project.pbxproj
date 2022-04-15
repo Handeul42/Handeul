@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		737D4CBE280914FE00CD8CBD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CBD280914FE00CD8CBD /* .gitignore */; };
+		737D4CC02809152500CD8CBD /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CBF2809152500CD8CBD /* .gitattributes */; };
 		73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B027EDCF920041036F /* kWordleApp.swift */; };
 		73FD63B327EDCF920041036F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B227EDCF920041036F /* ContentView.swift */; };
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		737D4CBD280914FE00CD8CBD /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		737D4CBF2809152500CD8CBD /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		73FD63AD27EDCF920041036F /* kWordle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kWordle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FD63B027EDCF920041036F /* kWordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kWordleApp.swift; sourceTree = "<group>"; };
 		73FD63B227EDCF920041036F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +39,8 @@
 		73FD63A427EDCF920041036F = {
 			isa = PBXGroup;
 			children = (
+				737D4CBD280914FE00CD8CBD /* .gitignore */,
+				737D4CBF2809152500CD8CBD /* .gitattributes */,
 				73FD63AF27EDCF920041036F /* kWordle */,
 				73FD63AE27EDCF920041036F /* Products */,
 			);
@@ -126,7 +132,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */,
+				737D4CBE280914FE00CD8CBD /* .gitignore in Resources */,
 				73FD63B527EDCF940041036F /* Assets.xcassets in Resources */,
+				737D4CC02809152500CD8CBD /* .gitattributes in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

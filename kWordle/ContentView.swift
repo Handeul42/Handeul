@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    var arrayRow0: [String] = ["ㅃ", "ㅉ", "ㄸ", "ㅆ"]
-    var arrayRow01: [String] = ["ㅒ", "ㅖ"]
     var arrayRow1: [String] = ["ㅂ", "ㅈ", "ㄷ", "ㄱ", "ㅅ", "ㅛ", "ㅕ", "ㅑ", "ㅐ", "ㅔ"]
     var arrayRow2: [String] = ["ㅁ", "ㄴ", "ㅇ", "ㄹ", "ㅎ", "ㅗ", "ㅓ", "ㅏ", "ㅣ"]
     var arrayRow3: [String] = ["ㅋ", "ㅌ", "ㅊ", "ㅍ", "ㅠ", "ㅜ", "ㅡ"]
@@ -33,27 +31,6 @@ struct ContentView: View {
             }
             Spacer()
             Spacer()
-            HStack {
-                ForEach(arrayRow0, id: \.self) { char in
-                    RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.gray)
-                        .overlay {
-                            Text(char)
-                        }
-                }
-                Rectangle()
-                    .frame(width: 145, height: 30)
-                    .foregroundColor(.white)
-                ForEach(arrayRow01, id: \.self) { char in
-                    RoundedRectangle(cornerRadius: 5)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.gray)
-                        .overlay {
-                            Text(char)
-                        }
-                }
-            }
             HStack {
                 ForEach(arrayRow1, id: \.self) { char in
                     Button {
