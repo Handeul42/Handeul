@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct KeyboardView: View {
-    @ObservedObject var viewModel: KeyboardViewModel = KeyboardViewModel()
-    @EnvironmentObject var answerBoardViewModel: AnswerBoardViewModel
+    @EnvironmentObject var viewModel: MainViewModel
+    
     private func keyboardEnterButton() -> some View {
         return ZStack {
             RoundedRectangle(cornerRadius: 10)
@@ -29,12 +29,12 @@ struct KeyboardView: View {
         }
     }
     private func submitKeyInput(_ character: String) {
-        answerBoardViewModel.appendReceivedCharacter(of: character)
+        viewModel.appendReceivedCharacter(of: character)
     }
     var body: some View {
         VStack {
             HStack {
-                ForEach(viewModel.firstRow, id: \.self) { btn in
+                ForEach(viewModel.keyboardViewModel.firstRow, id: \.self) { btn in
                     Button {
                         submitKeyInput(btn.character)
                     } label: {
@@ -42,13 +42,13 @@ struct KeyboardView: View {
                     }
                 }
                 Button {
-                    answerBoardViewModel.deleteOneCharacter()
+                    viewModel.deleteOneCharacter()
                 } label: {
                     keyboardDeleteButton()
                 }
             }
             HStack {
-                ForEach(viewModel.secondRow, id: \.self) { btn in
+                ForEach(viewModel.keyboardViewModel.secondRow, id: \.self) { btn in
                     Button {
                         submitKeyInput(btn.character)
                     } label: {
@@ -57,7 +57,7 @@ struct KeyboardView: View {
                 }
             }
             HStack {
-                ForEach(viewModel.thirdRow, id: \.self) { btn in
+                ForEach(viewModel.keyboardViewModel.thirdRow, id: \.self) { btn in
                     Button {
                         submitKeyInput(btn.character)
                     } label: {
@@ -65,7 +65,7 @@ struct KeyboardView: View {
                     }
                 }
                 Button {
-                    answerBoardViewModel.submitAnswer()
+                    viewModel.submitAnswer()
                 } label: {
                     keyboardEnterButton()
                 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AnswerBoardView: View {
-    @EnvironmentObject var viewModel: AnswerBoardViewModel
+    @EnvironmentObject var viewModel: MainViewModel
     var body: some View {
         VStack {
             ForEach(viewModel.rows, id: \.self) { row in

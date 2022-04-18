@@ -8,9 +8,5 @@
 import Foundation
 
 struct Answer {
-    let rows: [Row]
-}
-
-struct Row {
-    let keys: [Key]
+    let keys: [[Key]]
 }

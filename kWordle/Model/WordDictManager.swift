@@ -12,7 +12,6 @@ import SwiftUI
 class WordDictManager {
     
     init() {
-        
     }
     
     static func initWordDB() {
@@ -44,24 +43,29 @@ class WordDictManager {
     }
     
     func readDB() {
-//        @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \FiveWords.word, ascending: true)]) var fetchedItem: FetchedResults<FiveWords>
         
-        @FetchRequest(entity: FiveWords.entity(), sortDescriptors: [])
-        var words: FetchedResults<FiveWords>
-
-        for word in words {
-            print(word.word)
-        }
     }
-//    func makeWordDict() -> [String: String] {
-//        var dict = [String: String]()
-//        let rows = words.components(separatedBy: "\n")
-//        for row in rows where row.isEmpty == false {
-//                let columns = row.components(separatedBy: ":")
-//                dict[columns[0]] = columns[1].trimmingCharacters(in: .whitespaces)
-//        }
-//        return dict
-//    }
+    static func makeWordDict() -> [WordDict] {
+        var dict = [WordDict]()
+        var words: String = ""
+        
+        if let path = Bundle.main.path(forResource: "5Jamo.tsv", ofType: nil) {
+            do {
+                words = try String(contentsOfFile: path, encoding: .utf8)
+            } catch {
+                print(error)
+            }
+        } else {
+            print("Cannot Find Path")
+        }
+        let rows = words.components(separatedBy: "\n")
+        for row in rows where row.isEmpty == false {
+            let columns = row.components(separatedBy: "\t")
+            let wordDict = WordDict(word: columns[0], jamo: columns[1], meaning: columns[2])
+            dict.append(wordDict)
+        }
+        return dict
+    }
 
 //    func getWordOfToday() -> String {
 //

@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject var answerBoardViewModel: AnswerBoardViewModel = AnswerBoardViewModel()
+//    @ObservedObject var answerBoardViewModel: AnswerBoardViewModel = AnswerBoardViewModel()
+    @ObservedObject var mainViewModel: MainViewModel = MainViewModel()
+    
     let wordDictManager = WordDictManager()
     var body: some View {
         VStack {
             AnswerBoardView()
             KeyboardView()
-        }.environmentObject(self.answerBoardViewModel)
-            .onAppear {
-                wordDictManager.readDB()
-                
-            }
+        }.environmentObject(self.mainViewModel)
     }
 }
 

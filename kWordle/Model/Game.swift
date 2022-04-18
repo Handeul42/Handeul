@@ -8,8 +8,15 @@
 import Foundation
 
 struct Game {
-    let answer: String
+    var answer: String
     var userAnswer: Answer
-    let wordDict: [String: String]
-    let key: [Key]
+    var wordDict: [WordDict]
+    var key: [Key]
+    
+    init() {
+        answer = ""
+        userAnswer = Answer(keys: [[]])
+        wordDict = []
+        key = []
+    }
 }
