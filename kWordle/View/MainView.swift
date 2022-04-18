@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MainView: View {
-    
     @ObservedObject var answerBoardViewModel: AnswerBoardViewModel = AnswerBoardViewModel()
     let wordDictManager = WordDictManager()
     var body: some View {
@@ -16,6 +15,10 @@ struct MainView: View {
             AnswerBoardView()
             KeyboardView()
         }.environmentObject(self.answerBoardViewModel)
+            .onAppear {
+                wordDictManager.readDB()
+                
+            }
     }
 }
 

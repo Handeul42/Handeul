@@ -8,13 +8,12 @@
 import Foundation
 
 class KeyboardViewModel: ObservableObject {
-    let firstRowLabel = ["ㅂ", "ㅈ", "ㄷ", "ㅅ", "ㅛ", "ㅕ", "ㅑ"]
+    let firstRowLabel = ["ㅂ", "ㅈ", "ㄷ", "ㄱ", "ㅅ", "ㅛ", "ㅕ", "ㅑ"]
     let secondRowLabel = ["ㅁ", "ㄴ", "ㅇ", "ㄹ", "ㅎ", "ㅗ", "ㅓ", "ㅏ", "ㅣ"]
     let thirdRowLabel = ["ㅋ", "ㅌ", "ㅊ", "ㅍ", "ㅠ", "ㅜ", "ㅡ"]
     @Published var firstRow: [Key]
     @Published var secondRow: [Key]
     @Published var thirdRow: [Key]
-    
     init() {
         self.firstRow = firstRowLabel.map {
             Key(character: $0)
@@ -26,6 +25,4 @@ class KeyboardViewModel: ObservableObject {
             Key(character: $0)
         }
     }
-    
-    
 }

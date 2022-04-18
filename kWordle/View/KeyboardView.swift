@@ -10,8 +10,6 @@ import SwiftUI
 struct KeyboardView: View {
     @ObservedObject var viewModel: KeyboardViewModel = KeyboardViewModel()
     @EnvironmentObject var answerBoardViewModel: AnswerBoardViewModel
-    
-    
     private func keyboardEnterButton() -> some View {
         return ZStack {
             RoundedRectangle(cornerRadius: 10)
@@ -33,7 +31,6 @@ struct KeyboardView: View {
     private func submitKeyInput(_ character: String) {
         answerBoardViewModel.appendReceivedCharacter(of: character)
     }
-    
     var body: some View {
         VStack {
             HStack {
@@ -49,7 +46,6 @@ struct KeyboardView: View {
                 } label: {
                     keyboardDeleteButton()
                 }
-               
             }
             HStack {
                 ForEach(viewModel.secondRow, id: \.self) { btn in
