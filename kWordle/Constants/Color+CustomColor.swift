@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    static let h_orange = Color("h_orange")
-    static let h_red = Color("h_red")
-    static let h_green = Color("h_green")
-    static let h_gray = Color("h_gray")
-    static let h_ligthGray = Color("h_lightGray")
-    static let h_white = Color("h_white")
+    static let hOrange = Color("h_orange")
+    static let hRed = Color("h_red")
+    static let hGreen = Color("h_green")
+    static let hGray = Color("h_gray")
+    static let hLigthGray = Color("h_lightGray")
+    static let hWhite = Color("h_white")
 }
 

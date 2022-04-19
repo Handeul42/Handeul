@@ -23,6 +23,7 @@
 		738C80D1280D473200D8FCA5 /* 5Jamo.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 738C80D0280D473200D8FCA5 /* 5Jamo.tsv */; };
 		738C80D7280D61D600D8FCA5 /* WordDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C80D6280D61D600D8FCA5 /* WordDict.swift */; };
 		738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C80DA280D634C00D8FCA5 /* MainViewModel.swift */; };
+		73D66DB2280E825000313A7F /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D66DB1280E825000313A7F /* TitleView.swift */; };
 		73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B027EDCF920041036F /* kWordleApp.swift */; };
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		738C80D0280D473200D8FCA5 /* 5Jamo.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 5Jamo.tsv; sourceTree = "<group>"; };
 		738C80D6280D61D600D8FCA5 /* WordDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDict.swift; sourceTree = "<group>"; };
 		738C80DA280D634C00D8FCA5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		73D66DB1280E825000313A7F /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		73FD63AD27EDCF920041036F /* kWordle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kWordle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FD63B027EDCF920041036F /* kWordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kWordleApp.swift; sourceTree = "<group>"; };
 		73FD63B427EDCF940041036F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				737D4CD82809322400CD8CBD /* KeyboardView.swift */,
 				737D4CE128093C3600CD8CBD /* MainView.swift */,
 				737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */,
+				73D66DB1280E825000313A7F /* TitleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				737D4CE0280939B500CD8CBD /* constant+UIscreenSize.swift in Sources */,
 				737D4CE428093C6200CD8CBD /* AnswerBoardView.swift in Sources */,
 				738C80CB280D31B400D8FCA5 /* FiveWords.xcdatamodeld in Sources */,
+				73D66DB2280E825000313A7F /* TitleView.swift in Sources */,
 				737D4CD92809322400CD8CBD /* KeyboardView.swift in Sources */,
 				738C80CF280D424300D8FCA5 /* PersistenceController.swift in Sources */,
 				737D4CDD2809324F00CD8CBD /* KeyboardViewModel.swift in Sources */,

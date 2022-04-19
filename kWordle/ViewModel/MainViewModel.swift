@@ -14,7 +14,7 @@ class MainViewModel: ObservableObject {
     var currentRow: Int = 0
     var currentColumn: Int = 0
     @Published var rows: [[Key]] = Array(
-        repeating: Range(0...4).map { _ in Key(character: " ")},
+        repeating: Range(0...4).map { _ in Key(character: " ", status: .white)},
         count: 6)
     var currentWord: String = ""
     init () {

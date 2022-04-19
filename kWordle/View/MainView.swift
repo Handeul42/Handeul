@@ -14,6 +14,7 @@ struct MainView: View {
     let wordDictManager = WordDictManager()
     var body: some View {
         VStack {
+            TitleView()
             AnswerBoardView()
             KeyboardView()
         }
