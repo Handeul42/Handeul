@@ -16,7 +16,9 @@ struct MainView: View {
         VStack {
             AnswerBoardView()
             KeyboardView()
-        }.environmentObject(self.mainViewModel)
+        }
+        .environmentObject(mainViewModel.keyboardViewModel)
+        .environmentObject(mainViewModel)
     }
 }
 

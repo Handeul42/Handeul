@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
 class MainViewModel: ObservableObject {
-    var keyboardViewModel: KeyboardViewModel = KeyboardViewModel()
+    @ObservedObject var keyboardViewModel: KeyboardViewModel = KeyboardViewModel()
     var game: Game = Game()
     var currentRow: Int = 0
     var currentColumn: Int = 0
@@ -72,6 +73,7 @@ class MainViewModel: ObservableObject {
                         print("gray")
                         keyboardViewModel.changeKeyStatus(to: .gray, keyLabel: key.character)
                     }
+                    
                 }
             }
             currentRow += 1

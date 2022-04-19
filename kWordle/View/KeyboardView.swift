@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct KeyboardView: View {
+    @EnvironmentObject var keyboardViewModel: KeyboardViewModel
     @EnvironmentObject var viewModel: MainViewModel
+    
     
     private func keyboardEnterButton() -> some View {
         return ZStack {
@@ -34,7 +36,7 @@ struct KeyboardView: View {
     var body: some View {
         VStack {
             HStack {
-                ForEach(viewModel.keyboardViewModel.firstRow, id: \.self) { btn in
+                ForEach(keyboardViewModel.firstRow, id: \.self) { btn in
                     Button {
                         submitKeyInput(btn.character)
                     } label: {
@@ -48,7 +50,7 @@ struct KeyboardView: View {
                 }
             }
             HStack {
-                ForEach(viewModel.keyboardViewModel.secondRow, id: \.self) { btn in
+                ForEach(keyboardViewModel.secondRow, id: \.self) { btn in
                     Button {
                         submitKeyInput(btn.character)
                     } label: {
@@ -57,7 +59,7 @@ struct KeyboardView: View {
                 }
             }
             HStack {
-                ForEach(viewModel.keyboardViewModel.thirdRow, id: \.self) { btn in
+                ForEach(keyboardViewModel.thirdRow, id: \.self) { btn in
                     Button {
                         submitKeyInput(btn.character)
                     } label: {
