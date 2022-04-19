@@ -17,14 +17,12 @@ class MainViewModel: ObservableObject {
         repeating: Range(0...4).map { _ in Key(character: " ")},
         count: 6)
     var currentWord: String = ""
-    
     init () {
         game.wordDict = WordDictManager.makeWordDict()
         game.answer = game.wordDict[0].jamo
         game.key = []
         game.userAnswer = Answer(keys: [[]])
     }
-    
     func appendReceivedCharacter(of receivedKeyCharacter: String) {
         if currentColumn <= 4 {
             rows[currentRow][currentColumn].character = receivedKeyCharacter
@@ -32,7 +30,6 @@ class MainViewModel: ObservableObject {
             currentColumn += 1
         }
     }
-    
     func deleteOneCharacter() {
         if currentColumn != 0 {
             currentColumn -= 1
@@ -40,47 +37,35 @@ class MainViewModel: ObservableObject {
             rows[currentRow][currentColumn].character = ""
         }
     }
-    
     func submitAnswer() {
         let currentWord: String = rows[currentRow].map({ $0.character }).joined(separator: "")
         print(game.answer)
-        
         if currentColumn == 5 && currentRow != 6 {
-            /*
-             TODO: 제출하는 함수
-             */
-            
             if !isinDict(of: currentWord) {
                 return
             }
-            
             if game.answer == currentWord {
                 //end game
             } else {
                 for (index, key) in rows[currentRow].enumerated() {
                     if game.answer.contains(key.character) {
                         if (game.answer.map { String($0) })[index] == key.character {
-                            // green
-                            print("green")
                             keyboardViewModel.changeKeyStatus(to: .green, keyLabel: key.character)
+                            rows[currentRow][index].status = .green
                         } else {
-                            // yellow
-                            print("Yellow")
                             keyboardViewModel.changeKeyStatus(to: .yellow, keyLabel: key.character)
+                            rows[currentRow][index].status = .yellow
                         }
                     } else {
-                        // gray
-                        print("gray")
                         keyboardViewModel.changeKeyStatus(to: .gray, keyLabel: key.character)
+                        rows[currentRow][index].status = .gray
                     }
-                    
                 }
             }
             currentRow += 1
             currentColumn = 0
         }
     }
-    
     func isinDict(of input: String) -> Bool {
         for word in game.wordDict where word.jamo == input {
             return true
