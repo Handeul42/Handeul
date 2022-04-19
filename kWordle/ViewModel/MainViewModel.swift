@@ -25,7 +25,7 @@ class MainViewModel: ObservableObject {
     }
     
     func appendReceivedCharacter(of receivedKeyCharacter: String) {
-        if currentColumn <= 5 {
+        if currentColumn <= 4 {
             rows[currentRow][currentColumn].character = receivedKeyCharacter
             currentWord += receivedKeyCharacter
             currentColumn += 1
@@ -61,13 +61,16 @@ class MainViewModel: ObservableObject {
                         if (game.answer.map { String($0) })[index] == key.character {
                             // green
                             print("green")
+                            keyboardViewModel.changeKeyStatus(to: .green, keyLabel: key.character)
                         } else {
                             // yellow
-                            print("green")
+                            print("Yellow")
+                            keyboardViewModel.changeKeyStatus(to: .yellow, keyLabel: key.character)
                         }
                     } else {
                         // gray
                         print("gray")
+                        keyboardViewModel.changeKeyStatus(to: .gray, keyLabel: key.character)
                     }
                 }
             }

@@ -65,7 +65,9 @@ struct KeyboardView: View {
                     }
                 }
                 Button {
-                    viewModel.submitAnswer()
+                    withAnimation {
+                        viewModel.submitAnswer()
+                    }
                 } label: {
                     keyboardEnterButton()
                 }
