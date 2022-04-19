@@ -26,6 +26,7 @@
 		73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B027EDCF920041036F /* kWordleApp.swift */; };
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
+		CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517C280E753200B739F3 /* Color+CustomColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		73FD63B027EDCF920041036F /* kWordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kWordleApp.swift; sourceTree = "<group>"; };
 		73FD63B427EDCF940041036F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73FD63B727EDCF940041036F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CC7C517C280E753200B739F3 /* Color+CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CustomColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				737D4CDF280939B500CD8CBD /* constant+UIscreenSize.swift */,
+				CC7C517C280E753200B739F3 /* Color+CustomColor.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				737D4CE628093C7200CD8CBD /* AnswerBoardViewModel.swift in Sources */,
 				737D4CE228093C3600CD8CBD /* MainView.swift in Sources */,
 				737D4CD728092F7F00CD8CBD /* Answer.swift in Sources */,
+				CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */,
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
