@@ -24,6 +24,7 @@ struct KeyboardView: View {
                 .foregroundColor(.hLigthGray)
             Text("제출")
                 .foregroundColor(.black)
+                .font(.custom("EBSHMJESaeronSB", size: 18))
         }
     }
     private func keyboardDeleteButton() -> some View {
@@ -35,6 +36,7 @@ struct KeyboardView: View {
                 .foregroundColor(.hLigthGray)
             Text("지움")
                 .foregroundColor(.black)
+                .font(.custom("EBSHMJESaeronSB", size: 18))
         }
     }
     private func submitKeyInput(_ character: String) {
@@ -91,6 +93,8 @@ struct KeyboardView: View {
     
     func keyboardButton(_ key: Key) -> some View {
         let keyButtonSize: CGSize = CGSize(width: 32, height: 44)
+        let jaum: String = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ"
+        
         return ZStack {
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: keyButtonSize.width,
@@ -98,6 +102,7 @@ struct KeyboardView: View {
                 .foregroundColor(getColor(of: key.status))
             Text(key.character)
                 .foregroundColor(.black)
+                .font(.custom("EBSHMJESaeronR", size: jaum.contains(key.character) ? 24 : 26))
         }
     }
 }

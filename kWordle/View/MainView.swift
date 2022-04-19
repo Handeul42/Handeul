@@ -14,20 +14,15 @@ struct MainView: View {
     let wordDictManager = WordDictManager()
     var body: some View {
         VStack {
+            Spacer()
             TitleView()
             AnswerBoardView()
+            Spacer()
             KeyboardView()
+            Spacer()
         }
         .environmentObject(mainViewModel.keyboardViewModel)
         .environmentObject(mainViewModel)
-        .onAppear {
-            for family: String in UIFont.familyNames {
-                            print(family)
-                            for names : String in UIFont.fontNames(forFamilyName: family){
-                                print("=== \(names)")
-                            }
-                        }
-        }
     }
 }
 

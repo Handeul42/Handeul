@@ -7,9 +7,14 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>EBS훈민정음새론R.ttf</string>
-		<string>EBS훈민정음새론L.ttf</string>
+		<string>EBSL.ttf</string>
 		<string>EBS훈민정음새론SB.ttf</string>
 		<string>EBS훈민정음SB.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string></string>
+	</dict>
 </dict>
 </plist>

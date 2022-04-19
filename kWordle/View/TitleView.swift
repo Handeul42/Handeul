@@ -10,7 +10,7 @@ import SwiftUI
 struct TitleView: View {
     var body: some View {
         Text("한들")
-            .font(.system(.largeTitle))
+            .font(.custom("EBSHunminjeongeumSB", size: 40))
             .bold()
     }
 }
