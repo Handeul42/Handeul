@@ -24,6 +24,10 @@
 		738C80D7280D61D600D8FCA5 /* WordDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C80D6280D61D600D8FCA5 /* WordDict.swift */; };
 		738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C80DA280D634C00D8FCA5 /* MainViewModel.swift */; };
 		73D66DB2280E825000313A7F /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D66DB1280E825000313A7F /* TitleView.swift */; };
+		73D66DB8280E973300313A7F /* EBSL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73D66DB4280E973300313A7F /* EBSL.ttf */; };
+		73D66DB9280E973300313A7F /* EBS훈민정음SB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73D66DB5280E973300313A7F /* EBS훈민정음SB.ttf */; };
+		73D66DBA280E973300313A7F /* EBS훈민정음새론R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73D66DB6280E973300313A7F /* EBS훈민정음새론R.ttf */; };
+		73D66DBB280E973300313A7F /* EBS훈민정음새론SB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73D66DB7280E973300313A7F /* EBS훈민정음새론SB.ttf */; };
 		73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B027EDCF920041036F /* kWordleApp.swift */; };
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
@@ -48,6 +52,11 @@
 		738C80D6280D61D600D8FCA5 /* WordDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDict.swift; sourceTree = "<group>"; };
 		738C80DA280D634C00D8FCA5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		73D66DB1280E825000313A7F /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		73D66DB4280E973300313A7F /* EBSL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EBSL.ttf; path = Font/EBSL.ttf; sourceTree = SOURCE_ROOT; };
+		73D66DB5280E973300313A7F /* EBS훈민정음SB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "EBS훈민정음SB.ttf"; path = "Font/EBS훈민정음SB.ttf"; sourceTree = SOURCE_ROOT; };
+		73D66DB6280E973300313A7F /* EBS훈민정음새론R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "EBS훈민정음새론R.ttf"; path = "Font/EBS훈민정음새론R.ttf"; sourceTree = SOURCE_ROOT; };
+		73D66DB7280E973300313A7F /* EBS훈민정음새론SB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "EBS훈민정음새론SB.ttf"; path = "Font/EBS훈민정음새론SB.ttf"; sourceTree = SOURCE_ROOT; };
+		73D66DBC280E98D500313A7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		73FD63AD27EDCF920041036F /* kWordle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kWordle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FD63B027EDCF920041036F /* kWordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kWordleApp.swift; sourceTree = "<group>"; };
 		73FD63B427EDCF940041036F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +126,17 @@
 			path = WordData;
 			sourceTree = "<group>";
 		};
+		73D66DB3280E971900313A7F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				73D66DB4280E973300313A7F /* EBSL.ttf */,
+				73D66DB6280E973300313A7F /* EBS훈민정음새론R.ttf */,
+				73D66DB7280E973300313A7F /* EBS훈민정음새론SB.ttf */,
+				73D66DB5280E973300313A7F /* EBS훈민정음SB.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		73FD63A427EDCF920041036F = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +156,8 @@
 		73FD63AF27EDCF920041036F /* kWordle */ = {
 			isa = PBXGroup;
 			children = (
+				73D66DBC280E98D500313A7F /* Info.plist */,
+				73D66DB3280E971900313A7F /* Fonts */,
 				737D4CE9280954E300CD8CBD /* WordData */,
 				737D4CDE2809399600CD8CBD /* Constants */,
 				737D4CD028092F1700CD8CBD /* Model */,
@@ -222,8 +244,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				737D4CC728092C2100CD8CBD /* .swiftlint.yml in Resources */,
+				73D66DB9280E973300313A7F /* EBS훈민정음SB.ttf in Resources */,
 				73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */,
+				73D66DBA280E973300313A7F /* EBS훈민정음새론R.ttf in Resources */,
+				73D66DBB280E973300313A7F /* EBS훈민정음새론SB.ttf in Resources */,
 				73FD63B527EDCF940041036F /* Assets.xcassets in Resources */,
+				73D66DB8280E973300313A7F /* EBSL.ttf in Resources */,
 				738C80D1280D473200D8FCA5 /* 5Jamo.tsv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +431,7 @@
 				DEVELOPMENT_TEAM = 9TH57H8UP9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = kWordle/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -436,6 +463,7 @@
 				DEVELOPMENT_TEAM = 9TH57H8UP9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = kWordle/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
