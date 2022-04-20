@@ -14,9 +14,9 @@ class MainViewModel: ObservableObject {
     var currentRow: Int = 0
     var currentColumn: Int = 0
     @Published var rows: [[Key]] = Array(
-        repeating: Range(0...4).map { _ in Key(character: " ")},
+        repeating: Range(0...4).map { _ in Key(character: " ", status: .white)},
         count: 6)
-    var currentWord: String = ""
+    @Published var isGameFinished: Bool = false
     init () {
         game.wordDict = WordDictManager.makeWordDict()
         game.answer = game.wordDict[0].jamo
@@ -24,28 +24,34 @@ class MainViewModel: ObservableObject {
         game.userAnswer = Answer(keys: [[]])
     }
     func appendReceivedCharacter(of receivedKeyCharacter: String) {
+        guard isGameFinished == false else { return }
         if currentColumn <= 4 {
             rows[currentRow][currentColumn].character = receivedKeyCharacter
-            currentWord += receivedKeyCharacter
             currentColumn += 1
         }
     }
     func deleteOneCharacter() {
+        guard isGameFinished == false else { return }
         if currentColumn != 0 {
             currentColumn -= 1
-            _ = currentWord.popLast()
             rows[currentRow][currentColumn].character = ""
         }
     }
     func submitAnswer() {
+        guard isGameFinished == false else { return }
         let currentWord: String = rows[currentRow].map({ $0.character }).joined(separator: "")
-        print(game.answer)
         if currentColumn == 5 && currentRow != 6 {
             if !isinDict(of: currentWord) {
+                print("Cannot find the word from dictionary")
                 return
             }
             if game.answer == currentWord {
-                //end game
+                for (index, key) in rows[currentRow].enumerated() {
+                    rows[currentRow][index].status = .green
+                    keyboardViewModel.changeKeyStatus(to: .green, keyLabel: key.character)
+                }
+                self.isGameFinished = true
+                print("Cool! Game is finished!")
             } else {
                 for (index, key) in rows[currentRow].enumerated() {
                     if game.answer.contains(key.character) {
@@ -60,6 +66,10 @@ class MainViewModel: ObservableObject {
                         keyboardViewModel.changeKeyStatus(to: .gray, keyLabel: key.character)
                         rows[currentRow][index].status = .gray
                     }
+                }
+                if currentRow == 5 {
+                    print("You lose :(")
+                    self.isGameFinished = true
                 }
             }
             currentRow += 1

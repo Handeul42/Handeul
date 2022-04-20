@@ -10,7 +10,7 @@ import Foundation
 struct Key: Identifiable, Hashable {
     let id = UUID()
     var character: String
-    var status: Status = .gray
+    var status: Status = .lightGray
 }
 
 enum Status: Int {
@@ -18,4 +18,6 @@ enum Status: Int {
     case yellow
     case green
     case lightGray
+    case red
+    case white
 }

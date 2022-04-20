@@ -14,8 +14,12 @@ struct MainView: View {
     let wordDictManager = WordDictManager()
     var body: some View {
         VStack {
+            Spacer()
+            TitleView()
             AnswerBoardView()
+            Spacer()
             KeyboardView()
+            Spacer()
         }
         .environmentObject(mainViewModel.keyboardViewModel)
         .environmentObject(mainViewModel)

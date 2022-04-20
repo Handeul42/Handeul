@@ -11,22 +11,32 @@ struct KeyboardView: View {
     @EnvironmentObject var keyboardViewModel: KeyboardViewModel
     @EnvironmentObject var viewModel: MainViewModel
     
+    private let enterButtonSize: CGSize = CGSize(width: 46, height: 44)
+    private let backButtonSize: CGSize = CGSize(width: 46, height: 44)
+    private let widthPadding: Double = -1.5
+    
     private func keyboardEnterButton() -> some View {
         return ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: keyboardWidth * 2, height: keyboardHeight)
-                .foregroundColor(.gray)
-            Text("Enter")
+            RoundedRectangle(cornerRadius: 5)
+                .frame(
+                    width: enterButtonSize.width,
+                    height: enterButtonSize.height)
+                .foregroundColor(.hLigthGray)
+            Text("제출")
                 .foregroundColor(.black)
+                .font(.custom("EBSHMJESaeronSB", size: 18))
         }
     }
     private func keyboardDeleteButton() -> some View {
         return ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: keyboardWidth * 1.5, height: keyboardHeight)
-                .foregroundColor(.gray)
-            Image(systemName: "arrow.left")
+            RoundedRectangle(cornerRadius: 5)
+                .frame(
+                    width: backButtonSize.width,
+                    height: backButtonSize.height)
+                .foregroundColor(.hLigthGray)
+            Text("지움")
                 .foregroundColor(.black)
+                .font(.custom("EBSHMJESaeronSB", size: 18))
         }
     }
     private func submitKeyInput(_ character: String) {
@@ -42,11 +52,13 @@ struct KeyboardView: View {
                         keyboardButton(btn)
                     }
                 }
+                .padding([.horizontal], widthPadding)
                 Button {
                     viewModel.deleteOneCharacter()
                 } label: {
                     keyboardDeleteButton()
                 }
+                .padding([.horizontal], widthPadding)
             }
             HStack {
                 ForEach(keyboardViewModel.secondRow, id: \.self) { btn in
@@ -56,6 +68,7 @@ struct KeyboardView: View {
                         keyboardButton(btn)
                     }
                 }
+                .padding([.horizontal], widthPadding)
             }
             HStack {
                 ForEach(keyboardViewModel.thirdRow, id: \.self) { btn in
@@ -65,6 +78,7 @@ struct KeyboardView: View {
                         keyboardButton(btn)
                     }
                 }
+                .padding([.horizontal], widthPadding)
                 Button {
                     withAnimation {
                         viewModel.submitAnswer()
@@ -72,32 +86,43 @@ struct KeyboardView: View {
                 } label: {
                     keyboardEnterButton()
                 }
-
+                .padding([.horizontal], widthPadding)
             }
+        }
+    }
+    
+    func keyboardButton(_ key: Key) -> some View {
+        let keyButtonSize: CGSize = CGSize(width: 32, height: 44)
+        let jaum: String = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ"
+        
+        return ZStack {
+            RoundedRectangle(cornerRadius: 5)
+                .frame(width: keyButtonSize.width,
+                       height: keyButtonSize.height)
+                .foregroundColor(getColor(of: key.status))
+            Text(key.character)
+                .foregroundColor(.black)
+                .font(.custom("EBSHMJESaeronR", size: jaum.contains(key.character) ? 24 : 26))
         }
     }
 }
 
-func keyboardButton(_ key: Key) -> some View {
-    return ZStack {
-        RoundedRectangle(cornerRadius: 10)
-            .frame(width: keyboardWidth, height: keyboardHeight)
-            .foregroundColor(getColor(of: key.status))
-        Text(key.character)
-            .foregroundColor(.white)
-    }
-}
+
 
 func getColor(of status: Status) -> Color {
     switch status {
     case .gray:
-        return Color.gray
+        return Color.hGray
     case .lightGray:
-        return Color.white
+        return Color.hLigthGray
     case .green:
-        return Color.green
+        return Color.hGreen
     case .yellow:
-        return Color.yellow
+        return Color.hOrange
+    case .red:
+        return Color.hRed
+    case .white:
+        return Color.white
     }
 }
 

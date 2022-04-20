@@ -9,25 +9,42 @@ import SwiftUI
 
 struct AnswerBoardView: View {
     @EnvironmentObject var viewModel: MainViewModel
-    var body: some View {
-        VStack {
-            ForEach(viewModel.rows, id: \.self) { row in
-                HStack {
-                    ForEach(row) { btn in
-                        Button {
-                            print(btn.character)
-                        } label: {
-                            keyboardButton(btn)
-                        }
-                    }
-                }
-            }
+    private func horline(width: CGFloat) -> some View {
+        return Rectangle()
+            .fill(Color.hRed)
+            .frame(width: uiSize.width - 40, height: width)
+    }
+
+    func answerBoardButton(_ key: Key) -> some View {
+        let keyButtonSize: CGSize = CGSize(width: 56, height: 56)
+        return ZStack {
+            Rectangle()
+                .frame(width: keyButtonSize.width,
+                       height: keyButtonSize.height)
+                .foregroundColor(getColor(of: key.status))
+                .border(Color.hRed, width: 2)
+            Text(key.character)
+                .foregroundColor(.black)
+                .font(.custom("EBSHMJESaeronSB", size: 32))
         }
     }
-}
 
-struct AnswerBoardView_Previews: PreviewProvider {
-    static var previews: some View {
-        AnswerBoardView()
+    var body: some View {
+        VStack (spacing: -2) {
+            horline(width: 3)
+                .padding([.bottom], 5)
+            ForEach(viewModel.rows, id: \.self) { row in
+                horline(width: 2)
+                HStack {
+                    ForEach(row) { btn in
+                        answerBoardButton(btn)
+                    }
+                    .padding([.horizontal], -5)
+                }
+                horline(width: 2)
+                    .padding([.bottom], 4)
+            }
+            horline(width: 3)
+        }
     }
 }
