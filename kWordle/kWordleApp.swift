@@ -9,11 +9,13 @@ import SwiftUI
 
 @main
 struct KWordleApp: App {
-//    @Environment(\.scenePhase) var scenePhase
     
     var body: some Scene {
         WindowGroup {
             MainView()
+                .onAppear {
+                    print(uiSize)
+                }
         }
     }
 }
