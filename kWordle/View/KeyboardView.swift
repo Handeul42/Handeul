@@ -90,11 +90,9 @@ struct KeyboardView: View {
             }
         }
     }
-    
     func keyboardButton(_ key: Key) -> some View {
         let keyButtonSize: CGSize = CGSize(width: 32, height: 44)
         let jaum: String = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ"
-        
         return ZStack {
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: keyButtonSize.width,
@@ -106,8 +104,6 @@ struct KeyboardView: View {
         }
     }
 }
-
-
 
 func getColor(of status: Status) -> Color {
     switch status {

@@ -15,7 +15,7 @@ class MainViewModel: ObservableObject {
     var currentColumn: Int = 0
     @Published var rows: [[Key]] = makeAnswerBoardRows()
     @Published var isGameFinished: Bool = false
-    @Published var isWordValid: Bool = false
+    @Published var isWordValid: Bool = true
     init () {
         let date = Date()
         let today = Calendar.current.dateComponents([.day, .hour], from: date)

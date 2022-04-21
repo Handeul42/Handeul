@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AnswerBoardView: View {
     @EnvironmentObject var viewModel: MainViewModel
+    
     private func horline(width: CGFloat) -> some View {
         return Rectangle()
             .fill(Color.hRed)
@@ -16,7 +17,8 @@ struct AnswerBoardView: View {
     }
 
     func answerBoardButton(_ key: Key) -> some View {
-        let keyButtonSize: CGSize = CGSize(width: 56, height: 56)
+        let keyButtonWidth: Double = Double(uiSize.width - 40) / 6
+        let keyButtonSize: CGSize = CGSize(width: keyButtonWidth, height: keyButtonWidth)
         return ZStack {
             Rectangle()
                 .frame(width: keyButtonSize.width,
