@@ -18,9 +18,10 @@ class MainViewModel: ObservableObject {
     @Published var isWordValid: Bool = true
     init () {
         let date = Date()
-        let today = Calendar.current.dateComponents([.day, .hour], from: date)
+        let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
         game.wordDict = WordDictManager.makeWordDict()
-        game.answer = game.wordDict[(today.day! + today.hour! * 130) % game.wordDict.count].jamo
+        game.answer = game.wordDict[((today.year! + today.month! + today.day!) * 345678) % game.wordDict.count].jamo
+        UserDefaults.standard.set(game.answer, forKey: "Answer")
         print(game.answer)
         game.key = []
         game.userAnswer = Answer(keys: [[]])
@@ -108,10 +109,46 @@ class MainViewModel: ObservableObject {
         }
         return false
     }
-    fileprivate static func makeAnswerBoardRows() -> [[Key]] {
+    private static func makeAnswerBoardRows() -> [[Key]] {
         Array(
             repeating: Range(0...4).map { _ in
                 Key(character: " ", status: .white)
             }, count: 6)
+    }
+    
+    func generateString() -> String {
+        var ret: String = ""
+        
+        for row in rows {
+            for char in row {
+                switch char.status {
+                case .gray :
+                    ret += "⬜️"
+                case .green :
+                    ret += "🟩"
+                case .yellow :
+                    ret += "🟧"
+                case .white, .red, .lightGray:
+                    break
+                }
+            }
+            ret += "\n"
+        }
+        return "한들\n앱주소\n" + ret.trimmingCharacters(in: .newlines)
+    }
+    
+    func refreshGameOnActive() {
+        let date = Date()
+        let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
+        game.wordDict = WordDictManager.makeWordDict()
+        let tempAnswer = game.wordDict[((today.year! + today.month! + today.day!) * 345678) % game.wordDict.count].jamo
+        if UserDefaults.standard.string(forKey: "Answer") != tempAnswer {
+            game.answer = tempAnswer
+            UserDefaults.standard.set(game.answer, forKey: "Answer")
+            print(game.answer)
+            game.key = []
+            game.userAnswer = Answer(keys: [[]])
+            rows = MainViewModel.makeAnswerBoardRows()
+        }
     }
 }
