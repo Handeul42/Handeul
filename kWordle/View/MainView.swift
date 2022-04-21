@@ -28,6 +28,16 @@ struct MainView: View {
             }
             if mainViewModel.isWordValid == false {
                 InvalidWordWarning()
+                    .zIndex(2)
+                    .onAppear {
+                        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
+                            withAnimation() {
+                                if mainViewModel.isWordValid == false {
+                                    mainViewModel.toggleValidWordState()
+                                }
+                            }
+                        }
+                    }
             }
         }
     }
