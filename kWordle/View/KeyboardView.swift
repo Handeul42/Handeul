@@ -87,14 +87,40 @@ struct KeyboardView: View {
                     keyboardEnterButton()
                 }
                 .padding([.horizontal], widthPadding)
+                Button {
+                    UIPasteboard.general.string = generateString()
+                } label: {
+                    Text("결과 공유")
+                }
+
             }
         }
+    }
+    
+    func generateString() -> String {
+        var ret: String = ""
+        
+        for row in viewModel.rows {
+            for char in row {
+                switch char.status {
+                case .gray :
+                    ret += "⬜️"
+                case .green :
+                    ret += "🟩"
+                case .yellow :
+                    ret += "🟧"
+                case .white, .red, .lightGray:
+                    break
+                }
+            }
+            ret += "\n"
+        }
+        return "한들\n앱주소\n" + ret.trimmingCharacters(in: .newlines)
     }
     
     func keyboardButton(_ key: Key) -> some View {
         let keyButtonSize: CGSize = CGSize(width: 32, height: 44)
         let jaum: String = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ"
-        
         return ZStack {
             RoundedRectangle(cornerRadius: 5)
                 .frame(width: keyButtonSize.width,
@@ -106,8 +132,6 @@ struct KeyboardView: View {
         }
     }
 }
-
-
 
 func getColor(of status: Status) -> Color {
     switch status {
@@ -123,11 +147,5 @@ func getColor(of status: Status) -> Color {
         return Color.hRed
     case .white:
         return Color.white
-    }
-}
-
-struct Keyboard_Previews: PreviewProvider {
-    static var previews: some View {
-        KeyboardView()
     }
 }
