@@ -33,6 +33,10 @@
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
 		CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517C280E753200B739F3 /* Color+CustomColor.swift */; };
+		CC7C517F280EB51300B739F3 /* MainView+MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */; };
+		CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */; };
+		CC7C5183280ECB8A00B739F3 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C5182280ECB8A00B739F3 /* StatisticView.swift */; };
+		CCDBBC7228100D4600563140 /* MainView+InvalidWordWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBBC7128100D4600563140 /* MainView+InvalidWordWarning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +68,10 @@
 		73FD63B427EDCF940041036F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73FD63B727EDCF940041036F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CC7C517C280E753200B739F3 /* Color+CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CustomColor.swift"; sourceTree = "<group>"; };
+		CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+MenuBar.swift"; sourceTree = "<group>"; };
+		CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
+		CC7C5182280ECB8A00B739F3 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
+		CCDBBC7128100D4600563140 /* MainView+InvalidWordWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+InvalidWordWarning.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +113,12 @@
 			children = (
 				737D4CD82809322400CD8CBD /* KeyboardView.swift */,
 				737D4CE128093C3600CD8CBD /* MainView.swift */,
+				CCDBBC7128100D4600563140 /* MainView+InvalidWordWarning.swift */,
 				737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */,
 				73D66DB1280E825000313A7F /* TitleView.swift */,
+				CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */,
+				CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */,
+				CC7C5182280ECB8A00B739F3 /* StatisticView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -285,15 +297,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC7C517F280EB51300B739F3 /* MainView+MenuBar.swift in Sources */,
+				CC7C5183280ECB8A00B739F3 /* StatisticView.swift in Sources */,
 				737D4CD528092F6C00CD8CBD /* Key.swift in Sources */,
 				738C80D7280D61D600D8FCA5 /* WordDict.swift in Sources */,
 				737D4CE628093C7200CD8CBD /* AnswerBoardViewModel.swift in Sources */,
+				CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */,
 				737D4CE228093C3600CD8CBD /* MainView.swift in Sources */,
 				737D4CD728092F7F00CD8CBD /* Answer.swift in Sources */,
 				CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */,
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
+				CCDBBC7228100D4600563140 /* MainView+InvalidWordWarning.swift in Sources */,
 				737D4CE0280939B500CD8CBD /* constant+UIscreenSize.swift in Sources */,
 				737D4CE428093C6200CD8CBD /* AnswerBoardView.swift in Sources */,
 				738C80CB280D31B400D8FCA5 /* FiveWords.xcdatamodeld in Sources */,

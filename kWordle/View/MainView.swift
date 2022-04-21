@@ -11,11 +11,33 @@ struct MainView: View {
 //    @ObservedObject var answerBoardViewModel: AnswerBoardViewModel = AnswerBoardViewModel()
     @ObservedObject var mainViewModel: MainViewModel = MainViewModel()
     
+    @State var isHowToPlayPresented: Bool = false
+    @State var isStatisticsPresented: Bool = false
+    @State var isSettingPresented: Bool = false
+    
     let wordDictManager = WordDictManager()
     var body: some View {
+        ZStack {
+            mainView
+            if isHowToPlayPresented {
+                HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
+                    .zIndex(1)
+            }
+            if isStatisticsPresented {
+                StatisticView(isStatisticsPresented: $isStatisticsPresented)
+            }
+            if mainViewModel.isWordValid == false {
+                InvalidWordWarning()
+            }
+        }
+    }
+    var mainView: some View {
         VStack {
             Spacer()
             TitleView()
+            MenuBar(isHowToPlayPresented: $isHowToPlayPresented,
+                    isStatisticsPresented: $isStatisticsPresented,
+                    isSettingPresented: $isSettingPresented)
             AnswerBoardView()
             Spacer()
             KeyboardView()
