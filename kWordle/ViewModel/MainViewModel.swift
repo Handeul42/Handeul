@@ -17,10 +17,8 @@ class MainViewModel: ObservableObject {
     @Published var isGameFinished: Bool = false
     @Published var isWordValid: Bool = true
     init () {
-        let date = Date()
-        let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
         game.wordDict = WordDictManager.makeWordDict()
-        game.answer = game.wordDict[((today.year! + today.month! + today.day!) * 345678) % game.wordDict.count].jamo
+        game.answer = todayAnswer()
         UserDefaults.standard.set(game.answer, forKey: "Answer")
         print(game.answer)
         game.key = []
@@ -109,7 +107,7 @@ class MainViewModel: ObservableObject {
         return false
     }
     private static func makeAnswerBoardRows() -> [[Key]] {
-        Array(
+        return Array(
             repeating: Range(0...4).map { _ in
                 Key(character: " ", status: .white)
             }, count: 6)
@@ -137,17 +135,23 @@ class MainViewModel: ObservableObject {
     }
     
     func refreshGameOnActive() {
-        let date = Date()
-        let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
         game.wordDict = WordDictManager.makeWordDict()
-        let tempAnswer = game.wordDict[((today.year! + today.month! + today.day!) * 345678) % game.wordDict.count].jamo
-        if UserDefaults.standard.string(forKey: "Answer") != tempAnswer {
-            game.answer = tempAnswer
+        let todayAnswer = todayAnswer()
+        if UserDefaults.standard.string(forKey: "Answer") != todayAnswer {
+            game.answer = todayAnswer
             UserDefaults.standard.set(game.answer, forKey: "Answer")
             print(game.answer)
             game.key = []
             game.userAnswer = Answer(keys: [[]])
             rows = MainViewModel.makeAnswerBoardRows()
         }
+    }
+    
+    func todayAnswer() -> String {
+        
+        let date = Date()
+        let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
+        let todayAnswer = game.wordDict[((today.year! + today.month! + today.day!) * 345678) % game.wordDict.count].jamo
+        return todayAnswer
     }
 }
