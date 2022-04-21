@@ -42,4 +42,15 @@ class KeyboardViewModel: ObservableObject {
             }
         }
     }
+    func initKeyStatus() {
+        self.firstRow = firstRowLabel.map {
+            Key(character: $0)
+        }
+        self.secondRow = secondRowLabel.map {
+            Key(character: $0)
+        }
+        self.thirdRow = thirdRowLabel.map {
+            Key(character: $0)
+        }
+    }
 }

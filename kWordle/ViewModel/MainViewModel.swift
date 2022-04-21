@@ -24,7 +24,7 @@ class MainViewModel: ObservableObject {
         game.key = []
         game.userAnswer = Answer(keys: [[]])
     }
-    //MARK: Public Functions
+    // MARK: Public Functions
     public func appendReceivedCharacter(of receivedKeyCharacter: String) {
         guard isGameFinished == false else { return }
         if currentColumn <= 4 {
@@ -134,6 +134,22 @@ class MainViewModel: ObservableObject {
         return "한들\n앱주소\n" + ret.trimmingCharacters(in: .newlines)
     }
     
+    func startNewGame() {
+        game.wordDict = WordDictManager.makeWordDict()
+
+        let todayAnswer = game.wordDict[Int(arc4random()) % game.wordDict.count].jamo
+        game.answer = todayAnswer
+        print(game.answer)
+        game.key = []
+        game.userAnswer = Answer(keys: [[]])
+        rows = MainViewModel.makeAnswerBoardRows()
+        keyboardViewModel.initKeyStatus()
+        currentRow = 0
+        currentColumn = 0
+        isGameFinished = false
+    
+    }
+    
     func refreshGameOnActive() {
         game.wordDict = WordDictManager.makeWordDict()
         let todayAnswer = todayAnswer()
@@ -148,7 +164,6 @@ class MainViewModel: ObservableObject {
     }
     
     func todayAnswer() -> String {
-        
         let date = Date()
         let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
         let todayAnswer = game.wordDict[((today.year! + today.month! + today.day!) * 345678) % game.wordDict.count].jamo

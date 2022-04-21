@@ -39,6 +39,20 @@ struct KeyboardView: View {
                 .font(.custom("EBSHMJESaeronSB", size: 18))
         }
     }
+    
+    private func newGameButton() -> some View {
+        return ZStack {
+            RoundedRectangle(cornerRadius: 5)
+                .frame(
+                    width: extraButtonSize.width + 20,
+                    height: extraButtonSize.height)
+                .foregroundColor(.hLigthGray)
+            Text("새 놀이")
+                .foregroundColor(.black)
+                .font(.custom("EBSHMJESaeronSB", size: 18))
+        }
+    }
+    
     private func submitKeyInput(_ character: String) {
         viewModel.appendReceivedCharacter(of: character)
     }
@@ -93,6 +107,11 @@ struct KeyboardView: View {
 //                    Text("결과 공유")
 //                }
 
+            }
+            Button {
+                viewModel.startNewGame()
+            } label: {
+                newGameButton()
             }
         }
     }
