@@ -11,7 +11,7 @@ struct MenuBar: View {
     @Binding var isHowToPlayPresented: Bool
     @Binding var isStatisticsPresented: Bool
     @Binding var isSettingPresented: Bool
-    let buttonSize: CGFloat = 25
+    let buttonSize: CGFloat = 28 * currentScreenRatio()
     var body: some View {
         HStack {
             Button {
@@ -20,6 +20,8 @@ struct MenuBar: View {
                 }
             } label: {
                 Image(systemName: "questionmark.square").font(.system(size: buttonSize))
+            }.onAppear {
+                print(buttonSize)
             }
             Spacer()
             Button {
