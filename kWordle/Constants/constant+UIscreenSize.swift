@@ -10,3 +10,7 @@ import UIKit
 let uiSize: CGSize = UIScreen.main.bounds.size
 let keyboardWidth: CGFloat = (uiSize.width - 100) / 10
 let keyboardHeight: CGFloat = 40
+
+func currentScreenRatio() -> CGFloat {
+    return uiSize.width / 390
+}

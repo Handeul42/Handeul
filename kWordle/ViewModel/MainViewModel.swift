@@ -74,7 +74,7 @@ class MainViewModel: ObservableObject {
             }
         }
         for (index, key) in rows[currentRow].enumerated() {
-            if game.answer.contains(key.character) && jamoCount[key.character.first!] != 0 {
+            if game.answer.contains(key.character) {
                 if (game.answer.map { String($0) })[index] == key.character {
                     keyboardViewModel.changeKeyStatus(to: .green, keyLabel: key.character)
                     rows[currentRow][index].status = .green
