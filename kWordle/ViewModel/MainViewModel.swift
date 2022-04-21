@@ -17,8 +17,11 @@ class MainViewModel: ObservableObject {
     @Published var isGameFinished: Bool = false
     @Published var isWordValid: Bool = false
     init () {
+        let date = Date()
+        let today = Calendar.current.dateComponents([.day, .hour], from: date)
         game.wordDict = WordDictManager.makeWordDict()
-        game.answer = game.wordDict[32].jamo
+        game.answer = game.wordDict[(today.day! + today.hour! * 130) % game.wordDict.count].jamo
+        print(game.answer)
         game.key = []
         game.userAnswer = Answer(keys: [[]])
     }

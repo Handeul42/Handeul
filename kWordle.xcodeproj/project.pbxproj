@@ -63,7 +63,7 @@
 		73D66DB7280E973300313A7F /* EBS훈민정음새론SB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "EBS훈민정음새론SB.ttf"; path = "Font/EBS훈민정음새론SB.ttf"; sourceTree = SOURCE_ROOT; };
 		73D66DBC280E98D500313A7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		73D66DBD280EA31000313A7F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		73FD63AD27EDCF920041036F /* kWordle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kWordle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		73FD63AD27EDCF920041036F /* 한들.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "한들.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FD63B027EDCF920041036F /* kWordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kWordleApp.swift; sourceTree = "<group>"; };
 		73FD63B427EDCF940041036F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73FD63B727EDCF940041036F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 		73FD63AE27EDCF920041036F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				73FD63AD27EDCF920041036F /* kWordle.app */,
+				73FD63AD27EDCF920041036F /* 한들.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,9 +198,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		73FD63AC27EDCF920041036F /* kWordle */ = {
+		73FD63AC27EDCF920041036F /* 한들 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 73FD63BB27EDCF940041036F /* Build configuration list for PBXNativeTarget "kWordle" */;
+			buildConfigurationList = 73FD63BB27EDCF940041036F /* Build configuration list for PBXNativeTarget "한들" */;
 			buildPhases = (
 				73FD63A927EDCF920041036F /* Sources */,
 				73FD63AA27EDCF920041036F /* Frameworks */,
@@ -211,11 +211,11 @@
 			);
 			dependencies = (
 			);
-			name = kWordle;
+			name = "한들";
 			packageProductDependencies = (
 			);
 			productName = kWordle;
-			productReference = 73FD63AD27EDCF920041036F /* kWordle.app */;
+			productReference = 73FD63AD27EDCF920041036F /* 한들.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -248,7 +248,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				73FD63AC27EDCF920041036F /* kWordle */,
+				73FD63AC27EDCF920041036F /* 한들 */,
 			);
 		};
 /* End PBXProject section */
@@ -375,7 +375,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -430,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -452,6 +452,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kWordle/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "한들";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
@@ -464,7 +465,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-kWordle.kWordle";
+				PRODUCT_BUNDLE_IDENTIFIER = com.game.handeul;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -484,6 +485,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kWordle/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "한들";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
@@ -496,7 +498,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-kWordle.kWordle";
+				PRODUCT_BUNDLE_IDENTIFIER = com.game.handeul;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -516,7 +518,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		73FD63BB27EDCF940041036F /* Build configuration list for PBXNativeTarget "kWordle" */ = {
+		73FD63BB27EDCF940041036F /* Build configuration list for PBXNativeTarget "한들" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				73FD63BC27EDCF940041036F /* Debug */,
