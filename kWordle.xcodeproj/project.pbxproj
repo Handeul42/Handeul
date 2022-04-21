@@ -36,7 +36,7 @@
 		CC7C517F280EB51300B739F3 /* MainView+MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */; };
 		CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */; };
 		CC7C5183280ECB8A00B739F3 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C5182280ECB8A00B739F3 /* StatisticView.swift */; };
-		CCDBBC7228100D4600563140 /* MainView+InvalidWordWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBBC7128100D4600563140 /* MainView+InvalidWordWarning.swift */; };
+		CCDBBC7228100D4600563140 /* MainView+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBBC7128100D4600563140 /* MainView+Toast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +71,7 @@
 		CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+MenuBar.swift"; sourceTree = "<group>"; };
 		CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		CC7C5182280ECB8A00B739F3 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
-		CCDBBC7128100D4600563140 /* MainView+InvalidWordWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+InvalidWordWarning.swift"; sourceTree = "<group>"; };
+		CCDBBC7128100D4600563140 /* MainView+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+Toast.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +198,7 @@
 			children = (
 				73D66DB1280E825000313A7F /* MainView+TitleView.swift */,
 				CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */,
-				CCDBBC7128100D4600563140 /* MainView+InvalidWordWarning.swift */,
+				CCDBBC7128100D4600563140 /* MainView+Toast.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -317,7 +317,7 @@
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
-				CCDBBC7228100D4600563140 /* MainView+InvalidWordWarning.swift in Sources */,
+				CCDBBC7228100D4600563140 /* MainView+Toast.swift in Sources */,
 				737D4CE0280939B500CD8CBD /* constant+UIscreenSize.swift in Sources */,
 				737D4CE428093C6200CD8CBD /* AnswerBoardView.swift in Sources */,
 				738C80CB280D31B400D8FCA5 /* FiveWords.xcdatamodeld in Sources */,
