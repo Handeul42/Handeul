@@ -136,18 +136,10 @@ class MainViewModel: ObservableObject {
     
     func startNewGame() {
         game.wordDict = WordDictManager.makeWordDict()
-
-        let todayAnswer = game.wordDict[Int(arc4random()) % game.wordDict.count].jamo
-        game.answer = todayAnswer
+        let randomAnswer = game.wordDict[Int.random(in: 0...game.wordDict.count) % game.wordDict.count].jamo
+        game.answer = randomAnswer
         print(game.answer)
-        game.key = []
-        game.userAnswer = Answer(keys: [[]])
-        rows = MainViewModel.makeAnswerBoardRows()
-        keyboardViewModel.initKeyStatus()
-        currentRow = 0
-        currentColumn = 0
-        isGameFinished = false
-    
+        initGame()
     }
     
     func refreshGameOnActive() {
@@ -157,9 +149,7 @@ class MainViewModel: ObservableObject {
             game.answer = todayAnswer
             UserDefaults.standard.set(game.answer, forKey: "Answer")
             print(game.answer)
-            game.key = []
-            game.userAnswer = Answer(keys: [[]])
-            rows = MainViewModel.makeAnswerBoardRows()
+            initGame()
         }
     }
     
@@ -168,5 +158,15 @@ class MainViewModel: ObservableObject {
         let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
         let todayAnswer = game.wordDict[((today.year! + today.month! + today.day!) * 345678) % game.wordDict.count].jamo
         return todayAnswer
+    }
+    
+    func initGame() {
+        game.key = []
+        game.userAnswer = Answer(keys: [[]])
+        rows = MainViewModel.makeAnswerBoardRows()
+        keyboardViewModel.initKeyStatus()
+        currentRow = 0
+        currentColumn = 0
+        isGameFinished = false
     }
 }
