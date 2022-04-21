@@ -10,9 +10,13 @@ import SwiftUI
 struct InvalidWordWarning: View {
     var body: some View {
         Text("유효하지 않은 단어입니다.")
-            .font(.custom("EBSHMJESaeronR", size: 22))
+            .font(.custom("EBSHMJESaeronR", size: 16))
+            .foregroundColor(Color.black)
             .padding()
-            .background(Color.red)
+            .background(Color.hWhite
+                .opacity(0.95)
+                .cornerRadius(8)
+            )
     }
 }
 

@@ -15,7 +15,7 @@ class MainViewModel: ObservableObject {
     var currentColumn: Int = 0
     @Published var rows: [[Key]] = makeAnswerBoardRows()
     @Published var isGameFinished: Bool = false
-    @Published var isWordValid: Bool = false
+    @Published var isWordValid: Bool = true
     init () {
         let date = Date()
         let today = Calendar.current.dateComponents([.day, .hour], from: date)
@@ -45,8 +45,7 @@ class MainViewModel: ObservableObject {
         let currentWord: String = rows[currentRow].map({ $0.character }).joined(separator: "")
         if currentColumn == 5 && currentRow != 6 {
             if !isinDict(of: currentWord) {
-                print("Cannot find the word from dictionary")
-                isWordValid.toggle()
+                toggleValidWordState()
                 return
             }
             if game.answer == currentWord {
@@ -60,6 +59,9 @@ class MainViewModel: ObservableObject {
             currentRow += 1
             currentColumn = 0
         }
+    }
+    public func toggleValidWordState() {
+        self.isWordValid.toggle()
     }
     // MARK: Private Functions
     fileprivate func compareUserAnswerAndChangeColor() {
@@ -108,7 +110,8 @@ class MainViewModel: ObservableObject {
     }
     fileprivate static func makeAnswerBoardRows() -> [[Key]] {
         Array(
-            repeating: Range(0...4).map { _ in Key(character: " ", status: .white)},
-            count: 6)
+            repeating: Range(0...4).map { _ in
+                Key(character: " ", status: .white)
+            }, count: 6)
     }
 }
