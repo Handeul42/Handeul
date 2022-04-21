@@ -21,11 +21,13 @@ struct MainView: View {
             mainView
             if isHowToPlayPresented {
                 HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
-                    .padding()
                     .zIndex(1)
             }
             if isStatisticsPresented {
                 StatisticView(isStatisticsPresented: $isStatisticsPresented)
+            }
+            if mainViewModel.isWordValid == false {
+                InvalidWordWarning()
             }
         }
     }

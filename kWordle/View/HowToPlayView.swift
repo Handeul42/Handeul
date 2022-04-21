@@ -16,36 +16,34 @@ struct HowToPlayView: View {
     let howToPlayTextExampleWrong = "ㅇ은 단어에 포함되지 않습니다."
     
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Button {
+        ZStack {
+            Color.black.ignoresSafeArea()
+                .opacity(0.5)
+                .onTapGesture {
                     withAnimation {
-                        isHowToPlayPresented.toggle()
+                        self.isHowToPlayPresented.toggle()
                     }
-                } label: {
-                    Image(systemName: "xmark").font(.system(size: 22))
-                        .foregroundColor(.black)
-                }.padding([.top, .trailing])
-            }
+                }
             VStack {
-                Text("풀이 방법").font(.custom("EBSHMJESaeronR", size: 22))
+                Text("풀이 방법")
+                    .font(.custom("EBSHMJESaeronR", size: 22))
+                    .padding()
                 VStack {
-                    Text(howToPlayTextMain).font(.custom("EBSHMJESaeronR", size: 16))
+                    Text(howToPlayTextMain).font(.custom("EBSHMJESaeronL", size: 16))
                     Image("howToPlayExCorrect")
                     Text(howToPlayTextExampleCorrect)
-                        .font(.custom("EBSHMJESaeronR", size: 13))
+                        .font(.custom("EBSHMJESaeronL", size: 13))
                         .padding(.bottom, 8)
                     Image("howToPlayExDup")
-                    Text(howToPlayTextExampleDup1).font(.custom("EBSHMJESaeronR", size: 13))
-                    Text(howToPlayTextExampleDup2).font(.custom("EBSHMJESaeronR", size: 13))
+                    Text(howToPlayTextExampleDup1).font(.custom("EBSHMJESaeronL", size: 13))
+                    Text(howToPlayTextExampleDup2).font(.custom("EBSHMJESaeronL", size: 13))
                         .padding(.bottom, 8)
                     Image("howToPlayExWrong")
-                    Text(howToPlayTextExampleWrong).font(.custom("EBSHMJESaeronR", size: 13))
-                }.padding()
-                
-            }
-        }.background(Color.hWhite.opacity(0.95))
+                    Text(howToPlayTextExampleWrong).font(.custom("EBSHMJESaeronL", size: 13))
+                }.padding([.leading, .trailing, .bottom])
+            }.background(Color.hWhite.opacity(0.95).cornerRadius(8))
+                .padding()
+        }
     }
 }
 
