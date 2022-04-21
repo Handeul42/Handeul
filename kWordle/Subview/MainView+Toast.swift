@@ -20,4 +20,16 @@ struct ToastView: View {
             )
     }
 }
-
+extension View {
+    func showToast(_ message: String, changeStatusBy: @escaping () -> Void) -> some View {
+        ToastView(toastText: "유효하지 않은 단어입니다.")
+            .zIndex(2)
+            .onAppear {
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                    withAnimation {
+                        changeStatusBy()
+                    }
+                }
+            }
+    }
+}
