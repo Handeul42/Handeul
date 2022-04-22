@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73036275281261E8002DCE6B /* DictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73036274281261E8002DCE6B /* DictView.swift */; };
 		737D4CC728092C2100CD8CBD /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CC628092C2100CD8CBD /* .swiftlint.yml */; };
 		737D4CD328092F5D00CD8CBD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CD228092F5D00CD8CBD /* Game.swift */; };
 		737D4CD528092F6C00CD8CBD /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CD428092F6C00CD8CBD /* Key.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		73036274281261E8002DCE6B /* DictView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictView.swift; sourceTree = "<group>"; };
 		737D4CC628092C2100CD8CBD /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		737D4CD228092F5D00CD8CBD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		737D4CD428092F6C00CD8CBD /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				737D4CD82809322400CD8CBD /* KeyboardView.swift */,
 				737D4CE128093C3600CD8CBD /* MainView.swift */,
+				73036274281261E8002DCE6B /* DictView.swift */,
 				737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */,
 				CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */,
 				CC7C5182280ECB8A00B739F3 /* StatisticView.swift */,
@@ -322,6 +325,7 @@
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
 				CCDBBC7228100D4600563140 /* MainView+Toast.swift in Sources */,
 				737D4CE0280939B500CD8CBD /* constant+UIscreenSize.swift in Sources */,
+				73036275281261E8002DCE6B /* DictView.swift in Sources */,
 				737D4CE428093C6200CD8CBD /* AnswerBoardView.swift in Sources */,
 				738C80CB280D31B400D8FCA5 /* FiveWords.xcdatamodeld in Sources */,
 				73D66DB2280E825000313A7F /* MainView+TitleView.swift in Sources */,

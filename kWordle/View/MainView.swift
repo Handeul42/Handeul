@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-//    @ObservedObject var answerBoardViewModel: AnswerBoardViewModel = AnswerBoardViewModel()
+    @Environment(\.scenePhase) var scenePhase
     @ObservedObject var mainViewModel: MainViewModel = MainViewModel()
     
     @State var isHowToPlayPresented: Bool = false
@@ -19,6 +19,11 @@ struct MainView: View {
     var body: some View {
         ZStack {
             mainView
+                .onChange(of: scenePhase) { newScenePhase in
+                    if newScenePhase == .active {
+                        mainViewModel.refreshGameOnActive()
+                    }
+                }
             if isHowToPlayPresented {
                 HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
                     .zIndex(1)
@@ -35,23 +40,21 @@ struct MainView: View {
     }
     var mainView: some View {
         VStack {
-            Spacer()
             TitleView()
+                .padding(.top, 35)
             MenuBar(isHowToPlayPresented: $isHowToPlayPresented,
                     isStatisticsPresented: $isStatisticsPresented,
                     isSettingPresented: $isSettingPresented)
             AnswerBoardView()
             Spacer()
-            KeyboardView()
+            if !mainViewModel.isGameFinished {
+                KeyboardView()
+            } else {
+                DictView()
+            }
             Spacer()
         }
         .environmentObject(mainViewModel.keyboardViewModel)
         .environmentObject(mainViewModel)
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
     }
 }
