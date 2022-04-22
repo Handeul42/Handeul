@@ -25,7 +25,7 @@ class MainViewModel: ObservableObject {
         game.key = []
         game.userAnswer = Answer(keys: [[]])
     }
-    //MARK: Public Functions
+    // MARK: Public Functions
     public func appendReceivedCharacter(of receivedKeyCharacter: String) {
         guard isGameFinished == false else { return }
         if currentColumn <= 4 {
