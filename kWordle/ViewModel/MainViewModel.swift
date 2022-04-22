@@ -73,19 +73,22 @@ class MainViewModel: ObservableObject {
                 jamoCount[jamo] = 1
             }
         }
-        for (index, key) in rows[currentRow].enumerated() {
-            if game.answer.contains(key.character) {
-                if (game.answer.map { String($0) })[index] == key.character {
-                    keyboardViewModel.changeKeyStatus(to: .green, keyLabel: key.character)
-                    rows[currentRow][index].status = .green
-                } else {
-                    keyboardViewModel.changeKeyStatus(to: .yellow, keyLabel: key.character)
-                    rows[currentRow][index].status = .yellow
-                }
-                jamoCount[key.character.first!]! -= 1
-            } else {
+        for (idx, key) in rows[currentRow].enumerated() {
+            if jamoCount[key.character.first!] == nil || jamoCount[key.character.first!]! == 0 {
+                rows[currentRow][idx].status = .gray
                 keyboardViewModel.changeKeyStatus(to: .gray, keyLabel: key.character)
-                rows[currentRow][index].status = .gray
+                continue
+            }
+            if game.answer.getChar(at: idx) == key.character.first {
+                rows[currentRow][idx].status = .green
+                keyboardViewModel.changeKeyStatus(to: .green, keyLabel: key.character)
+                jamoCount[key.character.first!]! -= 1
+                continue
+            }
+            if rows[currentRow][idx].status != .green && jamoCount[key.character.first!]! != 0 {
+                rows[currentRow][idx].status = .yellow
+                keyboardViewModel.changeKeyStatus(to: .yellow, keyLabel: key.character)
+                continue
             }
         }
     }
