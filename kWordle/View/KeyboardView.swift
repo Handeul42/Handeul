@@ -11,16 +11,17 @@ struct KeyboardView: View {
     @EnvironmentObject var keyboardViewModel: KeyboardViewModel
     @EnvironmentObject var viewModel: MainViewModel
     
-    private let enterButtonSize: CGSize = CGSize(width: 46, height: 44)
-    private let backButtonSize: CGSize = CGSize(width: 46, height: 44)
+    
+    private let buttonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44, height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
+    private let extraButtonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44 * 1.44, height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
     private let widthPadding: Double = -1.5
     
     private func keyboardEnterButton() -> some View {
         return ZStack {
             RoundedRectangle(cornerRadius: 5)
                 .frame(
-                    width: enterButtonSize.width,
-                    height: enterButtonSize.height)
+                    width: extraButtonSize.width,
+                    height: extraButtonSize.height)
                 .foregroundColor(.hLigthGray)
             Text("제출")
                 .foregroundColor(.black)
@@ -31,14 +32,15 @@ struct KeyboardView: View {
         return ZStack {
             RoundedRectangle(cornerRadius: 5)
                 .frame(
-                    width: backButtonSize.width,
-                    height: backButtonSize.height)
+                    width: extraButtonSize.width,
+                    height: extraButtonSize.height)
                 .foregroundColor(.hLigthGray)
             Text("지움")
                 .foregroundColor(.black)
                 .font(.custom("EBSHMJESaeronSB", size: 18))
         }
     }
+    
     private func submitKeyInput(_ character: String) {
         viewModel.appendReceivedCharacter(of: character)
     }
@@ -87,44 +89,16 @@ struct KeyboardView: View {
                     keyboardEnterButton()
                 }
                 .padding([.horizontal], widthPadding)
-                Button {
-                    UIPasteboard.general.string = generateString()
-                } label: {
-                    Text("결과 공유")
-                }
-
             }
         }
-    }
-    
-    func generateString() -> String {
-        var ret: String = ""
-        
-        for row in viewModel.rows {
-            for char in row {
-                switch char.status {
-                case .gray :
-                    ret += "⬜️"
-                case .green :
-                    ret += "🟩"
-                case .yellow :
-                    ret += "🟧"
-                case .white, .red, .lightGray:
-                    break
-                }
-            }
-            ret += "\n"
-        }
-        return "한들\n앱주소\n" + ret.trimmingCharacters(in: .newlines)
     }
     
     func keyboardButton(_ key: Key) -> some View {
-        let keyButtonSize: CGSize = CGSize(width: 32, height: 44)
         let jaum: String = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ"
         return ZStack {
             RoundedRectangle(cornerRadius: 5)
-                .frame(width: keyButtonSize.width,
-                       height: keyButtonSize.height)
+                .frame(width: buttonSize.width,
+                       height: buttonSize.height)
                 .foregroundColor(getColor(of: key.status))
             Text(key.character)
                 .foregroundColor(.black)

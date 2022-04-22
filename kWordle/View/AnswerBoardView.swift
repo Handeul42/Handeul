@@ -32,7 +32,7 @@ struct AnswerBoardView: View {
     }
 
     var body: some View {
-        VStack (spacing: -2) {
+        VStack(spacing: -2) {
             horline(width: 3)
                 .padding([.bottom], 5)
             ForEach(viewModel.rows, id: \.self) { row in
