@@ -40,14 +40,18 @@ struct MainView: View {
     }
     var mainView: some View {
         VStack {
-            Spacer()
             TitleView()
+                .padding(.top, 35)
             MenuBar(isHowToPlayPresented: $isHowToPlayPresented,
                     isStatisticsPresented: $isStatisticsPresented,
                     isSettingPresented: $isSettingPresented)
             AnswerBoardView()
             Spacer()
-            KeyboardView()
+            if !mainViewModel.isGameFinished {
+                KeyboardView()
+            } else {
+                DictView()
+            }
             Spacer()
         }
         .environmentObject(mainViewModel.keyboardViewModel)

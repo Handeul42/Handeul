@@ -11,6 +11,7 @@ struct KeyboardView: View {
     @EnvironmentObject var keyboardViewModel: KeyboardViewModel
     @EnvironmentObject var viewModel: MainViewModel
     
+    
     private let buttonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44, height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
     private let extraButtonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44 * 1.44, height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
     private let widthPadding: Double = -1.5
@@ -35,19 +36,6 @@ struct KeyboardView: View {
                     height: extraButtonSize.height)
                 .foregroundColor(.hLigthGray)
             Text("지움")
-                .foregroundColor(.black)
-                .font(.custom("EBSHMJESaeronSB", size: 18))
-        }
-    }
-    
-    private func newGameButton() -> some View {
-        return ZStack {
-            RoundedRectangle(cornerRadius: 5)
-                .frame(
-                    width: extraButtonSize.width + 20,
-                    height: extraButtonSize.height)
-                .foregroundColor(.hLigthGray)
-            Text("새 놀이")
                 .foregroundColor(.black)
                 .font(.custom("EBSHMJESaeronSB", size: 18))
         }
@@ -101,17 +89,6 @@ struct KeyboardView: View {
                     keyboardEnterButton()
                 }
                 .padding([.horizontal], widthPadding)
-//                Button {
-//                    UIPasteboard.general.string =   viewModel.generateString()
-//                } label: {
-//                    Text("결과 공유")
-//                }
-
-            }
-            Button {
-                viewModel.startNewGame()
-            } label: {
-                newGameButton()
             }
         }
     }

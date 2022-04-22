@@ -115,7 +115,6 @@ class MainViewModel: ObservableObject {
     
     func generateString() -> String {
         var ret: String = ""
-        
         for row in rows {
             for char in row {
                 switch char.status {
