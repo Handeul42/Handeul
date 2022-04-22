@@ -28,9 +28,9 @@ struct MainView: View {
                 HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
                     .zIndex(1)
             }
-            if isStatisticsPresented {
-                StatisticView(isStatisticsPresented: $isStatisticsPresented)
-            }
+//            if isStatisticsPresented {
+//                StatisticView(isStatisticsPresented: $isStatisticsPresented)
+//            }
             if mainViewModel.isWordValid == false {
                 showToast("유효하지 않은 단어입니다.") {
                     mainViewModel.toggleValidWordState()
