@@ -20,8 +20,6 @@ struct MenuBar: View {
                 }
             } label: {
                 Image(systemName: "questionmark.square").font(.system(size: buttonSize))
-            }.onAppear {
-                print(buttonSize)
             }
             Spacer()
             Button {
