@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct DictView: View {
     @EnvironmentObject var viewModel: MainViewModel
@@ -16,6 +17,8 @@ struct DictView: View {
     @State var nowDate: Date = Date()
     
     @State var currentDate: Date = Date()
+    var title = "share"
+    
     var body: some View {
         ZStack {
             VStack {
@@ -26,11 +29,15 @@ struct DictView: View {
                     Button {
                         UIPasteboard.general.string = viewModel.generateString()
                         isCopied = true
+                        Analytics.logEvent(AnalyticsEventShare, parameters: ["answer": viewModel.game.answer])
                     } label: {
                         copyButton()
                     }
                 }
-                dictMeaning()
+                HStack {
+                    dictMeaning()
+                    Spacer()
+                }
                 HStack{
                     Button {
                         viewModel.startNewGame()

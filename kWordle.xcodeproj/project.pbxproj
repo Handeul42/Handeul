@@ -10,6 +10,7 @@
 		73036275281261E8002DCE6B /* DictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73036274281261E8002DCE6B /* DictView.swift */; };
 		733A74CB281290F900B49310 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 733A74CA281290F900B49310 /* FirebaseAnalytics */; };
 		733A74CD281290F900B49310 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 733A74CC281290F900B49310 /* FirebaseFirestore */; };
+		733A74CF2812938B00B49310 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 733A74CE2812938A00B49310 /* GoogleService-Info.plist */; };
 		737D4CC728092C2100CD8CBD /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CC628092C2100CD8CBD /* .swiftlint.yml */; };
 		737D4CD328092F5D00CD8CBD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CD228092F5D00CD8CBD /* Game.swift */; };
 		737D4CD528092F6C00CD8CBD /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CD428092F6C00CD8CBD /* Key.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		73036274281261E8002DCE6B /* DictView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictView.swift; sourceTree = "<group>"; };
+		733A74CE2812938A00B49310 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		737D4CC628092C2100CD8CBD /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		737D4CD228092F5D00CD8CBD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		737D4CD428092F6C00CD8CBD /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		73FD63A427EDCF920041036F = {
 			isa = PBXGroup;
 			children = (
+				733A74CE2812938A00B49310 /* GoogleService-Info.plist */,
 				73FD63AF27EDCF920041036F /* kWordle */,
 				73FD63AE27EDCF920041036F /* Products */,
 			);
@@ -286,6 +289,7 @@
 				73D66DBA280E973300313A7F /* EBS훈민정음새론R.ttf in Resources */,
 				73D66DBB280E973300313A7F /* EBS훈민정음새론SB.ttf in Resources */,
 				73FD63B527EDCF940041036F /* Assets.xcassets in Resources */,
+				733A74CF2812938B00B49310 /* GoogleService-Info.plist in Resources */,
 				73D66DB8280E973300313A7F /* EBSL.ttf in Resources */,
 				738C80D1280D473200D8FCA5 /* 5Jamo.tsv in Resources */,
 			);
@@ -488,6 +492,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.game.handeul;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -521,6 +526,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.game.handeul;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 
 class MainViewModel: ObservableObject {
     @ObservedObject var keyboardViewModel: KeyboardViewModel = KeyboardViewModel()
@@ -57,6 +58,12 @@ class MainViewModel: ObservableObject {
             }
             currentRow += 1
             currentColumn = 0
+            
+            // Event Logs
+            
+            Analytics.logEvent("PlayerSubmit", parameters: [
+              AnalyticsParameterItemID: currentWord,
+            ])
         }
     }
     public func toggleValidWordState() {
@@ -98,11 +105,29 @@ class MainViewModel: ObservableObject {
         }
         self.isGameFinished = true
         print("Cool! You win!")
+        Analytics.logEvent("PlayerWin", parameters: [
+          AnalyticsParameterItemID: game.answer,
+          AnalyticsParameterLevel: currentRow
+        ])
+        userLog("win")
+        
     }
     fileprivate func playerLose() {
         self.isGameFinished = true
         print("You lose :(")
+        Analytics.logEvent("PlayerLose", parameters: [
+          AnalyticsParameterItemID: game.answer
+        ])
+        userLog("lose")
     }
+    
+    private func userLog(_ state: String) {
+        let username = UIDevice.current.name
+        let deivceUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+        
+        Analytics.logEvent(state + "-" + username + "-" + deivceUUID, parameters: nil)
+    }
+    
     fileprivate func isinDict(of input: String) -> Bool {
         for word in game.wordDict where word.jamo == input {
             return true
