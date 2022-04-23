@@ -27,17 +27,17 @@ class KeyboardViewModel: ObservableObject {
     }
     func changeKeyStatus(to status: Status, keyLabel: String) {
         for idx in firstRow.indices where firstRow[idx].character == keyLabel {
-            if (firstRow[idx].status != .green) {
+            if firstRow[idx].status != .green {
                 firstRow[idx].status = status
             }
         }
         for idx in secondRow.indices where secondRow[idx].character == keyLabel {
-            if (secondRow[idx].status != .green) {
+            if secondRow[idx].status != .green {
                 secondRow[idx].status = status
             }
         }
         for idx in thirdRow.indices where thirdRow[idx].character == keyLabel {
-            if (secondRow[idx].status != .green) {
+            if secondRow[idx].status != .green {
                 thirdRow[idx].status = status
             }
         }

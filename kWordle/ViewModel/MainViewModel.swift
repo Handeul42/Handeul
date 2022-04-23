@@ -80,21 +80,22 @@ class MainViewModel: ObservableObject {
             }
         }
         for (idx, key) in rows[currentRow].enumerated() {
-            if jamoCount[key.character.first!] == nil || jamoCount[key.character.first!]! == 0 {
-                rows[currentRow][idx].status = .gray
-                keyboardViewModel.changeKeyStatus(to: .gray, keyLabel: key.character)
-                continue
-            }
             if game.answer.getChar(at: idx) == key.character.first {
                 rows[currentRow][idx].status = .green
                 keyboardViewModel.changeKeyStatus(to: .green, keyLabel: key.character)
                 jamoCount[key.character.first!]! -= 1
-                continue
             }
-            if rows[currentRow][idx].status != .green && jamoCount[key.character.first!]! != 0 {
+        }
+        for (idx, key) in rows[currentRow].enumerated() {
+            if game.answer.contains(key.character) && rows[currentRow][idx].status != .green && jamoCount[key.character.first!]! != 0 {
                 rows[currentRow][idx].status = .yellow
                 keyboardViewModel.changeKeyStatus(to: .yellow, keyLabel: key.character)
-                continue
+            }
+        }
+        for (idx, key) in rows[currentRow].enumerated() {
+            if rows[currentRow][idx].status != .green && rows[currentRow][idx].status != .yellow {
+                rows[currentRow][idx].status = .gray
+                keyboardViewModel.changeKeyStatus(to: .gray, keyLabel: key.character)
             }
         }
     }

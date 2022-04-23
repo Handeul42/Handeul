@@ -41,6 +41,7 @@
 		CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */; };
 		CC7C5183280ECB8A00B739F3 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C5182280ECB8A00B739F3 /* StatisticView.swift */; };
 		CC802751281266D600686A3A /* String+getChar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC802750281266D600686A3A /* String+getChar.swift */; };
+		CC8027552813846000686A3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC8027542813846000686A3A /* GoogleService-Info.plist */; };
 		CCDBBC7228100D4600563140 /* MainView+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBBC7128100D4600563140 /* MainView+Toast.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		CC7C5182280ECB8A00B739F3 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		CC802750281266D600686A3A /* String+getChar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+getChar.swift"; sourceTree = "<group>"; };
+		CC8027542813846000686A3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCDBBC7128100D4600563140 /* MainView+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+Toast.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +182,7 @@
 		73FD63AF27EDCF920041036F /* kWordle */ = {
 			isa = PBXGroup;
 			children = (
+				CC8027542813846000686A3A /* GoogleService-Info.plist */,
 				73D66DBC280E98D500313A7F /* Info.plist */,
 				73D66DB3280E971900313A7F /* Fonts */,
 				737D4CE9280954E300CD8CBD /* WordData */,
