@@ -17,9 +17,6 @@ struct KWordleApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .onAppear {
-                    print(uiSize)
-                }
         }
     }
 }
