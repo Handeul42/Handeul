@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "EX_1x.png",
+      "filename" : "EX1x풀이.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "EX_2x.png",
+      "filename" : "EX2x풀이.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "howToPlayExCorrect.png",
+      "filename" : "EX3x풀이.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

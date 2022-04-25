@@ -37,7 +37,7 @@ class KeyboardViewModel: ObservableObject {
             }
         }
         for idx in thirdRow.indices where thirdRow[idx].character == keyLabel {
-            if secondRow[idx].status != .green {
+            if thirdRow[idx].status != .green {
                 thirdRow[idx].status = status
             }
         }
