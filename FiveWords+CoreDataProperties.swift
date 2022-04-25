@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension FiveWords {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<FiveWords> {

@@ -33,7 +33,7 @@ struct MainView: View {
 //            }
             if mainViewModel.isWordValid == false {
                 showToast("유효하지 않은 단어입니다.") {
-                    mainViewModel.toggleValidWordState()
+                    mainViewModel.toggleValidWordStateToFalse()
                 }
             }
         }
@@ -47,14 +47,12 @@ struct MainView: View {
                     isSettingPresented: $isSettingPresented)
             AnswerBoardView()
             Spacer()
-            if !mainViewModel.isGameFinished {
+            if !mainViewModel.game.isGameFinished {
                 KeyboardView()
             } else {
                 DictView()
             }
             Spacer()
-        }
-        .environmentObject(mainViewModel.keyboardViewModel)
-        .environmentObject(mainViewModel)
+        }.environmentObject(mainViewModel)
     }
 }
