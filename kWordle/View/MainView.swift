@@ -53,6 +53,7 @@ struct MainView: View {
                 DictView()
             }
             Spacer()
+            GADBannerViewController()
         }
         .environmentObject(mainViewModel.keyboardViewModel)
         .environmentObject(mainViewModel)
