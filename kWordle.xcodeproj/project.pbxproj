@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		73036275281261E8002DCE6B /* DictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73036274281261E8002DCE6B /* DictView.swift */; };
+		7322469D2816DBFD00024ED2 /* GoogleAdsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7322469C2816DBFD00024ED2 /* GoogleAdsViewModel.swift */; };
 		733A74CB281290F900B49310 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 733A74CA281290F900B49310 /* FirebaseAnalytics */; };
 		733A74CD281290F900B49310 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 733A74CC281290F900B49310 /* FirebaseFirestore */; };
 		737D4CC728092C2100CD8CBD /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 737D4CC628092C2100CD8CBD /* .swiftlint.yml */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		73036274281261E8002DCE6B /* DictView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictView.swift; sourceTree = "<group>"; };
+		7322469C2816DBFD00024ED2 /* GoogleAdsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdsViewModel.swift; sourceTree = "<group>"; };
 		737D4CC628092C2100CD8CBD /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		737D4CD228092F5D00CD8CBD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		737D4CD428092F6C00CD8CBD /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				737D4CDC2809324F00CD8CBD /* KeyboardViewModel.swift */,
 				738C80DA280D634C00D8FCA5 /* MainViewModel.swift */,
 				737D4CE528093C7200CD8CBD /* AnswerBoardViewModel.swift */,
+				7322469C2816DBFD00024ED2 /* GoogleAdsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				738C80D7280D61D600D8FCA5 /* WordDict.swift in Sources */,
 				737D4CE628093C7200CD8CBD /* AnswerBoardViewModel.swift in Sources */,
 				CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */,
+				7322469D2816DBFD00024ED2 /* GoogleAdsViewModel.swift in Sources */,
 				737D4CE228093C3600CD8CBD /* MainView.swift in Sources */,
 				737D4CD728092F7F00CD8CBD /* Answer.swift in Sources */,
 				CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */,

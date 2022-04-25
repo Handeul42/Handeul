@@ -14,7 +14,6 @@ struct MainView: View {
     @State var isHowToPlayPresented: Bool = false
     @State var isStatisticsPresented: Bool = false
     @State var isSettingPresented: Bool = false
-    
     let wordDictManager = WordDictManager()
     var body: some View {
         ZStack {
@@ -53,7 +52,13 @@ struct MainView: View {
                 DictView()
             }
             Spacer()
-            GADBannerViewController()
+            Button {
+                let vc = SomeViewController()
+                vc.doSomething(self)
+            } label: {
+                Rectangle()
+            }
+
         }
         .environmentObject(mainViewModel.keyboardViewModel)
         .environmentObject(mainViewModel)

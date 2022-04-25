@@ -11,6 +11,7 @@ import GoogleMobileAds
 
 @main
 struct KWordleApp: App {
+    
     init() {
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)

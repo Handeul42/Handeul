@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Firebase
+import GoogleMobileAds
 
 class MainViewModel: ObservableObject {
     @ObservedObject var keyboardViewModel: KeyboardViewModel = KeyboardViewModel()
@@ -17,6 +18,7 @@ class MainViewModel: ObservableObject {
     @Published var rows: [[Key]] = makeAnswerBoardRows()
     @Published var isGameFinished: Bool = false
     @Published var isWordValid: Bool = true
+    
     init () {
         game.wordDict = WordDictManager.makeWordDict()
         game.answer = todayAnswer()
@@ -163,11 +165,18 @@ class MainViewModel: ObservableObject {
     }
     
     func startNewGame() {
-        game.wordDict = WordDictManager.makeWordDict()
-        let randomAnswer = game.wordDict[Int.random(in: 0...game.wordDict.count) % game.wordDict.count].jamo
-        game.answer = randomAnswer
-        print(game.answer)
-        initGame()
+//        let controllADs = SomeViewController()
+//        controllADs.createAndLoadInterstitial() {[self] ret in
+//            if ret {
+//                controllADs.showAD()
+                game.wordDict = WordDictManager.makeWordDict()
+                let randomAnswer = game.wordDict[Int.random(in: 0...game.wordDict.count) % game.wordDict.count].jamo
+                game.answer = randomAnswer
+                print(game.answer)
+                initGame()
+//            }
+//        }
+        
     }
     
     func refreshGameOnActive() {
@@ -197,4 +206,5 @@ class MainViewModel: ObservableObject {
         currentColumn = 0
         isGameFinished = false
     }
+    
 }
