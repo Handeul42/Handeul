@@ -53,8 +53,8 @@ struct MainView: View {
             }
             Spacer()
             Button {
-                let vc = SomeViewController()
-                vc.doSomething(self)
+                let vc = RewardedADViewController()
+                vc.doSomething()
             } label: {
                 Rectangle()
             }

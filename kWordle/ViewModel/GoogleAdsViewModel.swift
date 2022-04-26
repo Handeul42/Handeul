@@ -56,7 +56,6 @@ import GoogleMobileAds
 //}
 
 class SomeViewController: UIViewController, GADFullScreenContentDelegate {
-    
     private var interstitial: GADInterstitialAd?
     
     override func viewDidLoad() {
@@ -98,4 +97,66 @@ class SomeViewController: UIViewController, GADFullScreenContentDelegate {
         }
         )
     }
+}
+
+class RewardedADViewController: UIViewController, GADFullScreenContentDelegate {
+    let adUnitID = "ca-app-pub-3940256099942544/6978759866"
+    var rewardedInterstitialAD: GADRewardedInterstitialAd? = nil
+    
+    func doSomething() {
+        GADRewardedInterstitialAd.load(withAdUnitID: adUnitID, request: GADRequest()) { [self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            rewardedInterstitialAD = ad
+            rewardedInterstitialAD?.fullScreenContentDelegate = self
+            if rewardedInterstitialAD != nil {
+                let root = UIApplication.shared.windows.first?.rootViewController
+                rewardedInterstitialAD?.present(fromRootViewController: root!, userDidEarnRewardHandler: {
+                    print("earn reward")
+                })
+            } else {
+                print("AD wasn't ready")
+            }
+        }
+    }
+    
+    func didRewardUser(with reward: GADAdReward) {
+        print("didRewardUser")
+    }
+    
+    func didStartVideo() {
+        print("didStartVideo")
+    }
+    
+    func didEndVideo() {
+        print("didEndVideo")
+    }
+    
+    func reportImpression() {
+        print("reportImpression")
+    }
+    
+    func reportClick() {
+        print("reportClick")
+    }
+    
+    func willPresentFullScreenView() {
+        print("willPresentFullScreenView")
+    }
+    
+    func didFailToPresentWithError(_ error: Error) {
+        print("didFailToPresentWithError")
+    }
+    
+    func willDismissFullScreenView() {
+        print("willDismissFullScreenView")
+    }
+    
+    func didDismissFullScreenView() {
+        print("didDismissFullScreenView")
+    }
+    
+    
 }
