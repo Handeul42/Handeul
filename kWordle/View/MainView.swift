@@ -52,13 +52,6 @@ struct MainView: View {
                 DictView()
             }
             Spacer()
-            Button {
-                let vc = RewardedADViewController()
-                vc.doSomething()
-            } label: {
-                Rectangle()
-            }
-
         }
         .environmentObject(mainViewModel.keyboardViewModel)
         .environmentObject(mainViewModel)
