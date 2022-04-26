@@ -7,3 +7,4 @@ disabled_rules:
 - trailing_whitespace
 - line_length
 - force_try
+- identifier_name

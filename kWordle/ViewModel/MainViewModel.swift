@@ -14,13 +14,12 @@ class MainViewModel: ObservableObject {
     @Published var isInvalidWordWarningPresented: Bool = false
     
     init () {
+        // TODO: 날짜 바뀌면 새로운 문제로 초기화 해서 넣기?
         if let previousGame = RealmManager.shared.getPreviousGame() {
             game = Game(persistedObject: previousGame)
-            
         } else {
             game = Game(answer: todayAnswer())
         }
-        UserDefaults.standard.set(game.answer, forKey: "Answer")
         print(game.answer)
     }
     

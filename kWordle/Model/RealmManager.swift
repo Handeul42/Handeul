@@ -16,6 +16,11 @@ class RealmManager {
         self.realm = try! Realm()
     }
     
+    public func getAllGame() -> Results<PersistedGame> {
+        let allGame = realm.objects(PersistedGame.self)
+        return allGame
+    }
+    
     public func getPreviousGame() -> PersistedGame? {
         let previousGame = realm.objects(PersistedGame.self).sorted(byKeyPath: "timestamp", ascending: false).first
         return previousGame

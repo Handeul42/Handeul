@@ -44,7 +44,6 @@ extension Game {
     
     public func isCurrentWordInDict() -> Bool {
         let currentWord = getCurrentWord()
-        print(currentWord)
         for word in wordDict where word.jamo == currentWord {
             return true
         }
@@ -150,6 +149,7 @@ extension Game {
 }
 
 extension Game: Persistable {
+    
     typealias PersistedObject = PersistedGame
     
     init(persistedObject: PersistedGame) {

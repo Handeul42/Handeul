@@ -14,11 +14,9 @@
 		737D4CD328092F5D00CD8CBD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CD228092F5D00CD8CBD /* Game.swift */; };
 		737D4CD528092F6C00CD8CBD /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CD428092F6C00CD8CBD /* Key.swift */; };
 		737D4CD92809322400CD8CBD /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CD82809322400CD8CBD /* KeyboardView.swift */; };
-		737D4CDD2809324F00CD8CBD /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CDC2809324F00CD8CBD /* KeyboardViewModel.swift */; };
 		737D4CE0280939B500CD8CBD /* constant+UIscreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CDF280939B500CD8CBD /* constant+UIscreenSize.swift */; };
 		737D4CE228093C3600CD8CBD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CE128093C3600CD8CBD /* MainView.swift */; };
 		737D4CE428093C6200CD8CBD /* AnswerBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */; };
-		737D4CE628093C7200CD8CBD /* AnswerBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CE528093C7200CD8CBD /* AnswerBoardViewModel.swift */; };
 		737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CE72809539D00CD8CBD /* WordDictManager.swift */; };
 		738C80D1280D473200D8FCA5 /* 5Jamo.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 738C80D0280D473200D8FCA5 /* 5Jamo.tsv */; };
 		738C80D7280D61D600D8FCA5 /* WordDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C80D6280D61D600D8FCA5 /* WordDict.swift */; };
@@ -36,7 +34,7 @@
 		CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517C280E753200B739F3 /* Color+CustomColor.swift */; };
 		CC7C517F280EB51300B739F3 /* MainView+MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */; };
 		CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */; };
-		CC7C5183280ECB8A00B739F3 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C5182280ECB8A00B739F3 /* StatisticView.swift */; };
+		CC7C5183280ECB8A00B739F3 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C5182280ECB8A00B739F3 /* StatisticsView.swift */; };
 		CC7D1D4828169AAB00CD7BFD /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = CC7D1D4728169AAB00CD7BFD /* Realm */; };
 		CC7D1D4A28169AAB00CD7BFD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CC7D1D4928169AAB00CD7BFD /* RealmSwift */; };
 		CC7D1D4C28169F6B00CD7BFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC7D1D4B28169F6B00CD7BFD /* GoogleService-Info.plist */; };
@@ -45,6 +43,8 @@
 		CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB412817BBAD006674A3 /* Persistable.swift */; };
 		CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB432817C62E006674A3 /* Game+Persisted.swift */; };
 		CCFBDB462817D022006674A3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB452817D022006674A3 /* RealmManager.swift */; };
+		CCFBDB482817F42B006674A3 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB472817F42B006674A3 /* Statistics.swift */; };
+		CCFBDB4A2817FB28006674A3 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,11 +53,9 @@
 		737D4CD228092F5D00CD8CBD /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		737D4CD428092F6C00CD8CBD /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		737D4CD82809322400CD8CBD /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
-		737D4CDC2809324F00CD8CBD /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
 		737D4CDF280939B500CD8CBD /* constant+UIscreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "constant+UIscreenSize.swift"; sourceTree = "<group>"; };
 		737D4CE128093C3600CD8CBD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBoardView.swift; sourceTree = "<group>"; };
-		737D4CE528093C7200CD8CBD /* AnswerBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBoardViewModel.swift; sourceTree = "<group>"; };
 		737D4CE72809539D00CD8CBD /* WordDictManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDictManager.swift; sourceTree = "<group>"; };
 		738C80D0280D473200D8FCA5 /* 5Jamo.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 5Jamo.tsv; sourceTree = "<group>"; };
 		738C80D6280D61D600D8FCA5 /* WordDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDict.swift; sourceTree = "<group>"; };
@@ -78,13 +76,15 @@
 		CC7C517C280E753200B739F3 /* Color+CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CustomColor.swift"; sourceTree = "<group>"; };
 		CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+MenuBar.swift"; sourceTree = "<group>"; };
 		CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
-		CC7C5182280ECB8A00B739F3 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
+		CC7C5182280ECB8A00B739F3 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		CC7D1D4B28169F6B00CD7BFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC802750281266D600686A3A /* String+getChar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+getChar.swift"; sourceTree = "<group>"; };
 		CCDBBC7128100D4600563140 /* MainView+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+Toast.swift"; sourceTree = "<group>"; };
 		CCFBDB412817BBAD006674A3 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		CCFBDB432817C62E006674A3 /* Game+Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Persisted.swift"; sourceTree = "<group>"; };
 		CCFBDB452817D022006674A3 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		CCFBDB472817F42B006674A3 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +105,8 @@
 		737D4CCF28092F0B00CD8CBD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				737D4CDC2809324F00CD8CBD /* KeyboardViewModel.swift */,
 				738C80DA280D634C00D8FCA5 /* MainViewModel.swift */,
-				737D4CE528093C7200CD8CBD /* AnswerBoardViewModel.swift */,
+				CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -116,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				737D4CD228092F5D00CD8CBD /* Game.swift */,
+				CCFBDB472817F42B006674A3 /* Statistics.swift */,
 				CCFBDB432817C62E006674A3 /* Game+Persisted.swift */,
 				CC57AF272816C695001675CD /* KeyBoard.swift */,
 				738C80D6280D61D600D8FCA5 /* WordDict.swift */,
@@ -134,7 +134,7 @@
 				73036274281261E8002DCE6B /* DictView.swift */,
 				737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */,
 				CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */,
-				CC7C5182280ECB8A00B739F3 /* StatisticView.swift */,
+				CC7C5182280ECB8A00B739F3 /* StatisticsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,16 +343,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC7C517F280EB51300B739F3 /* MainView+MenuBar.swift in Sources */,
-				CC7C5183280ECB8A00B739F3 /* StatisticView.swift in Sources */,
+				CC7C5183280ECB8A00B739F3 /* StatisticsView.swift in Sources */,
 				737D4CD528092F6C00CD8CBD /* Key.swift in Sources */,
 				738C80D7280D61D600D8FCA5 /* WordDict.swift in Sources */,
-				737D4CE628093C7200CD8CBD /* AnswerBoardViewModel.swift in Sources */,
 				CC57AF282816C695001675CD /* KeyBoard.swift in Sources */,
 				CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */,
 				737D4CE228093C3600CD8CBD /* MainView.swift in Sources */,
 				CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */,
 				CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */,
+				CCFBDB482817F42B006674A3 /* Statistics.swift in Sources */,
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
+				CCFBDB4A2817FB28006674A3 /* StatisticsViewModel.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
 				CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */,
@@ -363,7 +364,6 @@
 				737D4CE428093C6200CD8CBD /* AnswerBoardView.swift in Sources */,
 				73D66DB2280E825000313A7F /* MainView+TitleView.swift in Sources */,
 				737D4CD92809322400CD8CBD /* KeyboardView.swift in Sources */,
-				737D4CDD2809324F00CD8CBD /* KeyboardViewModel.swift in Sources */,
 				73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */,
 				CC802751281266D600686A3A /* String+getChar.swift in Sources */,
 			);
