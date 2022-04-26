@@ -11,6 +11,8 @@ struct Game {
     
     private var id: String = UUID().uuidString
     private var timestamp = Date()
+    private var jamoCount = 5
+    private var gameNumber = 1
     private(set) var answer: String
     private(set) var wordDict: [WordDict]
     private(set) var keyBoard: KeyBoard
@@ -23,7 +25,7 @@ struct Game {
     
     init(answer: String) {
         self.answer = answer
-        self.wordDict = WordDictManager.shared.wordDict_5jamo
+        self.wordDict = WordDictManager.shared.wordDictFiveJamo
         keyBoard = Self.initKeyBoard()
         answerBoard = Self.initAnswerBoard()
     }
@@ -31,6 +33,23 @@ struct Game {
 }
 
 extension Game {
+    
+    public func saveCurrentGame() {
+        RealmManager.shared.saveGame(self.persistedObject())
+    }
+    
+    public func getCurrentWord() -> String {
+        return answerBoard[currentRow].map({ $0.character }).joined(separator: "")
+    }
+    
+    public func isCurrentWordInDict() -> Bool {
+        let currentWord = getCurrentWord()
+        print(currentWord)
+        for word in wordDict where word.jamo == currentWord {
+            return true
+        }
+        return false
+    }
     
     mutating func appendReceivedCharacter(of receivedChar: String) {
         guard isGameFinished == false else { return }
@@ -64,20 +83,7 @@ extension Game {
             currentColumn = 0
         }
     }
-    
-    public func getCurrentWord() -> String {
-        return answerBoard[currentRow].map({ $0.character }).joined(separator: "")
-    }
-    
-    public func isCurrentWordInDict() -> Bool {
-        let currentWord = getCurrentWord()
-        print(currentWord)
-        for word in wordDict where word.jamo == currentWord {
-            return true
-        }
-        return false
-    }
-    
+        
     mutating func compareUserAnswerAndChangeColor() {
         var jamoCount = [Character: Int]()
         for jamo in answer {
@@ -115,11 +121,13 @@ extension Game {
         }
         isGameFinished = true
         didPlayerWin = true
+        saveCurrentGame()
     }
     
     mutating func playerLose() {
         isGameFinished = true
         didPlayerLose = true
+        saveCurrentGame()
     }
     
     static func initKeyBoard() -> KeyBoard {
@@ -138,5 +146,49 @@ extension Game {
             repeating: Range(0...4).map { _ in Key(character: " ", status: .white)},
             count: 6)
     }
+    
 }
 
+extension Game: Persistable {
+    typealias PersistedObject = PersistedGame
+    
+    init(persistedObject: PersistedGame) {
+        
+        let decoder = JSONDecoder()
+        
+        self.id = persistedObject.id
+        self.timestamp = persistedObject.timestamp
+        self.gameNumber = persistedObject.gameNumber
+        self.jamoCount = persistedObject.jamoCount
+        self.answer = persistedObject.answer
+        self.answerBoard = try! decoder.decode([[Key]].self, from: persistedObject.answerBoard)
+        self.keyBoard = try! decoder.decode(KeyBoard.self, from: persistedObject.keyBoard)
+        self.didPlayerWin = persistedObject.didPlayerWin
+        self.didPlayerLose = persistedObject.didPlayerLose
+        self.isGameFinished = persistedObject.isGameFinished
+        self.currentRow = persistedObject.currentRow
+        self.currentColumn = persistedObject.currentColumn
+        self.wordDict = WordDictManager.shared.wordDictFiveJamo
+
+    }
+    
+    func persistedObject() -> PersistedGame {
+        
+        let encoder = JSONEncoder()
+        let persistedGame = PersistedGame()
+        persistedGame.id = self.id
+        persistedGame.timestamp = self.timestamp
+        persistedGame.jamoCount = self.jamoCount
+        persistedGame.gameNumber = self.gameNumber
+        persistedGame.answer = self.answer
+        persistedGame.keyBoard = try! encoder.encode(self.keyBoard)
+        persistedGame.answerBoard = try! encoder.encode(self.answerBoard)
+        persistedGame.isGameFinished = self.isGameFinished
+        persistedGame.didPlayerWin = self.didPlayerWin
+        persistedGame.didPlayerLose = self.didPlayerLose
+        persistedGame.currentRow = self.currentRow
+        persistedGame.currentColumn = self.currentColumn
+        
+        return persistedGame
+    }
+}

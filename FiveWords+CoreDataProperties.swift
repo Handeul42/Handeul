@@ -20,4 +20,3 @@ extension FiveWords {
     @NSManaged public var dict: String?
 
 }
-

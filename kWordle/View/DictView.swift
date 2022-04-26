@@ -46,7 +46,9 @@ struct DictView: View {
                     }
                     Spacer()
                     Button {
-                        viewModel.startNewGame()
+                        withAnimation {
+                            viewModel.startNewGame()
+                        }
                     } label: {
                         newGameButtonWithAD()
                     }

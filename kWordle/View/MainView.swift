@@ -15,13 +15,12 @@ struct MainView: View {
     @State var isStatisticsPresented: Bool = false
     @State var isSettingPresented: Bool = false
     
-    let wordDictManager = WordDictManager()
     var body: some View {
         ZStack {
             mainView
                 .onChange(of: scenePhase) { newScenePhase in
-                    if newScenePhase == .active {
-                        mainViewModel.refreshGameOnActive()
+                    if newScenePhase == .inactive {
+                        mainViewModel.game.saveCurrentGame()
                     }
                     mainViewModel.closeInvalidWordWarning()
                 }

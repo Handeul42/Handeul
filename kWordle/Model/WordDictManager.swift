@@ -11,13 +11,13 @@ import SwiftUI
 
 class WordDictManager {
     static let shared = WordDictManager()
-    let wordDict_5jamo: [WordDict]
+    let wordDictFiveJamo: [WordDict]
     
     private init() {
-        self.wordDict_5jamo = Self.makeWordDict()
+        self.wordDictFiveJamo = Self.makeWordDict()
     }
     
-    static func makeWordDict() -> [WordDict] {
+    private static func makeWordDict() -> [WordDict] {
         var dict = [WordDict]()
         var words: String = ""
         

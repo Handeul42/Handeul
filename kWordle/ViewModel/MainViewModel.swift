@@ -12,11 +12,18 @@ import Firebase
 class MainViewModel: ObservableObject {
     @Published var game: Game
     @Published var isInvalidWordWarningPresented: Bool = false
+    
     init () {
-        game = Game(answer: todayAnswer())
+        if let previousGame = RealmManager.shared.getPreviousGame() {
+            game = Game(persistedObject: previousGame)
+            
+        } else {
+            game = Game(answer: todayAnswer())
+        }
         UserDefaults.standard.set(game.answer, forKey: "Answer")
         print(game.answer)
     }
+    
     // MARK: Public Functions
     
     public func appendReceivedCharacter(of receivedKeyCharacter: String) {
@@ -99,18 +106,10 @@ class MainViewModel: ObservableObject {
         self.game = newGame
     }
     
-    func refreshGameOnActive() {
-        if UserDefaults.standard.string(forKey: "Answer") != todayAnswer() {
-            let newGame = Game(answer: todayAnswer())
-            UserDefaults.standard.set(game.answer, forKey: "Answer")
-            print(game.answer)
-            self.game = newGame
-        }
-    }
 }
 
 func todayAnswer() -> String {
-    let wordDict = WordDictManager.shared.wordDict_5jamo
+    let wordDict = WordDictManager.shared.wordDictFiveJamo
     let date = Date()
     let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
     let todayAnswer = wordDict[((today.year! + today.month! + today.day!) * 345678) % wordDict.count].jamo
