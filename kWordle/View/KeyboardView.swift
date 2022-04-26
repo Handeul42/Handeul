@@ -24,7 +24,7 @@ struct KeyboardView: View {
                     height: extraButtonSize.height)
                 .foregroundColor(.hLigthGray)
             Text("제출")
-                .foregroundColor(.black)
+                .foregroundColor(getColor(of: .black))
                 .font(.custom("EBSHMJESaeronSB", size: 18))
         }
     }
@@ -36,7 +36,7 @@ struct KeyboardView: View {
                     height: extraButtonSize.height)
                 .foregroundColor(.hLigthGray)
             Text("지움")
-                .foregroundColor(.black)
+                .foregroundColor(getColor(of: .black))
                 .font(.custom("EBSHMJESaeronSB", size: 18))
         }
     }
@@ -101,25 +101,8 @@ struct KeyboardView: View {
                        height: buttonSize.height)
                 .foregroundColor(getColor(of: key.status))
             Text(key.character)
-                .foregroundColor(.black)
+                .foregroundColor(getColor(of: .black))
                 .font(.custom("EBSHMJESaeronR", size: jaum.contains(key.character) ? 24 : 26))
         }
-    }
-}
-
-func getColor(of status: Status) -> Color {
-    switch status {
-    case .gray:
-        return Color.hGray
-    case .lightGray:
-        return Color.hLigthGray
-    case .green:
-        return Color.hGreen
-    case .yellow:
-        return Color.hOrange
-    case .red:
-        return Color.hRed
-    case .white:
-        return Color.white
     }
 }
