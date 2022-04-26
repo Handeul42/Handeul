@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import PageView
 
 struct HowToPlayView: View {
     @Binding var isHowToPlayPresented: Bool
