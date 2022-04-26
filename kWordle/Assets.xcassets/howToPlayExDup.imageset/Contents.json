@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "EXx1.png",
+      "filename" : "EXx1dub.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "EXx2.png",
+      "filename" : "EXx2dub.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "howToPlayExDup.png",
+      "filename" : "EXx3dub.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

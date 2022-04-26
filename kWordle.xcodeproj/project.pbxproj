@@ -293,7 +293,6 @@
 				73D66DBB280E973300313A7F /* EBS훈민정음새론SB.ttf in Resources */,
 				73FD63B527EDCF940041036F /* Assets.xcassets in Resources */,
 				733A74CF2812938B00B49310 /* GoogleService-Info.plist in Resources */,
-				CC8027552813846000686A3A /* GoogleService-Info.plist in Resources */,
 				73D66DB8280E973300313A7F /* EBSL.ttf in Resources */,
 				738C80D1280D473200D8FCA5 /* 5Jamo.tsv in Resources */,
 			);
@@ -479,7 +478,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"kWordle/Preview Content\"";
-				DEVELOPMENT_TEAM = 9TH57H8UP9;
+				DEVELOPMENT_TEAM = 86F3BYCLAK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kWordle/Info.plist;
@@ -513,7 +512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"kWordle/Preview Content\"";
-				DEVELOPMENT_TEAM = 9TH57H8UP9;
+				DEVELOPMENT_TEAM = 86F3BYCLAK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kWordle/Info.plist;
