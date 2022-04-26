@@ -24,7 +24,6 @@ class MainViewModel: ObservableObject {
     }
     
     // MARK: Public Functions
-    
     public func appendReceivedCharacter(of receivedKeyCharacter: String) {
         game.appendReceivedCharacter(of: receivedKeyCharacter)
     }
@@ -45,19 +44,21 @@ class MainViewModel: ObservableObject {
                 AnalyticsParameterItemID: game.getCurrentWord()
             ])
             game.submitAnswer()
-            if game.didPlayerWin {
-                print("Cool! You win!")
-                Analytics.logEvent("PlayerWin", parameters: [
-                    AnalyticsParameterItemID: game.answer,
-                    AnalyticsParameterLevel: game.currentRow
-                ])
-                userLog("win")
-            } else {
-                print("You lose :(")
-                Analytics.logEvent("PlayerLose", parameters: [
-                    AnalyticsParameterItemID: game.answer
-                ])
-                userLog("lose")
+            if game.isGameFinished {
+                if game.didPlayerWin {
+                    print("Cool! You win!")
+                    Analytics.logEvent("PlayerWin", parameters: [
+                        AnalyticsParameterItemID: game.answer,
+                        AnalyticsParameterLevel: game.currentRow
+                    ])
+                    userLog("win")
+                } else if !game.didPlayerWin {
+                    print("You lose :(")
+                    Analytics.logEvent("PlayerLose", parameters: [
+                        AnalyticsParameterItemID: game.answer
+                    ])
+                    userLog("lose")
+                }
             }
         }
     }
@@ -68,14 +69,6 @@ class MainViewModel: ObservableObject {
     
     public func closeInvalidWordWarning() {
         isInvalidWordWarningPresented = false
-    }
-
-    // MARK: Private Functions
-    private func userLog(_ state: String) {
-        let username = UIDevice.current.name
-        let deivceUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
-        
-        Analytics.logEvent(state + "-" + username + "-" + deivceUUID, parameters: nil)
     }
     
     func generateString() -> String {
@@ -103,6 +96,14 @@ class MainViewModel: ObservableObject {
         let newGame = Game(answer: randomAnswer)
         print(newGame.answer)
         self.game = newGame
+    }
+    
+    // MARK: Private Functions
+    private func userLog(_ state: String) {
+        let username = UIDevice.current.name
+        let deivceUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+        
+        Analytics.logEvent(state + "-" + username + "-" + deivceUUID, parameters: nil)
     }
     
 }

@@ -9,8 +9,4 @@ import Foundation
 
 class StatisticsViewModel: ObservableObject {
     @Published var statistics = Statistics()
-    
-    
 }
-
-

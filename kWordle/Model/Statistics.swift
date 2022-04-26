@@ -15,7 +15,6 @@ struct Statistics {
     
     private(set) var totalPlayed: Int = 0
     private(set) var win: Int = 0
-    private(set) var lose: Int = 0
     private(set) var winRatio: Float = 0
     private(set) var currentWinStreak: Int = 0
     private(set) var maxWinStreak: Int = 0
@@ -25,7 +24,6 @@ struct Statistics {
         guard !currentGames.isEmpty else { return }
         totalPlayed = currentGames.filter({ $0.isGameFinished == true }).count
         win = currentGames.filter({ $0.didPlayerWin == true }).count
-        lose = currentGames.filter({ $0.didPlayerLose == true }).count
         currentWinStreak = Self.getCurrentWinStreak(currentGames)
         maxWinStreak = Self.getMaxWinStreak(currentGames)
         winRatio = Float(win) / Float(totalPlayed) * 100

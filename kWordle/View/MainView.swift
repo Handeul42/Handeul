@@ -20,7 +20,9 @@ struct MainView: View {
             mainView
                 .onChange(of: scenePhase) { newScenePhase in
                     if newScenePhase == .inactive {
-                        mainViewModel.game.saveCurrentGame()
+                        if !mainViewModel.game.isGameFinished {
+                            mainViewModel.game.saveCurrentGame()
+                        }
                     }
                     mainViewModel.closeInvalidWordWarning()
                 }

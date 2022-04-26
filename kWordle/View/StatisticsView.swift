@@ -33,7 +33,6 @@ struct StatisticsView: View {
                         .padding(10)
                     barGraph
                         .padding(30)
-
                 }
             }
             .padding()

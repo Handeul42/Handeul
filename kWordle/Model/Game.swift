@@ -19,7 +19,6 @@ struct Game {
     private(set) var answerBoard: [[Key]]
     private(set) var isGameFinished: Bool = false
     private(set) var didPlayerWin: Bool = false
-    private(set) var didPlayerLose: Bool = false
     private(set) var currentRow: Int = 0
     private(set) var currentColumn: Int = 0
     
@@ -72,10 +71,12 @@ extension Game {
         if currentColumn == 5 && currentRow != 6 {
             if self.answer == currentWord {
                 playerWin()
+                return
             } else {
                 compareUserAnswerAndChangeColor()
                 if currentRow == 5 {
                     playerLose()
+                    return
                 }
             }
             currentRow += 1
@@ -125,7 +126,6 @@ extension Game {
     
     mutating func playerLose() {
         isGameFinished = true
-        didPlayerLose = true
         saveCurrentGame()
     }
     
@@ -164,7 +164,6 @@ extension Game: Persistable {
         self.answerBoard = try! decoder.decode([[Key]].self, from: persistedObject.answerBoard)
         self.keyBoard = try! decoder.decode(KeyBoard.self, from: persistedObject.keyBoard)
         self.didPlayerWin = persistedObject.didPlayerWin
-        self.didPlayerLose = persistedObject.didPlayerLose
         self.isGameFinished = persistedObject.isGameFinished
         self.currentRow = persistedObject.currentRow
         self.currentColumn = persistedObject.currentColumn
@@ -173,9 +172,9 @@ extension Game: Persistable {
     }
     
     func persistedObject() -> PersistedGame {
-        
         let encoder = JSONEncoder()
         let persistedGame = PersistedGame()
+        
         persistedGame.id = self.id
         persistedGame.timestamp = self.timestamp
         persistedGame.jamoCount = self.jamoCount
@@ -185,7 +184,6 @@ extension Game: Persistable {
         persistedGame.answerBoard = try! encoder.encode(self.answerBoard)
         persistedGame.isGameFinished = self.isGameFinished
         persistedGame.didPlayerWin = self.didPlayerWin
-        persistedGame.didPlayerLose = self.didPlayerLose
         persistedGame.currentRow = self.currentRow
         persistedGame.currentColumn = self.currentColumn
         
