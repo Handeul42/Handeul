@@ -8,6 +8,9 @@
 import Foundation
 
 struct Game {
+    
+    private var id: String = UUID().uuidString
+    private var timestamp = Date()
     private(set) var answer: String
     private(set) var wordDict: [WordDict]
     private(set) var keyBoard: KeyBoard
@@ -20,10 +23,11 @@ struct Game {
     
     init(answer: String) {
         self.answer = answer
-        self.wordDict = WordDictManager.makeWordDict()
+        self.wordDict = WordDictManager.shared.wordDict_5jamo
         keyBoard = Self.initKeyBoard()
         answerBoard = Self.initAnswerBoard()
     }
+    
 }
 
 extension Game {
@@ -31,7 +35,7 @@ extension Game {
     mutating func appendReceivedCharacter(of receivedChar: String) {
         guard isGameFinished == false else { return }
         if currentColumn <= 4 {
-            answerBoard[currentRow][currentColumn].character = receivedChar
+            answerBoard[currentRow][currentColumn].changeCharacter(to: receivedChar)
             currentColumn += 1
         }
     }
@@ -40,7 +44,7 @@ extension Game {
         guard isGameFinished == false else { return }
         if currentColumn != 0 {
             currentColumn -= 1
-            answerBoard[currentRow][currentColumn].character = ""
+            answerBoard[currentRow][currentColumn].changeCharacter(to: "")
         }
     }
     
@@ -85,20 +89,20 @@ extension Game {
         }
         for (idx, key) in answerBoard[currentRow].enumerated() {
             if answer.getChar(at: idx) == key.character.first {
-                answerBoard[currentRow][idx].status = .green
+                answerBoard[currentRow][idx].changeStatus(to: .green)
                 keyBoard.changeKeyStatus(to: .green, keyLabel: key.character)
                 jamoCount[key.character.first!]! -= 1
             }
         }
         for (idx, key) in answerBoard[currentRow].enumerated() {
             if answer.contains(key.character) && answerBoard[currentRow][idx].status != .green && jamoCount[key.character.first!]! != 0 {
-                self.answerBoard[currentRow][idx].status = .yellow
+                self.answerBoard[currentRow][idx].changeStatus(to: .yellow)
                 keyBoard.changeKeyStatus(to: .yellow, keyLabel: key.character)
             }
         }
         for (idx, key) in answerBoard[currentRow].enumerated() {
             if answerBoard[currentRow][idx].status != .green && answerBoard[currentRow][idx].status != .yellow {
-                answerBoard[currentRow][idx].status = .gray
+                answerBoard[currentRow][idx].changeStatus(to: .gray)
                 keyBoard.changeKeyStatus(to: .gray, keyLabel: key.character)
             }
         }
@@ -106,7 +110,7 @@ extension Game {
     
     mutating func playerWin() {
         for (index, key) in answerBoard[currentRow].enumerated() {
-            answerBoard[currentRow][index].status = .green
+            answerBoard[currentRow][index].changeStatus(to: .green)
             keyBoard.changeKeyStatus(to: .green, keyLabel: key.character)
         }
         isGameFinished = true
@@ -123,17 +127,9 @@ extension Game {
         let secondRowLabel = ["ㅁ", "ㄴ", "ㅇ", "ㄹ", "ㅎ", "ㅗ", "ㅓ", "ㅏ", "ㅣ"]
         let thirdRowLabel = ["ㅋ", "ㅌ", "ㅊ", "ㅍ", "ㅠ", "ㅜ", "ㅡ"]
         
-        var newKeyBoard = KeyBoard()
-        
-        newKeyBoard.firstRow = firstRowLabel.map {
-            Key(character: $0)
-        }
-        newKeyBoard.secondRow = secondRowLabel.map {
-            Key(character: $0)
-        }
-        newKeyBoard.thirdRow = thirdRowLabel.map {
-            Key(character: $0)
-        }
+        let newKeyBoard = KeyBoard(firstRow: firstRowLabel.map { Key(character: $0) },
+                                   secondRow: secondRowLabel.map { Key(character: $0) },
+                                   thirdRow: thirdRowLabel.map { Key(character: $0) })
         return newKeyBoard
     }
     
@@ -143,3 +139,4 @@ extension Game {
             count: 6)
     }
 }
+

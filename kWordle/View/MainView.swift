@@ -23,6 +23,7 @@ struct MainView: View {
                     if newScenePhase == .active {
                         mainViewModel.refreshGameOnActive()
                     }
+                    mainViewModel.closeInvalidWordWarning()
                 }
             if isHowToPlayPresented {
                 HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
@@ -31,9 +32,9 @@ struct MainView: View {
 //            if isStatisticsPresented {
 //                StatisticView(isStatisticsPresented: $isStatisticsPresented)
 //            }
-            if mainViewModel.isWordValid == false {
+            if mainViewModel.isInvalidWordWarningPresented == true {
                 showToast("유효하지 않은 단어입니다.") {
-                    mainViewModel.toggleValidWordStateToFalse()
+                    mainViewModel.closeInvalidWordWarning()
                 }
             }
         }

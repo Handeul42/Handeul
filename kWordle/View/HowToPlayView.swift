@@ -44,7 +44,7 @@ struct HowToPlayView: View {
                     }
 
                 }.tabViewStyle(.page(indexDisplayMode: .always))
-                    .frame(width: uiSize.width - 50 * currentScreenRatio(), height: uiSize.height/2 - 55 * currentScreenRatio() , alignment: .top)
+                    .frame(width: uiSize.width - 50 * currentScreenRatio(), height: uiSize.height/2 - 55 * currentScreenRatio(), alignment: .top)
             }.background(Color.hLigthGray.opacity(1).cornerRadius(8))
                 .padding()
         }
@@ -80,11 +80,3 @@ struct HowToPlayView: View {
         }.padding([.leading, .trailing, .bottom])
     }
 }
-
-
-//struct HowToPlayView_Previews: PreviewProvider {
-//    @State var isHowToPlayPresented: Bool = false
-//    static var previews: some View {
-//        HowToPlayView(isHowToPlayPresented: self.)
-//    }
-//}

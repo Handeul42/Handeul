@@ -42,6 +42,7 @@
 		CC7D1D4C28169F6B00CD7BFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC7D1D4B28169F6B00CD7BFD /* GoogleService-Info.plist */; };
 		CC802751281266D600686A3A /* String+getChar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC802750281266D600686A3A /* String+getChar.swift */; };
 		CCDBBC7228100D4600563140 /* MainView+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBBC7128100D4600563140 /* MainView+Toast.swift */; };
+		CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB412817BBAD006674A3 /* Persistable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		CC7D1D4B28169F6B00CD7BFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC802750281266D600686A3A /* String+getChar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+getChar.swift"; sourceTree = "<group>"; };
 		CCDBBC7128100D4600563140 /* MainView+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+Toast.swift"; sourceTree = "<group>"; };
+		CCFBDB412817BBAD006674A3 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				CC7D1D4B28169F6B00CD7BFD /* GoogleService-Info.plist */,
 				73D66DB3280E971900313A7F /* Fonts */,
 				737D4CE9280954E300CD8CBD /* WordData */,
+				CCFBDB402817BB90006674A3 /* Protocols */,
 				737D4CDE2809399600CD8CBD /* Constants */,
 				737D4CD028092F1700CD8CBD /* Model */,
 				737D4CD128092F3C00CD8CBD /* View */,
@@ -214,6 +217,14 @@
 				CCDBBC7128100D4600563140 /* MainView+Toast.swift */,
 			);
 			path = Subview;
+			sourceTree = "<group>";
+		};
+		CCFBDB402817BB90006674A3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CCFBDB412817BBAD006674A3 /* Persistable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +344,7 @@
 				CC57AF282816C695001675CD /* KeyBoard.swift in Sources */,
 				CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */,
 				737D4CE228093C3600CD8CBD /* MainView.swift in Sources */,
+				CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */,
 				CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */,
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,

@@ -11,7 +11,7 @@ import Firebase
 
 class MainViewModel: ObservableObject {
     @Published var game: Game
-    @Published var isWordValid: Bool = true
+    @Published var isInvalidWordWarningPresented: Bool = false
     init () {
         game = Game(answer: todayAnswer())
         UserDefaults.standard.set(game.answer, forKey: "Answer")
@@ -31,37 +31,37 @@ class MainViewModel: ObservableObject {
         guard game.isGameFinished == false else { return }
         if game.currentColumn == 5 && game.currentRow != 6 {
             if game.isCurrentWordInDict() == false {
-                toggleValidWordStateToTrue()
+                presentInvalidWordWarning()
                 return
             }
             // Event Logs
             Analytics.logEvent("PlayerSubmit", parameters: [
-                AnalyticsParameterItemID: game.getCurrentWord(),
+                AnalyticsParameterItemID: game.getCurrentWord()
             ])
             game.submitAnswer()
-        }
-        if game.didPlayerWin {
-            print("Cool! You win!")
-            Analytics.logEvent("PlayerWin", parameters: [
-                AnalyticsParameterItemID: game.answer,
-                AnalyticsParameterLevel: game.currentRow
-            ])
-            userLog("win")
-        } else {
-            print("You lose :(")
-            Analytics.logEvent("PlayerLose", parameters: [
-                AnalyticsParameterItemID: game.answer
-            ])
-            userLog("lose")
+            if game.didPlayerWin {
+                print("Cool! You win!")
+                Analytics.logEvent("PlayerWin", parameters: [
+                    AnalyticsParameterItemID: game.answer,
+                    AnalyticsParameterLevel: game.currentRow
+                ])
+                userLog("win")
+            } else {
+                print("You lose :(")
+                Analytics.logEvent("PlayerLose", parameters: [
+                    AnalyticsParameterItemID: game.answer
+                ])
+                userLog("lose")
+            }
         }
     }
     
-    public func toggleValidWordStateToFalse() {
-        self.isWordValid = false
+    public func presentInvalidWordWarning() {
+        isInvalidWordWarningPresented = true
     }
     
-    public func toggleValidWordStateToTrue() {
-        self.isWordValid = true
+    public func closeInvalidWordWarning() {
+        isInvalidWordWarningPresented = false
     }
 
     // MARK: Private Functions
@@ -110,7 +110,7 @@ class MainViewModel: ObservableObject {
 }
 
 func todayAnswer() -> String {
-    let wordDict = WordDictManager.makeWordDict()
+    let wordDict = WordDictManager.shared.wordDict_5jamo
     let date = Date()
     let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
     let todayAnswer = wordDict[((today.year! + today.month! + today.day!) * 345678) % wordDict.count].jamo

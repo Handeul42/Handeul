@@ -6,14 +6,26 @@
 //
 
 import Foundation
+import RealmSwift
+import Realm
 
-struct Key: Identifiable, Hashable {
-    let id = UUID()
-    var character: String
-    var status: Status = .lightGray
+struct Key: Identifiable, Hashable, Codable {
+    
+    private(set) var id = UUID()
+    private(set) var character: String
+    private(set) var status: Status = .lightGray
+    
+    public mutating func changeStatus(to status: Status) {
+        self.status = status
+    }
+    
+    public mutating func changeCharacter(to char: String) {
+        self.character = char
+    }
+    
 }
 
-enum Status: Int {
+enum Status: Int, Codable {
     case gray
     case yellow
     case green

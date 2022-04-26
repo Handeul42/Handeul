@@ -10,14 +10,13 @@ import CoreData
 import SwiftUI
 
 class WordDictManager {
+    static let shared = WordDictManager()
+    let wordDict_5jamo: [WordDict]
     
-    init() {
+    private init() {
+        self.wordDict_5jamo = Self.makeWordDict()
     }
     
-    
-    func readDB() {
-        
-    }
     static func makeWordDict() -> [WordDict] {
         var dict = [WordDict]()
         var words: String = ""
@@ -39,11 +38,4 @@ class WordDictManager {
         }
         return dict
     }
-
-//    func getWordOfToday() -> String {
-//
-//    }
-}
-func saveDataToCoreData() {
-    
 }

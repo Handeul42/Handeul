@@ -38,7 +38,7 @@ struct DictView: View {
                     dictMeaning()
                     Spacer()
                 }
-                HStack{
+                HStack {
                     Button {
                         viewModel.startNewGame()
                     } label: {
