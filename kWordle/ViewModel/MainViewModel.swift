@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Firebase
+import GoogleMobileAds
 
 class MainViewModel: ObservableObject {
     @ObservedObject var keyboardViewModel: KeyboardViewModel = KeyboardViewModel()
@@ -17,6 +18,8 @@ class MainViewModel: ObservableObject {
     @Published var rows: [[Key]] = makeAnswerBoardRows()
     @Published var isGameFinished: Bool = false
     @Published var isWordValid: Bool = true
+    let rewardADViewController = RewardedADViewController()
+    
     init () {
         game.wordDict = WordDictManager.makeWordDict()
         game.answer = todayAnswer()
@@ -24,6 +27,7 @@ class MainViewModel: ObservableObject {
         print(game.answer)
         game.key = []
         game.userAnswer = Answer(keys: [[]])
+        rewardADViewController.loadAD()
     }
     // MARK: Public Functions
     public func appendReceivedCharacter(of receivedKeyCharacter: String) {
@@ -62,7 +66,7 @@ class MainViewModel: ObservableObject {
             // Event Logs
             
             Analytics.logEvent("PlayerSubmit", parameters: [
-              AnalyticsParameterItemID: currentWord,
+                AnalyticsParameterItemID: currentWord,
             ])
         }
     }
@@ -107,8 +111,8 @@ class MainViewModel: ObservableObject {
         self.isGameFinished = true
         print("Cool! You win!")
         Analytics.logEvent("PlayerWin", parameters: [
-          AnalyticsParameterItemID: game.answer,
-          AnalyticsParameterLevel: currentRow
+            AnalyticsParameterItemID: game.answer,
+            AnalyticsParameterLevel: currentRow
         ])
         userLog("win")
         
@@ -117,7 +121,7 @@ class MainViewModel: ObservableObject {
         self.isGameFinished = true
         print("You lose :(")
         Analytics.logEvent("PlayerLose", parameters: [
-          AnalyticsParameterItemID: game.answer
+            AnalyticsParameterItemID: game.answer
         ])
         userLog("lose")
     }
@@ -163,11 +167,16 @@ class MainViewModel: ObservableObject {
     }
     
     func startNewGame() {
-        game.wordDict = WordDictManager.makeWordDict()
-        let randomAnswer = game.wordDict[Int.random(in: 0...game.wordDict.count) % game.wordDict.count].jamo
-        game.answer = randomAnswer
-        print(game.answer)
-        initGame()
+        rewardADViewController.doSomething() { [self] ret in
+            if rewardADViewController.didRewardUser(with: GADAdReward()) {
+                game.wordDict = WordDictManager.makeWordDict()
+                let randomAnswer = game.wordDict[Int.random(in: 0...game.wordDict.count) % game.wordDict.count].jamo
+                game.answer = randomAnswer
+                print(game.answer)
+                initGame()
+            }
+            rewardADViewController.loadAD()
+        }
     }
     
     func refreshGameOnActive() {
@@ -197,4 +206,5 @@ class MainViewModel: ObservableObject {
         currentColumn = 0
         isGameFinished = false
     }
+    
 }
