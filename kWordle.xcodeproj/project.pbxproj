@@ -30,6 +30,7 @@
 		73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B027EDCF920041036F /* kWordleApp.swift */; };
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
+		CC49B36C2819628A000CDC34 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = CC49B36B2819628A000CDC34 /* .gitattributes */; };
 		CC57AF282816C695001675CD /* KeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC57AF272816C695001675CD /* KeyBoard.swift */; };
 		CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517C280E753200B739F3 /* Color+CustomColor.swift */; };
 		CC7C517F280EB51300B739F3 /* MainView+MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */; };
@@ -71,6 +72,7 @@
 		73FD63B027EDCF920041036F /* kWordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kWordleApp.swift; sourceTree = "<group>"; };
 		73FD63B427EDCF940041036F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73FD63B727EDCF940041036F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CC49B36B2819628A000CDC34 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		CC57AF272816C695001675CD /* KeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoard.swift; sourceTree = "<group>"; };
 		CC57AF292816D5C7001675CD /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		CC7C517C280E753200B739F3 /* Color+CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CustomColor.swift"; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				73FD63B427EDCF940041036F /* Assets.xcassets */,
 				73FD63B627EDCF940041036F /* Preview Content */,
 				73D66DBD280EA31000313A7F /* Launch Screen.storyboard */,
+				CC49B36B2819628A000CDC34 /* .gitattributes */,
 			);
 			path = kWordle;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				73D66DBB280E973300313A7F /* EBS훈민정음새론SB.ttf in Resources */,
 				73FD63B527EDCF940041036F /* Assets.xcassets in Resources */,
 				CC7D1D4C28169F6B00CD7BFD /* GoogleService-Info.plist in Resources */,
+				CC49B36C2819628A000CDC34 /* .gitattributes in Resources */,
 				73D66DB8280E973300313A7F /* EBSL.ttf in Resources */,
 				738C80D1280D473200D8FCA5 /* 5Jamo.tsv in Resources */,
 			);
