@@ -16,7 +16,7 @@ struct AnswerBoardView: View {
             .frame(width: uiSize.width - 40, height: width)
     }
 
-    func answerBoardBlock(_ key: Key) -> some View {
+    func answerBoardButton(_ key: Key) -> some View {
         let keyButtonWidth: Double = Double(uiSize.width - 40) / 6
         let keyButtonSize: CGSize = CGSize(width: keyButtonWidth, height: keyButtonWidth)
         return ZStack {
@@ -26,7 +26,7 @@ struct AnswerBoardView: View {
                 .foregroundColor(getColor(of: key.status))
                 .border(Color.hRed, width: 2)
             Text(key.character)
-                .foregroundColor(getColor(of: .black))
+                .foregroundColor(.black)
                 .font(.custom("EBSHMJESaeronSB", size: 32))
         }
     }
@@ -39,7 +39,7 @@ struct AnswerBoardView: View {
                 horline(width: 2)
                 HStack {
                     ForEach(row) { btn in
-                        answerBoardBlock(btn)
+                        answerBoardButton(btn)
                     }
                     .padding([.horizontal], -5)
                 }

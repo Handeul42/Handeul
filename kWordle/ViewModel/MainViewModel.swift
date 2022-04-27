@@ -157,7 +157,7 @@ class MainViewModel: ObservableObject {
                     ret += "🟩"
                 case .yellow :
                     ret += "🟧"
-                case .white, .red, .lightGray, .black:
+                case .white, .red, .lightGray:
                     break
                 }
             }

@@ -36,9 +36,8 @@ struct MenuBar: View {
             } label: {
                 Image(systemName: "gearshape").font(.system(size: buttonSize))
             }
-        }
-        .foregroundColor(getColor(of: .black))
-        .padding([.leading, .trailing])
-        .padding(.bottom, 8)
+        }.foregroundColor(.black)
+            .padding([.leading, .trailing])
+            .padding(.bottom, 8)
     }
 }
