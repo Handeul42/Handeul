@@ -22,14 +22,4 @@ struct Key: Identifiable, Hashable, Codable {
     public mutating func changeCharacter(to char: String) {
         self.character = char
     }
-    
-}
-
-enum Status: Int, Codable {
-    case gray
-    case yellow
-    case green
-    case lightGray
-    case red
-    case white
 }

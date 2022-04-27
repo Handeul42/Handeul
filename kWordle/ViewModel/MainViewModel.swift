@@ -13,7 +13,7 @@ import GoogleMobileAds
 class MainViewModel: ObservableObject {
     @Published var game: Game
     @Published var isInvalidWordWarningPresented: Bool = false
-    
+    let rewardADViewController = RewardedADViewController()
     init () {
         // TODO: 날짜 바뀌면 새로운 문제로 초기화 해서 넣기?
         if let previousGame = RealmManager.shared.getPreviousGame() {
@@ -22,8 +22,6 @@ class MainViewModel: ObservableObject {
             game = Game(answer: todayAnswer())
         }
         print(game.answer)
-        game.key = []
-        game.userAnswer = Answer(keys: [[]])
         rewardADViewController.loadAD()
     }
     
@@ -96,20 +94,24 @@ class MainViewModel: ObservableObject {
     }
     
     func startNewGame() {
-        let randomAnswer = game.wordDict[Int.random(in: 0...game.wordDict.count) % game.wordDict.count].jamo
-        let newGame = Game(answer: randomAnswer)
-        print(newGame.answer)
-        self.game = newGame
+        
+        rewardADViewController.doSomething() { [self] ret in
+            if rewardADViewController.didRewardUser(with: GADAdReward()) {
+                let randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int.random(in: 0...game.wordDict.count) % game.wordDict.count].jamo
+                let newGame = Game(answer: randomAnswer)
+                print(newGame.answer)
+                self.game = newGame
+            }
+            rewardADViewController.loadAD()
+        }
     }
     
     // MARK: Private Functions
     private func userLog(_ state: String) {
         let username = UIDevice.current.name
         let deivceUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
-        
         Analytics.logEvent(state + "-" + username + "-" + deivceUUID, parameters: nil)
     }
-    
 }
 
 func todayAnswer() -> String {

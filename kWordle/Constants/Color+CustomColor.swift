@@ -18,7 +18,7 @@ extension Color {
     static let hBlack = Color("h_black")
 }
 
-enum Status: Int {
+enum Status: Int, Codable {
     case gray
     case yellow
     case green

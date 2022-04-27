@@ -19,11 +19,8 @@
 		737D4CE228093C3600CD8CBD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CE128093C3600CD8CBD /* MainView.swift */; };
 		737D4CE428093C6200CD8CBD /* AnswerBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */; };
 		737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737D4CE72809539D00CD8CBD /* WordDictManager.swift */; };
-		7384B9F828168D7F00D14652 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7384B9F728168D7F00D14652 /* GoogleService-Info.plist */; };
 		7384B9FB28168DDC00D14652 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 7384B9FA28168DDC00D14652 /* GoogleMobileAds */; };
 		7384B9FD28168E7300D14652 /* GoogleAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7384B9FC28168E7300D14652 /* GoogleAds.swift */; };
-		738C80CB280D31B400D8FCA5 /* FiveWords.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 738C80C9280D31B400D8FCA5 /* FiveWords.xcdatamodeld */; };
-		738C80CF280D424300D8FCA5 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C80CE280D424300D8FCA5 /* PersistenceController.swift */; };
 		738C80D1280D473200D8FCA5 /* 5Jamo.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 738C80D0280D473200D8FCA5 /* 5Jamo.tsv */; };
 		738C80D7280D61D600D8FCA5 /* WordDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C80D6280D61D600D8FCA5 /* WordDict.swift */; };
 		738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C80DA280D634C00D8FCA5 /* MainViewModel.swift */; };
@@ -65,10 +62,7 @@
 		737D4CE128093C3600CD8CBD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBoardView.swift; sourceTree = "<group>"; };
 		737D4CE72809539D00CD8CBD /* WordDictManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDictManager.swift; sourceTree = "<group>"; };
-		7384B9F728168D7F00D14652 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7384B9FC28168E7300D14652 /* GoogleAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAds.swift; sourceTree = "<group>"; };
-		738C80CA280D31B400D8FCA5 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
-		738C80CE280D424300D8FCA5 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		738C80D0280D473200D8FCA5 /* 5Jamo.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 5Jamo.tsv; sourceTree = "<group>"; };
 		738C80D6280D61D600D8FCA5 /* WordDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDict.swift; sourceTree = "<group>"; };
 		738C80DA280D634C00D8FCA5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -121,7 +115,6 @@
 			children = (
 				738C80DA280D634C00D8FCA5 /* MainViewModel.swift */,
 				CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */,
-				737D4CE528093C7200CD8CBD /* AnswerBoardViewModel.swift */,
 				7322469C2816DBFD00024ED2 /* GoogleAdsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -205,7 +198,6 @@
 		73FD63AF27EDCF920041036F /* kWordle */ = {
 			isa = PBXGroup;
 			children = (
-				7384B9F728168D7F00D14652 /* GoogleService-Info.plist */,
 				73D66DBC280E98D500313A7F /* Info.plist */,
 				CC7D1D4B28169F6B00CD7BFD /* GoogleService-Info.plist */,
 				73D66DB3280E971900313A7F /* Fonts */,
@@ -612,6 +604,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		7384B9F928168DDC00D14652 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quanghits/GoogleMobileAds.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		CC7D1D4628169AAB00CD7BFD /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -620,14 +620,6 @@
 				kind = branch;
 			};
 		};
-        7384B9F928168DDC00D14652 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */ = {
-            isa = XCRemoteSwiftPackageReference;
-            repositoryURL = "https://github.com/quanghits/GoogleMobileAds.git";
-            requirement = {
-                kind = upToNextMajorVersion;
-                minimumVersion = 9.0.0;
-            };
-        };
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -641,6 +633,11 @@
 			package = 733A74C9281290F900B49310 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
+		7384B9FA28168DDC00D14652 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7384B9F928168DDC00D14652 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */;
+			productName = GoogleMobileAds;
+		};
 		CC7D1D4728169AAB00CD7BFD /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CC7D1D4628169AAB00CD7BFD /* XCRemoteSwiftPackageReference "realm-swift" */;
@@ -651,11 +648,6 @@
 			package = CC7D1D4628169AAB00CD7BFD /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
-        7384B9FA28168DDC00D14652 /* GoogleMobileAds */ = {
-            isa = XCSwiftPackageProductDependency;
-            package = 7384B9F928168DDC00D14652 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */;
-            productName = GoogleMobileAds;
-        };
 /* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 73FD63A527EDCF920041036F /* Project object */;
