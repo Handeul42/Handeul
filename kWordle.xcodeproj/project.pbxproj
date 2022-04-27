@@ -30,12 +30,17 @@
 		738C80D1280D473200D8FCA5 /* 5Jamo.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 738C80D0280D473200D8FCA5 /* 5Jamo.tsv */; };
 		738C80D7280D61D600D8FCA5 /* WordDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C80D6280D61D600D8FCA5 /* WordDict.swift */; };
 		738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738C80DA280D634C00D8FCA5 /* MainViewModel.swift */; };
+		73CB2E4128197C6700EB87B6 /* SettingToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CB2E4028197C6700EB87B6 /* SettingToggleStyle.swift */; };
 		73D66DB2280E825000313A7F /* MainView+TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D66DB1280E825000313A7F /* MainView+TitleView.swift */; };
 		73D66DB8280E973300313A7F /* EBSL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73D66DB4280E973300313A7F /* EBSL.ttf */; };
 		73D66DB9280E973300313A7F /* EBS훈민정음SB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73D66DB5280E973300313A7F /* EBS훈민정음SB.ttf */; };
 		73D66DBA280E973300313A7F /* EBS훈민정음새론R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73D66DB6280E973300313A7F /* EBS훈민정음새론R.ttf */; };
 		73D66DBB280E973300313A7F /* EBS훈민정음새론SB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73D66DB7280E973300313A7F /* EBS훈민정음새론SB.ttf */; };
 		73D66DBE280EA31000313A7F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73D66DBD280EA31000313A7F /* Launch Screen.storyboard */; };
+		73F23E7828196257009A5DEC /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F23E7728196257009A5DEC /* NotificationManager.swift */; };
+		73F23E7A281962C1009A5DEC /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F23E79281962C1009A5DEC /* NotificationCell.swift */; };
+		73F23E7C28196315009A5DEC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F23E7B28196315009A5DEC /* Message.swift */; };
+		73F23E7E28196443009A5DEC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F23E7D28196443009A5DEC /* SettingView.swift */; };
 		73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B027EDCF920041036F /* kWordleApp.swift */; };
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
@@ -68,6 +73,7 @@
 		738C80D0280D473200D8FCA5 /* 5Jamo.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 5Jamo.tsv; sourceTree = "<group>"; };
 		738C80D6280D61D600D8FCA5 /* WordDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDict.swift; sourceTree = "<group>"; };
 		738C80DA280D634C00D8FCA5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		73CB2E4028197C6700EB87B6 /* SettingToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingToggleStyle.swift; sourceTree = "<group>"; };
 		73D66DB1280E825000313A7F /* MainView+TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+TitleView.swift"; sourceTree = "<group>"; };
 		73D66DB4280E973300313A7F /* EBSL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EBSL.ttf; path = Font/EBSL.ttf; sourceTree = SOURCE_ROOT; };
 		73D66DB5280E973300313A7F /* EBS훈민정음SB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "EBS훈민정음SB.ttf"; path = "Font/EBS훈민정음SB.ttf"; sourceTree = SOURCE_ROOT; };
@@ -75,7 +81,11 @@
 		73D66DB7280E973300313A7F /* EBS훈민정음새론SB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "EBS훈민정음새론SB.ttf"; path = "Font/EBS훈민정음새론SB.ttf"; sourceTree = SOURCE_ROOT; };
 		73D66DBC280E98D500313A7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		73D66DBD280EA31000313A7F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		73FD63AD27EDCF920041036F /* 한들.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "한들.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73F23E7728196257009A5DEC /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		73F23E79281962C1009A5DEC /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		73F23E7B28196315009A5DEC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		73F23E7D28196443009A5DEC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		73FD63AD27EDCF920041036F /* Handeul.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handeul.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FD63B027EDCF920041036F /* kWordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kWordleApp.swift; sourceTree = "<group>"; };
 		73FD63B427EDCF940041036F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73FD63B727EDCF940041036F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -132,8 +142,7 @@
 				737D4CE128093C3600CD8CBD /* MainView.swift */,
 				73036274281261E8002DCE6B /* DictView.swift */,
 				737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */,
-				CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */,
-				CC7C5182280ECB8A00B739F3 /* StatisticView.swift */,
+				73F23E7D28196443009A5DEC /* SettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -145,6 +154,8 @@
 				CC7C517C280E753200B739F3 /* Color+CustomColor.swift */,
 				CC802750281266D600686A3A /* String+getChar.swift */,
 				7384B9FC28168E7300D14652 /* GoogleAds.swift */,
+				73F23E7B28196315009A5DEC /* Message.swift */,
+				73CB2E4028197C6700EB87B6 /* SettingToggleStyle.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -168,6 +179,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		73F23E7628196239009A5DEC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				73F23E7728196257009A5DEC /* NotificationManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		73FD63A427EDCF920041036F = {
 			isa = PBXGroup;
 			children = (
@@ -179,7 +198,7 @@
 		73FD63AE27EDCF920041036F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				73FD63AD27EDCF920041036F /* 한들.app */,
+				73FD63AD27EDCF920041036F /* Handeul.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,6 +206,7 @@
 		73FD63AF27EDCF920041036F /* kWordle */ = {
 			isa = PBXGroup;
 			children = (
+				73F23E7628196239009A5DEC /* Service */,
 				7384B9F728168D7F00D14652 /* GoogleService-Info.plist */,
 				73D66DBC280E98D500313A7F /* Info.plist */,
 				73D66DB3280E971900313A7F /* Fonts */,
@@ -217,9 +237,12 @@
 		CC63E4642811179800DBB2B5 /* Subview */ = {
 			isa = PBXGroup;
 			children = (
+				CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */,
+				CC7C5182280ECB8A00B739F3 /* StatisticView.swift */,
 				73D66DB1280E825000313A7F /* MainView+TitleView.swift */,
 				CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */,
 				CCDBBC7128100D4600563140 /* MainView+Toast.swift */,
+				73F23E79281962C1009A5DEC /* NotificationCell.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -247,7 +270,7 @@
 				7384B9FA28168DDC00D14652 /* GoogleMobileAds */,
 			);
 			productName = kWordle;
-			productReference = 73FD63AD27EDCF920041036F /* 한들.app */;
+			productReference = 73FD63AD27EDCF920041036F /* Handeul.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -332,17 +355,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73CB2E4128197C6700EB87B6 /* SettingToggleStyle.swift in Sources */,
 				CC7C517F280EB51300B739F3 /* MainView+MenuBar.swift in Sources */,
 				CC7C5183280ECB8A00B739F3 /* StatisticView.swift in Sources */,
 				737D4CD528092F6C00CD8CBD /* Key.swift in Sources */,
 				738C80D7280D61D600D8FCA5 /* WordDict.swift in Sources */,
 				737D4CE628093C7200CD8CBD /* AnswerBoardViewModel.swift in Sources */,
 				CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */,
+				73F23E7828196257009A5DEC /* NotificationManager.swift in Sources */,
 				7322469D2816DBFD00024ED2 /* GoogleAdsViewModel.swift in Sources */,
 				737D4CE228093C3600CD8CBD /* MainView.swift in Sources */,
 				737D4CD728092F7F00CD8CBD /* Answer.swift in Sources */,
+				73F23E7A281962C1009A5DEC /* NotificationCell.swift in Sources */,
 				CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */,
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
+				73F23E7C28196315009A5DEC /* Message.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
 				CCDBBC7228100D4600563140 /* MainView+Toast.swift in Sources */,
@@ -356,6 +383,7 @@
 				738C80CF280D424300D8FCA5 /* PersistenceController.swift in Sources */,
 				737D4CDD2809324F00CD8CBD /* KeyboardViewModel.swift in Sources */,
 				73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */,
+				73F23E7E28196443009A5DEC /* SettingView.swift in Sources */,
 				CC802751281266D600686A3A /* String+getChar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,7 +534,7 @@
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.game.handeul;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Handeul;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -540,7 +568,7 @@
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.game.handeul;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Handeul;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
