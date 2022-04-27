@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Firebase
+import GoogleMobileAds
 
 class MainViewModel: ObservableObject {
     @Published var game: Game
@@ -21,6 +22,9 @@ class MainViewModel: ObservableObject {
             game = Game(answer: todayAnswer())
         }
         print(game.answer)
+        game.key = []
+        game.userAnswer = Answer(keys: [[]])
+        rewardADViewController.loadAD()
     }
     
     // MARK: Public Functions
@@ -82,13 +86,13 @@ class MainViewModel: ObservableObject {
                     ret += "🟩"
                 case .yellow :
                     ret += "🟧"
-                case .white, .red, .lightGray:
+                case .white, .red, .lightGray, .black:
                     break
                 }
             }
             ret += "\n"
         }
-        return "한들\n앱주소\n" + ret.trimmingCharacters(in: .newlines)
+        return "한들\n앱주소: https://apps.apple.com/us/app/한들/id1619947572\n" + ret.trimmingCharacters(in: .newlines)
     }
     
     func startNewGame() {

@@ -13,7 +13,6 @@ struct DictView: View {
     let width: CGFloat = uiSize.width - 70
     @State var answer: String = ""
     @State var meaning: String = ""
-    @State var isCopied: Bool = false
     @State var nowDate: Date = Date()
     
     @State var currentDate: Date = Date()
@@ -27,9 +26,7 @@ struct DictView: View {
                         .font(.custom("EBSHMJESaeronR", size: 28))
                     Spacer()
                     Button {
-                        UIPasteboard.general.string = viewModel.generateString()
-                        isCopied = true
-                        Analytics.logEvent(AnalyticsEventShare, parameters: ["answer": viewModel.game.answer])
+                        actionSheet()
                     } label: {
                         copyButton()
                     }
@@ -58,12 +55,6 @@ struct DictView: View {
                 initDict()
             }
             .padding(.horizontal, 35)
-            
-            if isCopied {
-                showToast("복사되었습니다.") {
-                    isCopied.toggle()
-                }
-            }
         }
     }
     
@@ -158,5 +149,11 @@ struct DictView: View {
             }
             .offset(x: 44, y: -22)
         }
+    }
+    
+    func actionSheet() {
+        let stringShare = viewModel.generateString()
+        let activityVC = UIActivityViewController(activityItems: [stringShare], applicationActivities: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
     }
 }
