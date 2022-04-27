@@ -12,12 +12,3 @@ struct Key: Identifiable, Hashable {
     var character: String
     var status: Status = .lightGray
 }
-
-enum Status: Int {
-    case gray
-    case yellow
-    case green
-    case lightGray
-    case red
-    case white
-}
