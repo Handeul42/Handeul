@@ -163,7 +163,7 @@ class MainViewModel: ObservableObject {
             }
             ret += "\n"
         }
-        return "한들\n앱주소\n" + ret.trimmingCharacters(in: .newlines)
+        return "한들\n앱주소: https://apps.apple.com/us/app/한들/id1619947572\n" + ret.trimmingCharacters(in: .newlines)
     }
     
     func startNewGame() {
