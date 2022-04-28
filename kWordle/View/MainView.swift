@@ -38,7 +38,7 @@ struct MainView: View {
     var mainView: some View {
         VStack {
             TitleView()
-                .padding(.top, 35)
+                .padding(.top, 35 * currentScreenRatio())
             HStack {
                 SettingButtonView(isSettingPresented: $isSettingPresented)
                     .padding(.leading, 20)

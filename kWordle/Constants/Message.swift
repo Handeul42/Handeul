@@ -8,6 +8,6 @@
 import Foundation
 
 enum Message {
-    static let notiDeniedInSettingsTitle: String = "Notification has been disabled for this app"
-    static let notiDeniedInSettingsMessage: String = "Please go to settings to enable it now"
+    static let notiDeniedInSettingsTitle: String = "이 앱의 알림이 비활성화 되어 있습니다."
+    static let notiDeniedInSettingsMessage: String = "설정으로 이동하여 알림을 활성화 해주세요."
 }
