@@ -10,11 +10,13 @@ import SwiftUI
 import Firebase
 import GoogleMobileAds
 
+var generator = RandomNumberGeneratorWithSeed(seed: 1)
 class MainViewModel: ObservableObject {
     @Published var game: Game
     @Published var isInvalidWordWarningPresented: Bool = false
     let rewardADViewController = RewardedADViewController()
     init () {
+        generator = RandomNumberGeneratorWithSeed(seed: DateToSeed())
         // TODO: 날짜 바뀌면 새로운 문제로 초기화 해서 넣기?
         if let previousGame = RealmManager.shared.getPreviousGame() {
             game = Game(persistedObject: previousGame)
@@ -23,6 +25,15 @@ class MainViewModel: ObservableObject {
         }
         print(game.answer)
         rewardADViewController.loadAD()
+        var prev: String = ""
+        for _ in 0...20 {
+            var randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
+            if prev == randomAnswer {
+                randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
+            }
+            prev = randomAnswer
+            print(randomAnswer)
+        }
     }
     
     // MARK: Public Functions
@@ -144,7 +155,10 @@ class MainViewModel: ObservableObject {
     func startNewGame() {
         rewardADViewController.doSomething() { [self] _ in
             if rewardADViewController.didRewardUser(with: GADAdReward()) {
-                let randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int.random(in: 0...game.wordDict.count) % game.wordDict.count].jamo
+                var randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
+                if self.game.answer == randomAnswer {
+                    randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
+                }
                 let newGame = Game(answer: randomAnswer)
                 print(newGame.answer)
                 self.game = newGame
@@ -163,8 +177,13 @@ class MainViewModel: ObservableObject {
 
 func todayAnswer() -> String {
     let wordDict = WordDictManager.shared.wordDictFiveJamo
+    let todayAnswer = wordDict[Int(generator.next()) % wordDict.count].jamo
+    return todayAnswer
+}
+
+
+func DateToSeed() -> Int {
     let date = Date()
     let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
-    let todayAnswer = wordDict[((today.year! + today.month! + today.day!) * 345678) % wordDict.count].jamo
-    return todayAnswer
+    return today.year! * 10000 + today.month! * 100 + today.day!
 }
