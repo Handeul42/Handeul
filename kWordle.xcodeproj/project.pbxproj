@@ -41,6 +41,7 @@
 		73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B027EDCF920041036F /* kWordleApp.swift */; };
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
+		CC1BB899281AE13800BAA6FA /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1BB898281AE13800BAA6FA /* HapticsManager.swift */; };
 		CC49B36C2819628A000CDC34 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = CC49B36B2819628A000CDC34 /* .gitattributes */; };
 		CC57AF282816C695001675CD /* KeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC57AF272816C695001675CD /* KeyBoard.swift */; };
 		CC69C354281A9DCF00F6805E /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC69C353281A9DCF00F6805E /* Dates.swift */; };
@@ -94,6 +95,7 @@
 		73FD63B027EDCF920041036F /* kWordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kWordleApp.swift; sourceTree = "<group>"; };
 		73FD63B427EDCF940041036F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73FD63B727EDCF940041036F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CC1BB898281AE13800BAA6FA /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		CC49B36B2819628A000CDC34 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		CC57AF272816C695001675CD /* KeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoard.swift; sourceTree = "<group>"; };
 		CC57AF292816D5C7001675CD /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				737D4CD428092F6C00CD8CBD /* Key.swift */,
 				737D4CE72809539D00CD8CBD /* WordDictManager.swift */,
 				CCFBDB452817D022006674A3 /* RealmManager.swift */,
+				CC1BB898281AE13800BAA6FA /* HapticsManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				CCA23973281A682000CCAD0E /* MailView.swift in Sources */,
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
 				CCFBDB4A2817FB28006674A3 /* StatisticsViewModel.swift in Sources */,
+				CC1BB899281AE13800BAA6FA /* HapticsManager.swift in Sources */,
 				73F23E7C28196315009A5DEC /* Message.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,

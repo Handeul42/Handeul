@@ -54,12 +54,14 @@ class MainViewModel: ObservableObject {
         if game.currentColumn == 5 && game.currentRow != 6 {
             if game.isCurrentWordInDict() == false {
                 presentInvalidWordWarning()
+                HapticsManager.shared.notification(type: .warning)
                 return
             }
             game.submitAnswer()
             if game.isGameFinished {
                 if game.didPlayerWin {
                     print("Cool! You win!")
+                    HapticsManager.shared.notification(type: .success)
                     Analytics.logEvent("PlayerWin", parameters: [
                         AnalyticsParameterItemID: game.answer,
                         AnalyticsParameterLevel: game.currentRow
@@ -67,6 +69,7 @@ class MainViewModel: ObservableObject {
                     userLog("win")
                 } else if !game.didPlayerWin {
                     print("You lose :(")
+                    HapticsManager.shared.notification(type: .error)
                     Analytics.logEvent("PlayerLose", parameters: [
                         AnalyticsParameterItemID: game.answer
                     ])
