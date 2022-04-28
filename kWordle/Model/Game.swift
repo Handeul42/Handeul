@@ -12,7 +12,7 @@ struct Game {
     private var id: String = UUID().uuidString
     private var timestamp = Date()
     private var jamoCount = 5
-    private var gameNumber = 1
+    private(set) var gameNumber: Int
     private(set) var answer: String
     private(set) var wordDict: [WordDict]
     private(set) var keyBoard: KeyBoard
@@ -27,8 +27,9 @@ struct Game {
         self.wordDict = WordDictManager.shared.wordDictFiveJamo
         keyBoard = Self.initKeyBoard()
         answerBoard = Self.initAnswerBoard()
+        self.gameNumber = UserDefaults.standard.integer(forKey: "todayGameCount")
+        UserDefaults.standard.set(gameNumber + 1, forKey: "todayGameCount")
     }
-    
 }
 
 extension Game {
@@ -145,7 +146,6 @@ extension Game {
             repeating: Range(0...4).map { _ in Key(character: " ", status: .white)},
             count: 6)
     }
-    
 }
 
 extension Game: Persistable {
