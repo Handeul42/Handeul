@@ -26,7 +26,9 @@ struct StatisticsView: View {
                     HStack {
                         Spacer()
                         Button {
-                            isStatisticsPresented.toggle()
+                            withAnimation {
+                                isStatisticsPresented.toggle()
+                            }
                         } label: {
                             Image(systemName: "xmark")
                                 .font(.system(size: 20))
