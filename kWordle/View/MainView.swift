@@ -56,9 +56,14 @@ struct MainView: View {
                 KeyboardView()
             } else {
                 DictView()
+                    .disabled(!mainViewModel.game.isGameFinished)
             }
             Spacer()
-        }.environmentObject(mainViewModel)
+        }
+        .environmentObject(mainViewModel)
+        .onAppear {
+            requestPermission()
+        }
     }
     
     private var GameCountView: some View {

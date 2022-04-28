@@ -17,7 +17,6 @@ class MainViewModel: ObservableObject {
     
     let rewardADViewController = RewardedADViewController()
     init () {
-        
         let today = getTodayDateString()
         let lastDate = UserDefaults.standard.string(forKey: "lastDate")
         if today != lastDate {
@@ -39,7 +38,6 @@ class MainViewModel: ObservableObject {
         }
         print(game.answer)
         rewardADViewController.loadAD()
-
     }
     
     // MARK: Public Functions
@@ -58,10 +56,6 @@ class MainViewModel: ObservableObject {
                 presentInvalidWordWarning()
                 return
             }
-            // Event Logs
-            Analytics.logEvent("PlayerSubmit", parameters: [
-                AnalyticsParameterItemID: game.getCurrentWord()
-            ])
             game.submitAnswer()
             if game.isGameFinished {
                 if game.didPlayerWin {

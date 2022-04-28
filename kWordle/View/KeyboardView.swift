@@ -43,50 +43,53 @@ struct KeyboardView: View {
         viewModel.appendReceivedCharacter(of: character)
     }
     var body: some View {
-        VStack {
-            HStack {
-                ForEach(viewModel.game.keyBoard.firstRow, id: \.self) { btn in
+        ZStack {
+            Color.hWhite
+            VStack {
+                HStack {
+                    ForEach(viewModel.game.keyBoard.firstRow, id: \.self) { btn in
+                        Button {
+                            submitKeyInput(btn.character)
+                        } label: {
+                            keyboardButton(btn)
+                        }
+                    }
+                    .padding([.horizontal], widthPadding)
                     Button {
-                        submitKeyInput(btn.character)
+                        viewModel.deleteOneCharacter()
                     } label: {
-                        keyboardButton(btn)
+                        keyboardDeleteButton()
                     }
+                    .padding([.horizontal], widthPadding)
                 }
-                .padding([.horizontal], widthPadding)
-                Button {
-                    viewModel.deleteOneCharacter()
-                } label: {
-                    keyboardDeleteButton()
+                HStack {
+                    ForEach(viewModel.game.keyBoard.secondRow, id: \.self) { btn in
+                        Button {
+                            submitKeyInput(btn.character)
+                        } label: {
+                            keyboardButton(btn)
+                        }
+                    }
+                    .padding([.horizontal], widthPadding)
                 }
-                .padding([.horizontal], widthPadding)
-            }
-            HStack {
-                ForEach(viewModel.game.keyBoard.secondRow, id: \.self) { btn in
+                HStack {
+                    ForEach(viewModel.game.keyBoard.thirdRow, id: \.self) { btn in
+                        Button {
+                            submitKeyInput(btn.character)
+                        } label: {
+                            keyboardButton(btn)
+                        }
+                    }
+                    .padding([.horizontal], widthPadding)
                     Button {
-                        submitKeyInput(btn.character)
+                        withAnimation {
+                            viewModel.submitAnswer()
+                        }
                     } label: {
-                        keyboardButton(btn)
+                        keyboardEnterButton()
                     }
+                    .padding([.horizontal], widthPadding)
                 }
-                .padding([.horizontal], widthPadding)
-            }
-            HStack {
-                ForEach(viewModel.game.keyBoard.thirdRow, id: \.self) { btn in
-                    Button {
-                        submitKeyInput(btn.character)
-                    } label: {
-                        keyboardButton(btn)
-                    }
-                }
-                .padding([.horizontal], widthPadding)
-                Button {
-                    withAnimation {
-                        viewModel.submitAnswer()
-                    }
-                } label: {
-                    keyboardEnterButton()
-                }
-                .padding([.horizontal], widthPadding)
             }
         }
     }

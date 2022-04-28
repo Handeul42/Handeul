@@ -79,4 +79,3 @@ struct MailView: UIViewControllerRepresentable {
         MFMailComposeViewController.canSendMail()
     }
 }
-
