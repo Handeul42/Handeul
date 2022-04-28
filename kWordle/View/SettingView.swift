@@ -11,7 +11,12 @@ struct SettingView: View {
     @Binding var isSettingPresented: Bool
     @State var isHowToPlayPresented: Bool = false
     @State var isStatisticsPresented: Bool = false
+    @State var isMailViewPresented: Bool = false
     @ObservedObject private var notificationManager: NotificationManager = NotificationManager()
+    @State private var mailData = ComposeMailData(subject: "한들에 대하여 :",
+                                                  recipients: ["42handeul@gmail.com"],
+                                                  message: "",
+                                                  attachments: nil)
     
     fileprivate func TitleBar() -> some View {
         return ZStack {
@@ -66,6 +71,20 @@ struct SettingView: View {
         }
     }
     
+    fileprivate func sendMailButton() -> some View {
+        return Button {
+            withAnimation {
+                isMailViewPresented.toggle()
+            }
+        } label: {
+            Text(MailView.canSendMail ? "편지 보내기" : "편지 보내기(메일X)")
+                .foregroundColor(.hBlack)
+        }.disabled(!MailView.canSendMail)
+            .sheet(isPresented: $isMailViewPresented) {
+                MailView(data: $mailData) { _ in }
+            }
+    }
+    
     fileprivate func SettingContents() -> some View {
         return VStack(alignment: .leading, spacing: 16) {
             NotificationCell()
@@ -73,7 +92,7 @@ struct SettingView: View {
             howToPlayButton()
             statisticButton()
             appReviewButton()
-            Text("편지 보내기")
+            sendMailButton()
             Spacer()
         }
     }

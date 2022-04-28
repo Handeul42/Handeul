@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     @Environment(\.scenePhase) var scenePhase
     @ObservedObject var mainViewModel: MainViewModel = MainViewModel()
-    
+    @AppStorage("shouldHowToPlayPresented") var shouldHowToPlayPresented: Bool = true
     @State var isSettingPresented: Bool = false
     
     var body: some View {
@@ -28,6 +28,9 @@ struct MainView: View {
                 SettingView(isSettingPresented: $isSettingPresented)
                     .zIndex(1)
             }
+            if shouldHowToPlayPresented {
+                HowToPlayView(isHowToPlayPresented: $shouldHowToPlayPresented)
+            }
             if mainViewModel.isInvalidWordWarningPresented == true {
                 showToast("유효하지 않은 단어입니다.") {
                     mainViewModel.closeInvalidWordWarning()
@@ -35,6 +38,7 @@ struct MainView: View {
             }
         }
     }
+    
     var mainView: some View {
         VStack {
             TitleView()
@@ -62,7 +66,7 @@ struct MainView: View {
             Text("No.")
                 .font(.system(size: 18))
             ZStack {
-                Text("12")
+                Text("\(mainViewModel.game.gameNumber)")
                     .font(.system(size: 28))
                 Rectangle()
                     .frame(width: 56, height: 2)

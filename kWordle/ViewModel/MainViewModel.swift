@@ -14,10 +14,15 @@ var generator = RandomNumberGeneratorWithSeed(seed: 1)
 class MainViewModel: ObservableObject {
     @Published var game: Game
     @Published var isInvalidWordWarningPresented: Bool = false
+    
     let rewardADViewController = RewardedADViewController()
     init () {
-        generator = RandomNumberGeneratorWithSeed(seed: DateToSeed())
-        // TODO: 날짜 바뀌면 새로운 문제로 초기화 해서 넣기?
+        let today = getTodayDateString()
+        let lastDate = UserDefaults.standard.string(forKey: "lastDate")
+        if today != lastDate {
+            UserDefaults.standard.set(today, forKey: "lastDate")
+            UserDefaults.standard.set(1,forKey: "todayGameCount")
+        }
         if let previousGame = RealmManager.shared.getPreviousGame() {
             game = Game(persistedObject: previousGame)
         } else {
