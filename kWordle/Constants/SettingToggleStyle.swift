@@ -10,8 +10,13 @@ import SwiftUI
 struct SettingToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         
-        HStack {
+        HStack (spacing: 0) {
+            Image(systemName: configuration.isOn ? "chevron.down" : "chevron.right")
+                .font(.system(size: 12))
+                .frame(width: 12, height: 12)
+                .offset(x: -20)
             configuration.label
+                .offset(x: -12)
             Spacer()
             Button {
                 withAnimation {
@@ -21,7 +26,7 @@ struct SettingToggleStyle: ToggleStyle {
                 ZStack {
                     if !configuration.isOn {
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(.black, lineWidth: 1)
+                            .stroke(Color.hBlack, lineWidth: 1)
                             .frame(width: 22, height: 14)
                             .foregroundColor(.hLigthGray)
                     } else {

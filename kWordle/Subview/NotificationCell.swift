@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct NotificationCell: View {
-    
     @EnvironmentObject var notificationManager: NotificationManager
     
     var body: some View {
-        VStack {
+        VStack(spacing: 5) {
             HStack {
                 Toggle("새 문제 알림", isOn: $notificationManager.isNotiOn)
-                    .frame(width: 154)
+                    .frame(width: 134)
                     .toggleStyle(SettingToggleStyle())
             }
             if notificationManager.isNotiOn {
-                DatePicker("", selection: $notificationManager.notiTime,
-                           displayedComponents: .hourAndMinute)
+                HStack {
+                    DatePicker("", selection: $notificationManager.notiTime,
+                               displayedComponents: .hourAndMinute)
+                        .labelsHidden()
+                    Spacer()
+                }
             }
         }
         .alert(isPresented: $notificationManager.isAlertOccurred) {
