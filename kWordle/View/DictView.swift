@@ -20,20 +20,22 @@ struct DictView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                HStack {
-                    Text(answer)
-                        .font(.custom("EBSHMJESaeronR", size: 28))
-                    Spacer()
-                    Button {
-                        actionSheet()
-                    } label: {
-                        copyButton()
+            VStack (spacing: 24) {
+                VStack (spacing: 8) {
+                    HStack {
+                        Text(answer)
+                            .font(.custom("EBSHMJESaeronR", size: 28))
+                        Spacer()
+                        Button {
+                            actionSheet()
+                        } label: {
+                            copyButton()
+                        }
                     }
-                }
-                HStack {
-                    dictMeaning()
-                    Spacer()
+                    HStack {
+                        dictMeaning()
+                        Spacer()
+                    }
                 }
                 HStack {
                     Button {
@@ -71,9 +73,10 @@ struct DictView: View {
         return Text(meaning)
             .font(.custom("EBSHMJESaeronL", size: 15))
             .multilineTextAlignment(.leading)
-            .lineLimit(3)
+            .lineLimit(2)
             .truncationMode(.tail)
-            .frame(minHeight: 50)
+            .allowsTightening(true)
+            
     }
     
     private func copyButton() -> some View {

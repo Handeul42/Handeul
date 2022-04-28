@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "73FD63AC27EDCF920041036F"
-               BuildableName = "&#x1112;&#x1161;&#x11ab;&#x1103;&#x1173;&#x11af;.app"
+               BuildableName = "Handeul.app"
                BlueprintName = "&#xd55c;&#xb4e4;"
                ReferencedContainer = "container:kWordle.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "73FD63AC27EDCF920041036F"
-            BuildableName = "&#x1112;&#x1161;&#x11ab;&#x1103;&#x1173;&#x11af;.app"
+            BuildableName = "Handeul.app"
             BlueprintName = "&#xd55c;&#xb4e4;"
             ReferencedContainer = "container:kWordle.xcodeproj">
          </BuildableReference>
@@ -68,7 +68,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "73FD63AC27EDCF920041036F"
-            BuildableName = "&#x1112;&#x1161;&#x11ab;&#x1103;&#x1173;&#x11af;.app"
+            BuildableName = "Handeul.app"
             BlueprintName = "&#xd55c;&#xb4e4;"
             ReferencedContainer = "container:kWordle.xcodeproj">
          </BuildableReference>

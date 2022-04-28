@@ -11,8 +11,6 @@ struct MainView: View {
     @Environment(\.scenePhase) var scenePhase
     @ObservedObject var mainViewModel: MainViewModel = MainViewModel()
     
-    @State var isHowToPlayPresented: Bool = false
-    @State var isStatisticsPresented: Bool = false
     @State var isSettingPresented: Bool = false
     
     var body: some View {
@@ -26,8 +24,8 @@ struct MainView: View {
                     }
                     mainViewModel.closeInvalidWordWarning()
                 }
-            if isHowToPlayPresented {
-                HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
+            if isSettingPresented {
+                SettingView(isSettingPresented: $isSettingPresented)
                     .zIndex(1)
             }
             if isStatisticsPresented {
@@ -45,9 +43,11 @@ struct MainView: View {
         VStack {
             TitleView()
                 .padding(.top, 35)
-            MenuBar(isHowToPlayPresented: $isHowToPlayPresented,
-                    isStatisticsPresented: $isStatisticsPresented,
-                    isSettingPresented: $isSettingPresented)
+            HStack {
+                SettingButtonView(isSettingPresented: $isSettingPresented)
+                    .padding(.leading, 20)
+                Spacer()
+            }
             AnswerBoardView()
             Spacer()
             if !mainViewModel.game.isGameFinished {
