@@ -122,7 +122,7 @@ struct SettingView: View {
 
 struct SettingButtonView: View {
     @Binding var isSettingPresented: Bool
-    let buttonSize: CGFloat = 24
+    let buttonSize: CGFloat = 32
     var body: some View {
         Button {
             withAnimation {
