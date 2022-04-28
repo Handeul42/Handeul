@@ -10,10 +10,76 @@ import SwiftUI
 struct SettingView: View {
     @Binding var isSettingPresented: Bool
     @State var isHowToPlayPresented: Bool = false
+    @State var isStatisticsPresented: Bool = false
     @ObservedObject private var notificationManager: NotificationManager = NotificationManager()
     
-    var body: some View {
-        ZStack {
+    fileprivate func TitleBar() -> some View {
+        return ZStack {
+            Text("설정")
+                .font(.custom("EBSHMJESaeronR", size: 22))
+            HStack {
+                Spacer()
+                Button {
+                    isSettingPresented.toggle()
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 20))
+                        .padding(.trailing, 24)
+                }
+            }
+        }
+    }
+    
+    fileprivate func howToPlayButton() -> Button<Text> {
+        return Button {
+            isHowToPlayPresented.toggle()
+        } label: {
+            Text("풀이 방법")
+                .foregroundColor(.hBlack)
+        }
+    }
+    
+    fileprivate func statisticButton() -> Button<Text> {
+        return Button {
+            isStatisticsPresented.toggle()
+        } label: {
+            Text("통계")
+                .foregroundColor(.hBlack)
+        }
+    }
+    
+    fileprivate func appReviewButton() -> Button<Text> {
+        return Button {
+            if let appstoreURL = URL(string: "https://apps.apple.com/us/app/한들/id1619947572") {
+                var components = URLComponents(url: appstoreURL, resolvingAgainstBaseURL: false)
+                components?.queryItems = [
+                    URLQueryItem(name: "action", value: "write-review")
+                ]
+                guard let writeReviewURL = components?.url else {
+                    return
+                }
+                UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+            }
+        } label: {
+            Text("평가 하기")
+                .foregroundColor(.hBlack)
+        }
+    }
+    
+    fileprivate func SettingContents() -> some View {
+        return VStack(alignment: .leading, spacing: 16) {
+            NotificationCell()
+                .environmentObject(notificationManager)
+            howToPlayButton()
+            statisticButton()
+            appReviewButton()
+            Text("편지 보내기")
+            Spacer()
+        }
+    }
+    
+    fileprivate func SettingBackgrounds() -> some View {
+        Group {
             Color.black.ignoresSafeArea()
                 .opacity(0.5)
                 .onTapGesture {
@@ -22,43 +88,32 @@ struct SettingView: View {
             RoundedRectangle(cornerRadius: 10)
                 .frame(width: 320, height: 420)
                 .foregroundColor(.hLigthGray)
-            VStack {
-                Text("설정")
-                    .foregroundColor(getColor(of: .black))
-                    .font(.custom("EBSHMJESaeronR", size: 20))
-                VStack (alignment: .leading, spacing: 8) {
-                    NotificationCell()
-                        .environmentObject(notificationManager)
-                    Button {
-                        isHowToPlayPresented.toggle()
-                    } label: {
-                        Text("풀이 방법")
-                            .foregroundColor(.hBlack)
-                    }
-                    Button {
-                        if let appstoreURL = URL(string: "https://apps.apple.com/us/app/한들/id1619947572") {
-                            var components = URLComponents(url: appstoreURL, resolvingAgainstBaseURL: false)
-                            components?.queryItems = [
-                              URLQueryItem(name: "action", value: "write-review")
-                            ]
-                            guard let writeReviewURL = components?.url else {
-                                return
-                            }
-                            UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
-                        }
-                    } label: {
-                        Text("평가 하기")
-                            .foregroundColor(.hBlack)
-                    }
-                    Text("편지 보내기")
+        }
+    }
+    
+    var body: some View {
+        ZStack {
+            SettingBackgrounds()
+            Group {
+                VStack(spacing: 0) {
+                    TitleBar()
+                        .foregroundColor(.hBlack)
+                        .padding(.top, 24)
+                    Spacer()
+                    SettingContents()
+                        .frame(width: 134, height: 228)
+                        .font(.custom("EBSHMJESaeronL", size: 16))
                     Spacer()
                 }
-                .frame(width: 154, height: 228)
-                .font(.custom("EBSHMJESaeronL", size: 16))
             }
+            .frame(width: 320, height: 420)
             if isHowToPlayPresented {
                 HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
                     .zIndex(1)
+            }
+            if isStatisticsPresented {
+                StatisticsView(isStatisticsPresented: $isStatisticsPresented)
+                    .zIndex(2)
             }
         }
         
@@ -67,7 +122,7 @@ struct SettingView: View {
 
 struct SettingButtonView: View {
     @Binding var isSettingPresented: Bool
-    let buttonSize: CGFloat = 24 * currentScreenRatio()
+    let buttonSize: CGFloat = 24
     var body: some View {
         Button {
             withAnimation {
