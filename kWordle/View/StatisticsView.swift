@@ -22,28 +22,44 @@ struct StatisticsView: View {
                     }
                 }
             VStack(spacing: 0) {
-                Text("통계")
-                    .font(.custom("EBSHMJESaeronR", size: 22))
-                    .padding(20)
-
+                ZStack {
+                    HStack {
+                        Spacer()
+                        Button {
+                            isStatisticsPresented.toggle()
+                        } label: {
+                            Image(systemName: "xmark")
+                                .font(.system(size: 20))
+                                .padding([.top, .trailing], 24)
+                                .foregroundColor(.hBlack)
+                        }
+                    }
+                    Text("통계")
+                        .font(.custom("EBSHMJESaeronR", size: 22))
+                        .padding(.top, 24)
+                }
+                
                 if vm.statistics.totalPlayed == 0 {
                     dataUnavailable
                 } else {
                     statBoard
-                        .padding(10)
+                        .padding(.bottom, 24)
                     barGraph
-                        .padding(30)
                 }
             }
-            .padding()
-            .background(Color.hLigthGray.cornerRadius(8))
+            .frame(width: 320, height: 420, alignment: .top)
+            .background(Color.hLigthGray.cornerRadius(10))
+
         }
     }
     
     private var dataUnavailable: some View {
-        Text("데이터가 없습니다.")
-            .font(.custom("EBSHMJESaeronR", size: 22))
-            .padding(30)
+        VStack {
+            Spacer()
+            Text("데이터가 없습니다.")
+                .font(.custom("EBSHMJESaeronR", size: 22))
+            Spacer()
+        }
     }
     
     private var barGraph: some View {
@@ -58,7 +74,7 @@ struct StatisticsView: View {
                             .frame(width: barLength(of: idx), height: nil)
                         Text("\(vm.statistics.playerTryForWin[idx])")
                             .foregroundColor(.hWhite)
-                            .padding(6)
+                            .padding(4)
                     }.background(Color.hRed)
                 }
             }
@@ -78,13 +94,13 @@ struct StatisticsView: View {
         if vm.statistics.getTryRatio(idx) == 0 {
             return 1
         }
-        return uiSize.width * 0.55 * vm.statistics.getTryRatio(idx)
+        return 190 * vm.statistics.getTryRatio(idx)
     }
     
     private func showStat(of label: String, number: String) -> some View {
         VStack(spacing: 8) {
             Text(number)
-                .font(.custom("EBSHMJESaeronR", size: 24))
+                .font(.custom("EBSHMJESaeronR", size: 16))
             Text(label)
                 .font(.custom("EBSHMJESaeronL", size: 16))
         }
