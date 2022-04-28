@@ -35,7 +35,7 @@ struct AnswerBoardView: View {
         VStack(spacing: -2) {
             horline(width: 3)
                 .padding([.bottom], 5)
-            ForEach(viewModel.rows, id: \.self) { row in
+            ForEach(viewModel.game.answerBoard, id: \.self) { row in
                 horline(width: 2)
                 HStack {
                     ForEach(row) { btn in

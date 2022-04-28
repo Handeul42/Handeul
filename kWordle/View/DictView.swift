@@ -37,7 +37,7 @@ struct DictView: View {
                         Spacer()
                     }
                 }
-                HStack{
+                HStack {
                     Button {
                         viewModel.startNewGame()
                     } label: {
@@ -45,7 +45,9 @@ struct DictView: View {
                     }
                     Spacer()
                     Button {
-                        viewModel.startNewGame()
+                        withAnimation {
+                            viewModel.startNewGame()
+                        }
                     } label: {
                         newGameButtonWithAD()
                     }

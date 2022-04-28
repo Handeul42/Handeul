@@ -10,42 +10,14 @@ import CoreData
 import SwiftUI
 
 class WordDictManager {
+    static let shared = WordDictManager()
+    let wordDictFiveJamo: [WordDict]
     
-    init() {
+    private init() {
+        self.wordDictFiveJamo = Self.makeWordDict()
     }
     
-    static func initWordDB() {
-        var words: String = ""
-        let persistenceController = PersistenceController()
-        if let path = Bundle.main.path(forResource: "5Jamo.tsv", ofType: nil) {
-            do {
-                words = try String(contentsOfFile: path, encoding: .utf8)
-            } catch {
-                print(error)
-            }
-        } else {
-            print("Cannot Find Path")
-        }
-        let rows = words.components(separatedBy: "\n")
-        for row in rows where row.isEmpty == false {
-            let columns = row.components(separatedBy: "\t")
-            let word = FiveWords(context: persistenceController.container.viewContext)
-            word.word = columns[0]
-            word.jamo = columns[1]
-            word.dict = columns[2]
-        }
-        do {
-            try persistenceController.container.viewContext.save()
-        } catch {
-            print(error.localizedDescription)
-        }
-        UserDefaults.standard.set(true, forKey: "isDBinited")
-    }
-    
-    func readDB() {
-        
-    }
-    static func makeWordDict() -> [WordDict] {
+    private static func makeWordDict() -> [WordDict] {
         var dict = [WordDict]()
         var words: String = ""
         
@@ -66,11 +38,4 @@ class WordDictManager {
         }
         return dict
     }
-
-//    func getWordOfToday() -> String {
-//
-//    }
-}
-func saveDataToCoreData() {
-    
 }

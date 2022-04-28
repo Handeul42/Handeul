@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct KeyboardView: View {
-    @EnvironmentObject var keyboardViewModel: KeyboardViewModel
     @EnvironmentObject var viewModel: MainViewModel
-    
     
     private let buttonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44, height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
     private let extraButtonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44 * 1.44, height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
@@ -47,7 +45,7 @@ struct KeyboardView: View {
     var body: some View {
         VStack {
             HStack {
-                ForEach(keyboardViewModel.firstRow, id: \.self) { btn in
+                ForEach(viewModel.game.keyBoard.firstRow, id: \.self) { btn in
                     Button {
                         submitKeyInput(btn.character)
                     } label: {
@@ -63,7 +61,7 @@ struct KeyboardView: View {
                 .padding([.horizontal], widthPadding)
             }
             HStack {
-                ForEach(keyboardViewModel.secondRow, id: \.self) { btn in
+                ForEach(viewModel.game.keyBoard.secondRow, id: \.self) { btn in
                     Button {
                         submitKeyInput(btn.character)
                     } label: {
@@ -73,7 +71,7 @@ struct KeyboardView: View {
                 .padding([.horizontal], widthPadding)
             }
             HStack {
-                ForEach(keyboardViewModel.thirdRow, id: \.self) { btn in
+                ForEach(viewModel.game.keyBoard.thirdRow, id: \.self) { btn in
                     Button {
                         submitKeyInput(btn.character)
                     } label: {
