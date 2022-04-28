@@ -33,7 +33,9 @@ struct HowToPlayView: View {
                     HStack {
                         Spacer()
                         Button {
-                            isHowToPlayPresented.toggle()
+                            withAnimation {
+                                isHowToPlayPresented.toggle()
+                            }
                         } label: {
                             Image(systemName: "xmark")
                                 .font(.system(size: 20))

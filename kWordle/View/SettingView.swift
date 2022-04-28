@@ -37,7 +37,9 @@ struct SettingView: View {
     
     fileprivate func howToPlayButton() -> Button<Text> {
         return Button {
-            isHowToPlayPresented.toggle()
+            withAnimation {
+                isHowToPlayPresented.toggle()
+            }
         } label: {
             Text("풀이 방법")
                 .foregroundColor(.hBlack)
@@ -46,7 +48,9 @@ struct SettingView: View {
     
     fileprivate func statisticButton() -> Button<Text> {
         return Button {
-            isStatisticsPresented.toggle()
+            withAnimation {
+                isStatisticsPresented.toggle()
+            }
         } label: {
             Text("통계")
                 .foregroundColor(.hBlack)
