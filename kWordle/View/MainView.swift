@@ -28,10 +28,6 @@ struct MainView: View {
                 SettingView(isSettingPresented: $isSettingPresented)
                     .zIndex(1)
             }
-            if isStatisticsPresented {
-                StatisticsView(isStatisticsPresented: $isStatisticsPresented)
-                    .zIndex(2)
-            }
             if mainViewModel.isInvalidWordWarningPresented == true {
                 showToast("유효하지 않은 단어입니다.") {
                     mainViewModel.closeInvalidWordWarning()

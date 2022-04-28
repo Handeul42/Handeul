@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingView: View {
     @Binding var isSettingPresented: Bool
     @State var isHowToPlayPresented: Bool = false
+    @State var isStatisticsPresented: Bool = false
     @ObservedObject private var notificationManager: NotificationManager = NotificationManager()
     
     var body: some View {
@@ -26,7 +27,7 @@ struct SettingView: View {
                 Text("설정")
                     .foregroundColor(getColor(of: .black))
                     .font(.custom("EBSHMJESaeronR", size: 20))
-                VStack (alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 8) {
                     NotificationCell()
                         .environmentObject(notificationManager)
                     Button {
@@ -34,6 +35,11 @@ struct SettingView: View {
                     } label: {
                         Text("풀이 방법")
                             .foregroundColor(.hBlack)
+                    }
+                    Button {
+                        isStatisticsPresented.toggle()
+                    } label: {
+                        Text("통계")
                     }
                     Button {
                         if let appstoreURL = URL(string: "https://apps.apple.com/us/app/한들/id1619947572") {
@@ -59,6 +65,9 @@ struct SettingView: View {
             if isHowToPlayPresented {
                 HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
                     .zIndex(1)
+            }
+            if isStatisticsPresented {
+                StatisticsView(isStatisticsPresented: $isStatisticsPresented)
             }
         }
         

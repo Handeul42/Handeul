@@ -11,7 +11,7 @@ import SwiftUI
 
 struct Statistics {
     
-    private let currentGames = RealmManager.shared.getAllGame().sorted(byKeyPath: "timestamp", ascending: false)
+    private let currentGames = RealmManager.shared.getAllGame().sorted(byKeyPath: "timestamp", ascending: false).where({ $0.isGameFinished == true })
     
     private(set) var totalPlayed: Int = 0
     private(set) var win: Int = 0
@@ -22,7 +22,7 @@ struct Statistics {
     
     init() {
         guard !currentGames.isEmpty else { return }
-        totalPlayed = currentGames.filter({ $0.isGameFinished == true }).count
+        totalPlayed = currentGames.count
         win = currentGames.filter({ $0.didPlayerWin == true }).count
         currentWinStreak = Self.getCurrentWinStreak(currentGames)
         maxWinStreak = Self.getMaxWinStreak(currentGames)
@@ -55,11 +55,15 @@ struct Statistics {
     
     static private func getMaxWinStreak(_ games: Results<PersistedGame>) -> Int {
         var maxWinStreak = 0
+        var currentWinStreak = 0
         for game in games {
-            if game.didPlayerWin {
-                maxWinStreak += 1
+            if game.didPlayerWin == true {
+                currentWinStreak += 1
+                if currentWinStreak > maxWinStreak {
+                    maxWinStreak = currentWinStreak
+                }
             } else {
-                maxWinStreak = 0
+                currentWinStreak = 0
             }
         }
         return maxWinStreak
