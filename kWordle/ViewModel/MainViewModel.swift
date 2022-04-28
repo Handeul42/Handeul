@@ -54,6 +54,7 @@ class MainViewModel: ObservableObject {
         if game.currentColumn == 5 && game.currentRow != 6 {
             if game.isCurrentWordInDict() == false {
                 presentInvalidWordWarning()
+                print(self.isInvalidWordWarningPresented)
                 HapticsManager.shared.notification(type: .warning)
                 return
             }
@@ -85,6 +86,7 @@ class MainViewModel: ObservableObject {
     
     public func closeInvalidWordWarning() {
         isInvalidWordWarningPresented = false
+        print(isInvalidWordWarningPresented)
     }
     
     func generateIntToNthString(_ nth: Int) -> String {

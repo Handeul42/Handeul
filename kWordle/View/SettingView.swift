@@ -108,7 +108,9 @@ struct SettingView: View {
             Color.black.ignoresSafeArea()
                 .opacity(0.5)
                 .onTapGesture {
-                    isSettingPresented.toggle()
+                    withAnimation {
+                        isSettingPresented.toggle()
+                    }
                 }
             RoundedRectangle(cornerRadius: 10)
                 .frame(width: 320, height: 420)

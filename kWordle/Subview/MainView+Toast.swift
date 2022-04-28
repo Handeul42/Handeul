@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ToastView: View {
+    
+    @Binding var presentStatus: Bool
+    
     let toastText: String
     var body: some View {
         Text(toastText)
@@ -18,14 +21,19 @@ struct ToastView: View {
                 .opacity(0.95)
                 .cornerRadius(8)
             )
+            .onTapGesture {
+                withAnimation {
+                    self.presentStatus = false
+                }
+            }
     }
 }
 extension View {
-    func showToast(_ message: String, changeStatusBy: @escaping () -> Void) -> some View {
-        ToastView(toastText: message)
+    func showToast(_ message: String, status: Binding<Bool>, changeStatusBy: @escaping () -> Void) -> some View {
+        ToastView(presentStatus: status, toastText: message)
             .zIndex(2)
             .onAppear {
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
                     withAnimation {
                         changeStatusBy()
                     }
