@@ -41,9 +41,11 @@ struct MainView: View {
                 .padding(.top, 35 * currentScreenRatio())
             HStack {
                 SettingButtonView(isSettingPresented: $isSettingPresented)
-                    .padding(.leading, 20)
                 Spacer()
+                GameCountView
             }
+            .padding(.horizontal, 20)
+            .offset(y: 5)
             AnswerBoardView()
             Spacer()
             if !mainViewModel.game.isGameFinished {
@@ -53,5 +55,21 @@ struct MainView: View {
             }
             Spacer()
         }.environmentObject(mainViewModel)
+    }
+    
+    private var GameCountView: some View {
+        HStack(alignment: .bottom) {
+            Text("No.")
+                .font(.system(size: 18))
+            ZStack {
+                Text("12")
+                    .font(.system(size: 28))
+                Rectangle()
+                    .frame(width: 56, height: 2)
+                    .offset(y: 16)
+            }
+            .frame(width: 56, height: 32)
+        }
+        .foregroundColor(.hRed)
     }
 }
