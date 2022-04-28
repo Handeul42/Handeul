@@ -167,7 +167,7 @@ class MainViewModel: ObservableObject {
     }
     
     func startNewGame() {
-        rewardADViewController.doSomething() { [self] ret in
+        rewardADViewController.doSomething() { [self] _ in
             if rewardADViewController.didRewardUser(with: GADAdReward()) {
                 game.wordDict = WordDictManager.makeWordDict()
                 let randomAnswer = game.wordDict[Int.random(in: 0...game.wordDict.count) % game.wordDict.count].jamo
