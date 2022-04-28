@@ -30,13 +30,13 @@ struct StatisticsView: View {
                         } label: {
                             Image(systemName: "xmark")
                                 .font(.system(size: 20))
-                                .padding([.top, .trailing], 24)
+                                .padding(24)
                                 .foregroundColor(.hBlack)
                         }
                     }
                     Text("통계")
                         .font(.custom("EBSHMJESaeronR", size: 22))
-                        .padding(.top, 24)
+                        .padding(24)
                 }
                 
                 if vm.statistics.totalPlayed == 0 {
