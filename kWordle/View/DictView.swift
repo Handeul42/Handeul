@@ -20,8 +20,8 @@ struct DictView: View {
     
     var body: some View {
         ZStack {
-            VStack (spacing: 24) {
-                VStack (spacing: 8) {
+            VStack(spacing: 24) {
+                VStack(spacing: 8) {
                     HStack {
                         Text(answer)
                             .font(.custom("EBSHMJESaeronR", size: 28))

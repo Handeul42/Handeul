@@ -12,7 +12,7 @@ struct ToastView: View {
     var body: some View {
         Text(toastText)
             .font(.custom("EBSHMJESaeronR", size: 16))
-            .foregroundColor(Color.black)
+            .foregroundColor(Color.hBlack)
             .padding()
             .background(Color.hLigthGray
                 .opacity(0.95)

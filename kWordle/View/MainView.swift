@@ -30,6 +30,7 @@ struct MainView: View {
             }
             if shouldHowToPlayPresented {
                 HowToPlayView(isHowToPlayPresented: $shouldHowToPlayPresented)
+                    .zIndex(2)
             }
             if mainViewModel.isInvalidWordWarningPresented == true {
                 showToast("유효하지 않은 단어입니다.") {

@@ -25,7 +25,9 @@ struct SettingView: View {
             HStack {
                 Spacer()
                 Button {
-                    isSettingPresented.toggle()
+                    withAnimation {
+                        isSettingPresented.toggle()
+                    }
                 } label: {
                     Image(systemName: "xmark")
                         .font(.system(size: 20))
