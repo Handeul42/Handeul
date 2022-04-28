@@ -102,7 +102,7 @@ struct StatisticsView: View {
     private func showStat(of label: String, number: String) -> some View {
         VStack(spacing: 8) {
             Text(number)
-                .font(.custom("EBSHMJESaeronR", size: 16))
+                .font(.system(size: 16))
             Text(label)
                 .font(.custom("EBSHMJESaeronL", size: 16))
         }

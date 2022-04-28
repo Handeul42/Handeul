@@ -20,8 +20,8 @@ struct DictView: View {
     
     var body: some View {
         ZStack {
-            VStack (spacing: 24) {
-                VStack (spacing: 8) {
+            VStack(spacing: 24) {
+                VStack(spacing: 8) {
                     HStack {
                         Text(answer)
                             .font(.custom("EBSHMJESaeronR", size: 28))
@@ -84,12 +84,12 @@ struct DictView: View {
                 .foregroundColor(.hLigthGray)
             HStack {
                 Text("공유")
-                    .foregroundColor(.black)
+                    .foregroundColor(.hBlack)
                     .font(.custom("EBSHMJESaeronR", size: 17))
                 Image(systemName: "arrowshape.turn.up.left")
                     .resizable()
                     .frame(width: 19, height: 15)
-                    .foregroundColor(.black)
+                    .foregroundColor(.hBlack)
             }
         }
     }
@@ -107,10 +107,10 @@ struct DictView: View {
                 .foregroundColor(.hLigthGray)
             VStack {
                 Text("내일의 문제")
-                    .foregroundColor(.black)
+                    .foregroundColor(.hBlack)
                     .font(.custom("EBSHMJESaeronR", size: 17))
                 Text(countDownString(from: Date() + 1))
-                    .foregroundColor(.black)
+                    .foregroundColor(.hBlack)
                     .onAppear {
                         _ = timer
                     }
@@ -138,7 +138,7 @@ struct DictView: View {
                 .frame(width: 132, height: 61)
                 .foregroundColor(.hLigthGray)
             Text("새문제 받기")
-                .foregroundColor(.black)
+                .foregroundColor(.hBlack)
                 .font(.custom("EBSHMJESaeronR", size: 17))
             ZStack {
                 Rectangle()
