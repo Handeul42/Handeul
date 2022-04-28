@@ -17,28 +17,29 @@ class MainViewModel: ObservableObject {
     
     let rewardADViewController = RewardedADViewController()
     init () {
+        
         let today = getTodayDateString()
         let lastDate = UserDefaults.standard.string(forKey: "lastDate")
         if today != lastDate {
             UserDefaults.standard.set(today, forKey: "lastDate")
-            UserDefaults.standard.set(1,forKey: "todayGameCount")
+            UserDefaults.standard.set(1, forKey: "todayGameCount")
         }
+        var prev: Int = 0
         if let previousGame = RealmManager.shared.getPreviousGame() {
             game = Game(persistedObject: previousGame)
+            for _ in 0..<game.gameNumber {
+                var tempAnswer = generator.next()
+                if prev == Int(tempAnswer) {
+                    tempAnswer = generator.next()
+                }
+                prev = Int(tempAnswer)
+            }
         } else {
             game = Game(answer: todayAnswer())
         }
         print(game.answer)
         rewardADViewController.loadAD()
-        var prev: String = ""
-        for _ in 0...20 {
-            var randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
-            if prev == randomAnswer {
-                randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
-            }
-            prev = randomAnswer
-            print(randomAnswer)
-        }
+
     }
     
     // MARK: Public Functions
@@ -136,9 +137,9 @@ class MainViewModel: ObservableObject {
     func generateString() -> String {
         var ret: String = ""
         let date: String = generateDateToString() // 오늘의 날짜(일월 이십일일)
-        let title: String = generateIntToNthString(122) // 첫번째 한들 (1/6)
+        var title: String = generateIntToNthString(game.gameNumber) // 첫번째 한들 (1/6)
         let appAddress: String = "https://apple.co/3rWFLqZ"
-        
+        title += " (\(game.currentRow + 1)/6)"
         for row in game.answerBoard {
             for char in row {
                 switch char.status {
@@ -176,7 +177,7 @@ class MainViewModel: ObservableObject {
     private func userLog(_ state: String) {
         let username = UIDevice.current.name
         let deivceUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
-        Analytics.logEvent(state + "-" + username + "-" + deivceUUID, parameters: nil)
+        Analytics.logEvent(state + "-" + username + "-" + deivceUUID, parameters: [:])
     }
 }
 
@@ -185,7 +186,6 @@ func todayAnswer() -> String {
     let todayAnswer = wordDict[Int(generator.next()) % wordDict.count].jamo
     return todayAnswer
 }
-
 
 func DateToSeed() -> Int {
     let date = Date()
