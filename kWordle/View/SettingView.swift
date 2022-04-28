@@ -12,6 +12,7 @@ struct SettingView: View {
     @State var isHowToPlayPresented: Bool = false
     @State var isStatisticsPresented: Bool = false
     @State var isMailViewPresented: Bool = false
+    @State var isNoMailWarningPresented: Bool = false
     @ObservedObject private var notificationManager: NotificationManager = NotificationManager()
     @State private var mailData = ComposeMailData(subject: "한들에 대하여 :",
                                                   recipients: ["42handeul@gmail.com"],
@@ -79,16 +80,23 @@ struct SettingView: View {
     
     fileprivate func sendMailButton() -> some View {
         return Button {
-            withAnimation {
-                isMailViewPresented.toggle()
+            if MailView.canSendMail {
+                withAnimation {
+                    isMailViewPresented.toggle()
+                }
+            } else {
+                isNoMailWarningPresented.toggle()
             }
+            
         } label: {
-            Text(MailView.canSendMail ? "편지 보내기" : "편지 보내기(메일X)")
+            Text("편지 보내기")
                 .foregroundColor(.hBlack)
-        }.disabled(!MailView.canSendMail)
-            .sheet(isPresented: $isMailViewPresented) {
+        }.sheet(isPresented: $isMailViewPresented) {
                 MailView(data: $mailData) { _ in }
-            }
+        }.alert(isPresented: $isNoMailWarningPresented) {
+            Alert(title: Text("편지를 보낼 수 없습니다"),
+                  message: Text("메일 앱에서 이메일을 연동해주세요."))
+        }
     }
     
     fileprivate func SettingContents() -> some View {
