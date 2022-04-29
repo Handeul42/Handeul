@@ -14,14 +14,17 @@ var generator = RandomNumberGeneratorWithSeed(seed: 1)
 class MainViewModel: ObservableObject {
     @Published var game: Game
     @Published var isInvalidWordWarningPresented: Bool = false
-    
     let rewardADViewController = RewardedADViewController()
+    
     init () {
         let today = getTodayDateString()
         let lastDate = UserDefaults.standard.string(forKey: "lastDate")
         if today != lastDate {
             UserDefaults.standard.set(today, forKey: "lastDate")
             UserDefaults.standard.set(1, forKey: "todayGameCount")
+            game = Game(answer: todayAnswer())
+            print(game.answer)
+            return
         }
         var prev: Int = 0
         if let previousGame = RealmManager.shared.getPreviousGame() {
@@ -172,9 +175,8 @@ class MainViewModel: ObservableObject {
     
     // MARK: Private Functions
     private func userLog(_ state: String) {
-        let username = UIDevice.current.name
         let deivceUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
-        Analytics.logEvent(state + "-" + username + "-" + deivceUUID, parameters: [:])
+        Analytics.logEvent(state + "-" + deivceUUID, parameters: [:])
     }
 }
 

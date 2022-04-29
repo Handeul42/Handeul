@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVFoundation
 import UIKit
 
 class HapticsManager {
@@ -23,6 +24,10 @@ class HapticsManager {
     func impact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
         let generator = UIImpactFeedbackGenerator(style: style)
         generator.impactOccurred()
+    }
+    
+    func playSound(id: SystemSoundID) {
+        AudioServicesPlaySystemSound(id)
     }
 }
 

@@ -40,6 +40,7 @@ struct KeyboardView: View {
     }
     
     private func submitKeyInput(_ character: String) {
+        HapticsManager.shared.playSound(id: 1123) // Press Click
         viewModel.appendReceivedCharacter(of: character)
     }
     var body: some View {
@@ -56,7 +57,12 @@ struct KeyboardView: View {
                     }
                     .padding([.horizontal], widthPadding)
                     Button {
-                        viewModel.deleteOneCharacter()
+                        HapticsManager.shared.playSound(id: 1155) // Press Delete
+                        if viewModel.game.currentColumn == 0 {
+                            HapticsManager.shared.notification(type: .warning)
+                        } else {
+                            viewModel.deleteOneCharacter()
+                        }
                     } label: {
                         keyboardDeleteButton()
                     }
@@ -82,6 +88,7 @@ struct KeyboardView: View {
                     }
                     .padding([.horizontal], widthPadding)
                     Button {
+                        HapticsManager.shared.playSound(id: 1156) // Press Enter
                         withAnimation {
                             viewModel.submitAnswer()
                         }
