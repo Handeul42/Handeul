@@ -92,6 +92,8 @@ class MainViewModel: ObservableObject {
         
         if nth == 1 {
             return "첫"
+        } else if nth == 20 {
+            return "스무"
         } else {
             if nth / 100 != 0 {
                 ret += int100ToStringDict[nth / 100 - 1]
@@ -160,11 +162,11 @@ class MainViewModel: ObservableObject {
                     randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
                 }
                 let newGame = Game(answer: randomAnswer)
-                print(newGame.answer)
+                print("Answer: " + newGame.answer)
                 self.game = newGame
             }
-            rewardADViewController.loadAD()
         }
+        
     }
     
     // MARK: Private Functions

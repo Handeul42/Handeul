@@ -73,8 +73,7 @@ struct DictView: View {
             .multilineTextAlignment(.leading)
             .lineLimit(2)
             .truncationMode(.tail)
-            .allowsTightening(true)
-            
+            .frame(minHeight: 35)
     }
     
     private func copyButton() -> some View {
