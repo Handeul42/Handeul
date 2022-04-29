@@ -10,7 +10,7 @@ import SwiftUI
 import Firebase
 import GoogleMobileAds
 
-var generator = RandomNumberGeneratorWithSeed(seed: 1)
+var generator = RandomNumberGeneratorWithSeed(seed: DateToSeed())
 class MainViewModel: ObservableObject {
     @Published var game: Game
     @Published var isInvalidWordWarningPresented: Bool = false
@@ -22,20 +22,13 @@ class MainViewModel: ObservableObject {
         if today != lastDate {
             UserDefaults.standard.set(today, forKey: "lastDate")
             UserDefaults.standard.set(1, forKey: "todayGameCount")
+            UserDefaults.standard.set([], forKey: "todayAnswers")
             game = Game(answer: todayAnswer())
             print(game.answer)
             return
         }
-        var prev: Int = 0
         if let previousGame = RealmManager.shared.getPreviousGame() {
             game = Game(persistedObject: previousGame)
-            for _ in 0..<game.gameNumber {
-                var tempAnswer = generator.next()
-                if prev == Int(tempAnswer) {
-                    tempAnswer = generator.next()
-                }
-                prev = Int(tempAnswer)
-            }
         } else {
             game = Game(answer: todayAnswer())
         }
@@ -163,16 +156,25 @@ class MainViewModel: ObservableObject {
     func startNewGame() {
         rewardADViewController.doSomething() { [self] _ in
             if rewardADViewController.didRewardUser(with: GADAdReward()) {
-                var randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
-                if self.game.answer == randomAnswer {
-                    randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
+                
+                for _ in 0...100 {
+                    var randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
+                    var answers = UserDefaults.standard.stringArray(forKey: "todayAnswers")!
+                    while answers.contains(randomAnswer) {
+                        randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
+                        if answers.count % 140 == 0 {
+                            generator = RandomNumberGeneratorWithSeed(seed: Int(generator.next()))
+                        }
+                        answers.append(randomAnswer)
+                    }
+                    let newGame = Game(answer: randomAnswer)
+                    print("Answer: " + newGame.answer)
+                    UserDefaults.standard.set(answers, forKey: "todayAnswers")
+                    self.game = newGame
+                    
                 }
-                let newGame = Game(answer: randomAnswer)
-                print("Answer: " + newGame.answer)
-                self.game = newGame
             }
         }
-        
     }
     
     // MARK: Private Functions
