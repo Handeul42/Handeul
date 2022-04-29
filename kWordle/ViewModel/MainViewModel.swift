@@ -22,15 +22,14 @@ class MainViewModel: ObservableObject {
         if today != lastDate {
             UserDefaults.standard.set(today, forKey: "lastDate")
             UserDefaults.standard.set(1, forKey: "todayGameCount")
-            UserDefaults.standard.set([], forKey: "todayAnswers")
             game = Game(answer: todayAnswer())
-            print(game.answer)
+            print("TodayGameAnwer: " + game.answer)
             return
         }
         if let previousGame = RealmManager.shared.getPreviousGame() {
             game = Game(persistedObject: previousGame)
         } else {
-            game = Game(answer: todayAnswer())
+            game = Game(answer: randomAnswerGenerator())
         }
         print(game.answer)
         rewardADViewController.loadAD()
@@ -90,9 +89,9 @@ class MainViewModel: ObservableObject {
         var ret = ""
         
         if nth == 1 {
-            return "첫"
+            return "첫 번째 한들"
         } else if nth == 20 {
-            return "스무"
+            return "스무 번째 한들"
         } else {
             if nth / 100 != 0 {
                 ret += int100ToStringDict[nth / 100 - 1]
@@ -122,9 +121,9 @@ class MainViewModel: ObservableObject {
     }
     
     func generateDateToString() -> String {
-        let date = Date()
-        let todayMonth = generateIntToString(Calendar.current.dateComponents([.month], from: date).month!) + "월 "
-        let todayDay = generateIntToString(Calendar.current.dateComponents([.day], from: date).day!) + "일"
+        let lastDate = UserDefaults.standard.string(forKey: "lastDate") ?? "00-00"
+        let todayMonth = generateIntToString(Int(lastDate.components(separatedBy: "-")[1])!) + "월 "
+        let todayDay = generateIntToString(Int(lastDate.components(separatedBy: "-")[2])!) + "일"
         
         return todayMonth + todayDay
     }
@@ -156,19 +155,10 @@ class MainViewModel: ObservableObject {
     func startNewGame() {
         rewardADViewController.doSomething() { [self] _ in
             if rewardADViewController.didRewardUser(with: GADAdReward()) {
-                var randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
-                var answers = UserDefaults.standard.stringArray(forKey: "todayAnswers")!
-                while answers.contains(randomAnswer) {
-                    randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
-                    if answers.count % 140 == 0 {
-                        generator = RandomNumberGeneratorWithSeed(seed: Int(generator.next()))
-                    }
-                    answers.append(randomAnswer)
-                }
+                let randomAnswer = randomAnswerGenerator()
                 let newGame = Game(answer: randomAnswer)
-                print("Answer: " + newGame.answer)
-                UserDefaults.standard.set(answers, forKey: "todayAnswers")
                 self.game = newGame
+                self.game.saveCurrentGame()
             }
         }
     }
@@ -181,9 +171,29 @@ class MainViewModel: ObservableObject {
 }
 
 func todayAnswer() -> String {
-    let wordDict = WordDictManager.shared.wordDictFiveJamo
-    let todayAnswer = wordDict[Int(generator.next()) % wordDict.count].jamo
-    return todayAnswer
+    generator = RandomNumberGeneratorWithSeed(seed: DateToSeed())
+    let wordDictCount = WordDictManager.shared.wordDictFiveJamo.count
+    var randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % wordDictCount].jamo
+    var answers : [String] = []
+    answers.append(randomAnswer)
+    UserDefaults.standard.set(answers, forKey: "todayAnswers")
+    return randomAnswer
+}
+
+func randomAnswerGenerator() -> String {
+    let wordDictCount = WordDictManager.shared.wordDictFiveJamo.count
+    var randomNumber = Int(generator.next())
+    var randomAnswer = WordDictManager.shared.wordDictFiveJamo[randomNumber % wordDictCount].jamo
+    var answers = UserDefaults.standard.stringArray(forKey: "todayAnswers") ?? []
+    while answers.contains(randomAnswer) {
+        generator = RandomNumberGeneratorWithSeed(seed: randomNumber)
+        randomNumber = Int(generator.next())
+        randomAnswer = WordDictManager.shared.wordDictFiveJamo[randomNumber % wordDictCount].jamo
+    }
+    answers.append(randomAnswer)
+    print("Answer: " + randomAnswer)
+    UserDefaults.standard.set(answers, forKey: "todayAnswers")
+    return randomAnswer
 }
 
 func DateToSeed() -> Int {
