@@ -29,6 +29,7 @@ class RewardedADViewController: UIViewController, GADFullScreenContentDelegate {
             let root = UIApplication.shared.windows.first?.rootViewController
             rewardedInterstitialAD?.present(fromRootViewController: root!, userDidEarnRewardHandler: {
                 print("earn reward")
+                self.loadAD()
                 completionHandler(true)
             })
         } else {
@@ -39,44 +40,11 @@ class RewardedADViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func didRewardUser(with reward: GADAdReward) -> Bool {
-        print("didRewardUser")
         loadAD()
         return true
     }
     
-    func didStartVideo() {
-        print("didStartVideo")
-    }
-    
-    func didEndVideo() {
-        print("didEndVideo")
-        loadAD()
-    }
-    
-    func reportImpression() {
-        print("reportImpression")
-    }
-    
-    func reportClick() {
-        print("reportClick")
-    }
-    
-    func willPresentFullScreenView() {
-        print("willPresentFullScreenView")
-    }
-    
-    func didFailToPresentWithError(_ error: Error) {
-        print("didFailToPresentWithError")
-        loadAD()
-    }
-    
-    func willDismissFullScreenView() {
-        print("willDismissFullScreenView")
-        loadAD()
-    }
-    
-    func didDismissFullScreenView() {
-        print("didDismissFullScreenView")
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         loadAD()
     }
 }
