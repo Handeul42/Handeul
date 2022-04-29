@@ -13,11 +13,15 @@ struct SettingView: View {
     @State var isStatisticsPresented: Bool = false
     @State var isMailViewPresented: Bool = false
     @State var isNoMailWarningPresented: Bool = false
+    @AppStorage("isHapticFeedbackOff") var isHapticFeedbackOff: Bool = false
+    @AppStorage("isSoundOff") var isSoundOff: Bool = false
     @ObservedObject private var notificationManager: NotificationManager = NotificationManager()
     @State private var mailData = ComposeMailData(subject: "한들에 대하여 :",
                                                   recipients: ["42handeul@gmail.com"],
                                                   message: "",
                                                   attachments: nil)
+    //
+    //
     
     fileprivate func TitleBar() -> some View {
         return ZStack {
@@ -36,6 +40,15 @@ struct SettingView: View {
                 }
             }
         }
+    }
+    
+    fileprivate func hapticButton() -> some View {
+        Toggle("진동", isOn: $isHapticFeedbackOff.not)
+            .toggleStyle(SettingToggleStyleWithoutChev())
+    }
+    fileprivate func soundButton() -> some View {
+        Toggle("소리", isOn: $isSoundOff.not)
+            .toggleStyle(SettingToggleStyleWithoutChev())
     }
     
     fileprivate func howToPlayButton() -> Button<Text> {
@@ -87,7 +100,6 @@ struct SettingView: View {
             } else {
                 isNoMailWarningPresented.toggle()
             }
-            
         } label: {
             Text("편지 보내기")
                 .foregroundColor(.hBlack)
@@ -103,6 +115,8 @@ struct SettingView: View {
         return VStack(alignment: .leading, spacing: 16) {
             NotificationCell()
                 .environmentObject(notificationManager)
+            hapticButton()
+            soundButton()
             howToPlayButton()
             statisticButton()
             appReviewButton()
@@ -169,5 +183,14 @@ struct SettingButtonView: View {
                 .frame(width: buttonSize, height: buttonSize)
                 .foregroundColor(.hBlack)
         }
+    }
+}
+
+extension Binding where Value == Bool {
+    var not: Binding<Value> {
+        Binding<Value>(
+            get: { !self.wrappedValue },
+            set: { self.wrappedValue = !$0 }
+        )
     }
 }
