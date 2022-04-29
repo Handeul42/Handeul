@@ -44,3 +44,37 @@ struct SettingToggleStyle: ToggleStyle {
         }
     }
 }
+
+struct SettingToggleStyleWithoutChev: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        
+        HStack(spacing: 0) {
+            
+            configuration.label
+            Spacer()
+            Button {
+                withAnimation {
+                    configuration.isOn.toggle()
+                }
+            } label: {
+                ZStack {
+                    if !configuration.isOn {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.hBlack, lineWidth: 1)
+                            .frame(width: 22, height: 14)
+                            .foregroundColor(.hLigthGray)
+                    } else {
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(width: 22, height: 14)
+                            .foregroundColor(.hBlack)
+                    }
+                    Image(systemName: "circlebadge.fill")
+                        .resizable()
+                        .frame(width: 6, height: 6)
+                        .offset(x: configuration.isOn ? 4 : -4)
+                        .foregroundColor(configuration.isOn ? .hLigthGray : .hBlack)
+                }
+            }
+        }
+    }
+}
