@@ -33,7 +33,7 @@ struct MainView: View {
                     .zIndex(2)
             }
             if mainViewModel.isInvalidWordWarningPresented == true {
-                showToast("유효하지 않은 단어입니다.") {
+                showToast("유효하지 않은 단어입니다.", status: $mainViewModel.isInvalidWordWarningPresented) {
                     mainViewModel.closeInvalidWordWarning()
                 }
             }

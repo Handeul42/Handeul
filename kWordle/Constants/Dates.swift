@@ -17,6 +17,6 @@ func getTodayDateString() -> String {
         return format
     }()
     let dateForString = Date()
-    return dateformatter.string(from: dateForString)
+    let rtrn = dateformatter.string(from: dateForString)
+    return rtrn
 }
-

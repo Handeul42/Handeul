@@ -14,14 +14,17 @@ var generator = RandomNumberGeneratorWithSeed(seed: 1)
 class MainViewModel: ObservableObject {
     @Published var game: Game
     @Published var isInvalidWordWarningPresented: Bool = false
-    
     let rewardADViewController = RewardedADViewController()
+    
     init () {
         let today = getTodayDateString()
         let lastDate = UserDefaults.standard.string(forKey: "lastDate")
         if today != lastDate {
             UserDefaults.standard.set(today, forKey: "lastDate")
             UserDefaults.standard.set(1, forKey: "todayGameCount")
+            game = Game(answer: todayAnswer())
+            print(game.answer)
+            return
         }
         var prev: Int = 0
         if let previousGame = RealmManager.shared.getPreviousGame() {
@@ -54,12 +57,14 @@ class MainViewModel: ObservableObject {
         if game.currentColumn == 5 && game.currentRow != 6 {
             if game.isCurrentWordInDict() == false {
                 presentInvalidWordWarning()
+                HapticsManager.shared.notification(type: .warning)
                 return
             }
             game.submitAnswer()
             if game.isGameFinished {
                 if game.didPlayerWin {
                     print("Cool! You win!")
+                    HapticsManager.shared.notification(type: .success)
                     Analytics.logEvent("PlayerWin", parameters: [
                         AnalyticsParameterItemID: game.answer,
                         AnalyticsParameterLevel: game.currentRow
@@ -67,6 +72,7 @@ class MainViewModel: ObservableObject {
                     userLog("win")
                 } else if !game.didPlayerWin {
                     print("You lose :(")
+                    HapticsManager.shared.notification(type: .error)
                     Analytics.logEvent("PlayerLose", parameters: [
                         AnalyticsParameterItemID: game.answer
                     ])
@@ -171,9 +177,8 @@ class MainViewModel: ObservableObject {
     
     // MARK: Private Functions
     private func userLog(_ state: String) {
-        let username = UIDevice.current.name
         let deivceUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
-        Analytics.logEvent(state + "-" + username + "-" + deivceUUID, parameters: [:])
+        Analytics.logEvent(state + "-" + deivceUUID, parameters: [:])
     }
 }
 

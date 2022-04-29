@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         
-        HStack (spacing: 0) {
+        HStack(spacing: 0) {
             Image(systemName: configuration.isOn ? "chevron.down" : "chevron.right")
                 .font(.system(size: 12))
                 .frame(width: 12, height: 12)
