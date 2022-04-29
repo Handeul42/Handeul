@@ -156,23 +156,19 @@ class MainViewModel: ObservableObject {
     func startNewGame() {
         rewardADViewController.doSomething() { [self] _ in
             if rewardADViewController.didRewardUser(with: GADAdReward()) {
-                
-                for _ in 0...100 {
-                    var randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
-                    var answers = UserDefaults.standard.stringArray(forKey: "todayAnswers")!
-                    while answers.contains(randomAnswer) {
-                        randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
-                        if answers.count % 140 == 0 {
-                            generator = RandomNumberGeneratorWithSeed(seed: Int(generator.next()))
-                        }
-                        answers.append(randomAnswer)
+                var randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
+                var answers = UserDefaults.standard.stringArray(forKey: "todayAnswers")!
+                while answers.contains(randomAnswer) {
+                    randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % game.wordDict.count].jamo
+                    if answers.count % 140 == 0 {
+                        generator = RandomNumberGeneratorWithSeed(seed: Int(generator.next()))
                     }
-                    let newGame = Game(answer: randomAnswer)
-                    print("Answer: " + newGame.answer)
-                    UserDefaults.standard.set(answers, forKey: "todayAnswers")
-                    self.game = newGame
-                    
+                    answers.append(randomAnswer)
                 }
+                let newGame = Game(answer: randomAnswer)
+                print("Answer: " + newGame.answer)
+                UserDefaults.standard.set(answers, forKey: "todayAnswers")
+                self.game = newGame
             }
         }
     }
