@@ -95,7 +95,7 @@ struct SettingView: View {
                 MailView(data: $mailData) { _ in }
         }.alert(isPresented: $isNoMailWarningPresented) {
             Alert(title: Text("편지를 보낼 수 없습니다"),
-                  message: Text("메일 앱에서 이메일을 연동해주세요."))
+                  message: Text("42handeul@gmail.com으로 편지를 보내주세요"))
         }
     }
     
