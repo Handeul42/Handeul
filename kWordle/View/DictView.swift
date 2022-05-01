@@ -41,8 +41,9 @@ struct DictView: View {
                     Button {
 //                        viewModel.startNewGame()
                     } label: {
-                        newGameButton()
+                        todayGameButton()
                     }
+                    .disabled(true)
                     Spacer()
                     Button {
                         viewModel.startNewGame()
@@ -93,7 +94,7 @@ struct DictView: View {
         }
     }
     
-    private func newGameButton() -> some View {
+    private func todayGameButton() -> some View {
         var timer: Timer {
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
                 self.nowDate = Date()
