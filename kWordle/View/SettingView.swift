@@ -119,7 +119,7 @@ struct SettingView: View {
             soundButton()
             howToPlayButton()
             statisticButton()
-            appReviewButton()
+//            appReviewButton()
             sendMailButton()
             Spacer()
         }
