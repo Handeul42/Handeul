@@ -185,14 +185,14 @@ func randomAnswerGenerator() -> String {
     var randomNumber = Int(generator.next())
     var randomAnswer = WordDictManager.shared.wordDictFiveJamo[randomNumber % wordDictCount].jamo
     var answers = UserDefaults.standard.stringArray(forKey: "todayAnswers") ?? []
-    if answers.count > 1 {
-        randomNumber = UserDefaults.standard.integer(forKey: "generateSeed")
-    }
+    var i = 0
     while answers.contains(randomAnswer) {
-        generator = RandomNumberGeneratorWithSeed(seed: randomNumber)
-        UserDefaults.standard.set(randomNumber, forKey: "generateSeed")
         randomNumber = Int(generator.next())
-        randomAnswer = WordDictManager.shared.wordDictFiveJamo[randomNumber % wordDictCount].jamo
+        randomAnswer = WordDictManager.shared.wordDictFiveJamo[(randomNumber) % wordDictCount].jamo
+        i += 1
+        if i > 1000 {
+            break
+        }
     }
     answers.append(randomAnswer)
     print("Answer: " + randomAnswer)
@@ -204,6 +204,5 @@ func DateToSeed() -> Int {
     let date = Date()
     let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
     let todaySeed = today.year! * 10000 + today.month! * 100 + today.day!
-    UserDefaults.standard.set(todaySeed, forKey: "generateSeed")
     return todaySeed
 }
