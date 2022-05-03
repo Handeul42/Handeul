@@ -43,6 +43,7 @@ struct KeyboardView: View {
         HapticsManager.shared.playSound(id: 1123) // Press Click
         viewModel.appendReceivedCharacter(of: character)
     }
+    
     var body: some View {
         ZStack {
             Color.hWhite
