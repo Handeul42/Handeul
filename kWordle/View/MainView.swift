@@ -21,12 +21,15 @@ struct MainView: View {
                         if !mainViewModel.game.isGameFinished {
                             mainViewModel.game.saveCurrentGame()
                         }
+                    } else if newScenePhase == .active {
+                        
                     }
                     mainViewModel.closeInvalidWordWarning()
                 }
             if isSettingPresented {
                 SettingView(isSettingPresented: $isSettingPresented)
                     .zIndex(1)
+                    .environmentObject(mainViewModel)
             }
             if shouldHowToPlayPresented {
                 HowToPlayView(isHowToPlayPresented: $shouldHowToPlayPresented)

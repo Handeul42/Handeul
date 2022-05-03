@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
+    @EnvironmentObject var mainViewModel: MainViewModel
     @Binding var isSettingPresented: Bool
     @State var isHowToPlayPresented: Bool = false
     @State var isStatisticsPresented: Bool = false
@@ -21,9 +22,7 @@ struct SettingView: View {
                                                   recipients: ["42handeul@gmail.com"],
                                                   message: "",
                                                   attachments: nil)
-    //
-    //
-    
+
     fileprivate func TitleBar() -> some View {
         return ZStack {
             Text("설정")
@@ -54,6 +53,9 @@ struct SettingView: View {
     fileprivate func colorWeakModeButton() -> some View {
         Toggle("색약 양식", isOn: $isColorWeakModeOn)
             .toggleStyle(SettingToggleStyleWithoutChev())
+            .onChange(of: isColorWeakModeOn) { _ in
+                mainViewModel.refreshViewForCWmode()
+            }
     }
     fileprivate func howToPlayButton() -> Button<Text> {
         return Button {
