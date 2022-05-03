@@ -16,6 +16,7 @@ extension Color {
     static let hLigthGray = Color("h_lightGray")
     static let hWhite = Color("h_white")
     static let hBlack = Color("h_black")
+    static let hSkyblue = Color("h_skyblue")
 }
 
 enum Status: Int, Codable {
@@ -35,7 +36,11 @@ func getColor(of status: Status) -> Color {
     case .lightGray:
         return Color.hLigthGray
     case .green:
-        return Color.hGreen
+        if UserDefaults.standard.bool(forKey: "isColorWeakModeOn") {
+            return Color.hSkyblue
+        } else {
+            return Color.hGreen
+        }
     case .yellow:
         return Color.hOrange
     case .red:

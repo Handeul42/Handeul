@@ -15,6 +15,7 @@ struct SettingView: View {
     @State var isNoMailWarningPresented: Bool = false
     @AppStorage("isHapticFeedbackOff") var isHapticFeedbackOff: Bool = false
     @AppStorage("isSoundOff") var isSoundOff: Bool = false
+    @AppStorage("isColorWeakModeOn") var isColorWeakModeOn = false
     @ObservedObject private var notificationManager: NotificationManager = NotificationManager()
     @State private var mailData = ComposeMailData(subject: "한들에 대하여 :",
                                                   recipients: ["42handeul@gmail.com"],
@@ -50,7 +51,10 @@ struct SettingView: View {
         Toggle("소리", isOn: $isSoundOff.not)
             .toggleStyle(SettingToggleStyleWithoutChev())
     }
-    
+    fileprivate func colorWeakModeButton() -> some View {
+        Toggle("색약 양식", isOn: $isColorWeakModeOn)
+            .toggleStyle(SettingToggleStyleWithoutChev())
+    }
     fileprivate func howToPlayButton() -> Button<Text> {
         return Button {
             withAnimation {
@@ -117,6 +121,7 @@ struct SettingView: View {
                 .environmentObject(notificationManager)
             hapticButton()
             soundButton()
+            colorWeakModeButton()
             howToPlayButton()
             statisticButton()
 //            appReviewButton()
