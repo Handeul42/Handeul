@@ -47,9 +47,7 @@ struct SettingToggleStyle: ToggleStyle {
 
 struct SettingToggleStyleWithoutChev: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
-        
         HStack(spacing: 0) {
-            
             configuration.label
             Spacer()
             Button {

@@ -14,6 +14,7 @@ struct SettingView: View {
     @State var isStatisticsPresented: Bool = false
     @State var isMailViewPresented: Bool = false
     @State var isNoMailWarningPresented: Bool = false
+    @State var isUserCustomPresented: Bool = false
     @AppStorage("isHapticFeedbackOff") var isHapticFeedbackOff: Bool = false
     @AppStorage("isSoundOff") var isSoundOff: Bool = false
     @AppStorage("isColorWeakModeOn") var isColorWeakModeOn = false
@@ -22,7 +23,7 @@ struct SettingView: View {
                                                   recipients: ["42handeul@gmail.com"],
                                                   message: "",
                                                   attachments: nil)
-
+    
     fileprivate func TitleBar() -> some View {
         return ZStack {
             Text("설정")
@@ -40,16 +41,19 @@ struct SettingView: View {
                 }
             }
         }
+        
     }
     
     fileprivate func hapticButton() -> some View {
         Toggle("진동", isOn: $isHapticFeedbackOff.not)
             .toggleStyle(SettingToggleStyleWithoutChev())
     }
+    
     fileprivate func soundButton() -> some View {
         Toggle("소리", isOn: $isSoundOff.not)
             .toggleStyle(SettingToggleStyleWithoutChev())
     }
+    
     fileprivate func colorWeakModeButton() -> some View {
         Toggle("색약 양식", isOn: $isColorWeakModeOn)
             .toggleStyle(SettingToggleStyleWithoutChev())
@@ -57,6 +61,7 @@ struct SettingView: View {
                 mainViewModel.refreshViewForCWmode()
             }
     }
+    
     fileprivate func howToPlayButton() -> Button<Text> {
         return Button {
             withAnimation {
@@ -110,23 +115,44 @@ struct SettingView: View {
             Text("편지 보내기")
                 .foregroundColor(.hBlack)
         }.sheet(isPresented: $isMailViewPresented) {
-                MailView(data: $mailData) { _ in }
+            MailView(data: $mailData) { _ in }
         }.alert(isPresented: $isNoMailWarningPresented) {
             Alert(title: Text("편지를 보낼 수 없습니다"),
                   message: Text("42handeul@gmail.com으로 편지를 보내주세요"))
         }
     }
     
+    private func userCustomButton() -> some View {
+        ZStack {
+            Image(systemName: isUserCustomPresented ? "chevron.down": "chevron.right")
+                .font(.system(size: 12))
+                .offset(x: -45)
+            Text("사용자화")
+    //                .offset(x: -12)
+        }
+        .onTapGesture {
+            withAnimation {
+                isUserCustomPresented.toggle()
+            }
+        }
+    }
+    
     fileprivate func SettingContents() -> some View {
         return VStack(alignment: .leading, spacing: 16) {
+            userCustomButton()
+            if isUserCustomPresented {
+                VStack(spacing: 12) {
+                    soundButton()
+                    hapticButton()
+                    colorWeakModeButton()
+                }
+                .font(.custom("EBSHMJESaeronL", size: 14))
+            }
             NotificationCell()
                 .environmentObject(notificationManager)
-            hapticButton()
-            soundButton()
-            colorWeakModeButton()
             howToPlayButton()
             statisticButton()
-//            appReviewButton()
+            //            appReviewButton()
             sendMailButton()
             Spacer()
         }
@@ -150,19 +176,16 @@ struct SettingView: View {
     var body: some View {
         ZStack {
             SettingBackgrounds()
-            Group {
-                VStack(spacing: 0) {
-                    TitleBar()
-                        .foregroundColor(.hBlack)
-                        .padding(.top, 24)
-                    Spacer()
-                    SettingContents()
-                        .frame(width: 134, height: 228)
-                        .font(.custom("EBSHMJESaeronL", size: 16))
-                    Spacer()
-                }
+            VStack {
+                TitleBar()
+                    .foregroundColor(.hBlack)
+                    .padding(.top, 24)
+                    .padding(.bottom, 41)
+                SettingContents()
+                    .frame(width: 134, height: 350)
+                    .font(.custom("EBSHMJESaeronL", size: 16))
             }
-            .frame(width: 320, height: 420)
+            .frame(width: 320, height: 420, alignment: .top)
             if isHowToPlayPresented {
                 HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
                     .zIndex(1)

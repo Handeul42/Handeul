@@ -52,12 +52,9 @@ struct AnswerBoardView: View {
             .animation(.none)
             Image("Filcrow")
                 .resizable()
-                .frame(width: 16 * currentScreenRatio(), height: 20 * currentScreenRatio())
+                .frame(width: 12, height: 16)
                 .offset(x: (Double(viewModel.game.currentColumn + 1) - 2.5) * (keyButtonWidth - 2) - 43,
                         y: (Double(viewModel.game.currentRow) - 2.5) * keyButtonWidth + 10)
-                .onAppear {
-                    print("width: ", keyButtonWidth)
-                }
         }
     }
 }
