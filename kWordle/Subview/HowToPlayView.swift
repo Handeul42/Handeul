@@ -66,10 +66,10 @@ struct HowToPlayView: View {
     var firstPage: some View {
         VStack {
             Text(howToPlayTextMain).font(.custom("EBSHMJESaeronL", size: 16))
-            Image("howToPlayExCorrect")
+            getImage(of: "howToPlayExCorrect")
             Text(howToPlayTextExampleCorrect)
                 .font(.custom("EBSHMJESaeronL", size: 13))
-            Image("howToPlayExDup")
+            getImage(of: "howToPlayExDup")
             Text(howToPlayTextExampleDup1).font(.custom("EBSHMJESaeronL", size: 13))
             Text(howToPlayTextExampleDup2).font(.custom("EBSHMJESaeronL", size: 13))
             Image("howToPlayExWrong")
@@ -87,5 +87,12 @@ struct HowToPlayView: View {
             Text(howToPlayDCons)
                 .font(.custom("EBSHMJESaeronL", size: 13))
         }
+    }
+    
+    func getImage(of name:String) -> Image {
+        if UserDefaults.standard.bool(forKey: "isColorWeakModeOn") {
+            return Image(name + "CW")
+        }
+        return Image(name)
     }
 }

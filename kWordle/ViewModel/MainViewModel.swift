@@ -152,6 +152,10 @@ class MainViewModel: ObservableObject {
         return "\(date)\n\(title)\n\(appAddress)\n" + ret.trimmingCharacters(in: .newlines)
     }
     
+    func refreshViewForCWmode() {
+        self.objectWillChange.send()
+    }
+    
     func startNewGame() {
         rewardADViewController.doSomething() { [self] _ in
             if rewardADViewController.didRewardUser(with: GADAdReward()) {
