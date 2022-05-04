@@ -22,7 +22,9 @@ struct MainView: View {
                             mainViewModel.game.saveCurrentGame()
                         }
                     } else if newScenePhase == .active {
-                        
+                        withAnimation {
+                            mainViewModel.refreshGameOnActive()
+                        }
                     }
                     mainViewModel.closeInvalidWordWarning()
                 }
