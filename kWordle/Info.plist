@@ -2,26 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>개인에게 최적화된 광고를 제공하기 위해 사용자의 광고 활동 정보를 수집합니다.</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3856199712576441~7039555028</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSAppTransportSecurity</key>
 	<dict/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>EBS훈민정음새론R.ttf</string>
-		<string>EBSL.ttf</string>
-		<string>EBS훈민정음새론SB.ttf</string>
-		<string>EBS훈민정음SB.ttf</string>
-	</array>
-	<key>UILaunchScreen</key>
-	<dict>
-		<key>UIImageName</key>
-		<string></string>
-	</dict>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -173,5 +159,17 @@
 			<string>3qcr597p9d.skadnetwork</string>
 		</dict>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>EBS훈민정음새론R.ttf</string>
+		<string>EBSL.ttf</string>
+		<string>EBS훈민정음새론SB.ttf</string>
+		<string>EBS훈민정음SB.ttf</string>
+	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string></string>
+	</dict>
 </dict>
 </plist>
