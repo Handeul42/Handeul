@@ -73,7 +73,7 @@ class MainViewModel: ObservableObject {
         isInvalidWordWarningPresented = false
     }
     
-    public func refreshGameOnActive() {
+    public func refreshGameOnActive() -> Bool {
         let today = getTodayDateString()
         let lastDate = UserDefaults.standard.string(forKey: "lastDate")
         if today != lastDate {
@@ -81,7 +81,9 @@ class MainViewModel: ObservableObject {
             UserDefaults.standard.set(1, forKey: "todayGameCount")
             game = Game(answer: todayAnswer())
             print("TodayGameAnwer: " + game.answer)
+            return true
         }
+        return false
     }
     
     func generateIntToNthString(_ nth: Int) -> String {
@@ -159,6 +161,7 @@ class MainViewModel: ObservableObject {
     }
     
     func startNewGame() {
+        guard refreshGameOnActive() == false else { return }
         rewardADViewController.doSomething() { [self] _ in
             if rewardADViewController.didRewardUser(with: GADAdReward()) {
                 let randomAnswer = randomAnswerGenerator()
