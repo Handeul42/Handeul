@@ -132,7 +132,7 @@ class MainViewModel: ObservableObject {
         var ret: String = ""
         let date: String = generateDateToString() // 오늘의 날짜(일월 이십일일)
         var title: String = generateIntToNthString(game.gameNumber) // 첫번째 한들 (1/6)
-        let appAddress: String = "https://apple.co/3rWFLqZ"
+        let appAddress: String = "https://apple.co/3LPwwAQ"
         title += game.didPlayerWin ? " (\(game.currentRow + 1)/6)" : " (🤯)"
         for row in game.answerBoard {
             for char in row {

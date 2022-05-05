@@ -43,6 +43,7 @@ struct KeyboardView: View {
         HapticsManager.shared.playSound(id: 1123) // Press Click
         viewModel.appendReceivedCharacter(of: character)
     }
+    
     var body: some View {
         ZStack {
             Color.hWhite
@@ -50,7 +51,9 @@ struct KeyboardView: View {
                 HStack {
                     ForEach(viewModel.game.keyBoard.firstRow, id: \.self) { btn in
                         Button {
-                            submitKeyInput(btn.character)
+                            withAnimation {
+                                submitKeyInput(btn.character)
+                            }
                         } label: {
                             keyboardButton(btn)
                         }
@@ -61,7 +64,9 @@ struct KeyboardView: View {
                         if viewModel.game.currentColumn == 0 {
                             HapticsManager.shared.notification(type: .warning)
                         } else {
-                            viewModel.deleteOneCharacter()
+                            withAnimation {
+                                viewModel.deleteOneCharacter()
+                            }
                         }
                     } label: {
                         keyboardDeleteButton()
@@ -71,7 +76,9 @@ struct KeyboardView: View {
                 HStack {
                     ForEach(viewModel.game.keyBoard.secondRow, id: \.self) { btn in
                         Button {
-                            submitKeyInput(btn.character)
+                            withAnimation {
+                                submitKeyInput(btn.character)
+                            }
                         } label: {
                             keyboardButton(btn)
                         }
@@ -81,7 +88,9 @@ struct KeyboardView: View {
                 HStack {
                     ForEach(viewModel.game.keyBoard.thirdRow, id: \.self) { btn in
                         Button {
-                            submitKeyInput(btn.character)
+                            withAnimation {
+                                submitKeyInput(btn.character)
+                            }
                         } label: {
                             keyboardButton(btn)
                         }
