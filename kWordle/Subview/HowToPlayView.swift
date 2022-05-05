@@ -25,7 +25,7 @@ struct HowToPlayView: View {
                 .opacity(0.5)
                 .onTapGesture {
                     withAnimation {
-                        self.isHowToPlayPresented.toggle()
+                        self.isHowToPlayPresented = false
                     }
                 }
             VStack {
@@ -34,7 +34,7 @@ struct HowToPlayView: View {
                         Spacer()
                         Button {
                             withAnimation {
-                                isHowToPlayPresented.toggle()
+                                isHowToPlayPresented = false
                             }
                         } label: {
                             Image(systemName: "xmark")

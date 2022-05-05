@@ -18,7 +18,7 @@ struct StatisticsView: View {
                 .opacity(0.5)
                 .onTapGesture {
                     withAnimation {
-                        isStatisticsPresented.toggle()
+                        isStatisticsPresented = false
                     }
                 }
             VStack(spacing: 0) {
@@ -27,7 +27,7 @@ struct StatisticsView: View {
                         Spacer()
                         Button {
                             withAnimation {
-                                isStatisticsPresented.toggle()
+                                isStatisticsPresented = false
                             }
                         } label: {
                             Image(systemName: "xmark")

@@ -31,7 +31,7 @@ struct SettingView: View {
                 Spacer()
                 Button {
                     withAnimation {
-                        isSettingPresented.toggle()
+                        isSettingPresented = false
                     }
                 } label: {
                     Image(systemName: "xmark")
@@ -138,7 +138,7 @@ struct SettingView: View {
                 .opacity(0.5)
                 .onTapGesture {
                     withAnimation {
-                        isSettingPresented.toggle()
+                        isSettingPresented = false
                     }
                 }
             RoundedRectangle(cornerRadius: 10)
