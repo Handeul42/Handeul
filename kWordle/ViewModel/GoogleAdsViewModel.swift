@@ -9,8 +9,11 @@ import UIKit
 import GoogleMobileAds
 
 class RewardedADViewController: UIViewController, GADFullScreenContentDelegate {
+#if DEBUG
+    let adUnitID = "ca-app-pub-3940256099942544/6978759866" // DEBUG
+#else
     let adUnitID = "ca-app-pub-3856199712576441/1416812814" // RELEASE
-//    let adUnitID = "ca-app-pub-3940256099942544/6978759866" // DEBUG
+#endif
     var rewardedInterstitialAD: GADRewardedInterstitialAd?
     
     func loadAD() {

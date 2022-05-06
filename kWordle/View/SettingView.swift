@@ -86,7 +86,7 @@ struct SettingView: View {
     
     fileprivate func appReviewButton() -> Button<Text> {
         return Button {
-            if let appstoreURL = URL(string: "https://apps.apple.com/us/app/한들/id1619947572") {
+            if let appstoreURL = URL(string: "https://apps.apple.com/app/id1619947572") {
                 var components = URLComponents(url: appstoreURL, resolvingAgainstBaseURL: false)
                 components?.queryItems = [
                     URLQueryItem(name: "action", value: "write-review")
@@ -152,8 +152,8 @@ struct SettingView: View {
                 .environmentObject(notificationManager)
             howToPlayButton()
             statisticButton()
-            //            appReviewButton()
-            sendMailButton()
+                        appReviewButton()
+//            sendMailButton()
             Spacer()
         }
     }
