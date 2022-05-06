@@ -14,3 +14,7 @@ let keyboardHeight: CGFloat = 40
 func currentScreenRatio() -> CGFloat {
     return (uiSize.width * uiSize.height) / (390 * 844)
 }
+
+func currentHeightRatio() -> CGFloat {
+    return uiSize.height / 844
+}

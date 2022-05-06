@@ -22,7 +22,9 @@ struct MainView: View {
                             mainViewModel.game.saveCurrentGame()
                         }
                     } else if newScenePhase == .active {
-                        
+                        withAnimation {
+                            mainViewModel.refreshGameOnActive()
+                        }
                     }
                     mainViewModel.closeInvalidWordWarning()
                 }
@@ -44,16 +46,17 @@ struct MainView: View {
     }
     
     var mainView: some View {
-        VStack {
+        VStack(spacing: 0) {
             TitleView()
                 .padding(.top, 35 * currentScreenRatio())
+                .padding(.bottom, 8 * currentHeightRatio())
             HStack {
                 SettingButtonView(isSettingPresented: $isSettingPresented)
                 Spacer()
                 GameCountView
             }
             .padding(.horizontal, 20)
-            .offset(y: 5)
+            .padding(.vertical, 8)
             AnswerBoardView()
             Spacer()
             if !mainViewModel.game.isGameFinished {

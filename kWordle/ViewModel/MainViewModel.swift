@@ -17,19 +17,10 @@ class MainViewModel: ObservableObject {
     let rewardADViewController = RewardedADViewController()
     
     init () {
-        let today = getTodayDateString()
-        let lastDate = UserDefaults.standard.string(forKey: "lastDate")
-        if today != lastDate {
-            UserDefaults.standard.set(today, forKey: "lastDate")
-            UserDefaults.standard.set(1, forKey: "todayGameCount")
-            game = Game(answer: todayAnswer())
-            print("TodayGameAnwer: " + game.answer)
-            return
-        }
         if let previousGame = RealmManager.shared.getPreviousGame() {
             game = Game(persistedObject: previousGame)
         } else {
-            game = Game(answer: randomAnswerGenerator())
+            game = Game(answer: todayAnswer())
         }
         print(game.answer)
         rewardADViewController.loadAD()
@@ -80,6 +71,19 @@ class MainViewModel: ObservableObject {
     
     public func closeInvalidWordWarning() {
         isInvalidWordWarningPresented = false
+    }
+    
+    public func refreshGameOnActive() -> Bool {
+        let today = getTodayDateString()
+        let lastDate = UserDefaults.standard.string(forKey: "lastDate")
+        if today != lastDate {
+            UserDefaults.standard.set(today, forKey: "lastDate")
+            UserDefaults.standard.set(1, forKey: "todayGameCount")
+            game = Game(answer: todayAnswer())
+            print("TodayGameAnwer: " + game.answer)
+            return true
+        }
+        return false
     }
     
     func generateIntToNthString(_ nth: Int) -> String {
@@ -157,6 +161,7 @@ class MainViewModel: ObservableObject {
     }
     
     func startNewGame() {
+        guard refreshGameOnActive() == false else { return }
         rewardADViewController.doSomething() { [self] _ in
             if rewardADViewController.didRewardUser(with: GADAdReward()) {
                 let randomAnswer = randomAnswerGenerator()
@@ -177,8 +182,8 @@ class MainViewModel: ObservableObject {
 func todayAnswer() -> String {
     generator = RandomNumberGeneratorWithSeed(seed: DateToSeed())
     let wordDictCount = WordDictManager.shared.wordDictFiveJamo.count
-    var randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % wordDictCount].jamo
-    var answers : [String] = []
+    let randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % wordDictCount].jamo
+    var answers: [String] = []
     answers.append(randomAnswer)
     UserDefaults.standard.set(answers, forKey: "todayAnswers")
     return randomAnswer
