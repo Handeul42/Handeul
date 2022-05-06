@@ -14,6 +14,7 @@ var generator = RandomNumberGeneratorWithSeed(seed: DateToSeed())
 class MainViewModel: ObservableObject {
     @Published var game: Game
     @Published var isInvalidWordWarningPresented: Bool = false
+    @Published var isAdIsNotLoadingPresented: Bool = false
     let rewardADViewController = RewardedADViewController()
     
     init () {
@@ -162,14 +163,23 @@ class MainViewModel: ObservableObject {
     
     func startNewGame() {
         guard refreshGameOnActive() == false else { return }
-        rewardADViewController.doSomething() { [self] _ in
-            if rewardADViewController.didRewardUser(with: GADAdReward()) {
-                let randomAnswer = randomAnswerGenerator()
-                let newGame = Game(answer: randomAnswer)
-                self.game = newGame
-                self.game.saveCurrentGame()
+        rewardADViewController.doSomething() { [self] result in
+            if result == true {
+                if rewardADViewController.didRewardUser(with: GADAdReward()) {
+                    let randomAnswer = randomAnswerGenerator()
+                    let newGame = Game(answer: randomAnswer)
+                    self.game = newGame
+                    self.game.saveCurrentGame()
+                }
+            }
+            else {
+                self.isAdIsNotLoadingPresented = true
             }
         }
+    }
+    
+    func closeAdIsNotLoadingPresented() {
+        isAdIsNotLoadingPresented = false
     }
     
     // MARK: Private Functions
