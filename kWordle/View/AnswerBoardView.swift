@@ -49,7 +49,7 @@ struct AnswerBoardView: View {
                 }
                 horline(width: 3)
             }
-            .animation(.spring())
+            .animation(.none)
             Image("Filcrow")
                 .resizable()
                 .frame(width: 12, height: 16)

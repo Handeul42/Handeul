@@ -45,8 +45,8 @@ struct HowToPlayView: View {
                     }
                     Text("풀이 방법")
                         .font(.custom("EBSHMJESaeronR", size: 22))
+                        .padding(24)
                 }
-               
                 TabView {
                     VStack {
                         firstPage
