@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    
     @Environment(\.scenePhase) var scenePhase
     @ObservedObject var mainViewModel: MainViewModel = MainViewModel()
     @AppStorage("shouldHowToPlayPresented") var shouldHowToPlayPresented: Bool = true
@@ -23,7 +24,7 @@ struct MainView: View {
                         }
                     } else if newScenePhase == .active {
                         withAnimation {
-                            mainViewModel.refreshGameOnActive()
+                          _ = mainViewModel.refreshGameOnActive()
                         }
                     }
                     mainViewModel.closeInvalidWordWarning()
@@ -34,7 +35,7 @@ struct MainView: View {
                     .environmentObject(mainViewModel)
             }
             if shouldHowToPlayPresented {
-                HowToPlayView(isHowToPlayPresented: $shouldHowToPlayPresented)
+                HowToPlayOnFirstLaunch(isHowToPlayPresented: $shouldHowToPlayPresented)
                     .zIndex(2)
             }
             if mainViewModel.isInvalidWordWarningPresented == true {
