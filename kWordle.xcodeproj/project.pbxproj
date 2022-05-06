@@ -45,6 +45,7 @@
 		CC49B36C2819628A000CDC34 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = CC49B36B2819628A000CDC34 /* .gitattributes */; };
 		CC57AF282816C695001675CD /* KeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC57AF272816C695001675CD /* KeyBoard.swift */; };
 		CC69C354281A9DCF00F6805E /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC69C353281A9DCF00F6805E /* Dates.swift */; };
+		CC724BCF2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC724BCE2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift */; };
 		CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517C280E753200B739F3 /* Color+CustomColor.swift */; };
 		CC7C517F280EB51300B739F3 /* MainView+MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */; };
 		CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */; };
@@ -100,6 +101,7 @@
 		CC57AF272816C695001675CD /* KeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoard.swift; sourceTree = "<group>"; };
 		CC57AF292816D5C7001675CD /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		CC69C353281A9DCF00F6805E /* Dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
+		CC724BCE2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayOnFirstLaunch.swift; sourceTree = "<group>"; };
 		CC7C517C280E753200B739F3 /* Color+CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CustomColor.swift"; sourceTree = "<group>"; };
 		CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainView+MenuBar.swift"; sourceTree = "<group>"; };
 		CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */,
+				CC724BCE2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift */,
 				73C3CE95281A4FCE008DA8AA /* StatisticsView.swift */,
 				73D66DB1280E825000313A7F /* MainView+TitleView.swift */,
 				CC7C517E280EB51300B739F3 /* MainView+MenuBar.swift */,
@@ -410,6 +413,7 @@
 				73282903281A872A00A55F77 /* RandomNumberGeneratorWithSeed.swift in Sources */,
 				CCFBDB482817F42B006674A3 /* Statistics.swift in Sources */,
 				CCA23973281A682000CCAD0E /* MailView.swift in Sources */,
+				CC724BCF2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift in Sources */,
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
 				CCFBDB4A2817FB28006674A3 /* StatisticsViewModel.swift in Sources */,
 				CC1BB899281AE13800BAA6FA /* HapticsManager.swift in Sources */,

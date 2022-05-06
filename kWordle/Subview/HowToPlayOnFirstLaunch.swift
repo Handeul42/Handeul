@@ -1,13 +1,13 @@
 //
-//  HowToPlayView.swift
-//  kWordle
+//  HowToPlayOnFirstLaunch.swift
+//  한들
 //
-//  Created by JaemooJung on 2022/04/19.
+//  Created by JaemooJung on 2022/05/06.
 //
 
 import SwiftUI
 
-struct HowToPlayView: View {
+struct HowToPlayOnFirstLaunch: View {
     @Binding var isHowToPlayPresented: Bool
     let howToPlayTextMain: String = "무작위 단어를 6번 안에 맞춰보세요.\n제출 후에 변화하는 글자의 바탕색으로\n정답을 유추할 수 있습니다."
     let howToPlayTextExampleCorrect = "ㅍ은 단어에 포함되며 위치도 맞습니다."
@@ -21,32 +21,11 @@ struct HowToPlayView: View {
     
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
-                .opacity(0.5)
-                .onTapGesture {
-                    withAnimation {
-                        self.isHowToPlayPresented = false
-                    }
-                }
+            Color.hLigthGray.ignoresSafeArea().opacity(0.98)
             VStack {
-                ZStack {
-                    HStack {
-                        Spacer()
-                        Button {
-                            withAnimation {
-                                isHowToPlayPresented = false
-                            }
-                        } label: {
-                            Image(systemName: "xmark")
-                                .font(.system(size: 20))
-                                .padding(24)
-                                .foregroundColor(.hBlack)
-                        }
-                    }
-                    Text("풀이 방법")
-                        .font(.custom("EBSHMJESaeronR", size: 22))
-                }
-               
+                TitleView().padding(24)
+                Text("풀이 방법")
+                    .font(.custom("EBSHMJESaeronR", size: 22))
                 TabView {
                     VStack {
                         firstPage
@@ -56,10 +35,9 @@ struct HowToPlayView: View {
                         secondPage
                         Spacer()
                     }
-
                 }.tabViewStyle(.page(indexDisplayMode: .always))
-            }.background(Color.hLigthGray.opacity(1).cornerRadius(10))
-                .frame(width: 320, height: 420, alignment: .top)
+            }
+                .frame(width: 320, height: 520, alignment: .top)
         }
     }
     
@@ -86,6 +64,18 @@ struct HowToPlayView: View {
             Image("howToPlayExDoubleCons")
             Text(howToPlayDCons)
                 .font(.custom("EBSHMJESaeronL", size: 13))
+            Button {
+                withAnimation {
+                    self.isHowToPlayPresented = false
+                }
+            } label: {
+                Text("시작하기")
+                    .font(.custom("EBSHMJESaeronR", size: 20))
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .background(Color.hGreen)
+                    .cornerRadius(8)
+            }.padding(.top, 28)
         }
     }
     
@@ -94,5 +84,11 @@ struct HowToPlayView: View {
             return Image(name + "CW")
         }
         return Image(name)
+    }
+}
+
+struct MyPreviewProvider_Previews: PreviewProvider {
+    static var previews: some View {
+        Text("Hello, world!")
     }
 }
