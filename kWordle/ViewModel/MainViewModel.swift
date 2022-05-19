@@ -133,10 +133,12 @@ class MainViewModel: ObservableObject {
     }
     
     func generateString() -> String {
+        let vm = StatisticsViewModel()
         var ret: String = ""
         let date: String = generateDateToString() // 오늘의 날짜(일월 이십일일)
         var title: String = generateIntToNthString(game.gameNumber) // 첫번째 한들 (1/6)
-        let appAddress: String = "https://apple.co/3LPwwAQ"
+        let streak: String = vm.statistics.currentWinStreak != 0 ? "\(vm.statistics.currentWinStreak)연승중 👍" : "연승끝 .."
+        let appAddress: String = "apple.co/3LPwwAQ"
         title += game.didPlayerWin ? " (\(game.currentRow + 1)/6)" : " (🤯)"
         for row in game.answerBoard {
             for char in row {
@@ -153,7 +155,7 @@ class MainViewModel: ObservableObject {
             }
             ret += "\n"
         }
-        return "\(date)\n\(title)\n\(appAddress)\n" + ret.trimmingCharacters(in: .newlines)
+        return "\(date)\n\(title)\n\(streak)\n\(appAddress)\n" + ret.trimmingCharacters(in: .newlines)
     }
     
     func refreshViewForCWmode() {
