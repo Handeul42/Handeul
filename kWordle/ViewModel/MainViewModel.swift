@@ -93,9 +93,9 @@ class MainViewModel: ObservableObject {
         var ret = ""
         
         if nth == 1 {
-            return "첫 번째 한들"
+            return "첫 번째 #한들"
         } else if nth == 20 {
-            return "스무 번째 한들"
+            return "스무 번째 #한들"
         } else {
             if nth / 100 != 0 {
                 ret += int100ToStringDict[nth / 100 - 1]
@@ -107,7 +107,7 @@ class MainViewModel: ObservableObject {
                 ret += intToStringDict[(nth % 100) % 10 - 1]
             }
         }
-        return ret + " 번째 한들"
+        return ret + " 번째 #한들"
     }
     
     func generateIntToString(_ date: Int) -> String {
@@ -133,10 +133,12 @@ class MainViewModel: ObservableObject {
     }
     
     func generateString() -> String {
+        let streakCount = Statistics().currentWinStreak
         var ret: String = ""
         let date: String = generateDateToString() // 오늘의 날짜(일월 이십일일)
         var title: String = generateIntToNthString(game.gameNumber) // 첫번째 한들 (1/6)
-        let appAddress: String = "https://apple.co/3LPwwAQ"
+        let streak: String = streakCount != 0 ? "[ \(streakCount)연승중👍 ]" : "[ 연승끝........ ]"
+        let appAddress: String = "apple.co/3LPwwAQ"
         title += game.didPlayerWin ? " (\(game.currentRow + 1)/6)" : " (🤯)"
         for row in game.answerBoard {
             for char in row {
@@ -153,7 +155,7 @@ class MainViewModel: ObservableObject {
             }
             ret += "\n"
         }
-        return "\(date)\n\(title)\n\(appAddress)\n" + ret.trimmingCharacters(in: .newlines)
+        return "\(date)\n\(title)\n\(streak)\n\(appAddress)\n" + ret.trimmingCharacters(in: .newlines)
     }
     
     func refreshViewForCWmode() {
