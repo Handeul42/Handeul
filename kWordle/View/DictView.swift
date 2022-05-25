@@ -23,8 +23,11 @@ struct DictView: View {
             VStack(spacing: 24) {
                 VStack(spacing: 8) {
                     HStack {
-                        Text(answer)
-                            .font(.custom("EBSHMJESaeronR", size: 28))
+                        HStack(spacing: 4) {
+                            Text(answer)
+                                .font(.custom("EBSHMJESaeronR", size: 28))
+                            streakButton()
+                        }
                         Spacer()
                         Button {
                             actionSheet()
@@ -77,18 +80,33 @@ struct DictView: View {
             .frame(minHeight: 35)
     }
     
+    private func streakButton() -> some View {
+        return ZStack {
+            Rectangle()
+                .frame(width: 80, height: 28)
+                .foregroundColor(.hBlack)
+            HStack(spacing: 0) {
+                Text("연승끝..")
+                    .foregroundColor(.hWhite)
+                    .font(.custom("EBSHMJESaeronR", size: 14))
+                Text("🤯")
+                    .font(.system(size: 12))
+            }
+        }
+    }
+    
     private func copyButton() -> some View {
         return ZStack {
-            RoundedRectangle(cornerRadius: 5)
-                .frame(width: 72, height: 36)
-                .foregroundColor(.hLigthGray)
-            HStack {
+                RoundedRectangle(cornerRadius: 5)
+                    .frame(width: 72, height: 36)
+                    .foregroundColor(.hLigthGray)
+            HStack(spacing: 4) {
                 Text("공유")
                     .foregroundColor(.hBlack)
                     .font(.custom("EBSHMJESaeronR", size: 17))
                 Image(systemName: "arrowshape.turn.up.left")
                     .resizable()
-                    .frame(width: 19, height: 15)
+                    .frame(width: 15, height: 12)
                     .foregroundColor(.hBlack)
             }
         }
