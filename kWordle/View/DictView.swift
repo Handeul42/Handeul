@@ -25,6 +25,7 @@ struct DictView: View {
                     HStack {
                         Text(answer)
                             .font(.custom("EBSHMJESaeronR", size: 28))
+                        currentWinStreakMarker()
                         Spacer()
                         Button {
                             actionSheet()
@@ -66,6 +67,28 @@ struct DictView: View {
                 self.meaning = wordDict.meaning
             }
         }
+    }
+    
+    @ViewBuilder
+    private func currentWinStreakMarker() -> some View {
+        let currentWinStreak = Statistics().currentWinStreak
+        HStack(alignment: .bottom, spacing: 0) {
+            if currentWinStreak > 0 {
+                Text("\(currentWinStreak)")
+                    .font(.system(size: 12))
+                    .padding([.top, .bottom, .leading], 8)
+                Text("연승!")
+                    .font(.custom("EBSHMJESaeronR", size: 12))
+                    .padding([.top, .bottom, .trailing], 8)
+            } else {
+                Text("연승 끝 😢")
+                    .font(.system(size: 12))
+                    .padding(8)
+            }
+        }.foregroundColor(.hWhite)
+            .background((currentWinStreak != 0) ?
+                        Color.hGreen.cornerRadius(5)
+                        : Color.hRed.cornerRadius(5))
     }
     
     private func dictMeaning() -> some View {
