@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @Environment(\.scenePhase) var scenePhase
-    @ObservedObject var mainViewModel: MainViewModel = MainViewModel()
+    @StateObject var mainViewModel: MainViewModel = MainViewModel()
     @AppStorage("shouldHowToPlayPresented") var shouldHowToPlayPresented: Bool = true
     @State var isSettingPresented: Bool = false
     
