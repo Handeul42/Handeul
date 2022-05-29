@@ -14,6 +14,7 @@ struct DictView: View {
     @State var answer: String = ""
     @State var meaning: String = ""
     @State var nowDate: Date = Date()
+    @AppStorage("isColorWeakModeOn") var isColorWeakModeOn: Bool = false
     
     @State var currentDate: Date = Date()
     var title = "share"
@@ -76,19 +77,17 @@ struct DictView: View {
             if currentWinStreak > 0 {
                 Text("\(currentWinStreak)")
                     .font(.system(size: 12))
-                    .padding([.top, .bottom, .leading], 8)
+                    .padding([.top, .bottom, .leading], 6)
                 Text("연승!")
                     .font(.custom("EBSHMJESaeronR", size: 12))
-                    .padding([.top, .bottom, .trailing], 8)
+                    .padding([.top, .bottom, .trailing], 6)
             } else {
-                Text("연승 끝 😢")
-                    .font(.system(size: 12))
-                    .padding(8)
+                Text("연승 끝... 😢")
+                    .font(.custom("EBSHMJESaeronR", size: 12))
+                    .padding(6)
             }
-        }.foregroundColor(.hWhite)
-            .background((currentWinStreak != 0) ?
-                        Color.hGreen.cornerRadius(5)
-                        : Color.hRed.cornerRadius(5))
+        }.foregroundColor(.white)
+            .background((currentWinStreak != 0 ? (isColorWeakModeOn ? Color.hSkyblue : Color.hGreen) : Color.hRed).cornerRadius(5))
     }
     
     private func dictMeaning() -> some View {
