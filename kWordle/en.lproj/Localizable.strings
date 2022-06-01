@@ -1,0 +1,87 @@
+/* No comment provided by engineer. */
+"'기계'의 ㅖ를 풀어 입력한 경우" = "'ㅖ' in '기계' is released like this.";
+
+/* No comment provided by engineer. */
+"'버찌'의 ㅉ을 풀어 입력한 경우" = "'ㅉ' in '버찌' is released like this.";
+
+/* No comment provided by engineer. */
+"공유" = "Share";
+
+/* No comment provided by engineer. */
+"광고" = "AD";
+
+/* No comment provided by engineer. */
+"내일의 문제" = "Next Game";
+
+/* No comment provided by engineer. */
+"데이터가 없습니다." = "No Data";
+
+/* No comment provided by engineer. */
+"두 번째 ㄱ은 단어에 포함되나 다른 위치에 있습니다." = "The second 'ㄱ' is in the wrong spot.";
+
+/* No comment provided by engineer. */
+"무작위 단어를 6번 안에 맞춰보세요.\n제출 후에 변화하는 글자의 바탕색으로\n정답을 유추할 수 있습니다." = "Guess the 한들 in six tries.\nYou can guess the word by\nthe color of each letter after submit.";
+
+/* No comment provided by engineer. */
+"사용자화" = "Customize";
+
+/* No comment provided by engineer. */
+"새 문제 알림" = "New Game Alarm";
+
+/* No comment provided by engineer. */
+"새문제 받기" = "New Game";
+
+/* No comment provided by engineer. */
+"색약 양식" = "High Contrast";
+
+/* No comment provided by engineer. */
+"설정" = "Settings";
+
+/* No comment provided by engineer. */
+"설정으로 이동" = "To Settings";
+
+/* No comment provided by engineer. */
+"소리" = "Sound";
+
+/* No comment provided by engineer. */
+"시작하기" = "Start";
+
+/* No comment provided by engineer. */
+"ㅇ은 단어에 포함되지 않습니다." = "'ㅇ' is not in the word.";
+
+/* No comment provided by engineer. */
+"유효한 단어만 제출 가능합니다.\n이중 모음과 된소리 자음(쌍자음)은\n풀어서 입력합니다." = "Only valid Korean Words are\nsubmittable. Release diphthongs\nand double consonants to type.";
+
+/* No comment provided by engineer. */
+"정답률" = "Win %";
+
+/* No comment provided by engineer. */
+"진동" = "Vibration";
+
+/* No comment provided by engineer. */
+"첫 번째 ㄱ은 단어에 포함되며 위치도 맞습니다." = "The First 'ㄱ' is in the correct spot";
+
+/* No comment provided by engineer. */
+"최다 연승" = "Max\nStreak";
+
+/* No comment provided by engineer. */
+"취소" = "Cancel";
+
+/* No comment provided by engineer. */
+"통계" = "Statistics";
+
+/* No comment provided by engineer. */
+"ㅍ은 단어에 포함되며 위치도 맞습니다." = "'ㅍ' is in the word and in the correct spot.";
+
+/* No comment provided by engineer. */
+"평가 하기" = "Rate";
+
+/* No comment provided by engineer. */
+"푼 문제" = "Played";
+
+/* No comment provided by engineer. */
+"풀이 방법" = "How to Play";
+
+/* No comment provided by engineer. */
+"현재 연승" = "Current\nStreak";
+

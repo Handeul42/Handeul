@@ -99,20 +99,21 @@ struct DictView: View {
             .frame(minHeight: 35)
     }
     
+    @ViewBuilder
     private func copyButton() -> some View {
-        return ZStack {
-            RoundedRectangle(cornerRadius: 5)
-                .frame(width: 72, height: 36)
-                .foregroundColor(.hLigthGray)
+        ZStack {
             HStack {
                 Text("공유")
                     .foregroundColor(.hBlack)
                     .font(.custom("EBSHMJESaeronR", size: 17))
+                    .padding([.top, .leading, .bottom], 8)
                 Image(systemName: "arrowshape.turn.up.left")
                     .resizable()
                     .frame(width: 19, height: 15)
                     .foregroundColor(.hBlack)
+                    .padding([.top, .trailing, .bottom], 8)
             }
+            .background(Color.hLigthGray.cornerRadius(5))
         }
     }
     

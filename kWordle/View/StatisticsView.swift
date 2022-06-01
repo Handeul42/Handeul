@@ -84,7 +84,7 @@ struct StatisticsView: View {
     }
     
     private var statBoard: some View {
-        HStack {
+        HStack(spacing: 16) {
             showStat(of: "푼 문제", number: "\(vm.statistics.totalPlayed)")
             showStat(of: "정답률", number: String(format: "%.1f", vm.statistics.winRatio) + "%")
             showStat(of: "현재 연승", number: "\(vm.statistics.currentWinStreak)")
@@ -99,12 +99,13 @@ struct StatisticsView: View {
         return 190 * vm.statistics.getTryRatio(idx)
     }
     
-    private func showStat(of label: String, number: String) -> some View {
+    private func showStat(of label: LocalizedStringKey, number: String) -> some View {
         VStack(spacing: 8) {
             Text(number)
                 .font(.system(size: 16))
             Text(label)
                 .font(.custom("EBSHMJESaeronL", size: 16))
+                .multilineTextAlignment(.center)
         }
     }
 }
