@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import CoreData
-import SwiftUI
 
 class WordDictManager {
     static let shared = WordDictManager()
