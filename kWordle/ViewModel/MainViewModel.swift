@@ -15,7 +15,7 @@ class MainViewModel: ObservableObject {
     @Published var game: Game
     @Published var isInvalidWordWarningPresented: Bool = false
     let rewardADViewController = RewardedADViewController()
-    
+
     init () {
         if let previousGame = RealmManager.shared.getPreviousGame() {
             game = Game(persistedObject: previousGame)
@@ -48,6 +48,7 @@ class MainViewModel: ObservableObject {
                 if game.didPlayerWin {
                     print("Cool! You win!")
                     HapticsManager.shared.notification(type: .success)
+                    HapticsManager.shared.playSound(id: 1322) //
                     Analytics.logEvent("PlayerWin", parameters: [
                         AnalyticsParameterItemID: game.answer,
                         AnalyticsParameterLevel: game.currentRow
@@ -56,6 +57,7 @@ class MainViewModel: ObservableObject {
                 } else if !game.didPlayerWin {
                     print("You lose :(")
                     HapticsManager.shared.notification(type: .error)
+                    HapticsManager.shared.playSound(id: 1006)
                     Analytics.logEvent("PlayerLose", parameters: [
                         AnalyticsParameterItemID: game.answer
                     ])
