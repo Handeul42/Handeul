@@ -131,7 +131,7 @@ struct DictView: View {
             VStack {
                 Text("내일의 문제")
                     .foregroundColor(.hBlack)
-                    .font(.custom("EBSHMJESaeronR", size: 17))
+                    .font(.custom("EBSHMJESaeronR", fixedSize: 17))
                 Text(countDownString(from: Date() + 1))
                     .foregroundColor(.hBlack)
                     .onAppear {
