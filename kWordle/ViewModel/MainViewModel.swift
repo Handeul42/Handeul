@@ -110,7 +110,20 @@ class MainViewModel: ObservableObject {
         return ret + " 번째 #한들"
     }
     
-    func generateIntToString(_ date: Int) -> String {
+    func generateIntToStringMonth(_ month: Int) -> String {
+        let intToStringDict = ["일", "이", "삼", "사", "오", "유", "칠", "팔", "구"]
+        let int10ToStringDict = ["시", "십일", "십이"]
+        var ret = ""
+        
+        if month >= 10 {
+            ret = int10ToStringDict[month % 10]
+        } else {
+            ret = intToStringDict[month % 10 - 1]
+        }
+        return ret
+    }
+    
+    func generateIntToStringDay(_ date: Int) -> String {
         let intToStringDict = ["일", "이", "삼", "사", "오", "육", "칠", "팔", "구"]
         let int10ToStringDict = ["십", "이십", "삼십"]
         var ret = ""
@@ -126,8 +139,8 @@ class MainViewModel: ObservableObject {
     
     func generateDateToString() -> String {
         let lastDate = UserDefaults.standard.string(forKey: "lastDate") ?? "00-00"
-        let todayMonth = generateIntToString(Int(lastDate.components(separatedBy: "-")[1])!) + "월 "
-        let todayDay = generateIntToString(Int(lastDate.components(separatedBy: "-")[2])!) + "일"
+        let todayMonth = generateIntToStringMonth(Int(lastDate.components(separatedBy: "-")[1])!) + "월 "
+        let todayDay = generateIntToStringDay(Int(lastDate.components(separatedBy: "-")[2])!) + "일"
         
         return todayMonth + todayDay
     }
