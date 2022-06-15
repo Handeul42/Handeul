@@ -37,7 +37,7 @@ struct StatisticsView: View {
                         }
                     }
                     Text("통계")
-                        .font(.custom("EBSHMJESaeronR", size: 22))
+                        .font(.custom("EBSHMJESaeronR", fixedSize: 22))
                         .padding(24)
                 }
                 
@@ -59,7 +59,7 @@ struct StatisticsView: View {
         VStack {
             Spacer()
             Text("데이터가 없습니다.")
-                .font(.custom("EBSHMJESaeronR", size: 22))
+                .font(.custom("EBSHMJESaeronR", fixedSize: 22))
             Spacer()
         }
     }
@@ -104,7 +104,7 @@ struct StatisticsView: View {
             Text(number)
                 .font(.system(size: 16))
             Text(label)
-                .font(.custom("EBSHMJESaeronL", size: 16))
+                .font(.custom("EBSHMJESaeronL", fixedSize: 16))
                 .multilineTextAlignment(.center)
         }
     }

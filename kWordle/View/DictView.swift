@@ -25,7 +25,7 @@ struct DictView: View {
                 VStack(spacing: 8) {
                     HStack {
                         Text(answer)
-                            .font(.custom("EBSHMJESaeronR", size: 28))
+                            .font(.custom("EBSHMJESaeronR", fixedSize: 28))
                         currentWinStreakMarker()
                         Spacer()
                         Button {
@@ -79,11 +79,11 @@ struct DictView: View {
                     .font(.system(size: 12))
                     .padding([.top, .bottom, .leading], 6)
                 Text("연승!")
-                    .font(.custom("EBSHMJESaeronR", size: 12))
+                    .font(.custom("EBSHMJESaeronR", fixedSize: 12))
                     .padding([.top, .bottom, .trailing], 6)
             } else {
                 Text("연승 끝... 😢")
-                    .font(.custom("EBSHMJESaeronR", size: 12))
+                    .font(.custom("EBSHMJESaeronR", fixedSize: 12))
                     .padding(6)
             }
         }.foregroundColor(.white)
@@ -92,7 +92,7 @@ struct DictView: View {
     
     private func dictMeaning() -> some View {
         return Text(meaning)
-            .font(.custom("EBSHMJESaeronL", size: 15))
+            .font(.custom("EBSHMJESaeronL", fixedSize: 15))
             .multilineTextAlignment(.leading)
             .lineLimit(2)
             .truncationMode(.tail)
@@ -105,7 +105,7 @@ struct DictView: View {
             HStack {
                 Text("공유")
                     .foregroundColor(.hBlack)
-                    .font(.custom("EBSHMJESaeronR", size: 17))
+                    .font(.custom("EBSHMJESaeronR", fixedSize: 17))
                     .padding([.top, .leading, .bottom], 8)
                 Image(systemName: "arrowshape.turn.up.left")
                     .resizable()
@@ -162,14 +162,14 @@ struct DictView: View {
                 .foregroundColor(.hLigthGray)
             Text("새문제 받기")
                 .foregroundColor(.hBlack)
-                .font(.custom("EBSHMJESaeronR", size: 17))
+                .font(.custom("EBSHMJESaeronR", fixedSize: 17))
             ZStack {
                 Rectangle()
                     .frame(width: 32, height: 16)
                     .foregroundColor(.hRed)
                 Text("광고")
                     .foregroundColor(.white)
-                    .font(.custom("EBSHMJESaeronR", size: 14))
+                    .font(.custom("EBSHMJESaeronR", fixedSize: 14))
             }
             .offset(x: 44, y: -22)
         }

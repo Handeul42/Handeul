@@ -27,7 +27,7 @@ struct AnswerBoardView: View {
                 .border(Color.hRed, width: 2)
             Text(key.character)
                 .foregroundColor(getColor(of: .black))
-                .font(.custom("EBSHMJESaeronSB", size: 32))
+                .font(.custom("EBSHMJESaeronSB", fixedSize: 32))
         }
     }
     

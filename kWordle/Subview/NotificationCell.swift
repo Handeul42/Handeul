@@ -16,7 +16,7 @@ struct NotificationCell: View {
                 Toggle("새 문제 알림", isOn: $notificationManager.isNotiOn)
                     .frame(width: 134)
                     .toggleStyle(SettingToggleStyle())
-                    .font(.custom("EBSHMJESaeronL", size: 16))
+                    .font(.custom("EBSHMJESaeronL", fixedSize: 16))
             }
             if notificationManager.isNotiOn {
                 HStack {

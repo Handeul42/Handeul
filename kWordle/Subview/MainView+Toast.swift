@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct ToastView: View {
-    
     @Binding var presentStatus: Bool
-    
     let toastText: String
+    
     var body: some View {
         Text(toastText)
-            .font(.custom("EBSHMJESaeronR", size: 16))
+            .font(.custom("EBSHMJESaeronR", fixedSize: 16))
             .foregroundColor(Color.hBlack)
             .padding()
             .background(Color.hLigthGray
