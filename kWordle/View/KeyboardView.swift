@@ -23,7 +23,7 @@ struct KeyboardView: View {
                 .foregroundColor(.hLigthGray)
             Text("제출")
                 .foregroundColor(getColor(of: .black))
-                .font(.custom("EBSHMJESaeronSB", size: 18))
+                .font(.custom("EBSHMJESaeronSB", fixedSize: 18))
         }
     }
     private func keyboardDeleteButton() -> some View {
@@ -35,7 +35,7 @@ struct KeyboardView: View {
                 .foregroundColor(.hLigthGray)
             Text("지움")
                 .foregroundColor(getColor(of: .black))
-                .font(.custom("EBSHMJESaeronSB", size: 18))
+                .font(.custom("EBSHMJESaeronSB", fixedSize: 18))
         }
     }
     
@@ -119,7 +119,7 @@ struct KeyboardView: View {
                 .foregroundColor(getColor(of: key.status))
             Text(key.character)
                 .foregroundColor(getColor(of: .black))
-                .font(.custom("EBSHMJESaeronR", size: jaum.contains(key.character) ? 24 : 26))
+                .font(.custom("EBSHMJESaeronR", fixedSize: jaum.contains(key.character) ? 24 : 26))
         }
     }
 }

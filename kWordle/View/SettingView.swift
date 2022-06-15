@@ -27,7 +27,7 @@ struct SettingView: View {
     fileprivate func TitleBar() -> some View {
         return ZStack {
             Text("설정")
-                .font(.custom("EBSHMJESaeronR", size: 22))
+                .font(.custom("EBSHMJESaeronR", fixedSize: 22))
             HStack {
                 Spacer()
                 Button {
@@ -146,7 +146,7 @@ struct SettingView: View {
                     hapticButton()
                     colorWeakModeButton()
                 }
-                .font(.custom("EBSHMJESaeronL", size: 14))
+                .font(.custom("EBSHMJESaeronL", fixedSize: 14))
             }
             NotificationCell()
                 .environmentObject(notificationManager)
@@ -183,7 +183,7 @@ struct SettingView: View {
                     .padding(.bottom, 41)
                 SettingContents()
                     .frame(width: 134, height: 350)
-                    .font(.custom("EBSHMJESaeronL", size: 16))
+                    .font(.custom("EBSHMJESaeronL", fixedSize: 16))
             }
             .frame(width: 320, height: 420, alignment: .top)
             if isHowToPlayPresented {
