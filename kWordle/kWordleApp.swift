@@ -18,6 +18,7 @@ struct KWordleApp: App {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         UNUserNotificationCenter.current().delegate = .none
     }
+    
     var body: some Scene {
         WindowGroup {
             MainView()

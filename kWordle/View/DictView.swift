@@ -16,6 +16,7 @@ struct DictView: View {
     @State var nowDate: Date = Date()
     @AppStorage("isColorWeakModeOn") var isColorWeakModeOn: Bool = false
     
+    @Environment(\.scenePhase) var scenePhase
     @State var currentDate: Date = Date()
     var title = "share"
     
@@ -56,6 +57,11 @@ struct DictView: View {
             }
             .onAppear {
                 initDict()
+            }
+            .onChange(of: scenePhase) { newPhase in
+                if newPhase == .active {
+                    initDict()
+                }
             }
             .padding(.horizontal, 35)
         }

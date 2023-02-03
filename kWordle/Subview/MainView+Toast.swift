@@ -14,6 +14,7 @@ struct ToastView: View {
     var body: some View {
         Text(toastText)
             .font(.custom("EBSHMJESaeronR", fixedSize: 16))
+            .lineSpacing(10)
             .foregroundColor(Color.hBlack)
             .padding()
             .background(Color.hLigthGray
@@ -32,7 +33,7 @@ extension View {
         ToastView(presentStatus: status, toastText: message)
             .zIndex(2)
             .onAppear {
-                Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
                     withAnimation {
                         changeStatusBy()
                     }
@@ -40,3 +41,25 @@ extension View {
             }
     }
 }
+
+
+#if DEBUG
+import SwiftUI
+
+struct ToastPreview: PreviewProvider {
+    static var previews: some View {
+        Group {
+            Text("다음 문제를 위해\n광고 불러오는 중")
+                .font(.custom("EBSHMJESaeronR", fixedSize: 16))
+                .lineSpacing(10)
+                .foregroundColor(Color.hBlack)
+                .padding()
+                .background(Color.hLigthGray
+                    .opacity(0.95)
+                    .cornerRadius(8)
+                )
+        }
+    }
+}
+#endif
+
