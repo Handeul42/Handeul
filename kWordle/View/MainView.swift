@@ -27,7 +27,7 @@ struct MainView: View {
                           _ = mainViewModel.refreshGameOnActive()
                         }
                     }
-                    mainViewModel.closeInvalidWordWarning()
+                    mainViewModel.closeToastMessage()
                 }
             if isSettingPresented {
                 SettingView(isSettingPresented: $isSettingPresented)
@@ -38,11 +38,21 @@ struct MainView: View {
                 HowToPlayOnFirstLaunch(isHowToPlayPresented: $shouldHowToPlayPresented)
                     .zIndex(2)
             }
-            if mainViewModel.isInvalidWordWarningPresented == true {
+            if mainViewModel.isInvalidWordWarningPresented {
                 showToast("유효하지 않은 단어입니다.", status: $mainViewModel.isInvalidWordWarningPresented) {
-                    mainViewModel.closeInvalidWordWarning()
+                    mainViewModel.closeToastMessage()
                 }
             }
+            if mainViewModel.isADNotLoaded {
+                showToast("다음 문제를 위해\n광고 불러오는 중", status: $mainViewModel.isADNotLoaded) {
+                    mainViewModel.closeToastMessage()
+                }
+            }
+        }
+        .alert(isPresented: $mainViewModel.needUpdate) {
+            Alert(title: Text("업데이트"), message: Text("새 버전이 업데이트 되었습니다."), primaryButton: .default(Text("업데이트"), action: {
+                mainViewModel.openAppStore()
+            }), secondaryButton: .destructive(Text("나중에")))
         }
     }
     
@@ -71,6 +81,7 @@ struct MainView: View {
         .environmentObject(mainViewModel)
         .onAppear {
             requestPermission()
+            mainViewModel.closeToastMessage()
         }
     }
     

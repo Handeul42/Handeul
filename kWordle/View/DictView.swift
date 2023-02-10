@@ -16,6 +16,7 @@ struct DictView: View {
     @State var nowDate: Date = Date()
     @AppStorage("isColorWeakModeOn") var isColorWeakModeOn: Bool = false
     
+    @Environment(\.scenePhase) var scenePhase
     @State var currentDate: Date = Date()
     var title = "share"
     
@@ -48,7 +49,7 @@ struct DictView: View {
                     .disabled(true)
                     Spacer()
                     Button {
-                        viewModel.startNewGame()
+                        tapStartNewGameButton()
                     } label: {
                         newGameButtonWithAD()
                     }
@@ -56,6 +57,11 @@ struct DictView: View {
             }
             .onAppear {
                 initDict()
+            }
+            .onChange(of: scenePhase) { newPhase in
+                if newPhase == .active {
+                    initDict()
+                }
             }
             .padding(.horizontal, 35)
         }
@@ -179,5 +185,9 @@ struct DictView: View {
         let stringShare = viewModel.generateString()
         let activityVC = UIActivityViewController(activityItems: [stringShare], applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+    }
+    
+    func tapStartNewGameButton() {
+        viewModel.startNewGame()
     }
 }

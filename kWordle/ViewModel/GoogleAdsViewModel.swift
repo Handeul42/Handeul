@@ -16,14 +16,16 @@ class RewardedADViewController: UIViewController, GADFullScreenContentDelegate {
 #endif
     var rewardedInterstitialAD: GADRewardedInterstitialAd?
     
-    func loadAD() {
+    func loadAD(completionHandler: @escaping (Bool) -> ()) {
         GADRewardedInterstitialAd.load(withAdUnitID: adUnitID, request: GADRequest()) { [self] ad, error in
             if let error = error {
                 print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                completionHandler(false)
                 return
             }
             rewardedInterstitialAD = ad
             rewardedInterstitialAD?.fullScreenContentDelegate = self
+            completionHandler(true)
         }
     }
     
@@ -32,22 +34,12 @@ class RewardedADViewController: UIViewController, GADFullScreenContentDelegate {
             let root = UIApplication.shared.windows.first?.rootViewController
             rewardedInterstitialAD?.present(fromRootViewController: root!, userDidEarnRewardHandler: {
                 print("earn reward")
-                self.loadAD()
                 completionHandler(true)
             })
+            completionHandler(false)
         } else {
             print("AD wasn't ready")
-            loadAD()
             completionHandler(false)
         }
-    }
-    
-    func didRewardUser(with reward: GADAdReward) -> Bool {
-        loadAD()
-        return true
-    }
-    
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        loadAD()
     }
 }

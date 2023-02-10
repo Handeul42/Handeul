@@ -14,16 +14,19 @@ var generator = RandomNumberGeneratorWithSeed(seed: DateToSeed())
 class MainViewModel: ObservableObject {
     @Published var game: Game
     @Published var isInvalidWordWarningPresented: Bool = false
+    @Published var isADNotLoaded: Bool = false
+    @Published var needUpdate: Bool = false
     let rewardADViewController = RewardedADViewController()
+    var preventTapStartButton: Bool = false
 
-    init () {
+    init() {
         if let previousGame = RealmManager.shared.getPreviousGame() {
             game = Game(persistedObject: previousGame)
         } else {
             game = Game(answer: todayAnswer())
         }
         print(game.answer)
-        rewardADViewController.loadAD()
+        checkUpdate()
     }
     
     // MARK: Public Functions
@@ -69,8 +72,9 @@ class MainViewModel: ObservableObject {
         isInvalidWordWarningPresented = true
     }
     
-    public func closeInvalidWordWarning() {
+    public func closeToastMessage() {
         isInvalidWordWarningPresented = false
+        isADNotLoaded = false
     }
     
     public func refreshGameOnActive() -> Bool {
@@ -176,21 +180,72 @@ class MainViewModel: ObservableObject {
     }
     
     func startNewGame() {
-        guard refreshGameOnActive() == false else { return }
-        rewardADViewController.doSomething() { [self] _ in
-            if rewardADViewController.didRewardUser(with: GADAdReward()) {
-                let randomAnswer = randomAnswerGenerator()
-                let newGame = Game(answer: randomAnswer)
-                self.game = newGame
-                self.game.saveCurrentGame()
+        guard refreshGameOnActive() == false,
+              preventTapStartButton == false else { return }
+        preventTapStartButton = true
+        rewardADViewController.loadAD { isLoaded in
+            if isLoaded {
+                self.rewardADViewController.doSomething { isPresentedAd in
+                    if isPresentedAd {
+                        let randomAnswer = randomAnswerGenerator()
+                        let newGame = Game(answer: randomAnswer)
+                        self.game = newGame
+                        self.game.saveCurrentGame()
+                        self.isADNotLoaded = false
+                        self.preventTapStartButton = false
+                    } else {
+                        self.isADNotLoaded = true
+                        self.preventTapStartButton = false
+                    }
+                }
+            } else {
+                self.isADNotLoaded = true
+                self.preventTapStartButton = false
             }
         }
     }
     
-    // MARK: Private Functions
     private func userLog(_ state: String) {
         let deivceUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
         Analytics.logEvent(state + "-" + deivceUUID, parameters: [:])
+    }
+    
+    private func checkUpdate() {
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        guard let latestVersion = latestVersion() else { return }
+        if let lastCheckVersion = UserDefaults.standard.string(forKey: "latestVersion") {
+            let compareVersion = lastCheckVersion.compare(latestVersion, options: .numeric)
+            if compareVersion != .orderedAscending {
+                return
+            }
+        }
+        UserDefaults.standard.set(latestVersion, forKey: "latestVersion")
+        
+        let compareResult = appVersion?.compare(latestVersion, options: .numeric)
+        
+        if compareResult == .orderedAscending {
+            needUpdate.toggle()
+        }
+    }
+    
+    func latestVersion() -> String? {
+        let appleID = "1619947572"
+        guard let url = URL(string: "https://itunes.apple.com/lookup?id=\(appleID)"),
+              let data = try? Data(contentsOf: url),
+              let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
+              let results = json["results"] as? [[String: Any]],
+              let appStoreVersion = results[0]["version"] as? String else {
+            return nil
+        }
+        
+        return appStoreVersion
+    }
+    
+    func openAppStore() {
+        let appleID = "1619947572"
+        let appStoreOpneUrlString = "itms-apps://itunes.apple.com/app/apple-store/\(appleID)"
+        guard let url = URL(string: appStoreOpneUrlString) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
 

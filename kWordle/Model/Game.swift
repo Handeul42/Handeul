@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Game {
     
@@ -69,7 +70,12 @@ extension Game {
     mutating func submitAnswer() {
         guard isGameFinished == false else { return }
         let currentWord: String = answerBoard[currentRow].map({ $0.character }).joined(separator: "")
+        
         if currentColumn == 5 && currentRow != 6 {
+            Analytics.logEvent("PlayerSubmit", parameters: [
+                AnalyticsParameterItemID: currentWord,
+                AnalyticsParameterLevel: currentRow
+            ])
             if self.answer == currentWord {
                 playerWin()
                 return
