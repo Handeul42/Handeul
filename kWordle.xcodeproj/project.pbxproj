@@ -226,9 +226,8 @@
 		73FD63A427EDCF920041036F = {
 			isa = PBXGroup;
 			children = (
+				DBBBF40A29961B7400ADBAEF /* ci_scripts */,
 				CC57AF292816D5C7001675CD /* .swiftlint.yml */,
-				DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */,
-				DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */,
 				73FD63AF27EDCF920041036F /* kWordle */,
 				73FD63AE27EDCF920041036F /* Products */,
 			);
@@ -296,6 +295,15 @@
 				CCFBDB412817BBAD006674A3 /* Persistable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DBBBF40A29961B7400ADBAEF /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */,
+				DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */,
+			);
+			path = ci_scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
