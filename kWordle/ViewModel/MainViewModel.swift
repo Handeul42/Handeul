@@ -17,6 +17,7 @@ class MainViewModel: ObservableObject {
     @Published var isADNotLoaded: Bool = false
     @Published var needUpdate: Bool = false
     let rewardADViewController = RewardedADViewController()
+    var preventTapStartButton: Bool = false
 
     init() {
         if let previousGame = RealmManager.shared.getPreviousGame() {
@@ -25,7 +26,6 @@ class MainViewModel: ObservableObject {
             game = Game(answer: todayAnswer())
         }
         print(game.answer)
-        rewardADViewController.loadAD()
         checkUpdate()
     }
     
@@ -180,17 +180,27 @@ class MainViewModel: ObservableObject {
     }
     
     func startNewGame() {
-        guard refreshGameOnActive() == false else { return }
-        rewardADViewController.doSomething() { [self] result in
-            if result {
-                if rewardADViewController.didRewardUser(with: GADAdReward()) {
-                    let randomAnswer = randomAnswerGenerator()
-                    let newGame = Game(answer: randomAnswer)
-                    self.game = newGame
-                    self.game.saveCurrentGame()
+        guard refreshGameOnActive() == false,
+              preventTapStartButton == false else { return }
+        preventTapStartButton = true
+        rewardADViewController.loadAD { isLoaded in
+            if isLoaded {
+                self.rewardADViewController.doSomething { isPresentedAd in
+                    if isPresentedAd {
+                        let randomAnswer = randomAnswerGenerator()
+                        let newGame = Game(answer: randomAnswer)
+                        self.game = newGame
+                        self.game.saveCurrentGame()
+                        self.isADNotLoaded = false
+                        self.preventTapStartButton = false
+                    } else {
+                        self.isADNotLoaded = true
+                        self.preventTapStartButton = false
+                    }
                 }
             } else {
-                isADNotLoaded.toggle()
+                self.isADNotLoaded = true
+                self.preventTapStartButton = false
             }
         }
     }
