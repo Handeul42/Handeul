@@ -40,7 +40,6 @@ struct LifeView: View {
             }
             .contentShape(Rectangle())
             .onTapGesture {
-//                mainViewModel.useLifeCount()
                 withAnimation {
                     lifeTouch.toggle()
                 }
@@ -74,8 +73,7 @@ struct LifeView: View {
                         .onTapGesture {
                             print("loading ads")
                             print(mainViewModel.game.answer)
-                            //                        mainViewModel.showAds()
-                            mainViewModel.addLifeCountWithAD()
+                            mainViewModel.showAds()
                         }
                     }
                     if lifeTouch {
