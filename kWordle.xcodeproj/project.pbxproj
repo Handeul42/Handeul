@@ -62,6 +62,8 @@
 		CCFBDB462817D022006674A3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB452817D022006674A3 /* RealmManager.swift */; };
 		CCFBDB482817F42B006674A3 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB472817F42B006674A3 /* Statistics.swift */; };
 		CCFBDB4A2817FB28006674A3 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */; };
+		DBBBF407299617F600ADBAEF /* GoogleService-Info.plist.template in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */; };
+		DBBBF4092996199C00ADBAEF /* ci_pre_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +121,8 @@
 		CCFBDB452817D022006674A3 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CCFBDB472817F42B006674A3 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
+		DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "GoogleService-Info.plist.template"; sourceTree = "<group>"; };
+		DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +226,7 @@
 		73FD63A427EDCF920041036F = {
 			isa = PBXGroup;
 			children = (
+				DBBBF40A29961B7400ADBAEF /* ci_scripts */,
 				CC57AF292816D5C7001675CD /* .swiftlint.yml */,
 				73FD63AF27EDCF920041036F /* kWordle */,
 				73FD63AE27EDCF920041036F /* Products */,
@@ -290,6 +295,15 @@
 				CCFBDB412817BBAD006674A3 /* Persistable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DBBBF40A29961B7400ADBAEF /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */,
+				DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */,
+			);
+			path = ci_scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,9 +381,11 @@
 				737D4CC728092C2100CD8CBD /* .swiftlint.yml in Resources */,
 				CC64209A2843307D00851A22 /* Localizable.strings in Resources */,
 				73D66DB9280E973300313A7F /* EBS훈민정음SB.ttf in Resources */,
+				DBBBF407299617F600ADBAEF /* GoogleService-Info.plist.template in Resources */,
 				73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */,
 				73D66DBE280EA31000313A7F /* Launch Screen.storyboard in Resources */,
 				73D66DBA280E973300313A7F /* EBS훈민정음새론R.ttf in Resources */,
+				DBBBF4092996199C00ADBAEF /* ci_pre_xcodebuild.sh in Resources */,
 				73D66DBB280E973300313A7F /* EBS훈민정음새론SB.ttf in Resources */,
 				73FD63B527EDCF940041036F /* Assets.xcassets in Resources */,
 				CC7D1D4C28169F6B00CD7BFD /* GoogleService-Info.plist in Resources */,
