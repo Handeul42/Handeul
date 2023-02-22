@@ -27,7 +27,6 @@ struct DictView: View {
                     HStack {
                         Text(answer)
                             .font(.custom("EBSHMJESaeronR", fixedSize: 28))
-                        currentWinStreakMarker()
                         Spacer()
                         Button {
                             actionSheet()
@@ -40,16 +39,11 @@ struct DictView: View {
                         Spacer()
                     }
                 }
-                HStack {
+                HStack(spacing: 24) {
                     Button {
-//                        viewModel.startNewGame()
-                    } label: {
-                        todayGameButton()
-                    }
-                    .disabled(true)
-                    Spacer()
-                    Button {
-                        tapStartNewGameButton()
+                        withAnimation {
+                            tapStartNewGameButton()
+                        }
                     } label: {
                         newGameButtonWithAD()
                     }
@@ -76,26 +70,6 @@ struct DictView: View {
         }
     }
     
-    @ViewBuilder
-    private func currentWinStreakMarker() -> some View {
-        let currentWinStreak = Statistics().currentWinStreak
-        HStack(alignment: .bottom, spacing: 0) {
-            if currentWinStreak > 0 {
-                Text("\(currentWinStreak)")
-                    .font(.system(size: 12))
-                    .padding([.top, .bottom, .leading], 6)
-                Text("연승!")
-                    .font(.custom("EBSHMJESaeronR", fixedSize: 12))
-                    .padding([.top, .bottom, .trailing], 6)
-            } else {
-                Text("연승 끝... 😢")
-                    .font(.custom("EBSHMJESaeronR", fixedSize: 12))
-                    .padding(6)
-            }
-        }.foregroundColor(.white)
-            .background((currentWinStreak != 0 ? (isColorWeakModeOn ? Color.hSkyblue : Color.hGreen) : Color.hRed).cornerRadius(5))
-    }
-    
     private func dictMeaning() -> some View {
         return Text(meaning)
             .font(.custom("EBSHMJESaeronL", fixedSize: 15))
@@ -108,76 +82,39 @@ struct DictView: View {
     @ViewBuilder
     private func copyButton() -> some View {
         ZStack {
-            HStack {
+            HStack(spacing: 2) {
                 Text("공유")
                     .foregroundColor(.hBlack)
-                    .font(.custom("EBSHMJESaeronR", fixedSize: 17))
+                    .font(.custom("EBSHMJESaeronR", fixedSize: 15))
                     .padding([.top, .leading, .bottom], 8)
-                Image(systemName: "arrowshape.turn.up.left")
-                    .resizable()
-                    .frame(width: 19, height: 15)
-                    .foregroundColor(.hBlack)
+                Image("shareImage")
                     .padding([.top, .trailing, .bottom], 8)
             }
+            .frame(width: 60, height: 28)
             .background(Color.hLigthGray.cornerRadius(5))
         }
-    }
-    
-    private func todayGameButton() -> some View {
-        var timer: Timer {
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                self.nowDate = Date()
-            }
-        }
-        
-        return ZStack {
-            RoundedRectangle(cornerRadius: 5)
-                .frame(width: 132, height: 61)
-                .foregroundColor(.hLigthGray)
-            VStack {
-                Text("내일의 문제")
-                    .foregroundColor(.hBlack)
-                    .font(.custom("EBSHMJESaeronR", fixedSize: 17))
-                Text(countDownString(from: Date() + 1))
-                    .foregroundColor(.hBlack)
-                    .onAppear {
-                        _ = timer
-                    }
-            }
-        }
-    }
-    
-    private func countDownString(from date: Date) -> String {
-        let calendar = Calendar(identifier: .gregorian)
-        let midnight = calendar.startOfDay(for: nowDate)
-        let referenceDate: Date = calendar.date(byAdding: .day, value: 1, to: midnight)!
-        let components = calendar
-            .dateComponents([.day, .hour, .minute, .second],
-                            from: nowDate,
-                            to: referenceDate)
-        return String(format: "%02d:%02d:%02d",
-                      components.hour ?? 00,
-                      components.minute ?? 00,
-                      components.second ?? 00)
     }
 
     private func newGameButtonWithAD() -> some View {
         return ZStack {
             RoundedRectangle(cornerRadius: 5)
-                .frame(width: 132, height: 61)
+                .frame(width: 132, height: 50)
                 .foregroundColor(.hLigthGray)
             Text("새문제 받기")
                 .foregroundColor(.hBlack)
                 .font(.custom("EBSHMJESaeronR", fixedSize: 17))
-            ZStack {
-                Rectangle()
-                    .frame(width: 32, height: 16)
-                    .foregroundColor(.hRed)
-                Text("광고")
-                    .foregroundColor(.white)
-                    .font(.custom("EBSHMJESaeronR", fixedSize: 14))
+                .offset(x: 0, y: viewModel.life == 0 ? 2 : 0)
+            if viewModel.life == 0 {
+                ZStack {
+                    Rectangle()
+                        .frame(width: 32, height: 13)
+                        .foregroundColor(.hRed)
+                    Text("광고")
+                        .foregroundColor(.white)
+                        .font(.custom("EBSHMJESaeronR", fixedSize: 14))
+                }
+                .offset(x: 42, y: -18)
             }
-            .offset(x: 44, y: -22)
         }
     }
     
@@ -188,6 +125,6 @@ struct DictView: View {
     }
     
     func tapStartNewGameButton() {
-        viewModel.startNewGame()
+            viewModel.useLifeCount()
     }
 }
