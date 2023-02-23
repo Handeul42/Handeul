@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MainView: View {
-    
     @Environment(\.scenePhase) var scenePhase
     @StateObject var mainViewModel: MainViewModel = MainViewModel()
     @AppStorage("shouldHowToPlayPresented") var shouldHowToPlayPresented: Bool = true
@@ -44,7 +43,7 @@ struct MainView: View {
                 }
             }
             if mainViewModel.isADNotLoaded {
-                showToast("다음 문제를 위해\n광고 불러오는 중", status: $mainViewModel.isADNotLoaded) {
+                showToast("광고 불러오는 중", status: $mainViewModel.isADNotLoaded) {
                     mainViewModel.closeToastMessage()
                 }
             }
@@ -69,7 +68,10 @@ struct MainView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 8)
             AnswerBoardView()
-            Spacer()
+            LifeView()
+                .padding(.horizontal, 20)
+                .padding([.top], 8)
+                .padding([.bottom], 25)
             if !mainViewModel.game.isGameFinished {
                 KeyboardView()
             } else {

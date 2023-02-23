@@ -16,8 +16,19 @@ class MainViewModel: ObservableObject {
     @Published var isInvalidWordWarningPresented: Bool = false
     @Published var isADNotLoaded: Bool = false
     @Published var needUpdate: Bool = false
+    @Published var needLife: Bool = false
+    @AppStorage("life") var life = UserDefaults.standard.integer(forKey: "life")
+    @AppStorage("lifeTimeStamp")
+    var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
+    
+    @Published var lifeCount: Int = 0 {
+        didSet {
+            saveLife(lifeCount: lifeCount)
+        }
+    }
+    
     let rewardADViewController = RewardedADViewController()
-    var preventTapStartButton: Bool = false
+    var preventTapShowAdButton: Bool = false
 
     init() {
         if let previousGame = RealmManager.shared.getPreviousGame() {
@@ -26,7 +37,9 @@ class MainViewModel: ObservableObject {
             game = Game(answer: todayAnswer())
         }
         print(game.answer)
+        lifeCount = life
         checkUpdate()
+        checkLifeCount()
     }
     
     // MARK: Public Functions
@@ -179,30 +192,57 @@ class MainViewModel: ObservableObject {
         self.objectWillChange.send()
     }
     
-    func startNewGame() {
+    func showAds() {
         guard refreshGameOnActive() == false,
-              preventTapStartButton == false else { return }
-        preventTapStartButton = true
+              preventTapShowAdButton == false else { return }
+        preventTapShowAdButton = true
         rewardADViewController.loadAD { isLoaded in
             if isLoaded {
                 self.rewardADViewController.doSomething { isPresentedAd in
                     if isPresentedAd {
-                        let randomAnswer = randomAnswerGenerator()
-                        let newGame = Game(answer: randomAnswer)
-                        self.game = newGame
-                        self.game.saveCurrentGame()
+                        self.addLifeCountWithAD()
                         self.isADNotLoaded = false
-                        self.preventTapStartButton = false
+                        self.preventTapShowAdButton = false
                     } else {
                         self.isADNotLoaded = true
-                        self.preventTapStartButton = false
+                        self.preventTapShowAdButton = false
                     }
                 }
             } else {
                 self.isADNotLoaded = true
-                self.preventTapStartButton = false
+                self.preventTapShowAdButton = false
             }
         }
+    }
+    
+    func showAdsWithNewGame() {
+        guard refreshGameOnActive() == false,
+              preventTapShowAdButton == false else { return }
+        preventTapShowAdButton = true
+        rewardADViewController.loadAD { isLoaded in
+            if isLoaded {
+                self.rewardADViewController.doSomething { isPresentedAd in
+                    if isPresentedAd {
+                        self.startNewGame()
+                        self.isADNotLoaded = false
+                        self.preventTapShowAdButton = false
+                    } else {
+                        self.isADNotLoaded = true
+                        self.preventTapShowAdButton = false
+                    }
+                }
+            } else {
+                self.isADNotLoaded = true
+                self.preventTapShowAdButton = false
+            }
+        }
+    }
+    
+    private func startNewGame() {
+        let randomAnswer = randomAnswerGenerator()
+        let newGame = Game(answer: randomAnswer)
+        self.game = newGame
+        self.game.saveCurrentGame()
     }
     
     private func userLog(_ state: String) {
@@ -246,6 +286,82 @@ class MainViewModel: ObservableObject {
         let appStoreOpneUrlString = "itms-apps://itunes.apple.com/app/apple-store/\(appleID)"
         guard let url = URL(string: appStoreOpneUrlString) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+}
+
+/// life count
+extension MainViewModel {
+    func checkLifeCount() {
+        if lifeTimeStamp == "" { lifeTimeStamp = dateToString(with: Date()) }
+        let lastDate = stringToDate(with: lifeTimeStamp)
+        let currentDate = Date()
+        let diffInHours = currentDate.timeIntervalSince(lastDate) / 3600
+
+        if diffInHours > 1 {
+            addLifeCount(Int(lroundl(diffInHours)))
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3601) { [weak self] in
+            self?.checkLifeCount()
+        }
+    }
+    
+    func addLifeCountWithAD() {
+        addLifeCount()
+    }
+    
+    func addLifeCount(_ addValue: Int = 1) {
+        lifeCount = min(lifeCount + addValue, 5)
+        if lifeCount < 5 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3601) { [weak self] in
+                self?.checkLifeCount()
+            }
+        } else {
+            lifeTimeStamp = ""
+        }
+    }
+    
+    func useLifeCount() {
+        guard lifeCount > 0 else {
+            needLife.toggle()
+            self.showAdsWithNewGame()
+            return
+        }
+        if lifeCount == 5 {
+            lifeTimeStamp = dateToString(with: Date())
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3601) { [weak self] in
+                self?.checkLifeCount()
+            }
+        }
+        lifeCount -= 1
+        startNewGame()
+    }
+    
+    func saveLife(lifeCount: Int) {
+        if lifeCount == 5 { lifeTimeStamp = "" }
+        life = lifeCount
+    }
+    
+    func getLifeCount() {
+        lifeCount = life
+    }
+    
+    func stringToDate(with dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+
+        let date:Date = dateFormatter.date(from: dateString)!
+        return date
+    }
+    
+    func dateToString(with date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+
+        let dateString:String = dateFormatter.string(from: date)
+        return dateString
     }
 }
 

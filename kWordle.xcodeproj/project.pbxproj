@@ -64,6 +64,7 @@
 		CCFBDB4A2817FB28006674A3 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */; };
 		DBBBF407299617F600ADBAEF /* GoogleService-Info.plist.template in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */; };
 		DBBBF4092996199C00ADBAEF /* ci_pre_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */; };
+		DBDE27AF299F600C00841CF7 /* LifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE27AE299F600C00841CF7 /* LifeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +124,7 @@
 		CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "GoogleService-Info.plist.template"; sourceTree = "<group>"; };
 		DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
+		DBDE27AE299F600C00841CF7 /* LifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				73036274281261E8002DCE6B /* DictView.swift */,
 				737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */,
 				73F23E7D28196443009A5DEC /* SettingView.swift */,
+				DBDE27AE299F600C00841CF7 /* LifeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				73F23E7C28196315009A5DEC /* Message.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
+				DBDE27AF299F600C00841CF7 /* LifeView.swift in Sources */,
 				CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */,
 				CCDBBC7228100D4600563140 /* MainView+Toast.swift in Sources */,
 				73C3CE96281A4FCE008DA8AA /* StatisticsView.swift in Sources */,
@@ -602,7 +606,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20230210;
+				CURRENT_PROJECT_VERSION = 20230222;
 				DEVELOPMENT_ASSET_PATHS = "\"kWordle/Preview Content\"";
 				DEVELOPMENT_TEAM = 9TH57H8UP9;
 				ENABLE_PREVIEWS = YES;
@@ -621,7 +625,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.4;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.game.handeul;
 				PRODUCT_NAME = Handeul;
@@ -637,7 +641,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20230210;
+				CURRENT_PROJECT_VERSION = 20230222;
 				DEVELOPMENT_ASSET_PATHS = "\"kWordle/Preview Content\"";
 				DEVELOPMENT_TEAM = 9TH57H8UP9;
 				ENABLE_PREVIEWS = YES;
@@ -656,7 +660,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.4;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.game.handeul;
 				PRODUCT_NAME = Handeul;
