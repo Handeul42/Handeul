@@ -57,9 +57,12 @@ struct MainView: View {
     
     var mainView: some View {
         VStack(spacing: 0) {
-            TitleView()
-                .padding(.top, 35 * currentScreenRatio())
-                .padding(.bottom, 8 * currentHeightRatio())
+            if screenHasSpaceForTitle {
+                TitleView()
+                    .padding(.top, 35 * currentScreenRatio())
+                    .padding(.bottom, 8 * currentHeightRatio())
+            }
+            
             HStack {
                 SettingButtonView(isSettingPresented: $isSettingPresented)
                 Spacer()
@@ -101,5 +104,9 @@ struct MainView: View {
             .frame(width: 56, height: 32)
         }
         .foregroundColor(.hRed)
+    }
+    
+    private var screenHasSpaceForTitle: Bool {
+       return UIHeight/UIWidth > 16/9
     }
 }

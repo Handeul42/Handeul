@@ -8,6 +8,8 @@
 import UIKit
 
 let uiSize: CGSize = UIScreen.main.bounds.size
+let UIHeight: CGFloat = uiSize.height
+let UIWidth: CGFloat = uiSize.width
 let keyboardWidth: CGFloat = (uiSize.width - 100) / 10
 let keyboardHeight: CGFloat = 40
 
