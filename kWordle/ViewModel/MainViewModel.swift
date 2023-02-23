@@ -38,7 +38,10 @@ class MainViewModel: ObservableObject {
         }
         print(game.answer)
         lifeCount = life
-        checkUpdate()
+        checkUpdate { updateNeeded in
+            DispatchQueue.main.async {
+                self.needUpdate = updateNeeded
+            }}
         checkLifeCount()
     }
     
@@ -248,35 +251,43 @@ class MainViewModel: ObservableObject {
         Analytics.logEvent(state + "-" + deivceUUID, parameters: [:])
     }
     
-    private func checkUpdate() {
+    private func checkUpdate(completion: @escaping (Bool) -> Void) {
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        guard let latestVersion = latestVersion() else { return }
-        if let lastCheckVersion = UserDefaults.standard.string(forKey: "latestVersion") {
-            let compareVersion = lastCheckVersion.compare(latestVersion, options: .numeric)
-            if compareVersion != .orderedAscending {
-                return
+        latestVersion { latestVersion in
+            guard let latestVersion = latestVersion else { completion(false); return }
+            if let lastCheckVersion = UserDefaults.standard.string(forKey: "latestVersion") {
+                let compareVersion = lastCheckVersion.compare(latestVersion, options: .numeric)
+                if compareVersion != .orderedAscending {
+                    completion(false); return
+                }
+            }
+            UserDefaults.standard.set(latestVersion, forKey: "latestVersion")
+
+            let compareResult = appVersion?.compare(latestVersion, options: .numeric)
+
+            if compareResult == .orderedAscending {
+                completion(true)
+            } else {
+                completion(false)
             }
         }
-        UserDefaults.standard.set(latestVersion, forKey: "latestVersion")
-        
-        let compareResult = appVersion?.compare(latestVersion, options: .numeric)
-        
-        if compareResult == .orderedAscending {
-            needUpdate.toggle()
-        }
     }
-    
-    func latestVersion() -> String? {
+
+    func latestVersion(completion: @escaping (String?) -> Void) {
         let appleID = "1619947572"
-        guard let url = URL(string: "https://itunes.apple.com/lookup?id=\(appleID)"),
-              let data = try? Data(contentsOf: url),
-              let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
-              let results = json["results"] as? [[String: Any]],
-              let appStoreVersion = results[0]["version"] as? String else {
-            return nil
+        guard let url = URL(string: "https://itunes.apple.com/lookup?id=\(appleID)") else {
+            completion(nil); return
         }
-        
-        return appStoreVersion
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
+                  let results = json["results"] as? [[String: Any]],
+                  let appStoreVersion = results[0]["version"] as? String else {
+                completion(nil); return
+            }
+            completion(appStoreVersion)
+        }
+        task.resume()
     }
     
     func openAppStore() {
