@@ -62,7 +62,6 @@ class MainViewModel: ObservableObject {
             game.submitAnswer()
             if game.isGameFinished {
                 if game.didPlayerWin {
-                    print("Cool! You win!")
                     HapticsManager.shared.notification(type: .success)
                     Analytics.logEvent("PlayerWin", parameters: [
                         AnalyticsParameterItemID: game.answer,
@@ -70,7 +69,6 @@ class MainViewModel: ObservableObject {
                     ])
                     userLog("win")
                 } else if !game.didPlayerWin {
-                    print("You lose :(")
                     HapticsManager.shared.notification(type: .error)
                     Analytics.logEvent("PlayerLose", parameters: [
                         AnalyticsParameterItemID: game.answer
@@ -298,7 +296,7 @@ extension MainViewModel {
         let diffInHours = currentDate.timeIntervalSince(lastDate) / 3600
 
         if diffInHours > 1 {
-            addLifeCount(Int(lroundl(diffInHours)))
+            addLifeCount(Int(lroundl(Float80(diffInHours))))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3601) { [weak self] in
             self?.checkLifeCount()
