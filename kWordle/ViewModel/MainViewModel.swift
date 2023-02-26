@@ -17,7 +17,7 @@ class MainViewModel: ObservableObject {
     @Published var isADNotLoaded: Bool = false
     @Published var needUpdate: Bool = false
     @Published var needLife: Bool = false
-    @Published var isWinAnimationPlaying: Bool = false
+    @Published var isResultAnimationPlaying: Bool = false
     @AppStorage("life") var life = UserDefaults.standard.integer(forKey: "life")
     @AppStorage("lifeTimeStamp")
     var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
@@ -67,7 +67,6 @@ class MainViewModel: ObservableObject {
             if game.isGameFinished {
                 if game.didPlayerWin {
                     HapticsManager.shared.notification(type: .success)
-                    self.isWinAnimationPlaying = true
                     Analytics.logEvent("PlayerWin", parameters: [
                         AnalyticsParameterItemID: game.answer,
                         AnalyticsParameterLevel: game.currentRow
@@ -80,6 +79,7 @@ class MainViewModel: ObservableObject {
                     ])
                     userLog("lose")
                 }
+                self.isResultAnimationPlaying = true
             }
         }
     }
@@ -280,7 +280,7 @@ class MainViewModel: ObservableObject {
         guard let url = URL(string: "https://itunes.apple.com/lookup?id=\(appleID)") else {
             completion(nil); return
         }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, _, _) in
             guard let data = data,
                   let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
                   let results = json["results"] as? [[String: Any]],
@@ -362,7 +362,7 @@ extension MainViewModel {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
 
-        let date:Date = dateFormatter.date(from: dateString)!
+        let date: Date = dateFormatter.date(from: dateString)!
         return date
     }
     
@@ -371,7 +371,7 @@ extension MainViewModel {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
 
-        let dateString:String = dateFormatter.string(from: date)
+        let dateString: String = dateFormatter.string(from: date)
         return dateString
     }
 }

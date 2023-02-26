@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @Environment(\.scenePhase) var scenePhase
-    @StateObject var mainViewModel: MainViewModel = MainViewModel()
+    @StateObject var vm: MainViewModel = MainViewModel()
     @AppStorage("shouldHowToPlayPresented") var shouldHowToPlayPresented: Bool = true
     @State var isSettingPresented: Bool = false
     
@@ -18,43 +18,43 @@ struct MainView: View {
             mainView
                 .onChange(of: scenePhase) { newScenePhase in
                     if newScenePhase == .inactive {
-                        if !mainViewModel.game.isGameFinished {
-                            mainViewModel.game.saveCurrentGame()
+                        if !vm.game.isGameFinished {
+                            vm.game.saveCurrentGame()
                         }
                     } else if newScenePhase == .active {
                         withAnimation {
-                          _ = mainViewModel.refreshGameOnActive()
+                          _ = vm.refreshGameOnActive()
                         }
                     }
-                    mainViewModel.closeToastMessage()
+                    vm.closeToastMessage()
                 }
-            if mainViewModel.isWinAnimationPlaying {
-                winAnimation
+            if vm.isResultAnimationPlaying {
+                resultAnimation
             }
             if isSettingPresented {
                 SettingView(isSettingPresented: $isSettingPresented)
                     .zIndex(1)
-                    .environmentObject(mainViewModel)
+                    .environmentObject(vm)
             }
             if shouldHowToPlayPresented {
                 HowToPlayOnFirstLaunch(isHowToPlayPresented: $shouldHowToPlayPresented)
                     .zIndex(2)
             }
-            if mainViewModel.isInvalidWordWarningPresented {
-                showToast("유효하지 않은 단어입니다.", status: $mainViewModel.isInvalidWordWarningPresented) {
-                    mainViewModel.closeToastMessage()
+            if vm.isInvalidWordWarningPresented {
+                showToast("유효하지 않은 단어입니다.", status: $vm.isInvalidWordWarningPresented) {
+                    vm.closeToastMessage()
                 }
             }
-            if mainViewModel.isADNotLoaded {
-                showToast("광고 불러오는 중", status: $mainViewModel.isADNotLoaded) {
-                    mainViewModel.closeToastMessage()
+            if vm.isADNotLoaded {
+                showToast("광고 불러오는 중", status: $vm.isADNotLoaded) {
+                    vm.closeToastMessage()
                 }
             }
 
         }
-        .alert(isPresented: $mainViewModel.needUpdate) {
+        .alert(isPresented: $vm.needUpdate) {
             Alert(title: Text("업데이트"), message: Text("새 버전이 업데이트 되었습니다."), primaryButton: .default(Text("업데이트"), action: {
-                mainViewModel.openAppStore()
+                vm.openAppStore()
             }), secondaryButton: .destructive(Text("나중에")))
         }
     }
@@ -79,27 +79,33 @@ struct MainView: View {
                 .padding(.horizontal, 20)
                 .padding([.top], 8)
                 .padding([.bottom], 25)
-            if !mainViewModel.game.isGameFinished {
+            if !vm.game.isGameFinished {
                 KeyboardView()
             } else {
                 DictView()
-                    .disabled(!mainViewModel.game.isGameFinished)
+                    .disabled(!vm.game.isGameFinished)
             }
             Spacer()
         }
-        .environmentObject(mainViewModel)
+        .environmentObject(vm)
         .onAppear {
             requestPermission()
-            mainViewModel.closeToastMessage()
+            vm.closeToastMessage()
         }
     }
     
-    @ViewBuilder
-    private var winAnimation: some View {
-        let filename: String = UserDefaults.standard.bool(forKey: "isColorWeakModeOn") ? "correct_color_weak" : "correct"
-        LottieView(filename, animationSpeed: 2.5, isPlayed: $mainViewModel.isWinAnimationPlaying)
-            .shadow(radius: 8)
-            .zIndex(1)
+    private var resultAnimation: some View {
+        var filename: String = ""
+        if vm.game.didPlayerWin {
+            filename = UserDefaults.standard.bool(forKey: "isColorWeakModeOn") ? "win_color_weak" : "win"
+        } else {
+            filename = "lose"
+        }
+        return (
+            LottieView(filename, animationSpeed: 2, isPlayed: $vm.isResultAnimationPlaying)
+                .shadow(radius: 8)
+                .zIndex(1)
+        )
     }
     
     private var GameCountView: some View {
@@ -107,7 +113,7 @@ struct MainView: View {
             Text("No.")
                 .font(.system(size: 18))
             ZStack {
-                Text("\(mainViewModel.game.gameNumber)")
+                Text("\(vm.game.gameNumber)")
                     .font(.system(size: 28))
                 Rectangle()
                     .frame(width: 56, height: 2)
