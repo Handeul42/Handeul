@@ -28,6 +28,9 @@ struct MainView: View {
                     }
                     mainViewModel.closeToastMessage()
                 }
+            if mainViewModel.isWinAnimationPlaying {
+                winAnimation
+            }
             if isSettingPresented {
                 SettingView(isSettingPresented: $isSettingPresented)
                     .zIndex(1)
@@ -47,6 +50,7 @@ struct MainView: View {
                     mainViewModel.closeToastMessage()
                 }
             }
+
         }
         .alert(isPresented: $mainViewModel.needUpdate) {
             Alert(title: Text("업데이트"), message: Text("새 버전이 업데이트 되었습니다."), primaryButton: .default(Text("업데이트"), action: {
@@ -55,7 +59,7 @@ struct MainView: View {
         }
     }
     
-    var mainView: some View {
+    private var mainView: some View {
         VStack(spacing: 0) {
             if screenHasSpaceForTitle {
                 TitleView()
@@ -90,6 +94,13 @@ struct MainView: View {
         }
     }
     
+    @ViewBuilder
+    private var winAnimation: some View {
+        let filename: String = UserDefaults.standard.bool(forKey: "isColorWeakModeOn") ? "correct_color_weak" : "correct"
+        LottieView(filename, animationSpeed: 2.5, isPlayed: $mainViewModel.isWinAnimationPlaying)
+            .zIndex(1)
+    }
+    
     private var GameCountView: some View {
         HStack(alignment: .bottom) {
             Text("No.")
@@ -107,6 +118,6 @@ struct MainView: View {
     }
     
     private var screenHasSpaceForTitle: Bool {
-       return UIHeight/UIWidth > 16/9
+        return round(UIHeight/UIWidth * 10) > round(16/9 * 10)
     }
 }

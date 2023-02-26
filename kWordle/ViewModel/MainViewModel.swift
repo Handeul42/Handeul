@@ -17,6 +17,7 @@ class MainViewModel: ObservableObject {
     @Published var isADNotLoaded: Bool = false
     @Published var needUpdate: Bool = false
     @Published var needLife: Bool = false
+    @Published var isWinAnimationPlaying: Bool = false
     @AppStorage("life") var life = UserDefaults.standard.integer(forKey: "life")
     @AppStorage("lifeTimeStamp")
     var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
@@ -66,6 +67,7 @@ class MainViewModel: ObservableObject {
             if game.isGameFinished {
                 if game.didPlayerWin {
                     HapticsManager.shared.notification(type: .success)
+                    self.isWinAnimationPlaying = true
                     Analytics.logEvent("PlayerWin", parameters: [
                         AnalyticsParameterItemID: game.answer,
                         AnalyticsParameterLevel: game.currentRow
