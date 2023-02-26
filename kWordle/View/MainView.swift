@@ -98,6 +98,7 @@ struct MainView: View {
     private var winAnimation: some View {
         let filename: String = UserDefaults.standard.bool(forKey: "isColorWeakModeOn") ? "correct_color_weak" : "correct"
         LottieView(filename, animationSpeed: 2.5, isPlayed: $mainViewModel.isWinAnimationPlaying)
+            .shadow(radius: 8)
             .zIndex(1)
     }
     
