@@ -27,14 +27,10 @@ struct LifeView: View {
             HStack (spacing: 4) {
                 ForEach(0..<lifeCount, id: \.self) { _ in
                     Image("LifeImage")
-                        .resizable()
-                        .frame(width: 20, height: 30)
                 }
                 if totalLifeCount - lifeCount > 0 {
                     ForEach(0..<totalLifeCount - lifeCount, id: \.self) { _ in
                         Image("emptyLifeImage")
-                            .resizable()
-                            .frame(width: 20, height: 30)
                     }                                 
                 }
             }
@@ -52,8 +48,6 @@ struct LifeView: View {
                     }
                 } label: {
                     Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .frame(width: 20, height: 20)
                         .foregroundColor(.hBlack)
                 }
                 .padding(.horizontal, 4)
@@ -98,7 +92,7 @@ struct LifeView: View {
                 Rectangle()
                     .frame(width: 80, height: 28)
                     .border(Color.hBlack, width: 1)
-                    .foregroundColor(mainViewModel.game.isGameFinished ? .hGreen : .hSkyblue)
+                    .foregroundColor(getColor(of: .green))
                 HStack(alignment: .bottom, spacing: 0) {
                     if currentWinStreak > 0 {
                         Text("\(currentWinStreak) ")

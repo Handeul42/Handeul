@@ -42,6 +42,11 @@
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
 		CC1BB899281AE13800BAA6FA /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1BB898281AE13800BAA6FA /* HapticsManager.swift */; };
+		CC29723229AB4C46006D2E44 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CC29723129AB4C46006D2E44 /* Lottie */; };
+		CC29723929AB510B006D2E44 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29723829AB510B006D2E44 /* LottieView.swift */; };
+		CC29723D29AB516C006D2E44 /* win.json in Resources */ = {isa = PBXBuildFile; fileRef = CC29723B29AB516B006D2E44 /* win.json */; };
+		CC29723E29AB516C006D2E44 /* win_color_weak.json in Resources */ = {isa = PBXBuildFile; fileRef = CC29723C29AB516B006D2E44 /* win_color_weak.json */; };
+		CC29724629AB7F70006D2E44 /* lose.json in Resources */ = {isa = PBXBuildFile; fileRef = CC29724529AB7F70006D2E44 /* lose.json */; };
 		CC49B36C2819628A000CDC34 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = CC49B36B2819628A000CDC34 /* .gitattributes */; };
 		CC57AF282816C695001675CD /* KeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC57AF272816C695001675CD /* KeyBoard.swift */; };
 		CC64209A2843307D00851A22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC6420982843307D00851A22 /* Localizable.strings */; };
@@ -102,9 +107,12 @@
 		73FD63B427EDCF940041036F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73FD63B727EDCF940041036F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CC1BB898281AE13800BAA6FA /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		CC29723829AB510B006D2E44 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		CC29723B29AB516B006D2E44 /* win.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = win.json; sourceTree = "<group>"; };
+		CC29723C29AB516B006D2E44 /* win_color_weak.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = win_color_weak.json; sourceTree = "<group>"; };
+		CC29724529AB7F70006D2E44 /* lose.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lose.json; sourceTree = "<group>"; };
 		CC49B36B2819628A000CDC34 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		CC57AF272816C695001675CD /* KeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoard.swift; sourceTree = "<group>"; };
-		CC57AF292816D5C7001675CD /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		CC6420992843307D00851A22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CC64209B2843319400851A22 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CC64209C284341AE00851A22 /* HowToPlayText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayText.swift; sourceTree = "<group>"; };
@@ -137,6 +145,7 @@
 				7384B9FB28168DDC00D14652 /* GoogleMobileAds in Frameworks */,
 				733A74CB281290F900B49310 /* FirebaseAnalytics in Frameworks */,
 				733A74CD281290F900B49310 /* FirebaseFirestore in Frameworks */,
+				CC29723229AB4C46006D2E44 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				DBBBF40A29961B7400ADBAEF /* ci_scripts */,
-				CC57AF292816D5C7001675CD /* .swiftlint.yml */,
 				73FD63AF27EDCF920041036F /* kWordle */,
 				73FD63AE27EDCF920041036F /* Products */,
 			);
@@ -247,6 +255,7 @@
 		73FD63AF27EDCF920041036F /* kWordle */ = {
 			isa = PBXGroup;
 			children = (
+				CC29723A29AB515E006D2E44 /* LottieAnimations */,
 				73F23E7628196239009A5DEC /* Service */,
 				73D66DBC280E98D500313A7F /* Info.plist */,
 				CC6420982843307D00851A22 /* Localizable.strings */,
@@ -277,6 +286,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		CC29723A29AB515E006D2E44 /* LottieAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				CC29723C29AB516B006D2E44 /* win_color_weak.json */,
+				CC29723B29AB516B006D2E44 /* win.json */,
+				CC29724529AB7F70006D2E44 /* lose.json */,
+			);
+			path = LottieAnimations;
+			sourceTree = "<group>";
+		};
 		CC63E4642811179800DBB2B5 /* Subview */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +307,7 @@
 				CCDBBC7128100D4600563140 /* MainView+Toast.swift */,
 				73F23E79281962C1009A5DEC /* NotificationCell.swift */,
 				CCA23972281A682000CCAD0E /* MailView.swift */,
+				CC29723829AB510B006D2E44 /* LottieView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -332,6 +352,7 @@
 				CC7D1D4728169AAB00CD7BFD /* Realm */,
 				CC7D1D4928169AAB00CD7BFD /* RealmSwift */,
 				7384B9FA28168DDC00D14652 /* GoogleMobileAds */,
+				CC29723129AB4C46006D2E44 /* Lottie */,
 			);
 			productName = kWordle;
 			productReference = 73FD63AD27EDCF920041036F /* Handeul.app */;
@@ -366,6 +387,8 @@
 				733A74C9281290F900B49310 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CC7D1D4628169AAB00CD7BFD /* XCRemoteSwiftPackageReference "realm-swift" */,
 				7384B9F928168DDC00D14652 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */,
+				CC29723029AB4C46006D2E44 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				CC29723529AB4F98006D2E44 /* XCRemoteSwiftPackageReference "Lottie-SwiftUI" */,
 			);
 			productRefGroup = 73FD63AE27EDCF920041036F /* Products */;
 			projectDirPath = "";
@@ -383,9 +406,12 @@
 			files = (
 				737D4CC728092C2100CD8CBD /* .swiftlint.yml in Resources */,
 				CC64209A2843307D00851A22 /* Localizable.strings in Resources */,
+				CC29723D29AB516C006D2E44 /* win.json in Resources */,
 				73D66DB9280E973300313A7F /* EBS훈민정음SB.ttf in Resources */,
 				DBBBF407299617F600ADBAEF /* GoogleService-Info.plist.template in Resources */,
 				73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */,
+				CC29724629AB7F70006D2E44 /* lose.json in Resources */,
+				CC29723E29AB516C006D2E44 /* win_color_weak.json in Resources */,
 				73D66DBE280EA31000313A7F /* Launch Screen.storyboard in Resources */,
 				73D66DBA280E973300313A7F /* EBS훈민정음새론R.ttf in Resources */,
 				DBBBF4092996199C00ADBAEF /* ci_pre_xcodebuild.sh in Resources */,
@@ -432,6 +458,7 @@
 				CC57AF282816C695001675CD /* KeyBoard.swift in Sources */,
 				CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */,
 				73F23E7828196257009A5DEC /* NotificationManager.swift in Sources */,
+				CC29723929AB510B006D2E44 /* LottieView.swift in Sources */,
 				7322469D2816DBFD00024ED2 /* GoogleAdsViewModel.swift in Sources */,
 				CC64209D284341AF00851A22 /* HowToPlayText.swift in Sources */,
 				737D4CE228093C3600CD8CBD /* MainView.swift in Sources */,
@@ -608,7 +635,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20230222;
 				DEVELOPMENT_ASSET_PATHS = "\"kWordle/Preview Content\"";
-				DEVELOPMENT_TEAM = 9TH57H8UP9;
+				DEVELOPMENT_TEAM = 86F3BYCLAK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kWordle/Info.plist;
@@ -643,7 +670,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20230222;
 				DEVELOPMENT_ASSET_PATHS = "\"kWordle/Preview Content\"";
-				DEVELOPMENT_TEAM = 9TH57H8UP9;
+				DEVELOPMENT_TEAM = 86F3BYCLAK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kWordle/Info.plist;
@@ -710,6 +737,22 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		CC29723029AB4C46006D2E44 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		CC29723529AB4F98006D2E44 /* XCRemoteSwiftPackageReference "Lottie-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LukasHromadnik/Lottie-SwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		CC7D1D4628169AAB00CD7BFD /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -735,6 +778,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7384B9F928168DDC00D14652 /* XCRemoteSwiftPackageReference "GoogleMobileAds" */;
 			productName = GoogleMobileAds;
+		};
+		CC29723129AB4C46006D2E44 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC29723029AB4C46006D2E44 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		CC7D1D4728169AAB00CD7BFD /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;

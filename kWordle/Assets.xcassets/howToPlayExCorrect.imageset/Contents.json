@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "EX1x풀이.png",
+      "filename" : "EX1x풀이-1 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "EX1x풀이-1.png",
+      "filename" : "EX1x풀이.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -28,7 +28,7 @@
       "scale" : "1x"
     },
     {
-      "filename" : "EX2x풀이.png",
+      "filename" : "EX2x풀이-1 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -39,7 +39,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "EX2x풀이-1.png",
+      "filename" : "EX2x풀이.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -55,7 +55,7 @@
       "scale" : "2x"
     },
     {
-      "filename" : "EX3x풀이.png",
+      "filename" : "EX3x풀이-1 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -66,7 +66,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "EX3x풀이-1.png",
+      "filename" : "EX3x풀이.png",
       "idiom" : "universal",
       "scale" : "3x"
     },

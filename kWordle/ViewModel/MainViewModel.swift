@@ -17,6 +17,7 @@ class MainViewModel: ObservableObject {
     @Published var isADNotLoaded: Bool = false
     @Published var needUpdate: Bool = false
     @Published var needLife: Bool = false
+    @Published var isResultAnimationPlaying: Bool = false
     @AppStorage("life") var life = UserDefaults.standard.integer(forKey: "life")
     @AppStorage("lifeTimeStamp")
     var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
@@ -38,7 +39,10 @@ class MainViewModel: ObservableObject {
         }
         print(game.answer)
         lifeCount = life
-        checkUpdate()
+        checkUpdate { updateNeeded in
+            DispatchQueue.main.async {
+                self.needUpdate = updateNeeded
+            }}
         checkLifeCount()
     }
     
@@ -62,7 +66,6 @@ class MainViewModel: ObservableObject {
             game.submitAnswer()
             if game.isGameFinished {
                 if game.didPlayerWin {
-                    print("Cool! You win!")
                     HapticsManager.shared.notification(type: .success)
                     Analytics.logEvent("PlayerWin", parameters: [
                         AnalyticsParameterItemID: game.answer,
@@ -70,13 +73,13 @@ class MainViewModel: ObservableObject {
                     ])
                     userLog("win")
                 } else if !game.didPlayerWin {
-                    print("You lose :(")
                     HapticsManager.shared.notification(type: .error)
                     Analytics.logEvent("PlayerLose", parameters: [
                         AnalyticsParameterItemID: game.answer
                     ])
                     userLog("lose")
                 }
+                self.isResultAnimationPlaying = true
             }
         }
     }
@@ -250,35 +253,43 @@ class MainViewModel: ObservableObject {
         Analytics.logEvent(state + "-" + deivceUUID, parameters: [:])
     }
     
-    private func checkUpdate() {
+    private func checkUpdate(completion: @escaping (Bool) -> Void) {
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        guard let latestVersion = latestVersion() else { return }
-        if let lastCheckVersion = UserDefaults.standard.string(forKey: "latestVersion") {
-            let compareVersion = lastCheckVersion.compare(latestVersion, options: .numeric)
-            if compareVersion != .orderedAscending {
-                return
+        latestVersion { latestVersion in
+            guard let latestVersion = latestVersion else { completion(false); return }
+            if let lastCheckVersion = UserDefaults.standard.string(forKey: "latestVersion") {
+                let compareVersion = lastCheckVersion.compare(latestVersion, options: .numeric)
+                if compareVersion != .orderedAscending {
+                    completion(false); return
+                }
+            }
+            UserDefaults.standard.set(latestVersion, forKey: "latestVersion")
+
+            let compareResult = appVersion?.compare(latestVersion, options: .numeric)
+
+            if compareResult == .orderedAscending {
+                completion(true)
+            } else {
+                completion(false)
             }
         }
-        UserDefaults.standard.set(latestVersion, forKey: "latestVersion")
-        
-        let compareResult = appVersion?.compare(latestVersion, options: .numeric)
-        
-        if compareResult == .orderedAscending {
-            needUpdate.toggle()
-        }
     }
-    
-    func latestVersion() -> String? {
+
+    func latestVersion(completion: @escaping (String?) -> Void) {
         let appleID = "1619947572"
-        guard let url = URL(string: "https://itunes.apple.com/lookup?id=\(appleID)"),
-              let data = try? Data(contentsOf: url),
-              let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
-              let results = json["results"] as? [[String: Any]],
-              let appStoreVersion = results[0]["version"] as? String else {
-            return nil
+        guard let url = URL(string: "https://itunes.apple.com/lookup?id=\(appleID)") else {
+            completion(nil); return
         }
-        
-        return appStoreVersion
+        let task = URLSession.shared.dataTask(with: url) { (data, _, _) in
+            guard let data = data,
+                  let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
+                  let results = json["results"] as? [[String: Any]],
+                  let appStoreVersion = results[0]["version"] as? String else {
+                completion(nil); return
+            }
+            completion(appStoreVersion)
+        }
+        task.resume()
     }
     
     func openAppStore() {
@@ -298,7 +309,7 @@ extension MainViewModel {
         let diffInHours = currentDate.timeIntervalSince(lastDate) / 3600
 
         if diffInHours > 1 {
-            addLifeCount(Int(lroundl(diffInHours)))
+            addLifeCount(Int(lroundl((diffInHours))))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3601) { [weak self] in
             self?.checkLifeCount()
@@ -351,7 +362,7 @@ extension MainViewModel {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
 
-        let date:Date = dateFormatter.date(from: dateString)!
+        let date: Date = dateFormatter.date(from: dateString)!
         return date
     }
     
@@ -360,7 +371,7 @@ extension MainViewModel {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
 
-        let dateString:String = dateFormatter.string(from: date)
+        let dateString: String = dateFormatter.string(from: date)
         return dateString
     }
 }

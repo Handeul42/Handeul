@@ -30,6 +30,6 @@ class RealmManager {
         try? realm.write {
             realm.add(game, update: .modified)
         }
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+//        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
 }
