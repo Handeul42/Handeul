@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Not used for now
 struct MenuBar: View {
     @Binding var isHowToPlayPresented: Bool
     @Binding var isStatisticsPresented: Bool

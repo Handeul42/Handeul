@@ -199,23 +199,6 @@ struct SettingView: View {
     }
 }
 
-struct SettingButtonView: View {
-    @Binding var isSettingPresented: Bool
-    let buttonSize: CGFloat = 32
-    var body: some View {
-        Button {
-            withAnimation {
-                isSettingPresented.toggle()
-            }
-        } label: {
-            Image(systemName: "gearshape")
-                .resizable()
-                .frame(width: buttonSize, height: buttonSize)
-                .foregroundColor(.hBlack)
-        }
-    }
-}
-
 extension Binding where Value == Bool {
     var not: Binding<Value> {
         Binding<Value>(
