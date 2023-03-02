@@ -11,26 +11,6 @@ struct AnswerBoardView: View {
     @EnvironmentObject var viewModel: MainViewModel
     let keyButtonWidth: Double = Double(uiSize.width - 40) / 6
 
-    private func horline(width: CGFloat) -> some View {
-        return Rectangle()
-            .fill(Color.hRed)
-            .frame(width: uiSize.width - 40, height: width)
-    }
-    
-    func answerBoardBlock(_ key: Key) -> some View {
-        let keyButtonSize: CGSize = CGSize(width: keyButtonWidth, height: keyButtonWidth)
-        return ZStack {
-            Rectangle()
-                .frame(width: keyButtonSize.width,
-                       height: keyButtonSize.height)
-                .foregroundColor(getColor(of: key.status))
-                .border(Color.hRed, width: 2)
-            Text(key.character)
-                .foregroundColor(getColor(of: .black))
-                .font(.custom("EBSHMJESaeronSB", fixedSize: 32))
-        }
-    }
-    
     var body: some View {
         ZStack {
             VStack(spacing: -2) {
@@ -58,4 +38,28 @@ struct AnswerBoardView: View {
                         y: (Double(viewModel.game.currentRow) - 2.5) * keyButtonWidth + 10)
         }
     }
+}
+
+extension AnswerBoardView {
+    
+    func answerBoardBlock(_ key: Key) -> some View {
+        let keyButtonSize: CGSize = CGSize(width: keyButtonWidth, height: keyButtonWidth)
+        return ZStack {
+            Rectangle()
+                .frame(width: keyButtonSize.width,
+                       height: keyButtonSize.height)
+                .foregroundColor(getColor(of: key.status))
+                .border(Color.hRed, width: 2)
+            Text(key.character)
+                .foregroundColor(getColor(of: .black))
+                .font(.custom("EBSHMJESaeronSB", fixedSize: 32))
+        }
+    }
+    
+    private func horline(width: CGFloat) -> some View {
+        return Rectangle()
+            .fill(Color.hRed)
+            .frame(width: uiSize.width - 40, height: width)
+    }
+    
 }

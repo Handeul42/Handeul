@@ -23,7 +23,7 @@ struct MainView: View {
                         }
                     } else if newScenePhase == .active {
                         withAnimation {
-                          _ = vm.refreshGameOnActive()
+                            _ = vm.refreshGameOnActive()
                         }
                     }
                     vm.closeToastMessage()
@@ -50,7 +50,6 @@ struct MainView: View {
                     vm.closeToastMessage()
                 }
             }
-
         }
         .alert(isPresented: $vm.needUpdate) {
             Alert(title: Text("업데이트"), message: Text("새 버전이 업데이트 되었습니다."), primaryButton: .default(Text("업데이트"), action: {
@@ -66,7 +65,6 @@ struct MainView: View {
                     .padding(.top, 35 * currentScreenRatio())
                     .padding(.bottom, 8 * currentHeightRatio())
             }
-            
             HStack {
                 SettingButtonView(isSettingPresented: $isSettingPresented)
                 Spacer()

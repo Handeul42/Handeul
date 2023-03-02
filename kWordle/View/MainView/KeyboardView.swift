@@ -26,6 +26,7 @@ struct KeyboardView: View {
                 .font(.custom("EBSHMJESaeronSB", fixedSize: 18))
         }
     }
+    
     private func keyboardDeleteButton() -> some View {
         return ZStack {
             RoundedRectangle(cornerRadius: 5)

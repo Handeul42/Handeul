@@ -40,6 +40,7 @@ struct NotificationCell: View {
                 }))
         }
     }
+    
     private func openSettings() {
         if let bundle = Bundle.main.bundleIdentifier,
            let settings = URL(string: UIApplication.openSettingsURLString + bundle) {
