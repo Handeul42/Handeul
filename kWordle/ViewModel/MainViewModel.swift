@@ -309,7 +309,7 @@ extension MainViewModel {
         let diffInHours = currentDate.timeIntervalSince(lastDate) / 3600
 
         if diffInHours > 1 {
-            addLifeCount(Int(lroundl(diffInHours)))
+            addLifeCount(Int(lroundl(Float80(diffInHours))))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3601) { [weak self] in
             self?.checkLifeCount()

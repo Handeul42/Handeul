@@ -72,7 +72,9 @@ struct MainView: View {
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 8)
-            AnswerBoardView()
+            AnswerBoardView(answerBoard: vm.game.answerBoard,
+                            currentColumn: vm.game.currentColumn,
+                            currentRow: vm.game.currentRow)
             LifeView()
                 .padding(.horizontal, 20)
                 .padding([.top], 8)

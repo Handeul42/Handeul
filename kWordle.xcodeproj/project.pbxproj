@@ -62,6 +62,7 @@
 		CCA23973281A682000CCAD0E /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA23972281A682000CCAD0E /* MailView.swift */; };
 		CCCA07C029AF3A1F004F0881 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCCA07BF29AF3A1E004F0881 /* GoogleService-Info.plist */; };
 		CCCA07C629AF4ECC004F0881 /* SettingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07C529AF4ECC004F0881 /* SettingButtonView.swift */; };
+		CCCA07CA29B5FABB004F0881 /* Horline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07C929B5FABB004F0881 /* Horline.swift */; };
 		CCDBBC7228100D4600563140 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBBC7128100D4600563140 /* ToastView.swift */; };
 		CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB412817BBAD006674A3 /* Persistable.swift */; };
 		CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB432817C62E006674A3 /* Game+Persisted.swift */; };
@@ -126,6 +127,7 @@
 		CCA23972281A682000CCAD0E /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		CCCA07BF29AF3A1E004F0881 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCCA07C529AF4ECC004F0881 /* SettingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButtonView.swift; sourceTree = "<group>"; };
+		CCCA07C929B5FABB004F0881 /* Horline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horline.swift; sourceTree = "<group>"; };
 		CCDBBC7128100D4600563140 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		CCFBDB412817BBAD006674A3 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		CCFBDB432817C62E006674A3 /* Game+Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Persisted.swift"; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				73036274281261E8002DCE6B /* DictView.swift */,
 				737D4CD82809322400CD8CBD /* KeyboardView.swift */,
 				CC7C517E280EB51300B739F3 /* MenuBar.swift */,
+				CCCA07C929B5FABB004F0881 /* Horline.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				CC1BB899281AE13800BAA6FA /* HapticsManager.swift in Sources */,
 				73F23E7C28196315009A5DEC /* Message.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
+				CCCA07CA29B5FABB004F0881 /* Horline.swift in Sources */,
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
 				DBDE27AF299F600C00841CF7 /* LifeView.swift in Sources */,
 				CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */,
