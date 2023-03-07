@@ -30,7 +30,7 @@ class MainViewModel: ObservableObject {
     var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
     let rewardADViewController = RewardedADViewController()
     var preventTapShowAdButton: Bool = false
-
+    
     init() {
         if let previousGame = RealmManager.shared.getPreviousGame() {
             game = Game(persistedObject: previousGame)
@@ -264,9 +264,9 @@ class MainViewModel: ObservableObject {
                 }
             }
             UserDefaults.standard.set(latestVersion, forKey: "latestVersion")
-
+            
             let compareResult = appVersion?.compare(latestVersion, options: .numeric)
-
+            
             if compareResult == .orderedAscending {
                 completion(true)
             } else {
@@ -274,7 +274,7 @@ class MainViewModel: ObservableObject {
             }
         }
     }
-
+    
     func latestVersion(completion: @escaping (String?) -> Void) {
         let appleID = "1619947572"
         guard let url = URL(string: "https://itunes.apple.com/lookup?id=\(appleID)") else {
@@ -307,9 +307,9 @@ extension MainViewModel {
         let lastDate = stringToDate(with: lifeTimeStamp)
         let currentDate = Date()
         let diffInHours = currentDate.timeIntervalSince(lastDate) / 3600
-
+        
         if diffInHours > 1 {
-            addLifeCount(Int(lroundl(Float80(diffInHours))))
+            addLifeCount(Int(lroundl(diffInHours)))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3601) { [weak self] in
             self?.checkLifeCount()

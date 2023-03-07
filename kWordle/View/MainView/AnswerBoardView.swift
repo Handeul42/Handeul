@@ -12,27 +12,19 @@ struct AnswerBoardView: View {
     let currentColumn: Int
     let currentRow: Int
     let keyButtonWidth: Double = Double(uiSize.width - 40) / 6
-
+    
     var body: some View {
         ZStack {
             VStack(spacing: -2) {
                 Horline(3)
                     .padding([.bottom], 5)
                 ForEach(answerBoard.indices, id: \.self) { rowIndex in
-                    let row = answerBoard[rowIndex]
-                    Horline(2)
-                    HStack {
-                        ForEach(row) { btn in
-                            answerBoardBlock(btn)
-                        }
-                        .padding([.horizontal], -5)
-                    }
-                    Horline(2)
-                        .padding([.bottom], 4)
+                    let row: [Key] = answerBoard[rowIndex]
+                    AnswerBoardRow(row)
                 }
                 Horline(3)
-            }
-            .animation(.none)
+            }.transition(.opacity)
+            .animation(.easeInOut)
             Image("Filcrow")
                 .resizable()
                 .frame(width: 12, height: 16)
@@ -43,7 +35,6 @@ struct AnswerBoardView: View {
 }
 
 extension AnswerBoardView {
-    
     func answerBoardBlock(_ key: Key) -> some View {
         let keyButtonSize: CGSize = CGSize(width: keyButtonWidth, height: keyButtonWidth)
         return ZStack {
@@ -56,5 +47,18 @@ extension AnswerBoardView {
                 .foregroundColor(getColor(of: .black))
                 .font(.custom("EBSHMJESaeronSB", fixedSize: 32))
         }
+    }
+    
+    @ViewBuilder
+    fileprivate func AnswerBoardRow(_ row: [Key]) -> some View {
+        Horline(2)
+        HStack {
+            ForEach(row) { btn in
+                answerBoardBlock(btn)
+            }
+            .padding([.horizontal], -5)
+        }
+        Horline(2)
+            .padding([.bottom], 4)
     }
 }

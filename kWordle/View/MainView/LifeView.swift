@@ -36,51 +36,12 @@ struct LifeView: View {
     
     var body: some View {
         HStack (spacing: 0) {
-            HStack (spacing: 4) {
-                ForEach(0..<currentLifeCount, id: \.self) { _ in
-                    Image("LifeImage")
-                }
-                if totalLifeCount - currentLifeCount > 0 {
-                    ForEach(0..<totalLifeCount - currentLifeCount, id: \.self) { _ in
-                        Image("emptyLifeImage")
-                    }
-                }
-            }
-            .contentShape(Rectangle())
-            .onTapGesture {
-                withAnimation {
-                    lifeTouch.toggle()
-                }
-            }
+            remainingLifeIndicators()
             if currentLifeCount < 5 {
-                Button {
-                    withAnimation {
-                        plusTouch.toggle()
-                        lifeTouch = false
-                    }
-                } label: {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.hBlack)
-                }
-                .padding(.horizontal, 4)
+                toggleADIndicatorButton()
                 ZStack {
                     if plusTouch {
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(.hLigthGray)
-                                .frame(width: 117, height: 31)
-                                .cornerRadius(5)
-                            HStack (spacing: 4) {
-                                Text("광고로 충전")
-                                    .font(.custom("EBSHMJESaeronR", fixedSize: 16))
-                                Image("youtube")
-                            }
-                        }
-                        .onTapGesture {
-                            print("loading ads")
-                            //                            print(mainViewModel.game.answer)
-                            showAds()
-                        }
+                        presentADToGetLifeButton()
                     }
                     if lifeTouch {
                         leftTimeCounter()
@@ -95,7 +56,10 @@ struct LifeView: View {
             _ = timer
         }
     }
-    
+}
+
+//MARK: Subviews
+extension LifeView {
     @ViewBuilder
     private func currentWinStreakMarker() -> some View {
         let currentWinStreak = Statistics().currentWinStreak
@@ -129,6 +93,57 @@ struct LifeView: View {
         }
     }
     
+    fileprivate func remainingLifeIndicators() -> some View {
+        return HStack (spacing: 4) {
+            ForEach(0..<currentLifeCount, id: \.self) { _ in
+                Image("LifeImage")
+            }
+            if totalLifeCount - currentLifeCount > 0 {
+                ForEach(0..<totalLifeCount - currentLifeCount, id: \.self) { _ in
+                    Image("emptyLifeImage")
+                }
+            }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            withAnimation {
+                lifeTouch.toggle()
+            }
+        }
+    }
+    
+    fileprivate func toggleADIndicatorButton() -> some View {
+        return Button {
+            withAnimation {
+                plusTouch.toggle()
+                lifeTouch = false
+            }
+        } label: {
+            Image(systemName: "plus.circle.fill")
+                .foregroundColor(.hBlack)
+        }
+        .padding(.horizontal, 4)
+    }
+    
+    fileprivate func presentADToGetLifeButton() -> some View {
+        return ZStack {
+            Rectangle()
+                .foregroundColor(.hLigthGray)
+                .frame(width: 117, height: 31)
+                .cornerRadius(5)
+            HStack (spacing: 4) {
+                Text("광고로 충전")
+                    .font(.custom("EBSHMJESaeronR", fixedSize: 16))
+                Image("youtube")
+            }
+        }
+        .onTapGesture {
+            print("loading ads")
+            //print(mainViewModel.game.answer)
+            showAds()
+        }
+    }
+    
     @ViewBuilder
     func leftTimeCounter() -> some View {
         ZStack {
@@ -157,7 +172,10 @@ struct LifeView: View {
             }
         }
     }
-    
+}
+
+//MARK: Utils
+extension LifeView {
     private func countDownString() -> String {
         var timeStamp = ""
         if let lifeTimeStamp = UserDefaults.standard.string(forKey: "lifeTimeStamp"), !lifeTimeStamp.isEmpty {
