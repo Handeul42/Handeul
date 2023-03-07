@@ -17,17 +17,17 @@ class MainViewModel: ObservableObject {
     @Published var isADNotLoaded: Bool = false
     @Published var needUpdate: Bool = false
     @Published var needLife: Bool = false
-    @Published var isResultAnimationPlaying: Bool = false
-    @AppStorage("life") var life = UserDefaults.standard.integer(forKey: "life")
-    @AppStorage("lifeTimeStamp")
-    var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
-    
     @Published var lifeCount: Int = 0 {
         didSet {
             saveLife(lifeCount: lifeCount)
         }
     }
+    @Published var isResultAnimationPlaying: Bool = false
     
+    @AppStorage("life") var life = UserDefaults.standard.integer(forKey: "life")
+    @AppStorage("lifeTimeStamp")
+    
+    var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
     let rewardADViewController = RewardedADViewController()
     var preventTapShowAdButton: Bool = false
 
@@ -165,7 +165,7 @@ class MainViewModel: ObservableObject {
         return todayMonth + todayDay
     }
     
-    func generateString() -> String {
+    func generateSharedGameResultString() -> String {
         let streakCount = Statistics().currentWinStreak
         var ret: String = ""
         let date: String = generateDateToString() // 오늘의 날짜(일월 이십일일)
@@ -354,25 +354,6 @@ extension MainViewModel {
     
     func getLifeCount() {
         lifeCount = life
-    }
-    
-    func stringToDate(with dateString: String) -> Date {
-        let dateFormatter = DateFormatter()
-
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
-
-        let date: Date = dateFormatter.date(from: dateString)!
-        return date
-    }
-    
-    func dateToString(with date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
-
-        let dateString: String = dateFormatter.string(from: date)
-        return dateString
     }
 }
 

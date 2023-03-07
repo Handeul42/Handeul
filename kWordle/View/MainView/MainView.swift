@@ -68,22 +68,32 @@ struct MainView: View {
             HStack {
                 SettingButtonView(isSettingPresented: $isSettingPresented)
                 Spacer()
-                GameCountView
+                GameNumberView(count: vm.game.gameNumber)
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 8)
             AnswerBoardView(answerBoard: vm.game.answerBoard,
                             currentColumn: vm.game.currentColumn,
                             currentRow: vm.game.currentRow)
-            LifeView()
+            LifeView(showAds: vm.showAds,
+                     currentLifeCount: vm.lifeCount,
+                     isGameFinished: vm.game.isGameFinished)
                 .padding(.horizontal, 20)
                 .padding([.top], 8)
                 .padding([.bottom], 25)
             if !vm.game.isGameFinished {
                 KeyboardView()
             } else {
-                DictView()
-                    .disabled(!vm.game.isGameFinished)
+                VStack(spacing: 0) {
+                    DictView(currentGame: vm.game, generateSharedString: vm.generateSharedGameResultString)
+                    Button {
+                        withAnimation {
+                            vm.useLifeCount()
+                        }
+                    } label: {
+                        newGameButtonWithAD
+                    }.padding(8)
+                }.disabled(!vm.game.isGameFinished)
             }
             Spacer()
         }
@@ -91,6 +101,29 @@ struct MainView: View {
         .onAppear {
             requestPermission()
             vm.closeToastMessage()
+        }
+    }
+    
+    var newGameButtonWithAD: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 5)
+                .frame(width: 132, height: 50)
+                .foregroundColor(.hLigthGray)
+            Text("새문제 받기")
+                .foregroundColor(.hBlack)
+                .font(.custom("EBSHMJESaeronR", fixedSize: 17))
+                .offset(x: 0, y: vm.lifeCount == 0 ? 2 : 0)
+            if vm.lifeCount == 0 {
+                ZStack {
+                    Rectangle()
+                        .frame(width: 32, height: 13)
+                        .foregroundColor(.hRed)
+                    Text("광고")
+                        .foregroundColor(.white)
+                        .font(.custom("EBSHMJESaeronR", fixedSize: 14))
+                }
+                .offset(x: 42, y: -18)
+            }
         }
     }
     
@@ -106,22 +139,6 @@ struct MainView: View {
                 .shadow(radius: 8)
                 .zIndex(1)
         )
-    }
-    
-    private var GameCountView: some View {
-        HStack(alignment: .bottom) {
-            Text("No.")
-                .font(.system(size: 18))
-            ZStack {
-                Text("\(vm.game.gameNumber)")
-                    .font(.system(size: 28))
-                Rectangle()
-                    .frame(width: 56, height: 2)
-                    .offset(y: 16)
-            }
-            .frame(width: 56, height: 32)
-        }
-        .foregroundColor(.hRed)
     }
     
     private var screenHasSpaceForTitle: Bool {

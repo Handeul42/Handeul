@@ -9,69 +9,59 @@ import SwiftUI
 import Firebase
 
 struct DictView: View {
-    @EnvironmentObject var viewModel: MainViewModel
-    let width: CGFloat = uiSize.width - 70
+    @Environment(\.scenePhase) var scenePhase
+    
     @State var answer: String = ""
     @State var meaning: String = ""
     @State var nowDate: Date = Date()
+    @State var currentDate: Date = Date()
+    
     @AppStorage("isColorWeakModeOn") var isColorWeakModeOn: Bool = false
     
-    @Environment(\.scenePhase) var scenePhase
-    @State var currentDate: Date = Date()
-    var title = "share"
+    let currentGame: Game
+    let generateSharedString: () -> String
     
     var body: some View {
-        ZStack {
-            VStack(spacing: 24) {
-                VStack(spacing: 8) {
-                    HStack {
-                        Text(answer)
-                            .font(.custom("EBSHMJESaeronR", fixedSize: 28))
-                        Spacer()
-                        Button {
-                            actionSheet()
-                        } label: {
-                            copyButton()
-                        }
-                    }
-                    HStack {
-                        dictMeaning()
-                        Spacer()
+        VStack(spacing: 24) {
+            VStack(spacing: 8) {
+                HStack {
+                    Text(answer)
+                        .font(.custom("EBSHMJESaeronR", fixedSize: 28))
+                    Spacer()
+                    Button {
+                        presentShareActionSheet()
+                    } label: {
+                        shareButton
                     }
                 }
-                HStack(spacing: 24) {
-                    Button {
-                        withAnimation {
-                            tapStartNewGameButton()
-                        }
-                    } label: {
-                        newGameButtonWithAD()
-                    }
+                HStack {
+                    dictMeaning
+                    Spacer()
                 }
             }
-            .onAppear {
+        }
+        .onAppear {
+            initDict()
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
                 initDict()
             }
-            .onChange(of: scenePhase) { newPhase in
-                if newPhase == .active {
-                    initDict()
-                }
-            }
-            .padding(.horizontal, 35)
         }
+        .padding(.horizontal, 35)
     }
     
     private func initDict() {
-        _ = viewModel.game.wordDict.map { wordDict in
-            if wordDict.jamo == viewModel.game.answer {
+        _ = currentGame.wordDict.map { wordDict in
+            if wordDict.jamo == currentGame.answer {
                 self.answer = wordDict.word
                 self.meaning = wordDict.meaning
             }
         }
     }
     
-    private func dictMeaning() -> some View {
-        return Text(meaning)
+    var dictMeaning: some View {
+        Text(meaning)
             .font(.custom("EBSHMJESaeronL", fixedSize: 15))
             .multilineTextAlignment(.leading)
             .lineLimit(2)
@@ -79,8 +69,7 @@ struct DictView: View {
             .frame(minHeight: 35)
     }
     
-    @ViewBuilder
-    private func copyButton() -> some View {
+    var shareButton: some View {
         ZStack {
             HStack(spacing: 2) {
                 Text("공유")
@@ -94,37 +83,10 @@ struct DictView: View {
             .background(Color.hLigthGray.cornerRadius(5))
         }
     }
-
-    private func newGameButtonWithAD() -> some View {
-        return ZStack {
-            RoundedRectangle(cornerRadius: 5)
-                .frame(width: 132, height: 50)
-                .foregroundColor(.hLigthGray)
-            Text("새문제 받기")
-                .foregroundColor(.hBlack)
-                .font(.custom("EBSHMJESaeronR", fixedSize: 17))
-                .offset(x: 0, y: viewModel.life == 0 ? 2 : 0)
-            if viewModel.life == 0 {
-                ZStack {
-                    Rectangle()
-                        .frame(width: 32, height: 13)
-                        .foregroundColor(.hRed)
-                    Text("광고")
-                        .foregroundColor(.white)
-                        .font(.custom("EBSHMJESaeronR", fixedSize: 14))
-                }
-                .offset(x: 42, y: -18)
-            }
-        }
-    }
     
-    func actionSheet() {
-        let stringShare = viewModel.generateString()
-        let activityVC = UIActivityViewController(activityItems: [stringShare], applicationActivities: nil)
+    func presentShareActionSheet() {
+        let sharedString = generateSharedString()
+        let activityVC = UIActivityViewController(activityItems: [sharedString], applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
-    }
-    
-    func tapStartNewGameButton() {
-            viewModel.useLifeCount()
     }
 }
