@@ -26,22 +26,16 @@ struct ToastView: View {
                     self.presentStatus = false
                 }
             }
-    }
-}
-extension View {
-    func showToast(_ message: String, status: Binding<Bool>, changeStatusBy: @escaping () -> Void) -> some View {
-        ToastView(presentStatus: status, toastText: message)
-            .zIndex(2)
             .onAppear {
-                Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
                     withAnimation {
-                        changeStatusBy()
+                        presentStatus = false
                     }
                 }
             }
+            .zIndex(99)
     }
 }
-
 
 #if DEBUG
 import SwiftUI

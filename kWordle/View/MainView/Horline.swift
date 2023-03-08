@@ -2,7 +2,7 @@
 //  Horline.swift
 //  한들
 //
-//  Created by Jaemoo Jung on 2023/03/06.
+//  Created by Jaemoo Jung on 2023/03/07.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ struct Horline: View {
     let width: CGFloat
     let height: CGFloat
     
-    init(_ height: CGFloat, _ width: CGFloat = uiSize.width - 40) {
+    init(height: CGFloat, width: CGFloat = uiSize.width - 40) {
         self.height = height
         self.width = width
     }
@@ -24,6 +24,6 @@ struct Horline: View {
 
 struct horline_Previews: PreviewProvider {
     static var previews: some View {
-        Horline(2)
+        Horline(height: 2)
     }
 }

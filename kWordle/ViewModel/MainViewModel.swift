@@ -10,27 +10,24 @@ import SwiftUI
 import Firebase
 import GoogleMobileAds
 
-var generator = RandomNumberGeneratorWithSeed(seed: DateToSeed())
 class MainViewModel: ObservableObject {
     @Published var game: Game
     @Published var isInvalidWordWarningPresented: Bool = false
     @Published var isADNotLoaded: Bool = false
     @Published var needUpdate: Bool = false
     @Published var needLife: Bool = false
-    @Published var isResultAnimationPlaying: Bool = false
-    @AppStorage("life") var life = UserDefaults.standard.integer(forKey: "life")
-    @AppStorage("lifeTimeStamp")
-    var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
-    
     @Published var lifeCount: Int = 0 {
         didSet {
             saveLife(lifeCount: lifeCount)
         }
     }
+    @Published var isResultAnimationPlaying: Bool = false
     
+    @AppStorage("life") var life = UserDefaults.standard.integer(forKey: "life")
+    @AppStorage("lifeTimeStamp") var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
     let rewardADViewController = RewardedADViewController()
     var preventTapShowAdButton: Bool = false
-
+    
     init() {
         if let previousGame = RealmManager.shared.getPreviousGame() {
             game = Game(persistedObject: previousGame)
@@ -165,7 +162,7 @@ class MainViewModel: ObservableObject {
         return todayMonth + todayDay
     }
     
-    func generateString() -> String {
+    func generateSharedGameResultString() -> String {
         let streakCount = Statistics().currentWinStreak
         var ret: String = ""
         let date: String = generateDateToString() // 오늘의 날짜(일월 이십일일)
@@ -264,9 +261,9 @@ class MainViewModel: ObservableObject {
                 }
             }
             UserDefaults.standard.set(latestVersion, forKey: "latestVersion")
-
+            
             let compareResult = appVersion?.compare(latestVersion, options: .numeric)
-
+            
             if compareResult == .orderedAscending {
                 completion(true)
             } else {
@@ -274,7 +271,7 @@ class MainViewModel: ObservableObject {
             }
         }
     }
-
+    
     func latestVersion(completion: @escaping (String?) -> Void) {
         let appleID = "1619947572"
         guard let url = URL(string: "https://itunes.apple.com/lookup?id=\(appleID)") else {
@@ -307,7 +304,7 @@ extension MainViewModel {
         let lastDate = stringToDate(with: lifeTimeStamp)
         let currentDate = Date()
         let diffInHours = currentDate.timeIntervalSince(lastDate) / 3600
-
+        
         if diffInHours > 1 {
             addLifeCount(Int(lroundl(Float80(diffInHours))))
         }
@@ -355,60 +352,4 @@ extension MainViewModel {
     func getLifeCount() {
         lifeCount = life
     }
-    
-    func stringToDate(with dateString: String) -> Date {
-        let dateFormatter = DateFormatter()
-
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
-
-        let date: Date = dateFormatter.date(from: dateString)!
-        return date
-    }
-    
-    func dateToString(with date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
-
-        let dateString: String = dateFormatter.string(from: date)
-        return dateString
-    }
-}
-
-func todayAnswer() -> String {
-    generator = RandomNumberGeneratorWithSeed(seed: DateToSeed())
-    let wordDictCount = WordDictManager.shared.wordDictFiveJamo.count
-    let randomAnswer = WordDictManager.shared.wordDictFiveJamo[Int(generator.next()) % wordDictCount].jamo
-    var answers: [String] = []
-    answers.append(randomAnswer)
-    UserDefaults.standard.set(answers, forKey: "todayAnswers")
-    return randomAnswer
-}
-
-func randomAnswerGenerator() -> String {
-    let wordDictCount = WordDictManager.shared.wordDictFiveJamo.count
-    var randomNumber = Int(generator.next())
-    var randomAnswer = WordDictManager.shared.wordDictFiveJamo[randomNumber % wordDictCount].jamo
-    var answers = UserDefaults.standard.stringArray(forKey: "todayAnswers") ?? []
-    var i = 0
-    while answers.contains(randomAnswer) {
-        randomNumber = Int(generator.next())
-        randomAnswer = WordDictManager.shared.wordDictFiveJamo[(randomNumber) % wordDictCount].jamo
-        i += 1
-        if i > 1000 {
-            break
-        }
-    }
-    answers.append(randomAnswer)
-    print("Answer: " + randomAnswer)
-    UserDefaults.standard.set(answers, forKey: "todayAnswers")
-    return randomAnswer
-}
-
-func DateToSeed() -> Int {
-    let date = Date()
-    let today = Calendar.current.dateComponents([.year, .month, .day, .hour], from: date)
-    let todaySeed = today.year! * 10000 + today.month! * 100 + today.day!
-    return todaySeed
 }
