@@ -304,13 +304,13 @@
 				737D4CE128093C3600CD8CBD /* MainView.swift */,
 				73D66DB1280E825000313A7F /* TitleView.swift */,
 				CCCA07C529AF4ECC004F0881 /* SettingButtonView.swift */,
+				CCCA07D029B70C55004F0881 /* GameNumberView.swift */,
 				737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */,
 				DBDE27AE299F600C00841CF7 /* LifeView.swift */,
-				73036274281261E8002DCE6B /* DictView.swift */,
 				737D4CD82809322400CD8CBD /* KeyboardView.swift */,
+				73036274281261E8002DCE6B /* DictView.swift */,
 				CC7C517E280EB51300B739F3 /* MenuBar.swift */,
 				CCCA07CE29B70A5C004F0881 /* Horline.swift */,
-				CCCA07D029B70C55004F0881 /* GameNumberView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";

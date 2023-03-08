@@ -32,14 +32,10 @@ struct MainView: View {
                     .zIndex(2)
             }
             if vm.isInvalidWordWarningPresented {
-                showToast("유효하지 않은 단어입니다.", status: $vm.isInvalidWordWarningPresented) {
-                    vm.closeToastMessage()
-                }
+                ToastView(presentStatus: $vm.isInvalidWordWarningPresented, toastText: "유효하지 않은 단어입니다")
             }
             if vm.isADNotLoaded {
-                showToast("광고 불러오는 중", status: $vm.isADNotLoaded) {
-                    vm.closeToastMessage()
-                }
+                ToastView(presentStatus: $vm.isADNotLoaded, toastText: "광고 불러오는 중")
             }
         }
         .alert(isPresented: $vm.needUpdate) {

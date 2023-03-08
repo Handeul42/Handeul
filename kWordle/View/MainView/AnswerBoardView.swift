@@ -16,13 +16,13 @@ struct AnswerBoardView: View {
     var body: some View {
         ZStack {
             VStack(spacing: -2) {
-                Horline(3)
+                Horline(height: 3)
                     .padding([.bottom], 5)
                 ForEach(answerBoard.indices, id: \.self) { rowIndex in
                     let row: [Key] = answerBoard[rowIndex]
                     AnswerBoardRow(row)
                 }
-                Horline(3)
+                Horline(height: 3)
             }.transition(.opacity)
             .animation(.easeInOut)
             Image("Filcrow")
@@ -35,9 +35,10 @@ struct AnswerBoardView: View {
 }
 
 extension AnswerBoardView {
+    @ViewBuilder
     func answerBoardBlock(_ key: Key) -> some View {
         let keyButtonSize: CGSize = CGSize(width: keyButtonWidth, height: keyButtonWidth)
-        return ZStack {
+        ZStack {
             Rectangle()
                 .frame(width: keyButtonSize.width,
                        height: keyButtonSize.height)
@@ -46,19 +47,20 @@ extension AnswerBoardView {
             Text(key.character)
                 .foregroundColor(getColor(of: .black))
                 .font(.custom("EBSHMJESaeronSB", fixedSize: 32))
+                
         }
     }
     
     @ViewBuilder
     fileprivate func AnswerBoardRow(_ row: [Key]) -> some View {
-        Horline(2)
+        Horline(height: 2)
         HStack {
             ForEach(row) { btn in
                 answerBoardBlock(btn)
             }
             .padding([.horizontal], -5)
         }
-        Horline(2)
+        Horline(height: 2)
             .padding([.bottom], 4)
     }
 }

@@ -25,9 +25,7 @@ class MainViewModel: ObservableObject {
     @Published var isResultAnimationPlaying: Bool = false
     
     @AppStorage("life") var life = UserDefaults.standard.integer(forKey: "life")
-    @AppStorage("lifeTimeStamp")
-    
-    var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
+    @AppStorage("lifeTimeStamp") var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
     let rewardADViewController = RewardedADViewController()
     var preventTapShowAdButton: Bool = false
     
@@ -309,7 +307,7 @@ extension MainViewModel {
         let diffInHours = currentDate.timeIntervalSince(lastDate) / 3600
         
         if diffInHours > 1 {
-            addLifeCount(Int(lroundl(diffInHours)))
+            addLifeCount(Int(lroundl(Float80(diffInHours))))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3601) { [weak self] in
             self?.checkLifeCount()

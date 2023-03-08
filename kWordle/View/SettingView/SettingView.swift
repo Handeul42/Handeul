@@ -24,6 +24,30 @@ struct SettingView: View {
                                                   message: "",
                                                   attachments: nil)
     
+    var body: some View {
+        ZStack {
+            SettingBackgrounds()
+            VStack {
+                TitleBar()
+                    .foregroundColor(.hBlack)
+                    .padding(.top, 24)
+                    .padding(.bottom, 41)
+                SettingContents()
+                    .frame(width: 134, height: 350)
+                    .font(.custom("EBSHMJESaeronL", fixedSize: 16))
+            }
+            .frame(width: 320, height: 420, alignment: .top)
+            if isHowToPlayPresented {
+                HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
+                    .zIndex(1)
+            }
+            if isStatisticsPresented {
+                StatisticsView(isStatisticsPresented: $isStatisticsPresented)
+                    .zIndex(2)
+            }
+        }
+    }
+    
     fileprivate func TitleBar() -> some View {
         return ZStack {
             Text("설정")
@@ -171,31 +195,6 @@ struct SettingView: View {
                 .frame(width: 320, height: 420)
                 .foregroundColor(.hLigthGray)
         }
-    }
-    
-    var body: some View {
-        ZStack {
-            SettingBackgrounds()
-            VStack {
-                TitleBar()
-                    .foregroundColor(.hBlack)
-                    .padding(.top, 24)
-                    .padding(.bottom, 41)
-                SettingContents()
-                    .frame(width: 134, height: 350)
-                    .font(.custom("EBSHMJESaeronL", fixedSize: 16))
-            }
-            .frame(width: 320, height: 420, alignment: .top)
-            if isHowToPlayPresented {
-                HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
-                    .zIndex(1)
-            }
-            if isStatisticsPresented {
-                StatisticsView(isStatisticsPresented: $isStatisticsPresented)
-                    .zIndex(2)
-            }
-        }
-        
     }
 }
 
