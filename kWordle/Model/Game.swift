@@ -8,8 +8,8 @@
 import Foundation
 import Firebase
 
-struct Game: Identifiable {
-    
+struct Game: Identifiable, Hashable {
+
     internal var id: String = UUID().uuidString
     private var timestamp = Date()
     private var jamoCount = 5
@@ -30,6 +30,14 @@ struct Game: Identifiable {
         answerBoard = Self.initAnswerBoard()
         self.gameNumber = UserDefaults.standard.integer(forKey: "todayGameCount")
         UserDefaults.standard.set(gameNumber + 1, forKey: "todayGameCount")
+    }
+    
+    static func == (lhs: Game, rhs: Game) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
 

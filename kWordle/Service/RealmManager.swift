@@ -25,6 +25,14 @@ class RealmManager {
         return realm.objects(PersistedGame.self).where { game in game.isGameFinished == true }
     }
     
+    public func getGamesGroupedByDay() -> [String: [PersistedGame]] {
+        return Dictionary(grouping: getFinishedGames()) { game -> String in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy년 M월 d일"
+            return dateFormatter.string(from: game.timestamp)
+        }
+    }
+    
     public func getPreviousGame() -> PersistedGame? {
         let previousGame = realm.objects(PersistedGame.self).sorted(byKeyPath: "timestamp", ascending: false).first
         return previousGame

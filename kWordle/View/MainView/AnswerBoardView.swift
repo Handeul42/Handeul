@@ -23,8 +23,7 @@ struct AnswerBoardView: View {
                     AnswerBoardRow(row)
                 }
                 Horline(height: 3)
-            }.transition(.opacity)
-            .animation(.easeInOut)
+            }
             Image("Filcrow")
                 .resizable()
                 .frame(width: 12, height: 16)

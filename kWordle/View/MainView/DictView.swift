@@ -18,8 +18,7 @@ struct DictView: View {
     
     @AppStorage("isColorWeakModeOn") var isColorWeakModeOn: Bool = false
     
-    let currentGame: Game
-    let generateSharedString: () -> String
+    let game: Game
     
     var body: some View {
         VStack(spacing: 24) {
@@ -52,8 +51,8 @@ struct DictView: View {
     }
     
     private func initDict() {
-        _ = currentGame.wordDict.map { wordDict in
-            if wordDict.jamo == currentGame.answer {
+        _ = game.wordDict.map { wordDict in
+            if wordDict.jamo == game.answer {
                 self.answer = wordDict.word
                 self.meaning = wordDict.meaning
             }
@@ -85,7 +84,7 @@ struct DictView: View {
     }
     
     func presentShareActionSheet() {
-        let sharedString = generateSharedString()
+        let sharedString = generateSharedGameResultString(game: game)
         let activityVC = UIActivityViewController(activityItems: [sharedString], applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
     }

@@ -9,29 +9,51 @@ import SwiftUI
 
 struct PlayedGameView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     let game: Game
     
     var body: some View {
-        VStack {
-            HStack {
+        NavigationView {
+            VStack(spacing: 0) {
+                HStack {
+                    Spacer()
+                    GameNumberView(count: game.gameNumber)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 8)
+                }
+                AnswerBoardView(answerBoard: game.answerBoard,
+                                currentColumn: game.currentColumn,
+                                currentRow: game.currentRow)
+                DictView(game: game)
+                    .padding(.vertical, 24)
                 Spacer()
-                GameNumberView(count: game.gameNumber)
-                    .padding(.horizontal, 20)
-                    .padding(.top, 8)
+                backButton
+                Spacer()
             }
-            AnswerBoardView(answerBoard: game.answerBoard,
-                            currentColumn: game.currentColumn,
-                            currentRow: game.currentRow)
-            DictView(currentGame: game) {
+        }.navigationBarBackButtonHidden(true)
+    }
+    
+    var backButton: some View {
+        Button {
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            Text("뒤로")
+                .font(.custom("EBSHMJESaeronR", fixedSize: 18))
+                .foregroundColor(.hBlack)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 12)
+                .background(Color.hLigthGray)
+                .cornerRadius(4)
                 
-            }
         }
-
     }
 }
 
 struct PlayedGameView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayedGameView(game: Game(answer: "ㅁㅕㅇㅈㅜ"))
+        let mockGame: Game = Game(answer: "ㅁㅕㅇㅈㅜ")
+        PlayedGameView(game: mockGame)
     }
 }
+    

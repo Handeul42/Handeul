@@ -9,27 +9,47 @@ import SwiftUI
 
 struct PlayedGameListView: View {
     
-    let playedGames: [Game]
+    let playedGamesGroupedByDate: [String: [PersistedGame]]
     
     init() {
-        self.playedGames = RealmManager.shared.getFinishedGames()
-            .sorted(byKeyPath: "timestamp", ascending: false)
-            .map({ Game(persistedObject: $0)})
+        self.playedGamesGroupedByDate = RealmManager.shared.getGamesGroupedByDay()
     }
     
     var body: some View {
         NavigationView {
-            if playedGames.isEmpty {
-                Text("No data")
-            } else {
-                List {
-                    ForEach(playedGames) { game in
-                        Text(game.answer)
-                    }
+            ZStack {
+                if playedGamesGroupedByDate.isEmpty {
+                    Text("No data")
+                } else {
+                    gameList()
                 }
             }
         }
     }
+    
+    fileprivate func gameList() -> some View {
+        return List {
+            let sortedGroups = playedGamesGroupedByDate
+                .sorted(by: { $0.key > $1.key })
+                .map {key, value in (key: key, games: value)}
+            
+            ForEach(sortedGroups , id: \.key) { day in
+                Section(header: Text(day.key)) {
+                    ForEach(day.games, id: \.id) { persistedGame in
+                        let game = Game(persistedObject: persistedGame)
+                        NavigationLink {
+                            PlayedGameView(game: game)
+                        } label: {
+                            Text(game.wordDict
+                                .filter({ $0.jamo == game.answer})
+                                .first?.word ?? "")
+                        }
+                    }
+                }
+            }
+        }.listStyle(.plain)
+    }
+    
 }
 
 struct PlayedGameListView_Previews: PreviewProvider {

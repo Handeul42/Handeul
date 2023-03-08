@@ -68,7 +68,7 @@ extension MainView {
                 KeyboardView()
             } else {
                 VStack(spacing: 0) {
-                    DictView(currentGame: vm.game, generateSharedString: vm.generateSharedGameResultString)
+                    DictView(game: vm.game)
                     Button {
                         withAnimation {
                             vm.useLifeCount()
