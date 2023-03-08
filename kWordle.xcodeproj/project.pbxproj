@@ -64,6 +64,7 @@
 		CCCA07C629AF4ECC004F0881 /* SettingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07C529AF4ECC004F0881 /* SettingButtonView.swift */; };
 		CCCA07CF29B70A5C004F0881 /* Horline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07CE29B70A5C004F0881 /* Horline.swift */; };
 		CCCA07D129B70C55004F0881 /* GameNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D029B70C55004F0881 /* GameNumberView.swift */; };
+		CCCA07D329B84CA4004F0881 /* GameAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D229B84CA3004F0881 /* GameAnswer.swift */; };
 		CCDBBC7228100D4600563140 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBBC7128100D4600563140 /* ToastView.swift */; };
 		CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB412817BBAD006674A3 /* Persistable.swift */; };
 		CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB432817C62E006674A3 /* Game+Persisted.swift */; };
@@ -130,6 +131,7 @@
 		CCCA07C529AF4ECC004F0881 /* SettingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButtonView.swift; sourceTree = "<group>"; };
 		CCCA07CE29B70A5C004F0881 /* Horline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horline.swift; sourceTree = "<group>"; };
 		CCCA07D029B70C55004F0881 /* GameNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNumberView.swift; sourceTree = "<group>"; };
+		CCCA07D229B84CA3004F0881 /* GameAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAnswer.swift; sourceTree = "<group>"; };
 		CCDBBC7128100D4600563140 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		CCFBDB412817BBAD006674A3 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		CCFBDB432817C62E006674A3 /* Game+Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Persisted.swift"; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 		CCCA07CB29B6F17A004F0881 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CCCA07D229B84CA3004F0881 /* GameAnswer.swift */,
 				CC69C353281A9DCF00F6805E /* Dates.swift */,
 			);
 			path = Utils;
@@ -521,6 +524,7 @@
 				CC69C354281A9DCF00F6805E /* Dates.swift in Sources */,
 				CCFBDB462817D022006674A3 /* RealmManager.swift in Sources */,
 				7384B9FD28168E7300D14652 /* GoogleAds.swift in Sources */,
+				CCCA07D329B84CA4004F0881 /* GameAnswer.swift in Sources */,
 				737D4CE428093C6200CD8CBD /* AnswerBoardView.swift in Sources */,
 				73D66DB2280E825000313A7F /* TitleView.swift in Sources */,
 				737D4CD92809322400CD8CBD /* KeyboardView.swift in Sources */,
