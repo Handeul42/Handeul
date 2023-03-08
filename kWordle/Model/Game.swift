@@ -8,9 +8,9 @@
 import Foundation
 import Firebase
 
-struct Game {
+struct Game: Identifiable {
     
-    private var id: String = UUID().uuidString
+    internal var id: String = UUID().uuidString
     private var timestamp = Date()
     private var jamoCount = 5
     private(set) var gameNumber: Int

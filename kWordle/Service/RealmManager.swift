@@ -16,9 +16,13 @@ class RealmManager {
         self.realm = try! Realm()
     }
     
-    public func getAllGame() -> Results<PersistedGame> {
+    public func getAllGames() -> Results<PersistedGame> {
         let allGame = realm.objects(PersistedGame.self)
         return allGame
+    }
+    
+    public func getFinishedGames() -> Results<PersistedGame> {
+        return realm.objects(PersistedGame.self).where { game in game.isGameFinished == true }
     }
     
     public func getPreviousGame() -> PersistedGame? {

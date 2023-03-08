@@ -11,7 +11,7 @@ import SwiftUI
 
 struct Statistics {
     
-    private let currentGames = RealmManager.shared.getAllGame().sorted(byKeyPath: "timestamp", ascending: false).where({ $0.isGameFinished == true })
+    private let currentGames = RealmManager.shared.getAllGames().sorted(byKeyPath: "timestamp", ascending: false).where({ $0.isGameFinished == true })
     
     private(set) var totalPlayed: Int = 0
     private(set) var win: Int = 0

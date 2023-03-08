@@ -65,6 +65,8 @@
 		CCCA07CF29B70A5C004F0881 /* Horline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07CE29B70A5C004F0881 /* Horline.swift */; };
 		CCCA07D129B70C55004F0881 /* GameNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D029B70C55004F0881 /* GameNumberView.swift */; };
 		CCCA07D329B84CA4004F0881 /* GameAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D229B84CA3004F0881 /* GameAnswer.swift */; };
+		CCCA07D629B86507004F0881 /* PlayedGameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D529B86507004F0881 /* PlayedGameListView.swift */; };
+		CCCA07D829B8691D004F0881 /* PlayedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D729B8691D004F0881 /* PlayedGameView.swift */; };
 		CCDBBC7228100D4600563140 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBBC7128100D4600563140 /* ToastView.swift */; };
 		CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB412817BBAD006674A3 /* Persistable.swift */; };
 		CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB432817C62E006674A3 /* Game+Persisted.swift */; };
@@ -132,6 +134,8 @@
 		CCCA07CE29B70A5C004F0881 /* Horline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horline.swift; sourceTree = "<group>"; };
 		CCCA07D029B70C55004F0881 /* GameNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNumberView.swift; sourceTree = "<group>"; };
 		CCCA07D229B84CA3004F0881 /* GameAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAnswer.swift; sourceTree = "<group>"; };
+		CCCA07D529B86507004F0881 /* PlayedGameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedGameListView.swift; sourceTree = "<group>"; };
+		CCCA07D729B8691D004F0881 /* PlayedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedGameView.swift; sourceTree = "<group>"; };
 		CCDBBC7128100D4600563140 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		CCFBDB412817BBAD006674A3 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		CCFBDB432817C62E006674A3 /* Game+Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Persisted.swift"; sourceTree = "<group>"; };
@@ -179,9 +183,6 @@
 				CC57AF272816C695001675CD /* KeyBoard.swift */,
 				738C80D6280D61D600D8FCA5 /* WordDict.swift */,
 				737D4CD428092F6C00CD8CBD /* Key.swift */,
-				737D4CE72809539D00CD8CBD /* WordDictManager.swift */,
-				CCFBDB452817D022006674A3 /* RealmManager.swift */,
-				CC1BB898281AE13800BAA6FA /* HapticsManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,6 +190,7 @@
 		737D4CD128092F3C00CD8CBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CCCA07D429B864EF004F0881 /* PlayedGameView */,
 				CCCA07C129AF4761004F0881 /* MainView */,
 				CCCA07C429AF4BEC004F0881 /* SettingView */,
 				CCCA07C229AF4810004F0881 /* Shared */,
@@ -235,6 +237,9 @@
 				73F23E7728196257009A5DEC /* NotificationManager.swift */,
 				73282902281A872A00A55F77 /* RandomNumberGeneratorWithSeed.swift */,
 				73282904281AB03E00A55F77 /* requestPermission.swift */,
+				737D4CE72809539D00CD8CBD /* WordDictManager.swift */,
+				CCFBDB452817D022006674A3 /* RealmManager.swift */,
+				CC1BB898281AE13800BAA6FA /* HapticsManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -346,6 +351,15 @@
 				CC69C353281A9DCF00F6805E /* Dates.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		CCCA07D429B864EF004F0881 /* PlayedGameView */ = {
+			isa = PBXGroup;
+			children = (
+				CCCA07D529B86507004F0881 /* PlayedGameListView.swift */,
+				CCCA07D729B8691D004F0881 /* PlayedGameView.swift */,
+			);
+			path = PlayedGameView;
 			sourceTree = "<group>";
 		};
 		CCFBDB402817BB90006674A3 /* Protocols */ = {
@@ -500,6 +514,7 @@
 				7322469D2816DBFD00024ED2 /* GoogleAdsViewModel.swift in Sources */,
 				CC64209D284341AF00851A22 /* HowToPlayText.swift in Sources */,
 				737D4CE228093C3600CD8CBD /* MainView.swift in Sources */,
+				CCCA07D829B8691D004F0881 /* PlayedGameView.swift in Sources */,
 				CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */,
 				73F23E7A281962C1009A5DEC /* NotificationCell.swift in Sources */,
 				73282905281AB03E00A55F77 /* requestPermission.swift in Sources */,
@@ -512,6 +527,7 @@
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
 				CCFBDB4A2817FB28006674A3 /* StatisticsViewModel.swift in Sources */,
 				CC1BB899281AE13800BAA6FA /* HapticsManager.swift in Sources */,
+				CCCA07D629B86507004F0881 /* PlayedGameListView.swift in Sources */,
 				73F23E7C28196315009A5DEC /* Message.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
