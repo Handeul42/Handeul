@@ -12,6 +12,7 @@ import GoogleMobileAds
 
 class MainViewModel: ObservableObject {
     @Published var game: Game
+    @Published var hintJamo: KeyForHint? = nil
     @Published var isInvalidWordWarningPresented: Bool = false
     @Published var isADNotLoaded: Bool = false
     @Published var needUpdate: Bool = false
@@ -266,5 +267,47 @@ extension MainViewModel {
     
     func getLifeCount() {
         lifeCount = life
+    }
+}
+
+/// For hint
+
+
+extension MainViewModel {
+    func showHintWithAd(revealHintAt index: Int) {
+        guard refreshGameOnActive() == false,
+              preventTapShowAdButton == false else { return }
+        preventTapShowAdButton = true
+        rewardADViewController.loadAD { isLoaded in
+            if isLoaded {
+                self.rewardADViewController.doSomething { [self] isPresentedAd in
+                    if isPresentedAd {
+//                        TODO: change it to show hint
+                        self.setHint(index: index)
+                        self.isADNotLoaded = false
+                        self.preventTapShowAdButton = false
+                    } else {
+                        self.isADNotLoaded = true
+                        self.preventTapShowAdButton = false
+                    }
+                }
+            } else {
+                self.isADNotLoaded = true
+                self.preventTapShowAdButton = false
+            }
+        }
+    }
+    
+    func setHint(index: Int) {
+        let answer = self.game.answer
+        let jamo = String(answer[answer.index(answer.startIndex, offsetBy: index)])
+        self.hintJamo = KeyForHint(key: Key(character: jamo,
+                                            status: .green),
+                                   index: index)
+        self.game.keyBoard.changeKeyStatus(to: .green, keyLabel: jamo)
+    }
+    
+    func clearHint() {
+        self.hintJamo = nil
     }
 }

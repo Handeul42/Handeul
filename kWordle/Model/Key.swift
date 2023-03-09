@@ -24,6 +24,11 @@ struct Key: Identifiable, Hashable, Codable {
     }
 }
 
+struct KeyForHint {
+    let key: Key
+    let index: Int
+}
+
 //extension Array where Element == Key {
 //    var idString: String {
 //        self.map { $0.id.uuidString }.joined(separator: "-")

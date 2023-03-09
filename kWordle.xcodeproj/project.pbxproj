@@ -68,6 +68,7 @@
 		CCCA07D629B86507004F0881 /* PlayedGameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D529B86507004F0881 /* PlayedGameListView.swift */; };
 		CCCA07D829B8691D004F0881 /* PlayedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D729B8691D004F0881 /* PlayedGameView.swift */; };
 		CCCA07DA29B86B55004F0881 /* GameSharedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D929B86B55004F0881 /* GameSharedString.swift */; };
+		CCCA07DC29B9A0C1004F0881 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07DB29B9A0C1004F0881 /* HintView.swift */; };
 		CCDBBC7228100D4600563140 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBBC7128100D4600563140 /* ToastView.swift */; };
 		CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB412817BBAD006674A3 /* Persistable.swift */; };
 		CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB432817C62E006674A3 /* Game+Persisted.swift */; };
@@ -137,6 +138,7 @@
 		CCCA07D529B86507004F0881 /* PlayedGameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedGameListView.swift; sourceTree = "<group>"; };
 		CCCA07D729B8691D004F0881 /* PlayedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedGameView.swift; sourceTree = "<group>"; };
 		CCCA07D929B86B55004F0881 /* GameSharedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSharedString.swift; sourceTree = "<group>"; };
+		CCCA07DB29B9A0C1004F0881 /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		CCDBBC7128100D4600563140 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		CCFBDB412817BBAD006674A3 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		CCFBDB432817C62E006674A3 /* Game+Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Persisted.swift"; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				73036274281261E8002DCE6B /* DictView.swift */,
 				CC7C517E280EB51300B739F3 /* MenuBar.swift */,
 				CCCA07CE29B70A5C004F0881 /* Horline.swift */,
+				CCCA07DB29B9A0C1004F0881 /* HintView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */,
 				73F23E7E28196443009A5DEC /* SettingView.swift in Sources */,
 				CC802751281266D600686A3A /* String+getChar.swift in Sources */,
+				CCCA07DC29B9A0C1004F0881 /* HintView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
