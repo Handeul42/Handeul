@@ -50,6 +50,17 @@ struct PlayedGameView: View {
     }
 }
 
+extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
+    }
+}
+
 struct PlayedGameView_Previews: PreviewProvider {
     static var previews: some View {
         let mockGame: Game = Game(answer: "ㅁㅕㅇㅈㅜ")
