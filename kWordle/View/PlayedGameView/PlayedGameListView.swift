@@ -19,13 +19,16 @@ struct PlayedGameListView: View {
         NavigationView {
             ZStack {
                 if playedGamesGroupedByDate.isEmpty {
-                    Text("No data")
+                    Text("푼 문제가 없습니다.")
+                        .font(.custom("EBSHMJESaeronR", size: 20))
                 } else {
                     gameList()
                 }
             }
         }
     }
+    
+
     
     fileprivate func gameList() -> some View {
         return List {
@@ -34,7 +37,7 @@ struct PlayedGameListView: View {
                 .map {key, value in (key: key, games: value)}
             
             ForEach(sortedGroups , id: \.key) { day in
-                Section(header: Text(day.key)) {
+                Section(header: gameListSectionHeader(day.key)) {
                     ForEach(day.games, id: \.id) { persistedGame in
                         let game = Game(persistedObject: persistedGame)
                         NavigationLink {
@@ -43,11 +46,16 @@ struct PlayedGameListView: View {
                             Text(game.wordDict
                                 .filter({ $0.jamo == game.answer})
                                 .first?.word ?? "")
+                            .font(.custom("EBSHMJESaeronR", size: 20))
                         }
                     }
                 }
             }
         }.listStyle(.plain)
+    }
+    
+    fileprivate func gameListSectionHeader(_ content: String) -> Text {
+        return Text(content).font(.custom("EBSHMJESaeronL", size: 14))
     }
     
 }

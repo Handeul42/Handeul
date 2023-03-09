@@ -226,7 +226,7 @@ struct SettingView: View {
                     Image(systemName: "chevron.down")
                         .font(.system(size: 24))
                         .foregroundColor(.hBlack)
-                        .padding(.bottom, 8)
+                        .padding(.vertical, 8)
                 }
                 Text("푼 한들")
                     .font(.custom("EBSHMJESaeronR", size: 30))
