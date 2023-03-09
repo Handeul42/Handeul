@@ -11,7 +11,6 @@ struct AnswerBoardView: View {
     let answerBoard: [[Key]]
     let currentColumn: Int
     let currentRow: Int
-    let keyButtonWidth: Double = Double(uiSize.width - 40) / 6
     
     var body: some View {
         ZStack {
@@ -20,7 +19,8 @@ struct AnswerBoardView: View {
                     .padding([.bottom], 5)
                 ForEach(answerBoard.indices, id: \.self) { rowIndex in
                     let row: [Key] = answerBoard[rowIndex]
-                    AnswerBoardRow(row)
+                    AnswerBoardRow(row: row)
+                        .padding([.bottom], 5)
                 }
                 Horline(height: 3)
             }
@@ -33,10 +33,28 @@ struct AnswerBoardView: View {
     }
 }
 
-extension AnswerBoardView {
-    @ViewBuilder
-    func answerBoardBlock(_ key: Key) -> some View {
-        let keyButtonSize: CGSize = CGSize(width: keyButtonWidth, height: keyButtonWidth)
+struct AnswerBoardRow: View {
+    let row: [Key]
+    
+    var body: some View {
+        VStack(spacing: -2) {
+            Horline(height: 2)
+            HStack(spacing: -2) {
+                ForEach(row) { btn in
+                    AnswerBoardBlock(key:btn, blockSize: keyButtonWidth)
+                }
+            }
+            Horline(height: 2)
+        }
+    }
+}
+
+struct AnswerBoardBlock: View {
+    let key: Key
+    let blockSize: CGFloat
+    
+    var body: some View {
+        let keyButtonSize: CGSize = CGSize(width: blockSize, height: blockSize)
         ZStack {
             Rectangle()
                 .frame(width: keyButtonSize.width,
@@ -46,20 +64,6 @@ extension AnswerBoardView {
             Text(key.character)
                 .foregroundColor(getColor(of: .black))
                 .font(.custom("EBSHMJESaeronSB", fixedSize: 32))
-                
         }
-    }
-    
-    @ViewBuilder
-    fileprivate func AnswerBoardRow(_ row: [Key]) -> some View {
-        Horline(height: 2)
-        HStack {
-            ForEach(row) { btn in
-                answerBoardBlock(btn)
-            }
-            .padding([.horizontal], -5)
-        }
-        Horline(height: 2)
-            .padding([.bottom], 4)
     }
 }

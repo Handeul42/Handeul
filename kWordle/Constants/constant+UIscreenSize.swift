@@ -13,6 +13,8 @@ let UIWidth: CGFloat = uiSize.width
 let keyboardWidth: CGFloat = (uiSize.width - 100) / 10
 let keyboardHeight: CGFloat = 40
 
+let keyButtonWidth: Double = Double(uiSize.width - 40) / 6
+
 func currentScreenRatio() -> CGFloat {
     return (uiSize.width * uiSize.height) / (390 * 844)
 }

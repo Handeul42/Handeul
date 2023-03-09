@@ -16,12 +16,13 @@ struct Game: Identifiable, Hashable {
     private(set) var gameNumber: Int
     private(set) var answer: String
     private(set) var wordDict: [WordDict]
-    private(set) var keyBoard: KeyBoard
     private(set) var answerBoard: [[Key]]
     private(set) var isGameFinished: Bool = false
     private(set) var didPlayerWin: Bool = false
     private(set) var currentRow: Int = 0
     private(set) var currentColumn: Int = 0
+    
+    var keyBoard: KeyBoard
     
     init(answer: String) {
         self.answer = answer
