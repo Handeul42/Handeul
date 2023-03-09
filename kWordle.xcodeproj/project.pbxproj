@@ -73,7 +73,6 @@
 		CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB432817C62E006674A3 /* Game+Persisted.swift */; };
 		CCFBDB462817D022006674A3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB452817D022006674A3 /* RealmManager.swift */; };
 		CCFBDB482817F42B006674A3 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB472817F42B006674A3 /* Statistics.swift */; };
-		CCFBDB4A2817FB28006674A3 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */; };
 		DBBBF407299617F600ADBAEF /* GoogleService-Info.plist.template in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */; };
 		DBBBF4092996199C00ADBAEF /* ci_pre_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */; };
 		DBDE27AF299F600C00841CF7 /* LifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE27AE299F600C00841CF7 /* LifeView.swift */; };
@@ -143,7 +142,6 @@
 		CCFBDB432817C62E006674A3 /* Game+Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Persisted.swift"; sourceTree = "<group>"; };
 		CCFBDB452817D022006674A3 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CCFBDB472817F42B006674A3 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
-		CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "GoogleService-Info.plist.template"; sourceTree = "<group>"; };
 		DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		DBDE27AE299F600C00841CF7 /* LifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeView.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				738C80DA280D634C00D8FCA5 /* MainViewModel.swift */,
-				CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */,
 				7322469C2816DBFD00024ED2 /* GoogleAdsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -528,7 +525,6 @@
 				CCA23973281A682000CCAD0E /* MailView.swift in Sources */,
 				CC724BCF2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift in Sources */,
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
-				CCFBDB4A2817FB28006674A3 /* StatisticsViewModel.swift in Sources */,
 				CC1BB899281AE13800BAA6FA /* HapticsManager.swift in Sources */,
 				CCCA07D629B86507004F0881 /* PlayedGameListView.swift in Sources */,
 				73F23E7C28196315009A5DEC /* Message.swift in Sources */,

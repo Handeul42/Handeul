@@ -52,7 +52,9 @@ struct SettingView: View {
             }
         }
     }
-    
+}
+
+extension SettingView {
     fileprivate func TitleBar() -> some View {
         return ZStack {
             Text("설정")
@@ -70,7 +72,6 @@ struct SettingView: View {
                 }
             }
         }
-        
     }
     
     fileprivate func SettingContents() -> some View {
@@ -137,7 +138,7 @@ struct SettingView: View {
     
     fileprivate func playedGameButton() -> Button<Text> {
         return Button {
-            withAnimation(.easeInOut) {
+            withAnimation(.easeIn) {
                 isPlayedGameViewPresented.toggle()
             }
         } label: {
@@ -219,7 +220,7 @@ struct SettingView: View {
         VStack(alignment: .leading) {
             Group {
                 Button {
-                    withAnimation(.easeInOut) {
+                    withAnimation(.easeOut) {
                         isPlayedGameViewPresented = false
                     }
                 } label: {
@@ -234,7 +235,7 @@ struct SettingView: View {
             PlayedGameListView()
         }.background(Color.hWhite.ignoresSafeArea())
             .transition(.move(edge: .bottom))
-            
+        
     }
 }
 

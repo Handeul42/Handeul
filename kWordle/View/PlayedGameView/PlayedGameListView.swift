@@ -28,8 +28,6 @@ struct PlayedGameListView: View {
         }
     }
     
-
-    
     fileprivate func gameList() -> some View {
         return List {
             let sortedGroups = playedGamesGroupedByDate
