@@ -48,7 +48,7 @@ struct HintView: View {
     var adMark: some View {
         HStack {
             Text("광고")
-                .font(.custom("EBSHMJESaeronR", size: 20))
+                .font(.custom("EBSHMJESaeronR", size: 18))
                 .padding(4)
                 .background(Color.hRed.cornerRadius(8, corners: [.topLeft, .bottomRight]))
                 .foregroundColor(.hWhite)
