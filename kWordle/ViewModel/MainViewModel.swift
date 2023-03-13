@@ -12,9 +12,10 @@ import GoogleMobileAds
 
 class MainViewModel: ObservableObject {
     @Published var game: Game
-    @Published var hintJamo: KeyForHint? = nil
+    @Published var hintRow: [Key]
     @Published var isInvalidWordWarningPresented: Bool = false
     @Published var isADNotLoaded: Bool = false
+    @Published var isHintRevealed: Bool = false
     @Published var needUpdate: Bool = false
     @Published var needLife: Bool = false
     @Published var lifeCount: Int = 0 {
@@ -35,13 +36,14 @@ class MainViewModel: ObservableObject {
         } else {
             game = Game(answer: todayAnswer())
         }
-        print(game.answer)
+        hintRow = Self.getEmptyHintRow(length: 5)
         lifeCount = life
         checkUpdate { updateNeeded in
             DispatchQueue.main.async {
                 self.needUpdate = updateNeeded
             }}
         checkLifeCount()
+        print(game.answer)
     }
     
     // MARK: Public Functions
@@ -52,7 +54,7 @@ class MainViewModel: ObservableObject {
     public func deleteOneCharacter() {
         game.deleteOneCharacter()
     }
-    
+        
     public func submitAnswer() {
         guard game.isGameFinished == false else { return }
         if game.currentColumn == 5 && game.currentRow != 6 {
@@ -62,6 +64,7 @@ class MainViewModel: ObservableObject {
                 return
             }
             game.submitAnswer()
+            markCorrectJamoOnHint()
             if game.isGameFinished {
                 if game.didPlayerWin {
                     HapticsManager.shared.notification(type: .success)
@@ -158,6 +161,7 @@ class MainViewModel: ObservableObject {
         let randomAnswer = randomAnswerGenerator()
         let newGame = Game(answer: randomAnswer)
         self.game = newGame
+        clearHint()
         self.game.saveCurrentGame()
     }
     
@@ -222,7 +226,7 @@ extension MainViewModel {
         let diffInHours = currentDate.timeIntervalSince(lastDate) / 3600
         
         if diffInHours > 1 {
-            addLifeCount(Int(lroundl(diffInHours)))
+            addLifeCount(Int(lroundl(Float80(diffInHours))))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3601) { [weak self] in
             self?.checkLifeCount()
@@ -271,8 +275,6 @@ extension MainViewModel {
 }
 
 /// For hint
-
-
 extension MainViewModel {
     func showHintWithAd(revealHintAt index: Int) {
         guard refreshGameOnActive() == false,
@@ -282,8 +284,10 @@ extension MainViewModel {
             if isLoaded {
                 self.rewardADViewController.doSomething { [self] isPresentedAd in
                     if isPresentedAd {
-//                        TODO: change it to show hint
-                        self.setHint(index: index)
+//                      Show Hint --------------------------
+                        self.setHint(at: index)
+                        self.isHintRevealed = true
+// ---------------------------------------------------------
                         self.isADNotLoaded = false
                         self.preventTapShowAdButton = false
                     } else {
@@ -298,16 +302,26 @@ extension MainViewModel {
         }
     }
     
-    func setHint(index: Int) {
+    func setHint(at index: Int) {
         let answer = self.game.answer
         let jamo = String(answer[answer.index(answer.startIndex, offsetBy: index)])
-        self.hintJamo = KeyForHint(key: Key(character: jamo,
-                                            status: .green),
-                                   index: index)
+        self.hintRow[index] = Key(character: jamo, status: .green)
         self.game.keyBoard.changeKeyStatus(to: .green, keyLabel: jamo)
     }
     
     func clearHint() {
-        self.hintJamo = nil
+        self.hintRow = Self.getEmptyHintRow(length: game.jamoCount)
+    }
+    
+    private func markCorrectJamoOnHint() {
+        _ = self.game.answerBoard[game.currentRow - 1].enumerated().map { (index, key) in
+            if key.status == .green {
+                self.hintRow[index] = key
+            }
+        }
+    }
+    
+    static func getEmptyHintRow(length: Int) -> [Key] {
+        return [Key](repeating: Key(id: UUID(), character: "", status: .lightGray), count: length)
     }
 }

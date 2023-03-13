@@ -25,10 +25,10 @@ struct MainView: View {
             }
             if isHintPresented {
                 HintView(isHintPresented: $isHintPresented,
-                         hintJamo: vm.hintJamo,
+                         isHintRevealed: $vm.isHintRevealed,
+                         hintRow: vm.hintRow,
                          handleHintSelection: vm.showHintWithAd
-                )
-                    .onDisappear { vm.clearHint() }
+                ).onDisappear { vm.isHintRevealed = false }
                     .zIndex(1)
             }
             if isSettingPresented {
