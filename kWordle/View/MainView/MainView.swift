@@ -106,11 +106,12 @@ extension MainView {
                     self.isHintPresented = true
                 }
             } label: {
-                Image(systemName: "lightbulb")
+                Image("hintWithAdIcon")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 32, height: 32)
+                    .frame(width: 45, height: 40)
                     .foregroundColor(.hBlack)
+                    .padding(.horizontal, 2)
             }
             Spacer()
             GameNumberView(count: vm.game.gameNumber)
