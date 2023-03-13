@@ -12,7 +12,7 @@ struct Game: Identifiable, Hashable {
 
     internal var id: String = UUID().uuidString
     private var timestamp = Date()
-    private var jamoCount = 5
+    private(set) var jamoCount = 5
     private(set) var gameNumber: Int
     private(set) var answer: String
     private(set) var wordDict: [WordDict]

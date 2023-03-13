@@ -10,21 +10,20 @@ import SwiftUI
 struct HintView: View {
     
     @Binding var isHintPresented: Bool
+    @Binding var isHintRevealed: Bool
     
     let hintRow: [Key]
-    let hintJamo: KeyForHint?
     let handleHintSelection: ((Int) -> Void)?
     
     let hintRowScaleFactor: Double = 0.75
-        
+    
     init(isHintPresented: Binding<Bool>,
-         hintJamo: KeyForHint? = nil,
+         isHintRevealed: Binding<Bool>,
+         hintRow: [Key],
          handleHintSelection: ((Int) -> Void)? = nil) {
         _isHintPresented = isHintPresented
-        var row = [Key](repeating: Key(id: UUID(), character: "", status: .lightGray), count: 5)
-        if let hintJamo = hintJamo { row[hintJamo.index] = hintJamo.key }
-        self.hintJamo = hintJamo
-        self.hintRow = row
+        _isHintRevealed = isHintRevealed
+        self.hintRow = hintRow
         self.handleHintSelection = handleHintSelection
     }
     
@@ -32,23 +31,32 @@ struct HintView: View {
         ZStack {
             hintBackground
             VStack {
+                adMark
                 Text("도움")
                     .font(.custom("EBSHMJESaeronR", size: 22))
-                    .padding(.top, 24)
-                if hintJamo == nil {
-                    hintSelection
-                } else {
+                if isHintRevealed {
                     revealedHint
+                } else {
+                    hintSelection
                 }
-
             }.frame(maxWidth: 320)
                 .background(Color.hLigthGray.cornerRadius(10))
                 .opacity(0.9)
         }
     }
     
+    var adMark: some View {
+        HStack {
+            Text("광고")
+                .font(.custom("EBSHMJESaeronR", size: 20))
+                .padding(4)
+                .background(Color.hRed.cornerRadius(8, corners: [.topLeft, .bottomRight]))
+                .foregroundColor(.hWhite)
+            Spacer()
+        }
+    }
+    
     var revealedHint: some View {
-        
         VStack {
             VStack(spacing: 3) {
                 Horline(height: 3)
@@ -105,7 +113,7 @@ struct HintView: View {
         Color.black.ignoresSafeArea()
             .opacity(0.5)
             .onTapGesture {
-                if hintJamo == nil {
+                if !isHintRevealed {
                     withAnimation {
                         isHintPresented = false
                     }
@@ -115,8 +123,8 @@ struct HintView: View {
 }
 
 struct HintView_Previews: PreviewProvider {
-
+    
     static var previews: some View {
-        HintView(isHintPresented: .constant(true), hintJamo: KeyForHint(key: Key(character: "ㅈ", status: .green), index: 0))
+        HintView(isHintPresented: .constant(true), isHintRevealed: .constant(false), hintRow: [Key](repeating: Key(id: UUID(), character: "", status: .lightGray), count: 5))
     }
 }
