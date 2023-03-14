@@ -52,6 +52,7 @@
 		CC64209A2843307D00851A22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC6420982843307D00851A22 /* Localizable.strings */; };
 		CC64209D284341AF00851A22 /* HowToPlayText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC64209C284341AE00851A22 /* HowToPlayText.swift */; };
 		CC69C354281A9DCF00F6805E /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC69C353281A9DCF00F6805E /* Dates.swift */; };
+		CC71AEE029BEF6020088C78E /* View+CustomCornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC71AEDF29BEF6020088C78E /* View+CustomCornerRadius.swift */; };
 		CC724BCF2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC724BCE2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift */; };
 		CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517C280E753200B739F3 /* Color+CustomColor.swift */; };
 		CC7C517F280EB51300B739F3 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517E280EB51300B739F3 /* MenuBar.swift */; };
@@ -68,6 +69,7 @@
 		CCCA07D629B86507004F0881 /* PlayedGameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D529B86507004F0881 /* PlayedGameListView.swift */; };
 		CCCA07D829B8691D004F0881 /* PlayedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D729B8691D004F0881 /* PlayedGameView.swift */; };
 		CCCA07DA29B86B55004F0881 /* GameSharedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D929B86B55004F0881 /* GameSharedString.swift */; };
+		CCCA07DC29B9A0C1004F0881 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07DB29B9A0C1004F0881 /* HintView.swift */; };
 		CCDBBC7228100D4600563140 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBBC7128100D4600563140 /* ToastView.swift */; };
 		CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB412817BBAD006674A3 /* Persistable.swift */; };
 		CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB432817C62E006674A3 /* Game+Persisted.swift */; };
@@ -123,6 +125,7 @@
 		CC64209B2843319400851A22 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CC64209C284341AE00851A22 /* HowToPlayText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayText.swift; sourceTree = "<group>"; };
 		CC69C353281A9DCF00F6805E /* Dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
+		CC71AEDF29BEF6020088C78E /* View+CustomCornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+CustomCornerRadius.swift"; sourceTree = "<group>"; };
 		CC724BCE2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayOnFirstLaunch.swift; sourceTree = "<group>"; };
 		CC7C517C280E753200B739F3 /* Color+CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CustomColor.swift"; sourceTree = "<group>"; };
 		CC7C517E280EB51300B739F3 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 		CCCA07D529B86507004F0881 /* PlayedGameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedGameListView.swift; sourceTree = "<group>"; };
 		CCCA07D729B8691D004F0881 /* PlayedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedGameView.swift; sourceTree = "<group>"; };
 		CCCA07D929B86B55004F0881 /* GameSharedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSharedString.swift; sourceTree = "<group>"; };
+		CCCA07DB29B9A0C1004F0881 /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		CCDBBC7128100D4600563140 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		CCFBDB412817BBAD006674A3 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		CCFBDB432817C62E006674A3 /* Game+Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Persisted.swift"; sourceTree = "<group>"; };
@@ -317,6 +321,7 @@
 				73036274281261E8002DCE6B /* DictView.swift */,
 				CC7C517E280EB51300B739F3 /* MenuBar.swift */,
 				CCCA07CE29B70A5C004F0881 /* Horline.swift */,
+				CCCA07DB29B9A0C1004F0881 /* HintView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 				CCCA07D229B84CA3004F0881 /* GameAnswer.swift */,
 				CC69C353281A9DCF00F6805E /* Dates.swift */,
 				CCCA07D929B86B55004F0881 /* GameSharedString.swift */,
+				CC71AEDF29BEF6020088C78E /* View+CustomCornerRadius.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -527,6 +533,7 @@
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
 				CC1BB899281AE13800BAA6FA /* HapticsManager.swift in Sources */,
 				CCCA07D629B86507004F0881 /* PlayedGameListView.swift in Sources */,
+				CC71AEE029BEF6020088C78E /* View+CustomCornerRadius.swift in Sources */,
 				73F23E7C28196315009A5DEC /* Message.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
@@ -547,6 +554,7 @@
 				73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */,
 				73F23E7E28196443009A5DEC /* SettingView.swift in Sources */,
 				CC802751281266D600686A3A /* String+getChar.swift in Sources */,
+				CCCA07DC29B9A0C1004F0881 /* HintView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@ struct MainView: View {
     @StateObject var vm: MainViewModel = MainViewModel()
     @AppStorage("shouldHowToPlayPresented") var shouldHowToPlayPresented: Bool = true
     @State var isSettingPresented: Bool = false
+    @State var isHintPresented: Bool = false
         
     var body: some View {
         ZStack {
@@ -22,20 +23,30 @@ struct MainView: View {
             if vm.isResultAnimationPlaying {
                 resultAnimation
             }
+            if isHintPresented {
+                HintView(isHintPresented: $isHintPresented,
+                         isHintRevealed: $vm.isHintRevealed,
+                         hintRow: vm.hintRow,
+                         handleHintSelection: vm.showHintWithAd
+                ).onDisappear { vm.isHintRevealed = false }
+                    .zIndex(1)
+            }
             if isSettingPresented {
                 SettingView(isSettingPresented: $isSettingPresented)
-                    .zIndex(1)
+                    .zIndex(2)
                     .environmentObject(vm)
             }
             if shouldHowToPlayPresented {
                 HowToPlayOnFirstLaunch(isHowToPlayPresented: $shouldHowToPlayPresented)
-                    .zIndex(2)
+                    .zIndex(3)
             }
             if vm.isInvalidWordWarningPresented {
                 ToastView(presentStatus: $vm.isInvalidWordWarningPresented, toastText: "유효하지 않은 단어입니다")
+                    .zIndex(4)
             }
             if vm.isADNotLoaded {
                 ToastView(presentStatus: $vm.isADNotLoaded, toastText: "광고 불러오는 중")
+                    .zIndex(5)
             }
         }
         .alert(isPresented: $vm.needUpdate) {
@@ -90,6 +101,18 @@ extension MainView {
     private func HeaderMenuBar() -> some View {
         return HStack {
             SettingButtonView(isSettingPresented: $isSettingPresented)
+            Button {
+                withAnimation {
+                    self.isHintPresented = true
+                }
+            } label: {
+                Image("hintWithAdIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 45, height: 40)
+                    .foregroundColor(.hBlack)
+                    .padding(.horizontal, 2)
+            }
             Spacer()
             GameNumberView(count: vm.game.gameNumber)
         }
