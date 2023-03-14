@@ -10,40 +10,11 @@ import SwiftUI
 struct KeyboardView: View {
     @EnvironmentObject var viewModel: MainViewModel
     
-    private let buttonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44, height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
-    private let extraButtonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44 * 1.44, height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
+    let buttonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44,
+                                    height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
+    private let extraButtonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44 * 1.44,
+                                                 height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
     private let widthPadding: Double = -1.5
-    
-    private func keyboardEnterButton() -> some View {
-        return ZStack {
-            RoundedRectangle(cornerRadius: 5)
-                .frame(
-                    width: extraButtonSize.width,
-                    height: extraButtonSize.height)
-                .foregroundColor(.hLigthGray)
-            Text("제출")
-                .foregroundColor(getColor(of: .black))
-                .font(.custom("EBSHMJESaeronSB", fixedSize: 18))
-        }
-    }
-    
-    private func keyboardDeleteButton() -> some View {
-        return ZStack {
-            RoundedRectangle(cornerRadius: 5)
-                .frame(
-                    width: extraButtonSize.width,
-                    height: extraButtonSize.height)
-                .foregroundColor(.hLigthGray)
-            Text("지움")
-                .foregroundColor(getColor(of: .black))
-                .font(.custom("EBSHMJESaeronSB", fixedSize: 18))
-        }
-    }
-    
-    private func submitKeyInput(_ character: String) {
-        HapticsManager.shared.playSound(id: 1123) // Press Click
-        viewModel.appendReceivedCharacter(of: character)
-    }
     
     var body: some View {
         ZStack {
@@ -111,6 +82,32 @@ struct KeyboardView: View {
         }
     }
     
+    func keyboardEnterButton() -> some View {
+        return ZStack {
+            RoundedRectangle(cornerRadius: 5)
+                .frame(
+                    width: extraButtonSize.width,
+                    height: extraButtonSize.height)
+                .foregroundColor(.hLigthGray)
+            Text("제출")
+                .foregroundColor(getColor(of: .black))
+                .font(.custom("EBSHMJESaeronSB", fixedSize: 18))
+        }
+    }
+    
+    func keyboardDeleteButton() -> some View {
+        return ZStack {
+            RoundedRectangle(cornerRadius: 5)
+                .frame(
+                    width: extraButtonSize.width,
+                    height: extraButtonSize.height)
+                .foregroundColor(.hLigthGray)
+            Text("지움")
+                .foregroundColor(getColor(of: .black))
+                .font(.custom("EBSHMJESaeronSB", fixedSize: 18))
+        }
+    }
+        
     func keyboardButton(_ key: Key) -> some View {
         let jaum: String = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ"
         return ZStack {
@@ -122,5 +119,10 @@ struct KeyboardView: View {
                 .foregroundColor(getColor(of: .black))
                 .font(.custom("EBSHMJESaeronR", fixedSize: jaum.contains(key.character) ? 24 : 26))
         }
+    }
+    
+    func submitKeyInput(_ character: String) {
+        HapticsManager.shared.playSound(id: 1123) // Press Click
+        viewModel.appendReceivedCharacter(of: character)
     }
 }

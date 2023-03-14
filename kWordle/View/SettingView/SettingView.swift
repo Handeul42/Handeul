@@ -12,6 +12,7 @@ struct SettingView: View {
     @Binding var isSettingPresented: Bool
     @State var isHowToPlayPresented: Bool = false
     @State var isStatisticsPresented: Bool = false
+    @State var isPlayedGameViewPresented: Bool = false
     @State var isMailViewPresented: Bool = false
     @State var isNoMailWarningPresented: Bool = false
     @State var isUserCustomPresented: Bool = false
@@ -24,6 +25,36 @@ struct SettingView: View {
                                                   message: "",
                                                   attachments: nil)
     
+    var body: some View {
+        ZStack {
+            SettingBackgrounds()
+            VStack {
+                TitleBar()
+                    .foregroundColor(.hBlack)
+                    .padding(.top, 24)
+                    .padding(.bottom, 41)
+                SettingContents()
+                    .frame(width: 134, height: 350)
+                    .font(.custom("EBSHMJESaeronL", fixedSize: 16))
+            }
+            .frame(width: 320, height: 420, alignment: .top)
+            if isHowToPlayPresented {
+                HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
+                    .zIndex(1)
+            }
+            if isStatisticsPresented {
+                StatisticsView(isStatisticsPresented: $isStatisticsPresented)
+                    .zIndex(2)
+            }
+            if isPlayedGameViewPresented {
+                PlayedGameList()
+                    .zIndex(3)
+            }
+        }
+    }
+}
+
+extension SettingView {
     fileprivate func TitleBar() -> some View {
         return ZStack {
             Text("설정")
@@ -41,7 +72,28 @@ struct SettingView: View {
                 }
             }
         }
-        
+    }
+    
+    fileprivate func SettingContents() -> some View {
+        return VStack(alignment: .leading, spacing: 16) {
+            userCustomButton()
+            if isUserCustomPresented {
+                VStack(spacing: 12) {
+                    soundButton()
+                    hapticButton()
+                    colorWeakModeButton()
+                }
+                .font(.custom("EBSHMJESaeronL", fixedSize: 14))
+            }
+            NotificationCell()
+                .environmentObject(notificationManager)
+            howToPlayButton()
+            statisticButton()
+            playedGameButton()
+            appReviewButton()
+            //            sendMailButton()
+            Spacer()
+        }
     }
     
     fileprivate func hapticButton() -> some View {
@@ -80,6 +132,17 @@ struct SettingView: View {
             }
         } label: {
             Text("통계")
+                .foregroundColor(.hBlack)
+        }
+    }
+    
+    fileprivate func playedGameButton() -> Button<Text> {
+        return Button {
+            withAnimation(.easeIn) {
+                isPlayedGameViewPresented.toggle()
+            }
+        } label: {
+            Text("푼 한들")
                 .foregroundColor(.hBlack)
         }
     }
@@ -128,33 +191,12 @@ struct SettingView: View {
                 .font(.system(size: 12))
                 .offset(x: -45)
             Text("사용자화")
-    //                .offset(x: -12)
+            //                .offset(x: -12)
         }
         .onTapGesture {
             withAnimation {
                 isUserCustomPresented.toggle()
             }
-        }
-    }
-    
-    fileprivate func SettingContents() -> some View {
-        return VStack(alignment: .leading, spacing: 16) {
-            userCustomButton()
-            if isUserCustomPresented {
-                VStack(spacing: 12) {
-                    soundButton()
-                    hapticButton()
-                    colorWeakModeButton()
-                }
-                .font(.custom("EBSHMJESaeronL", fixedSize: 14))
-            }
-            NotificationCell()
-                .environmentObject(notificationManager)
-            howToPlayButton()
-            statisticButton()
-                        appReviewButton()
-//            sendMailButton()
-            Spacer()
         }
     }
     
@@ -173,28 +215,26 @@ struct SettingView: View {
         }
     }
     
-    var body: some View {
-        ZStack {
-            SettingBackgrounds()
-            VStack {
-                TitleBar()
-                    .foregroundColor(.hBlack)
-                    .padding(.top, 24)
-                    .padding(.bottom, 41)
-                SettingContents()
-                    .frame(width: 134, height: 350)
-                    .font(.custom("EBSHMJESaeronL", fixedSize: 16))
-            }
-            .frame(width: 320, height: 420, alignment: .top)
-            if isHowToPlayPresented {
-                HowToPlayView(isHowToPlayPresented: $isHowToPlayPresented)
-                    .zIndex(1)
-            }
-            if isStatisticsPresented {
-                StatisticsView(isStatisticsPresented: $isStatisticsPresented)
-                    .zIndex(2)
-            }
-        }
+    @ViewBuilder
+    fileprivate func PlayedGameList() -> some View {
+        VStack(alignment: .leading) {
+            Group {
+                Button {
+                    withAnimation(.easeOut) {
+                        isPlayedGameViewPresented = false
+                    }
+                } label: {
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 24))
+                        .foregroundColor(.hBlack)
+                        .padding(.vertical, 8)
+                }
+                Text("푼 한들")
+                    .font(.custom("EBSHMJESaeronR", size: 30))
+            }.padding(.leading, 20)
+            PlayedGameListView()
+        }.background(Color.hWhite.ignoresSafeArea())
+            .transition(.move(edge: .bottom))
         
     }
 }

@@ -62,12 +62,17 @@
 		CCA23973281A682000CCAD0E /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA23972281A682000CCAD0E /* MailView.swift */; };
 		CCCA07C029AF3A1F004F0881 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCCA07BF29AF3A1E004F0881 /* GoogleService-Info.plist */; };
 		CCCA07C629AF4ECC004F0881 /* SettingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07C529AF4ECC004F0881 /* SettingButtonView.swift */; };
+		CCCA07CF29B70A5C004F0881 /* Horline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07CE29B70A5C004F0881 /* Horline.swift */; };
+		CCCA07D129B70C55004F0881 /* GameNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D029B70C55004F0881 /* GameNumberView.swift */; };
+		CCCA07D329B84CA4004F0881 /* GameAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D229B84CA3004F0881 /* GameAnswer.swift */; };
+		CCCA07D629B86507004F0881 /* PlayedGameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D529B86507004F0881 /* PlayedGameListView.swift */; };
+		CCCA07D829B8691D004F0881 /* PlayedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D729B8691D004F0881 /* PlayedGameView.swift */; };
+		CCCA07DA29B86B55004F0881 /* GameSharedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D929B86B55004F0881 /* GameSharedString.swift */; };
 		CCDBBC7228100D4600563140 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDBBC7128100D4600563140 /* ToastView.swift */; };
 		CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB412817BBAD006674A3 /* Persistable.swift */; };
 		CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB432817C62E006674A3 /* Game+Persisted.swift */; };
 		CCFBDB462817D022006674A3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB452817D022006674A3 /* RealmManager.swift */; };
 		CCFBDB482817F42B006674A3 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB472817F42B006674A3 /* Statistics.swift */; };
-		CCFBDB4A2817FB28006674A3 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */; };
 		DBBBF407299617F600ADBAEF /* GoogleService-Info.plist.template in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */; };
 		DBBBF4092996199C00ADBAEF /* ci_pre_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */; };
 		DBDE27AF299F600C00841CF7 /* LifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE27AE299F600C00841CF7 /* LifeView.swift */; };
@@ -126,12 +131,17 @@
 		CCA23972281A682000CCAD0E /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		CCCA07BF29AF3A1E004F0881 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCCA07C529AF4ECC004F0881 /* SettingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButtonView.swift; sourceTree = "<group>"; };
+		CCCA07CE29B70A5C004F0881 /* Horline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horline.swift; sourceTree = "<group>"; };
+		CCCA07D029B70C55004F0881 /* GameNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNumberView.swift; sourceTree = "<group>"; };
+		CCCA07D229B84CA3004F0881 /* GameAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAnswer.swift; sourceTree = "<group>"; };
+		CCCA07D529B86507004F0881 /* PlayedGameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedGameListView.swift; sourceTree = "<group>"; };
+		CCCA07D729B8691D004F0881 /* PlayedGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedGameView.swift; sourceTree = "<group>"; };
+		CCCA07D929B86B55004F0881 /* GameSharedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSharedString.swift; sourceTree = "<group>"; };
 		CCDBBC7128100D4600563140 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		CCFBDB412817BBAD006674A3 /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
 		CCFBDB432817C62E006674A3 /* Game+Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Persisted.swift"; sourceTree = "<group>"; };
 		CCFBDB452817D022006674A3 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CCFBDB472817F42B006674A3 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
-		CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "GoogleService-Info.plist.template"; sourceTree = "<group>"; };
 		DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		DBDE27AE299F600C00841CF7 /* LifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeView.swift; sourceTree = "<group>"; };
@@ -158,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				738C80DA280D634C00D8FCA5 /* MainViewModel.swift */,
-				CCFBDB492817FB28006674A3 /* StatisticsViewModel.swift */,
 				7322469C2816DBFD00024ED2 /* GoogleAdsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -173,9 +182,6 @@
 				CC57AF272816C695001675CD /* KeyBoard.swift */,
 				738C80D6280D61D600D8FCA5 /* WordDict.swift */,
 				737D4CD428092F6C00CD8CBD /* Key.swift */,
-				737D4CE72809539D00CD8CBD /* WordDictManager.swift */,
-				CCFBDB452817D022006674A3 /* RealmManager.swift */,
-				CC1BB898281AE13800BAA6FA /* HapticsManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +189,7 @@
 		737D4CD128092F3C00CD8CBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CCCA07D429B864EF004F0881 /* PlayedGameView */,
 				CCCA07C129AF4761004F0881 /* MainView */,
 				CCCA07C429AF4BEC004F0881 /* SettingView */,
 				CCCA07C229AF4810004F0881 /* Shared */,
@@ -199,7 +206,6 @@
 				7384B9FC28168E7300D14652 /* GoogleAds.swift */,
 				73F23E7B28196315009A5DEC /* Message.swift */,
 				73CB2E4028197C6700EB87B6 /* SettingToggleStyle.swift */,
-				CC69C353281A9DCF00F6805E /* Dates.swift */,
 				CC64209C284341AE00851A22 /* HowToPlayText.swift */,
 			);
 			path = Constants;
@@ -230,6 +236,9 @@
 				73F23E7728196257009A5DEC /* NotificationManager.swift */,
 				73282902281A872A00A55F77 /* RandomNumberGeneratorWithSeed.swift */,
 				73282904281AB03E00A55F77 /* requestPermission.swift */,
+				737D4CE72809539D00CD8CBD /* WordDictManager.swift */,
+				CCFBDB452817D022006674A3 /* RealmManager.swift */,
+				CC1BB898281AE13800BAA6FA /* HapticsManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -262,6 +271,7 @@
 				73D66DB3280E971900313A7F /* Fonts */,
 				737D4CE9280954E300CD8CBD /* WordData */,
 				CCFBDB402817BB90006674A3 /* Protocols */,
+				CCCA07CB29B6F17A004F0881 /* Utils */,
 				737D4CDE2809399600CD8CBD /* Constants */,
 				737D4CD028092F1700CD8CBD /* Model */,
 				737D4CD128092F3C00CD8CBD /* View */,
@@ -300,11 +310,13 @@
 				737D4CE128093C3600CD8CBD /* MainView.swift */,
 				73D66DB1280E825000313A7F /* TitleView.swift */,
 				CCCA07C529AF4ECC004F0881 /* SettingButtonView.swift */,
+				CCCA07D029B70C55004F0881 /* GameNumberView.swift */,
 				737D4CE328093C6200CD8CBD /* AnswerBoardView.swift */,
 				DBDE27AE299F600C00841CF7 /* LifeView.swift */,
-				73036274281261E8002DCE6B /* DictView.swift */,
 				737D4CD82809322400CD8CBD /* KeyboardView.swift */,
+				73036274281261E8002DCE6B /* DictView.swift */,
 				CC7C517E280EB51300B739F3 /* MenuBar.swift */,
+				CCCA07CE29B70A5C004F0881 /* Horline.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -329,6 +341,25 @@
 				73C3CE95281A4FCE008DA8AA /* StatisticsView.swift */,
 			);
 			path = SettingView;
+			sourceTree = "<group>";
+		};
+		CCCA07CB29B6F17A004F0881 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CCCA07D229B84CA3004F0881 /* GameAnswer.swift */,
+				CC69C353281A9DCF00F6805E /* Dates.swift */,
+				CCCA07D929B86B55004F0881 /* GameSharedString.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CCCA07D429B864EF004F0881 /* PlayedGameView */ = {
+			isa = PBXGroup;
+			children = (
+				CCCA07D529B86507004F0881 /* PlayedGameListView.swift */,
+				CCCA07D729B8691D004F0881 /* PlayedGameView.swift */,
+			);
+			path = PlayedGameView;
 			sourceTree = "<group>";
 		};
 		CCFBDB402817BB90006674A3 /* Protocols */ = {
@@ -479,25 +510,29 @@
 				CCCA07C629AF4ECC004F0881 /* SettingButtonView.swift in Sources */,
 				73F23E7828196257009A5DEC /* NotificationManager.swift in Sources */,
 				CC29723929AB510B006D2E44 /* LottieView.swift in Sources */,
+				CCCA07D129B70C55004F0881 /* GameNumberView.swift in Sources */,
 				7322469D2816DBFD00024ED2 /* GoogleAdsViewModel.swift in Sources */,
 				CC64209D284341AF00851A22 /* HowToPlayText.swift in Sources */,
 				737D4CE228093C3600CD8CBD /* MainView.swift in Sources */,
+				CCCA07D829B8691D004F0881 /* PlayedGameView.swift in Sources */,
 				CCFBDB422817BBAD006674A3 /* Persistable.swift in Sources */,
 				73F23E7A281962C1009A5DEC /* NotificationCell.swift in Sources */,
 				73282905281AB03E00A55F77 /* requestPermission.swift in Sources */,
 				CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */,
 				73282903281A872A00A55F77 /* RandomNumberGeneratorWithSeed.swift in Sources */,
+				CCCA07CF29B70A5C004F0881 /* Horline.swift in Sources */,
 				CCFBDB482817F42B006674A3 /* Statistics.swift in Sources */,
 				CCA23973281A682000CCAD0E /* MailView.swift in Sources */,
 				CC724BCF2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift in Sources */,
 				738C80DB280D634C00D8FCA5 /* MainViewModel.swift in Sources */,
-				CCFBDB4A2817FB28006674A3 /* StatisticsViewModel.swift in Sources */,
 				CC1BB899281AE13800BAA6FA /* HapticsManager.swift in Sources */,
+				CCCA07D629B86507004F0881 /* PlayedGameListView.swift in Sources */,
 				73F23E7C28196315009A5DEC /* Message.swift in Sources */,
 				737D4CD328092F5D00CD8CBD /* Game.swift in Sources */,
 				737D4CE82809539D00CD8CBD /* WordDictManager.swift in Sources */,
 				DBDE27AF299F600C00841CF7 /* LifeView.swift in Sources */,
 				CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */,
+				CCCA07DA29B86B55004F0881 /* GameSharedString.swift in Sources */,
 				CCDBBC7228100D4600563140 /* ToastView.swift in Sources */,
 				73C3CE96281A4FCE008DA8AA /* StatisticsView.swift in Sources */,
 				737D4CE0280939B500CD8CBD /* constant+UIscreenSize.swift in Sources */,
@@ -505,6 +540,7 @@
 				CC69C354281A9DCF00F6805E /* Dates.swift in Sources */,
 				CCFBDB462817D022006674A3 /* RealmManager.swift in Sources */,
 				7384B9FD28168E7300D14652 /* GoogleAds.swift in Sources */,
+				CCCA07D329B84CA4004F0881 /* GameAnswer.swift in Sources */,
 				737D4CE428093C6200CD8CBD /* AnswerBoardView.swift in Sources */,
 				73D66DB2280E825000313A7F /* TitleView.swift in Sources */,
 				737D4CD92809322400CD8CBD /* KeyboardView.swift in Sources */,
@@ -655,7 +691,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20230303;
 				DEVELOPMENT_ASSET_PATHS = "\"kWordle/Preview Content\"";
-				DEVELOPMENT_TEAM = 9TH57H8UP9;
+				DEVELOPMENT_TEAM = 86F3BYCLAK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = kWordle/Info.plist;

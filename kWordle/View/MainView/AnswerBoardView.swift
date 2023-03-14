@@ -8,43 +8,36 @@
 import SwiftUI
 
 struct AnswerBoardView: View {
-    @EnvironmentObject var viewModel: MainViewModel
+    let answerBoard: [[Key]]
+    let currentColumn: Int
+    let currentRow: Int
     let keyButtonWidth: Double = Double(uiSize.width - 40) / 6
-
+    
     var body: some View {
         ZStack {
             VStack(spacing: -2) {
-                horline(width: 3)
+                Horline(height: 3)
                     .padding([.bottom], 5)
-                ForEach(viewModel.game.answerBoard.indices, id: \.self) { rowIndex in
-                    let row = viewModel.game.answerBoard[rowIndex]
-                    horline(width: 2)
-                    HStack {
-                        ForEach(row) { btn in
-                            answerBoardBlock(btn)
-                        }
-                        .padding([.horizontal], -5)
-                    }
-                    horline(width: 2)
-                        .padding([.bottom], 4)
+                ForEach(answerBoard.indices, id: \.self) { rowIndex in
+                    let row: [Key] = answerBoard[rowIndex]
+                    AnswerBoardRow(row)
                 }
-                horline(width: 3)
+                Horline(height: 3)
             }
-            .animation(.none)
             Image("Filcrow")
                 .resizable()
                 .frame(width: 12, height: 16)
-                .offset(x: (Double(viewModel.game.currentColumn + 1) - 2.5) * (keyButtonWidth - 2) - 43,
-                        y: (Double(viewModel.game.currentRow) - 2.5) * keyButtonWidth + 10)
+                .offset(x: (Double(currentColumn + 1) - 2.5) * (keyButtonWidth - 2) - 43,
+                        y: (Double(currentRow) - 2.5) * keyButtonWidth + 10)
         }
     }
 }
 
 extension AnswerBoardView {
-    
+    @ViewBuilder
     func answerBoardBlock(_ key: Key) -> some View {
         let keyButtonSize: CGSize = CGSize(width: keyButtonWidth, height: keyButtonWidth)
-        return ZStack {
+        ZStack {
             Rectangle()
                 .frame(width: keyButtonSize.width,
                        height: keyButtonSize.height)
@@ -53,13 +46,20 @@ extension AnswerBoardView {
             Text(key.character)
                 .foregroundColor(getColor(of: .black))
                 .font(.custom("EBSHMJESaeronSB", fixedSize: 32))
+                
         }
     }
     
-    private func horline(width: CGFloat) -> some View {
-        return Rectangle()
-            .fill(Color.hRed)
-            .frame(width: uiSize.width - 40, height: width)
+    @ViewBuilder
+    fileprivate func AnswerBoardRow(_ row: [Key]) -> some View {
+        Horline(height: 2)
+        HStack {
+            ForEach(row) { btn in
+                answerBoardBlock(btn)
+            }
+            .padding([.horizontal], -5)
+        }
+        Horline(height: 2)
+            .padding([.bottom], 4)
     }
-    
 }

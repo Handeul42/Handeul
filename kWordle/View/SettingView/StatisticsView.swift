@@ -10,7 +10,7 @@ import SwiftUI
 struct StatisticsView: View {
     
     @Binding var isStatisticsPresented: Bool
-    var vm = StatisticsViewModel()
+    let statistics = Statistics()
     
     var body: some View {
         ZStack {
@@ -41,7 +41,7 @@ struct StatisticsView: View {
                         .padding(24)
                 }
                 
-                if vm.statistics.totalPlayed == 0 {
+                if statistics.totalPlayed == 0 {
                     dataUnavailable
                 } else {
                     statBoard
@@ -66,7 +66,7 @@ struct StatisticsView: View {
     
     private var barGraph: some View {
         VStack(alignment: .leading, spacing: 16) {
-            ForEach(vm.statistics.playerTryForWin.indices, id: \.self) { idx in
+            ForEach(statistics.playerTryForWin.indices, id: \.self) { idx in
                 HStack(spacing: 12) {
                     Text("\(idx + 1)")
                         .font(.system(size: 20))
@@ -74,7 +74,7 @@ struct StatisticsView: View {
                     HStack {
                         Spacer()
                             .frame(width: barLength(of: idx), height: nil)
-                        Text("\(vm.statistics.playerTryForWin[idx])")
+                        Text("\(statistics.playerTryForWin[idx])")
                             .foregroundColor(.hWhite)
                             .padding(4)
                     }.background(Color.hRed)
@@ -85,18 +85,18 @@ struct StatisticsView: View {
     
     private var statBoard: some View {
         HStack(spacing: 16) {
-            showStat(of: "푼 문제", number: "\(vm.statistics.totalPlayed)")
-            showStat(of: "정답률", number: String(format: "%.1f", vm.statistics.winRatio) + "%")
-            showStat(of: "현재 연승", number: "\(vm.statistics.currentWinStreak)")
-            showStat(of: "최다 연승", number: "\(vm.statistics.maxWinStreak)")
+            showStat(of: "푼 문제", number: "\(statistics.totalPlayed)")
+            showStat(of: "정답률", number: String(format: "%.1f", statistics.winRatio) + "%")
+            showStat(of: "현재 연승", number: "\(statistics.currentWinStreak)")
+            showStat(of: "최다 연승", number: "\(statistics.maxWinStreak)")
         }
     }
     
     private func barLength(of idx: Int) -> CGFloat {
-        if vm.statistics.getTryRatio(idx) == 0 {
+        if statistics.getTryRatio(idx) == 0 {
             return 1
         }
-        return 190 * vm.statistics.getTryRatio(idx)
+        return 190 * statistics.getTryRatio(idx)
     }
     
     private func showStat(of label: LocalizedStringKey, number: String) -> some View {

@@ -12,21 +12,12 @@ struct MainView: View {
     @StateObject var vm: MainViewModel = MainViewModel()
     @AppStorage("shouldHowToPlayPresented") var shouldHowToPlayPresented: Bool = true
     @State var isSettingPresented: Bool = false
-    
+        
     var body: some View {
         ZStack {
             mainView
                 .onChange(of: scenePhase) { newScenePhase in
-                    if newScenePhase == .inactive {
-                        if !vm.game.isGameFinished {
-                            vm.game.saveCurrentGame()
-                        }
-                    } else if newScenePhase == .active {
-                        withAnimation {
-                            _ = vm.refreshGameOnActive()
-                        }
-                    }
-                    vm.closeToastMessage()
+                    handleScenePhaseChange(newScenePhase)
                 }
             if vm.isResultAnimationPlaying {
                 resultAnimation
@@ -41,47 +32,51 @@ struct MainView: View {
                     .zIndex(2)
             }
             if vm.isInvalidWordWarningPresented {
-                showToast("유효하지 않은 단어입니다.", status: $vm.isInvalidWordWarningPresented) {
-                    vm.closeToastMessage()
-                }
+                ToastView(presentStatus: $vm.isInvalidWordWarningPresented, toastText: "유효하지 않은 단어입니다")
             }
             if vm.isADNotLoaded {
-                showToast("광고 불러오는 중", status: $vm.isADNotLoaded) {
-                    vm.closeToastMessage()
-                }
+                ToastView(presentStatus: $vm.isADNotLoaded, toastText: "광고 불러오는 중")
             }
         }
         .alert(isPresented: $vm.needUpdate) {
-            Alert(title: Text("업데이트"), message: Text("새 버전이 업데이트 되었습니다."), primaryButton: .default(Text("업데이트"), action: {
-                vm.openAppStore()
-            }), secondaryButton: .destructive(Text("나중에")))
+            newVersionAlert()
         }
     }
-    
-    private var mainView: some View {
+}
+
+// MARK: Subviews
+extension MainView {
+
+    var mainView: some View {
         VStack(spacing: 0) {
             if screenHasSpaceForTitle {
                 TitleView()
                     .padding(.top, 35 * currentScreenRatio())
                     .padding(.bottom, 8 * currentHeightRatio())
             }
-            HStack {
-                SettingButtonView(isSettingPresented: $isSettingPresented)
-                Spacer()
-                GameCountView
-            }
+            HeaderMenuBar()
+            AnswerBoardView(answerBoard: vm.game.answerBoard,
+                            currentColumn: vm.game.currentColumn,
+                            currentRow: vm.game.currentRow)
+            LifeView(showAds: vm.showAds,
+                     currentLifeCount: vm.lifeCount,
+                     isGameFinished: vm.game.isGameFinished)
             .padding(.horizontal, 20)
-            .padding(.vertical, 8)
-            AnswerBoardView()
-            LifeView()
-                .padding(.horizontal, 20)
-                .padding([.top], 8)
-                .padding([.bottom], 25)
+            .padding(.top, 8)
+            .padding(.bottom, 25)
             if !vm.game.isGameFinished {
                 KeyboardView()
             } else {
-                DictView()
-                    .disabled(!vm.game.isGameFinished)
+                VStack(spacing: 0) {
+                    DictView(game: vm.game)
+                    Button {
+                        withAnimation {
+                            vm.useLifeCount()
+                        }
+                    } label: {
+                        newGameWithADButtonLabel
+                    }.padding(8)
+                }.disabled(!vm.game.isGameFinished)
             }
             Spacer()
         }
@@ -89,6 +84,39 @@ struct MainView: View {
         .onAppear {
             requestPermission()
             vm.closeToastMessage()
+        }
+    }
+    
+    private func HeaderMenuBar() -> some View {
+        return HStack {
+            SettingButtonView(isSettingPresented: $isSettingPresented)
+            Spacer()
+            GameNumberView(count: vm.game.gameNumber)
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 8)
+    }
+    
+    private var newGameWithADButtonLabel: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 5)
+                .frame(width: 132, height: 50)
+                .foregroundColor(.hLigthGray)
+            Text("새문제 받기")
+                .foregroundColor(.hBlack)
+                .font(.custom("EBSHMJESaeronR", fixedSize: 17))
+                .offset(x: 0, y: vm.lifeCount == 0 ? 2 : 0)
+            if vm.lifeCount == 0 {
+                ZStack {
+                    Rectangle()
+                        .frame(width: 32, height: 13)
+                        .foregroundColor(.hRed)
+                    Text("광고")
+                        .foregroundColor(.white)
+                        .font(.custom("EBSHMJESaeronR", fixedSize: 14))
+                }
+                .offset(x: 42, y: -18)
+            }
         }
     }
     
@@ -106,23 +134,29 @@ struct MainView: View {
         )
     }
     
-    private var GameCountView: some View {
-        HStack(alignment: .bottom) {
-            Text("No.")
-                .font(.system(size: 18))
-            ZStack {
-                Text("\(vm.game.gameNumber)")
-                    .font(.system(size: 28))
-                Rectangle()
-                    .frame(width: 56, height: 2)
-                    .offset(y: 16)
-            }
-            .frame(width: 56, height: 32)
-        }
-        .foregroundColor(.hRed)
+    private func newVersionAlert() -> Alert {
+        return Alert(title: Text("업데이트"), message: Text("새 버전이 업데이트 되었습니다."), primaryButton: .default(Text("업데이트"), action: {
+            vm.openAppStore()
+        }), secondaryButton: .destructive(Text("나중에")))
     }
-    
+}
+
+//MARK: Utils
+extension MainView {
     private var screenHasSpaceForTitle: Bool {
         return round(UIHeight/UIWidth * 10) > round(16/9 * 10)
+    }
+    
+    private func handleScenePhaseChange(_ newScenePhase: ScenePhase) {
+        if newScenePhase == .inactive {
+            if !vm.game.isGameFinished {
+                vm.game.saveCurrentGame()
+            }
+        } else if newScenePhase == .active {
+            withAnimation {
+                _ = vm.refreshGameOnActive()
+            }
+        }
+        vm.closeToastMessage()
     }
 }

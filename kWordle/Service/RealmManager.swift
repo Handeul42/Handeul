@@ -16,9 +16,21 @@ class RealmManager {
         self.realm = try! Realm()
     }
     
-    public func getAllGame() -> Results<PersistedGame> {
+    public func getAllGames() -> Results<PersistedGame> {
         let allGame = realm.objects(PersistedGame.self)
         return allGame
+    }
+    
+    public func getFinishedGames() -> Results<PersistedGame> {
+        return realm.objects(PersistedGame.self).where { game in game.isGameFinished == true }
+    }
+    
+    public func getGamesGroupedByDay() -> [String: [PersistedGame]] {
+        return Dictionary(grouping: getFinishedGames()) { game -> String in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy년 M월 d일"
+            return dateFormatter.string(from: game.timestamp)
+        }
     }
     
     public func getPreviousGame() -> PersistedGame? {
