@@ -41,6 +41,7 @@ class MainViewModel: ObservableObject {
             game = Game(answer: todayAnswer())
         }
         hintRow = Self.getEmptyHintRow(length: 5)
+        markCorrectJamoOnHint()
         lifeCount = life
         checkUpdate { updateNeeded in
             DispatchQueue.main.async {
