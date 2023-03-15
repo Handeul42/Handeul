@@ -58,7 +58,7 @@ struct MainView: View {
 
 // MARK: Subviews
 extension MainView {
-
+    
     var mainView: some View {
         VStack(spacing: 0) {
             if screenHasSpaceForTitle {
@@ -79,17 +79,7 @@ extension MainView {
             if !vm.game.isGameFinished {
                 KeyboardView()
             } else {
-                VStack(spacing: 0) {
-                    DictView(game: vm.game)
-                    Button {
-                        withAnimation {
-                            vm.useLifeCount()
-                        }
-                    } label: {
-                        newGameWithADButtonLabel
-                            .padding(16)
-                    }
-                }.disabled(!vm.game.isGameFinished)
+                GameResultView()
             }
             Spacer()
         }
@@ -163,6 +153,20 @@ extension MainView {
                 .shadow(radius: 8)
                 .zIndex(1)
         )
+    }
+    
+    fileprivate func GameResultView() -> some View {
+        return VStack(spacing: 0) {
+            DictView(game: vm.game)
+            Button {
+                withAnimation {
+                    vm.useLifeCount()
+                }
+            } label: {
+                newGameWithADButtonLabel
+                    .padding(16)
+            }.disabled(!vm.game.isGameFinished)
+        }
     }
     
     private func newVersionAlert() -> Alert {

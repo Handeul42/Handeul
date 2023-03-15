@@ -9,16 +9,25 @@ import SwiftUI
 import Firebase
 
 struct DictView: View {
-    @Environment(\.scenePhase) var scenePhase
-    
-    @State var answer: String = ""
-    @State var meaning: String = ""
+    let answer: String
+    let meaning: String
     @State var nowDate: Date = Date()
     @State var currentDate: Date = Date()
     
     @AppStorage("isColorWeakModeOn") var isColorWeakModeOn: Bool = false
     
-    let game: Game
+    let currentGame: Game
+    
+    init(game: Game) {
+        if let dictInfo = game.wordDict.filter({$0.jamo == game.answer}).first {
+            self.answer = dictInfo.word
+            self.meaning = dictInfo.meaning
+        } else {
+            self.answer = ""
+            self.meaning = ""
+        }
+        currentGame = game
+    }
     
     var body: some View {
         VStack(spacing: 24) {
@@ -39,25 +48,17 @@ struct DictView: View {
                 }
             }
         }
-        .onAppear {
-            initDict()
-        }
-        .onChange(of: scenePhase) { newPhase in
-            if newPhase == .active {
-                initDict()
-            }
-        }
         .padding(.horizontal, 35)
     }
     
-    private func initDict() {
-        _ = game.wordDict.map { wordDict in
-            if wordDict.jamo == game.answer {
-                self.answer = wordDict.word
-                self.meaning = wordDict.meaning
-            }
-        }
-    }
+//    private func initDict() {
+//        _ = game.wordDict.map { wordDict in
+//            if wordDict.jamo == game.answer {
+//                self.answer = wordDict.word
+//                self.meaning = wordDict.meaning
+//            }
+//        }
+//    }
     
     var dictMeaning: some View {
         Text(meaning)
@@ -84,7 +85,7 @@ struct DictView: View {
     }
     
     func presentShareActionSheet() {
-        let sharedString = generateSharedGameResultString(game: game)
+        let sharedString = generateSharedGameResultString(game: currentGame)
         let activityVC = UIActivityViewController(activityItems: [sharedString], applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
     }
