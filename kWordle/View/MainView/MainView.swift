@@ -99,21 +99,12 @@ extension MainView {
             vm.closeToastMessage()
         }
     }
-    
+        
     private func HeaderMenuBar() -> some View {
         return HStack {
             SettingButtonView(isSettingPresented: $isSettingPresented)
-            Button {
-                withAnimation {
-                    self.isHintPresented = true
-                }
-            } label: {
-                Image("hintWithAdIcon")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 45, height: 40)
-                    .foregroundColor(.hBlack)
-                    .padding(.horizontal, 2)
+            if !vm.game.isGameFinished {
+                HintButton()
             }
             Spacer()
             GameNumberView(count: vm.game.gameNumber)
@@ -145,6 +136,21 @@ extension MainView {
         }
     }
     
+    private func HintButton() -> some View {
+        return Button {
+            withAnimation {
+                self.isHintPresented = true
+            }
+        } label: {
+            Image("hintWithAdIcon")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 32, height: 32)
+                .foregroundColor(.hBlack)
+                .padding(.horizontal, 2)
+        }
+    }
+
     private var resultAnimation: some View {
         var filename: String = ""
         if vm.game.didPlayerWin {
