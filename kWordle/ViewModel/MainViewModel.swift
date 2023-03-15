@@ -226,7 +226,7 @@ extension MainViewModel {
         let diffInHours = currentDate.timeIntervalSince(lastDate) / 3600
         
         if diffInHours > 1 {
-            addLifeCount(Int(lroundl(diffInHours)))
+            addLifeCount(Int(lroundl(Float80(diffInHours))))
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3601) { [weak self] in
             self?.checkLifeCount()
@@ -314,7 +314,8 @@ extension MainViewModel {
     }
     
     private func markCorrectJamoOnHint() {
-        _ = self.game.answerBoard[game.currentRow - 1].enumerated().map { (index, key) in
+        let answerRowIndex = game.currentRow - 1 < 0 ? 0 : game.currentRow - 1
+        _ = self.game.answerBoard[answerRowIndex].enumerated().map { (index, key) in
             if key.status == .green {
                 self.hintRow[index] = key
             }

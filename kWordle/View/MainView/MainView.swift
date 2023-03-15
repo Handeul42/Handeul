@@ -62,7 +62,7 @@ extension MainView {
         VStack(spacing: 0) {
             if screenHasSpaceForTitle {
                 TitleView()
-                    .padding(.top, 35 * currentScreenRatio())
+                    .padding(.top, 20 * currentScreenRatio())
                     .padding(.bottom, 8 * currentHeightRatio())
             }
             HeaderMenuBar()
