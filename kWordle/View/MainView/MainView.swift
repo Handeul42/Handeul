@@ -27,6 +27,7 @@ struct MainView: View {
                 HintView(isHintPresented: $isHintPresented,
                          isHintRevealed: $vm.isHintRevealed,
                          hintRow: vm.hintRow,
+                         currentHintCount: vm.CurrentHintCount,
                          handleHintSelection: vm.showHintWithAd
                 ).onDisappear { vm.isHintRevealed = false }
                     .zIndex(1)

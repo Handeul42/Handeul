@@ -13,6 +13,7 @@ struct HintView: View {
     @Binding var isHintRevealed: Bool
     
     let hintRow: [Key]
+    let currentHintCount: Int
     let handleHintSelection: ((Int) -> Void)?
     
     let hintRowScaleFactor: Double = 0.75
@@ -20,9 +21,11 @@ struct HintView: View {
     init(isHintPresented: Binding<Bool>,
          isHintRevealed: Binding<Bool>,
          hintRow: [Key],
+         currentHintCount: Int,
          handleHintSelection: ((Int) -> Void)? = nil) {
         _isHintPresented = isHintPresented
         _isHintRevealed = isHintRevealed
+        self.currentHintCount = currentHintCount
         self.hintRow = hintRow
         self.handleHintSelection = handleHintSelection
     }
@@ -34,7 +37,10 @@ struct HintView: View {
                 adMark
                 Text("도움")
                     .font(.custom("EBSHMJESaeronR", size: 22))
-                if isHintRevealed {
+                    .padding(.bottom, 4)
+                Text("\(currentHintCount) / \(MaximumHintCount)")
+                    .font(.custom("EBSHMJESaeronR", size: 16))
+                if isHintRevealed || currentHintCount == MaximumHintCount {
                     revealedHint
                 } else {
                     hintSelection
@@ -99,7 +105,9 @@ struct HintView: View {
                 ForEach(hintRow.indices, id: \.self) { idx in
                     AnswerBoardBlock(key: hintRow[idx], blockSize: keyButtonWidth)
                         .onTapGesture {
-                            handleHintSelection?(idx)
+                            if hintRow[idx].status != .green {
+                                handleHintSelection?(idx)
+                            }
                         }
                 }.padding([.horizontal], -5)
             }
@@ -125,6 +133,9 @@ struct HintView: View {
 struct HintView_Previews: PreviewProvider {
     
     static var previews: some View {
-        HintView(isHintPresented: .constant(true), isHintRevealed: .constant(false), hintRow: [Key](repeating: Key(id: UUID(), character: "", status: .lightGray), count: 5))
+        HintView(isHintPresented: .constant(true),
+                 isHintRevealed: .constant(false),
+                 hintRow: [Key](repeating: Key(id: UUID(), character: "", status: .lightGray), count: 5),
+                 currentHintCount: 2)
     }
 }
