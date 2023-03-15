@@ -86,7 +86,8 @@ extension MainView {
                         }
                     } label: {
                         newGameWithADButtonLabel
-                    }.padding(8)
+                            .padding(16)
+                    }
                 }.disabled(!vm.game.isGameFinished)
             }
             Spacer()
