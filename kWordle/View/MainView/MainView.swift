@@ -27,6 +27,7 @@ struct MainView: View {
                 HintView(isHintPresented: $isHintPresented,
                          isHintRevealed: $vm.isHintRevealed,
                          hintRow: vm.hintRow,
+                         currentHintCount: vm.CurrentHintCount,
                          handleHintSelection: vm.showHintWithAd
                 ).onDisappear { vm.isHintRevealed = false }
                     .zIndex(1)
@@ -57,12 +58,12 @@ struct MainView: View {
 
 // MARK: Subviews
 extension MainView {
-
+    
     var mainView: some View {
         VStack(spacing: 0) {
             if screenHasSpaceForTitle {
                 TitleView()
-                    .padding(.top, 35 * currentScreenRatio())
+                    .padding(.top, 20 * currentScreenRatio())
                     .padding(.bottom, 8 * currentHeightRatio())
             }
             HeaderMenuBar()
@@ -78,16 +79,7 @@ extension MainView {
             if !vm.game.isGameFinished {
                 KeyboardView()
             } else {
-                VStack(spacing: 0) {
-                    DictView(game: vm.game)
-                    Button {
-                        withAnimation {
-                            vm.useLifeCount()
-                        }
-                    } label: {
-                        newGameWithADButtonLabel
-                    }.padding(8)
-                }.disabled(!vm.game.isGameFinished)
+                GameResultView()
             }
             Spacer()
         }
@@ -97,21 +89,12 @@ extension MainView {
             vm.closeToastMessage()
         }
     }
-    
+        
     private func HeaderMenuBar() -> some View {
         return HStack {
             SettingButtonView(isSettingPresented: $isSettingPresented)
-            Button {
-                withAnimation {
-                    self.isHintPresented = true
-                }
-            } label: {
-                Image("hintWithAdIcon")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 45, height: 40)
-                    .foregroundColor(.hBlack)
-                    .padding(.horizontal, 2)
+            if !vm.game.isGameFinished {
+                HintButton()
             }
             Spacer()
             GameNumberView(count: vm.game.gameNumber)
@@ -143,6 +126,21 @@ extension MainView {
         }
     }
     
+    private func HintButton() -> some View {
+        return Button {
+            withAnimation {
+                self.isHintPresented = true
+            }
+        } label: {
+            Image("hintWithAdIcon")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 32, height: 32)
+                .foregroundColor(.hBlack)
+                .padding(.horizontal, 2)
+        }
+    }
+
     private var resultAnimation: some View {
         var filename: String = ""
         if vm.game.didPlayerWin {
@@ -155,6 +153,20 @@ extension MainView {
                 .shadow(radius: 8)
                 .zIndex(1)
         )
+    }
+    
+    fileprivate func GameResultView() -> some View {
+        return VStack(spacing: 0) {
+            DictView(game: vm.game)
+            Button {
+                withAnimation {
+                    vm.useLifeCount()
+                }
+            } label: {
+                newGameWithADButtonLabel
+                    .padding(16)
+            }.disabled(!vm.game.isGameFinished)
+        }
     }
     
     private func newVersionAlert() -> Alert {

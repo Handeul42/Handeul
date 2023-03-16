@@ -12,18 +12,22 @@ import GoogleMobileAds
 
 class MainViewModel: ObservableObject {
     @Published var game: Game
+    
     @Published var hintRow: [Key]
-    @Published var isInvalidWordWarningPresented: Bool = false
-    @Published var isADNotLoaded: Bool = false
     @Published var isHintRevealed: Bool = false
-    @Published var needUpdate: Bool = false
+    @Published var CurrentHintCount: Int = 0
+    
     @Published var needLife: Bool = false
     @Published var lifeCount: Int = 0 {
         didSet {
             saveLife(lifeCount: lifeCount)
         }
     }
+    
     @Published var isResultAnimationPlaying: Bool = false
+    @Published var isInvalidWordWarningPresented: Bool = false
+    @Published var isADNotLoaded: Bool = false
+    @Published var needUpdate: Bool = false
     
     @AppStorage("life") var life = UserDefaults.standard.integer(forKey: "life")
     @AppStorage("lifeTimeStamp") var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
@@ -37,6 +41,7 @@ class MainViewModel: ObservableObject {
             game = Game(answer: todayAnswer())
         }
         hintRow = Self.getEmptyHintRow(length: 5)
+        markCorrectJamoOnHint()
         lifeCount = life
         checkUpdate { updateNeeded in
             DispatchQueue.main.async {
@@ -307,14 +312,17 @@ extension MainViewModel {
         let jamo = String(answer[answer.index(answer.startIndex, offsetBy: index)])
         self.hintRow[index] = Key(character: jamo, status: .green)
         self.game.keyBoard.changeKeyStatus(to: .green, keyLabel: jamo)
+        self.CurrentHintCount += 1
     }
     
     func clearHint() {
         self.hintRow = Self.getEmptyHintRow(length: game.jamoCount)
+        self.CurrentHintCount = 0
     }
     
     private func markCorrectJamoOnHint() {
-        _ = self.game.answerBoard[game.currentRow - 1].enumerated().map { (index, key) in
+        let answerRowIndex = game.currentRow - 1 < 0 ? 0 : game.currentRow - 1
+        _ = self.game.answerBoard[answerRowIndex].enumerated().map { (index, key) in
             if key.status == .green {
                 self.hintRow[index] = key
             }

@@ -41,15 +41,26 @@ struct PlayedGameListView: View {
                         NavigationLink {
                             PlayedGameView(game: game)
                         } label: {
-                            Text(game.wordDict
-                                .filter({ $0.jamo == game.answer})
-                                .first?.word ?? "")
-                            .font(.custom("EBSHMJESaeronR", size: 20))
+                            HStack {
+                                Text(game.wordDict
+                                    .filter({ $0.jamo == game.answer})
+                                    .first?.word ?? "")
+                                .font(.custom("EBSHMJESaeronR", size: 20))
+                                Spacer()
+                                gameResultText(game: game)
+                            }
                         }
                     }
                 }
             }
         }.listStyle(.plain)
+    }
+    
+    @ViewBuilder
+    private func gameResultText(game: Game) -> some View {
+        let resultText = game.didPlayerWin ? "\(game.currentRow + 1) / 6" : "🤯"
+        Text(resultText)
+            .font(.custom("EBSHMJESaeronR", size: 14))
     }
     
     fileprivate func gameListSectionHeader(_ content: String) -> Text {
