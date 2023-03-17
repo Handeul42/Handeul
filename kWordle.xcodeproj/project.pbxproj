@@ -47,6 +47,8 @@
 		CC29723D29AB516C006D2E44 /* win.json in Resources */ = {isa = PBXBuildFile; fileRef = CC29723B29AB516B006D2E44 /* win.json */; };
 		CC29723E29AB516C006D2E44 /* win_color_weak.json in Resources */ = {isa = PBXBuildFile; fileRef = CC29723C29AB516B006D2E44 /* win_color_weak.json */; };
 		CC29724629AB7F70006D2E44 /* lose.json in Resources */ = {isa = PBXBuildFile; fileRef = CC29724529AB7F70006D2E44 /* lose.json */; };
+		CC3D0C4F29C45C37000B1375 /* NewVersionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D0C4E29C45C37000B1375 /* NewVersionAlert.swift */; };
+		CC3D0C5329C45E56000B1375 /* VersionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D0C5229C45E56000B1375 /* VersionCheck.swift */; };
 		CC49B36C2819628A000CDC34 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = CC49B36B2819628A000CDC34 /* .gitattributes */; };
 		CC57AF282816C695001675CD /* KeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC57AF272816C695001675CD /* KeyBoard.swift */; };
 		CC64209A2843307D00851A22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC6420982843307D00851A22 /* Localizable.strings */; };
@@ -120,6 +122,8 @@
 		CC29723B29AB516B006D2E44 /* win.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = win.json; sourceTree = "<group>"; };
 		CC29723C29AB516B006D2E44 /* win_color_weak.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = win_color_weak.json; sourceTree = "<group>"; };
 		CC29724529AB7F70006D2E44 /* lose.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lose.json; sourceTree = "<group>"; };
+		CC3D0C4E29C45C37000B1375 /* NewVersionAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVersionAlert.swift; sourceTree = "<group>"; };
+		CC3D0C5229C45E56000B1375 /* VersionCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCheck.swift; sourceTree = "<group>"; };
 		CC49B36B2819628A000CDC34 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
 		CC57AF272816C695001675CD /* KeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoard.swift; sourceTree = "<group>"; };
 		CC6420992843307D00851A22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -336,6 +340,7 @@
 				CC29723829AB510B006D2E44 /* LottieView.swift */,
 				CCA23972281A682000CCAD0E /* MailView.swift */,
 				CC724BCE2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift */,
+				CC3D0C4E29C45C37000B1375 /* NewVersionAlert.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				CC69C353281A9DCF00F6805E /* Dates.swift */,
 				CCCA07D929B86B55004F0881 /* GameSharedString.swift */,
 				CC71AEDF29BEF6020088C78E /* View+CustomCornerRadius.swift */,
+				CC3D0C5229C45E56000B1375 /* VersionCheck.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -531,6 +537,7 @@
 				CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */,
 				73282903281A872A00A55F77 /* RandomNumberGeneratorWithSeed.swift in Sources */,
 				CCCA07CF29B70A5C004F0881 /* Horline.swift in Sources */,
+				CC3D0C5329C45E56000B1375 /* VersionCheck.swift in Sources */,
 				CCFBDB482817F42B006674A3 /* Statistics.swift in Sources */,
 				CCA23973281A682000CCAD0E /* MailView.swift in Sources */,
 				CC724BCF2824DB3D000620F6 /* HowToPlayOnFirstLaunch.swift in Sources */,
@@ -556,6 +563,7 @@
 				73D66DB2280E825000313A7F /* TitleView.swift in Sources */,
 				737D4CD92809322400CD8CBD /* KeyboardView.swift in Sources */,
 				73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */,
+				CC3D0C4F29C45C37000B1375 /* NewVersionAlert.swift in Sources */,
 				73F23E7E28196443009A5DEC /* SettingView.swift in Sources */,
 				CC802751281266D600686A3A /* String+getChar.swift in Sources */,
 				CCCA07DC29B9A0C1004F0881 /* HintView.swift in Sources */,

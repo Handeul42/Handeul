@@ -14,6 +14,7 @@ import UserNotifications
 struct KWordleApp: App {
     @AppStorage("isNotFirstOpen")
     var isNotFirstOpen: Bool = UserDefaults.standard.bool(forKey: "isNotFirstOpen")
+    @State var isNewVersionAlertPresented: Bool = false
     
     init() {
         FirebaseApp.configure()
@@ -23,11 +24,15 @@ struct KWordleApp: App {
             UserDefaults.standard.set(5, forKey: "life")
             isNotFirstOpen = true
         }
+        checkUpdate { [self] updateNeeded in
+            self.isNewVersionAlertPresented = updateNeeded
+        }
     }
     
     var body: some Scene {
         WindowGroup {
             MainView()
+                .alert(isPresented: $isNewVersionAlertPresented, content: {NewVersionAlert()})
         }
     }
 }

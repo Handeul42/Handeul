@@ -50,9 +50,6 @@ struct MainView: View {
                     .zIndex(5)
             }
         }
-        .alert(isPresented: $vm.needUpdate) {
-            newVersionAlert()
-        }
     }
 }
 
@@ -167,12 +164,6 @@ extension MainView {
                     .padding(16)
             }.disabled(!vm.game.isGameFinished)
         }
-    }
-    
-    private func newVersionAlert() -> Alert {
-        return Alert(title: Text("업데이트"), message: Text("새 버전이 업데이트 되었습니다."), primaryButton: .default(Text("업데이트"), action: {
-            vm.openAppStore()
-        }), secondaryButton: .destructive(Text("나중에")))
     }
 }
 
