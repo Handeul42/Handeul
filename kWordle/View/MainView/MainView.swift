@@ -70,7 +70,7 @@ extension MainView {
             AnswerBoardView(answerBoard: vm.game.answerBoard,
                             currentColumn: vm.game.currentColumn,
                             currentRow: vm.game.currentRow)
-            LifeView(showAds: vm.showAds,
+            LifeView(showAds: vm.addLifeCountWithAD,
                      currentLifeCount: vm.lifeCount,
                      isGameFinished: vm.game.isGameFinished)
             .padding(.horizontal, 20)
