@@ -62,7 +62,6 @@
 		CC7D1D4A28169AAB00CD7BFD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CC7D1D4928169AAB00CD7BFD /* RealmSwift */; };
 		CC802751281266D600686A3A /* String+getChar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC802750281266D600686A3A /* String+getChar.swift */; };
 		CCA23973281A682000CCAD0E /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA23972281A682000CCAD0E /* MailView.swift */; };
-		CCCA07C029AF3A1F004F0881 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCCA07BF29AF3A1E004F0881 /* GoogleService-Info.plist */; };
 		CCCA07C629AF4ECC004F0881 /* SettingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07C529AF4ECC004F0881 /* SettingButtonView.swift */; };
 		CCCA07CF29B70A5C004F0881 /* Horline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07CE29B70A5C004F0881 /* Horline.swift */; };
 		CCCA07D129B70C55004F0881 /* GameNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07D029B70C55004F0881 /* GameNumberView.swift */; };
@@ -76,6 +75,7 @@
 		CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB432817C62E006674A3 /* Game+Persisted.swift */; };
 		CCFBDB462817D022006674A3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB452817D022006674A3 /* RealmManager.swift */; };
 		CCFBDB482817F42B006674A3 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB472817F42B006674A3 /* Statistics.swift */; };
+		DB92E2E629C85ECD00A3D1F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB92E2E529C85ECD00A3D1F5 /* GoogleService-Info.plist */; };
 		DBBBF407299617F600ADBAEF /* GoogleService-Info.plist.template in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */; };
 		DBBBF4092996199C00ADBAEF /* ci_pre_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */; };
 		DBDE27AF299F600C00841CF7 /* LifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE27AE299F600C00841CF7 /* LifeView.swift */; };
@@ -134,7 +134,6 @@
 		CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		CC802750281266D600686A3A /* String+getChar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+getChar.swift"; sourceTree = "<group>"; };
 		CCA23972281A682000CCAD0E /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
-		CCCA07BF29AF3A1E004F0881 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CCCA07C529AF4ECC004F0881 /* SettingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButtonView.swift; sourceTree = "<group>"; };
 		CCCA07CE29B70A5C004F0881 /* Horline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horline.swift; sourceTree = "<group>"; };
 		CCCA07D029B70C55004F0881 /* GameNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNumberView.swift; sourceTree = "<group>"; };
@@ -148,6 +147,7 @@
 		CCFBDB432817C62E006674A3 /* Game+Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Persisted.swift"; sourceTree = "<group>"; };
 		CCFBDB452817D022006674A3 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CCFBDB472817F42B006674A3 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		DB92E2E529C85ECD00A3D1F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "GoogleService-Info.plist.template"; sourceTree = "<group>"; };
 		DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		DBDE27AE299F600C00841CF7 /* LifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeView.swift; sourceTree = "<group>"; };
@@ -273,7 +273,6 @@
 				CC29723A29AB515E006D2E44 /* LottieAnimations */,
 				73F23E7628196239009A5DEC /* Service */,
 				73D66DBC280E98D500313A7F /* Info.plist */,
-				CCCA07BF29AF3A1E004F0881 /* GoogleService-Info.plist */,
 				CC6420982843307D00851A22 /* Localizable.strings */,
 				73D66DB3280E971900313A7F /* Fonts */,
 				737D4CE9280954E300CD8CBD /* WordData */,
@@ -289,6 +288,7 @@
 				73FD63B627EDCF940041036F /* Preview Content */,
 				73D66DBD280EA31000313A7F /* Launch Screen.storyboard */,
 				CC49B36B2819628A000CDC34 /* .gitattributes */,
+				DB92E2E529C85ECD00A3D1F5 /* GoogleService-Info.plist */,
 			);
 			path = kWordle;
 			sourceTree = "<group>";
@@ -475,7 +475,7 @@
 				73D66DBA280E973300313A7F /* EBS훈민정음새론R.ttf in Resources */,
 				DBBBF4092996199C00ADBAEF /* ci_pre_xcodebuild.sh in Resources */,
 				73D66DBB280E973300313A7F /* EBS훈민정음새론SB.ttf in Resources */,
-				CCCA07C029AF3A1F004F0881 /* GoogleService-Info.plist in Resources */,
+				DB92E2E629C85ECD00A3D1F5 /* GoogleService-Info.plist in Resources */,
 				73FD63B527EDCF940041036F /* Assets.xcassets in Resources */,
 				CC49B36C2819628A000CDC34 /* .gitattributes in Resources */,
 				73D66DB8280E973300313A7F /* EBSL.ttf in Resources */,
