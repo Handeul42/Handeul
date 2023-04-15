@@ -236,7 +236,9 @@ extension MainViewModel {
     
     private func markCorrectJamoOnHint() {
         let answerRowIndex = game.currentRow - 1 < 0 ? 0 : game.currentRow - 1
-        _ = self.game.answerBoard[answerRowIndex].enumerated().map { (index, key) in
+        self.game.answerBoard[answerRowIndex]
+            .enumerated()
+            .forEach { (index, key) in
             if key.status == .green {
                 self.hintRow[index] = key
             }

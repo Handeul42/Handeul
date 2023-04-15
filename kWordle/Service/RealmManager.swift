@@ -28,7 +28,7 @@ class RealmManager {
     public func getGamesGroupedByDay() -> [String: [PersistedGame]] {
         return Dictionary(grouping: getFinishedGames()) { game -> String in
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy년 M월 d일"
+            dateFormatter.dateFormat = "yyyy년 MM월 dd일"
             return dateFormatter.string(from: game.timestamp)
         }
     }
@@ -42,6 +42,5 @@ class RealmManager {
         try? realm.write {
             realm.add(game, update: .modified)
         }
-//        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
 }
