@@ -16,6 +16,10 @@ class RewardedADViewController: UIViewController, GADFullScreenContentDelegate {
 #endif
     var rewardedInterstitialAD: GADRewardedInterstitialAd?
     
+    deinit {
+        self.rewardedInterstitialAD = nil
+    }
+    
     func loadAD(completionHandler: @escaping (Bool) -> ()) {
         GADRewardedInterstitialAd.load(withAdUnitID: adUnitID, request: GADRequest()) { [self] ad, error in
             if let error = error {

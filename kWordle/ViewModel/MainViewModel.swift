@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Firebase
+import FirebaseAnalytics
 import GoogleMobileAds
 
 class MainViewModel: ObservableObject {
@@ -26,12 +27,14 @@ class MainViewModel: ObservableObject {
     
     @Published var isResultAnimationPlaying: Bool = false
     @Published var isInvalidWordWarningPresented: Bool = false
+    
     @Published var isADNotLoaded: Bool = false
-    @Published var needUpdate: Bool = false
     
     @AppStorage("life") var life = UserDefaults.standard.integer(forKey: "life")
     @AppStorage("lifeTimeStamp") var lifeTimeStamp: String = UserDefaults.standard.string(forKey: "lifeTimeStamp") ?? ""
+    
     let rewardADViewController = RewardedADViewController()
+
     var preventTapShowAdButton: Bool = false
     
     init() {
@@ -43,10 +46,6 @@ class MainViewModel: ObservableObject {
         hintRow = Self.getEmptyHintRow(length: 5)
         markCorrectJamoOnHint()
         lifeCount = life
-        checkUpdate { updateNeeded in
-            DispatchQueue.main.async {
-                self.needUpdate = updateNeeded
-            }}
         checkLifeCount()
         print(game.answer)
     }
@@ -115,53 +114,7 @@ class MainViewModel: ObservableObject {
     func refreshViewForCWmode() {
         self.objectWillChange.send()
     }
-    
-    func showAds() {
-        guard refreshGameOnActive() == false,
-              preventTapShowAdButton == false else { return }
-        preventTapShowAdButton = true
-        rewardADViewController.loadAD { isLoaded in
-            if isLoaded {
-                self.rewardADViewController.doSomething { isPresentedAd in
-                    if isPresentedAd {
-                        self.addLifeCountWithAD()
-                        self.isADNotLoaded = false
-                        self.preventTapShowAdButton = false
-                    } else {
-                        self.isADNotLoaded = true
-                        self.preventTapShowAdButton = false
-                    }
-                }
-            } else {
-                self.isADNotLoaded = true
-                self.preventTapShowAdButton = false
-            }
-        }
-    }
-    
-    func showAdsWithNewGame() {
-        guard refreshGameOnActive() == false,
-              preventTapShowAdButton == false else { return }
-        preventTapShowAdButton = true
-        rewardADViewController.loadAD { isLoaded in
-            if isLoaded {
-                self.rewardADViewController.doSomething { isPresentedAd in
-                    if isPresentedAd {
-                        self.startNewGame()
-                        self.isADNotLoaded = false
-                        self.preventTapShowAdButton = false
-                    } else {
-                        self.isADNotLoaded = true
-                        self.preventTapShowAdButton = false
-                    }
-                }
-            } else {
-                self.isADNotLoaded = true
-                self.preventTapShowAdButton = false
-            }
-        }
-    }
-    
+        
     private func startNewGame() {
         let randomAnswer = randomAnswerGenerator()
         let newGame = Game(answer: randomAnswer)
@@ -174,51 +127,42 @@ class MainViewModel: ObservableObject {
         let deivceUUID = UIDevice.current.identifierForVendor?.uuidString ?? ""
         Analytics.logEvent(state + "-" + deivceUUID, parameters: [:])
     }
+}
+
+/// Ad
+extension MainViewModel {
     
-    private func checkUpdate(completion: @escaping (Bool) -> Void) {
-        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        latestVersion { latestVersion in
-            guard let latestVersion = latestVersion else { completion(false); return }
-            if let lastCheckVersion = UserDefaults.standard.string(forKey: "latestVersion") {
-                let compareVersion = lastCheckVersion.compare(latestVersion, options: .numeric)
-                if compareVersion != .orderedAscending {
-                    completion(false); return
+    func presentAdFor(for action: @escaping () -> Void) {
+        guard !refreshGameOnActive() && !preventTapShowAdButton else { return }
+        
+        preventTapShowAdButton = true
+        isADNotLoaded = true
+        DispatchQueue.main.async {
+            self.rewardADViewController.loadAD { [weak self] isLoaded in
+                if isLoaded {
+                    self?.rewardADViewController.doSomething { isPresentedAd in
+                        self?.isADNotLoaded = !isPresentedAd
+                        if isPresentedAd { action() }
+                    }
                 }
-            }
-            UserDefaults.standard.set(latestVersion, forKey: "latestVersion")
-            
-            let compareResult = appVersion?.compare(latestVersion, options: .numeric)
-            
-            if compareResult == .orderedAscending {
-                completion(true)
-            } else {
-                completion(false)
+                self?.preventTapShowAdButton = false
             }
         }
     }
     
-    func latestVersion(completion: @escaping (String?) -> Void) {
-        let appleID = "1619947572"
-        guard let url = URL(string: "https://itunes.apple.com/lookup?id=\(appleID)") else {
-            completion(nil); return
-        }
-        let task = URLSession.shared.dataTask(with: url) { (data, _, _) in
-            guard let data = data,
-                  let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
-                  let results = json["results"] as? [[String: Any]],
-                  let appStoreVersion = results[0]["version"] as? String else {
-                completion(nil); return
-            }
-            completion(appStoreVersion)
-        }
-        task.resume()
+    func startNewGameWithAd() {
+        presentAdFor { self.startNewGame() }
     }
     
-    func openAppStore() {
-        let appleID = "1619947572"
-        let appStoreOpneUrlString = "itms-apps://itunes.apple.com/app/apple-store/\(appleID)"
-        guard let url = URL(string: appStoreOpneUrlString) else { return }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    func addLifeCountWithAD() {
+        presentAdFor { self.addLifeCount() }
+    }
+    
+    func showHintWithAd(revealHintAt index: Int) {
+        presentAdFor {
+            self.setHint(at: index)
+            self.isHintRevealed = true
+        }
     }
 }
 
@@ -237,11 +181,7 @@ extension MainViewModel {
             self?.checkLifeCount()
         }
     }
-    
-    func addLifeCountWithAD() {
-        addLifeCount()
-    }
-    
+        
     func addLifeCount(_ addValue: Int = 1) {
         lifeCount = min(lifeCount + addValue, 5)
         if lifeCount < 5 {
@@ -256,7 +196,7 @@ extension MainViewModel {
     func useLifeCount() {
         guard lifeCount > 0 else {
             needLife.toggle()
-            self.showAdsWithNewGame()
+            self.startNewGameWithAd()
             return
         }
         if lifeCount == 5 {
@@ -281,32 +221,6 @@ extension MainViewModel {
 
 /// For hint
 extension MainViewModel {
-    func showHintWithAd(revealHintAt index: Int) {
-        guard refreshGameOnActive() == false,
-              preventTapShowAdButton == false else { return }
-        preventTapShowAdButton = true
-        rewardADViewController.loadAD { isLoaded in
-            if isLoaded {
-                self.rewardADViewController.doSomething { [self] isPresentedAd in
-                    if isPresentedAd {
-//                      Show Hint --------------------------
-                        self.setHint(at: index)
-                        self.isHintRevealed = true
-// ---------------------------------------------------------
-                        self.isADNotLoaded = false
-                        self.preventTapShowAdButton = false
-                    } else {
-                        self.isADNotLoaded = true
-                        self.preventTapShowAdButton = false
-                    }
-                }
-            } else {
-                self.isADNotLoaded = true
-                self.preventTapShowAdButton = false
-            }
-        }
-    }
-    
     func setHint(at index: Int) {
         let answer = self.game.answer
         let jamo = String(answer[answer.index(answer.startIndex, offsetBy: index)])
@@ -322,7 +236,9 @@ extension MainViewModel {
     
     private func markCorrectJamoOnHint() {
         let answerRowIndex = game.currentRow - 1 < 0 ? 0 : game.currentRow - 1
-        _ = self.game.answerBoard[answerRowIndex].enumerated().map { (index, key) in
+        self.game.answerBoard[answerRowIndex]
+            .enumerated()
+            .forEach { (index, key) in
             if key.status == .green {
                 self.hintRow[index] = key
             }
