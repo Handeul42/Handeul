@@ -167,7 +167,7 @@ extension MainView {
     }
 }
 
-//MARK: Utils
+// MARK: Utils
 extension MainView {
     private var screenHasSpaceForTitle: Bool {
         return round(UIHeight/UIWidth * 10) > round(16/9 * 10)

@@ -41,7 +41,7 @@ struct AnswerBoardRow: View {
             Horline(height: 2)
             HStack(spacing: -2) {
                 ForEach(row) { btn in
-                    AnswerBoardBlock(key:btn, blockSize: keyButtonWidth)
+                    AnswerBoardBlock(key: btn, blockSize: keyButtonWidth)
                 }
             }
             Horline(height: 2)

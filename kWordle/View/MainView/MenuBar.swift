@@ -5,10 +5,10 @@
 //  Created by JaemooJung on 2022/04/19.
 //
 
-//import SwiftUI
+// import SwiftUI
 
 // NOTE: Not used for now
-//struct MenuBar: View {
+// struct MenuBar: View {
 //    @Binding var isHowToPlayPresented: Bool
 //    @Binding var isStatisticsPresented: Bool
 //    @Binding var isSettingPresented: Bool
@@ -42,4 +42,4 @@
 //        .padding([.leading, .trailing])
 //        .padding(.bottom, 8)
 //    }
-//}
+// }

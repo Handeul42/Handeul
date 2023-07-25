@@ -35,7 +35,7 @@ struct LifeView: View {
     }
     
     var body: some View {
-        HStack (spacing: 0) {
+        HStack(spacing: 0) {
             remainingLifeIndicators()
             if currentLifeCount < 5 {
                 toggleADIndicatorButton()
@@ -58,7 +58,7 @@ struct LifeView: View {
     }
 }
 
-//MARK: Subviews
+// MARK: Subviews
 extension LifeView {
     @ViewBuilder
     private func currentWinStreakMarker() -> some View {
@@ -94,7 +94,7 @@ extension LifeView {
     }
     
     fileprivate func remainingLifeIndicators() -> some View {
-        return HStack (spacing: 4) {
+        return HStack(spacing: 4) {
             ForEach(0..<currentLifeCount, id: \.self) { _ in
                 Image("LifeImage")
             }
@@ -131,7 +131,7 @@ extension LifeView {
                 .foregroundColor(.hLigthGray)
                 .frame(width: 117, height: 31)
                 .cornerRadius(5)
-            HStack (spacing: 4) {
+            HStack(spacing: 4) {
                 Text("광고로 충전")
                     .font(.custom("EBSHMJESaeronR", fixedSize: 16))
                 Image("youtube")
@@ -139,7 +139,7 @@ extension LifeView {
         }
         .onTapGesture {
             print("loading ads")
-            //print(mainViewModel.game.answer)
+            // print(mainViewModel.game.answer)
             showAds()
         }
     }
@@ -174,7 +174,7 @@ extension LifeView {
     }
 }
 
-//MARK: Utils
+// MARK: Utils
 extension LifeView {
     private func countDownString() -> String {
         var timeStamp = ""

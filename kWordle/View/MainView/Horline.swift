@@ -22,7 +22,7 @@ struct Horline: View {
     }
 }
 
-struct horline_Previews: PreviewProvider {
+struct Horline_Previews: PreviewProvider {
     static var previews: some View {
         Horline(height: 2)
     }

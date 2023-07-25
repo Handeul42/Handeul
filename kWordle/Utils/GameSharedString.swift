@@ -77,11 +77,11 @@ func generateSharedGameResultString(game: Game) -> String {
     for row in game.answerBoard {
         for char in row {
             switch char.status {
-            case .gray :
+            case .gray: 
                 ret += "⬜️"
-            case .green :
+            case .green: 
                 ret += "🟩"
-            case .yellow :
+            case .yellow: 
                 ret += "🟧"
             case .white, .red, .lightGray, .black:
                 break

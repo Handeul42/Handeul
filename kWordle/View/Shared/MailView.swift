@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 import MessageUI
 
-//Not used for now
+// Not used for now
 
 struct ComposeMailData {
     let subject: String

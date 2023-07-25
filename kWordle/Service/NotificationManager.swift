@@ -23,8 +23,7 @@ class NotificationManager: ObservableObject {
                 // If Notification On, Request Authorization
                 UserDefaults.standard.set(true, forKey: "hasUserAgreedAlert")
                 requestNotificationAuthorization()
-            }
-            else {
+            } else {
                 // If Notification Off, Remove All Notifications
                 UserDefaults.standard.set(false, forKey: "hasUserAgreedAlert")
                 removeAllNotifications()
@@ -59,8 +58,7 @@ class NotificationManager: ObservableObject {
                         }
                         if granted {
                             self.addNotification(with: self.notiTime)
-                        }
-                        else {
+                        } else {
                             DispatchQueue.main.async {
                                 self.isNotiOn = false
                             }

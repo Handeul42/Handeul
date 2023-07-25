@@ -34,7 +34,7 @@ struct PlayedGameListView: View {
                 .sorted(by: { $0.key > $1.key })
                 .map {key, value in (key: key, games: value)}
             
-            ForEach(sortedGroups , id: \.key) { day in
+            ForEach(sortedGroups, id: \.key) { day in
                 Section(header: gameListSectionHeader(day.key)) {
                     ForEach(day.games, id: \.id) { persistedGame in
                         let game = Game(persistedObject: persistedGame)

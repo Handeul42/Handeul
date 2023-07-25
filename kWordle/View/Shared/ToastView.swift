@@ -56,4 +56,3 @@ struct ToastPreview: PreviewProvider {
     }
 }
 #endif
-
