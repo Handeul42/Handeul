@@ -161,7 +161,8 @@ extension MainView {
                 }
             } label: {
                 newGameWithADButtonLabel
-                    .padding(16)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
             }.disabled(!vm.game.isGameFinished)
         }
     }
