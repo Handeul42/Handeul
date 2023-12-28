@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import AVFoundation
 
 struct DictView: View {
     let answer: String
@@ -16,6 +17,7 @@ struct DictView: View {
     
     @AppStorage("isColorWeakModeOn") var isColorWeakModeOn: Bool = false
     
+    let synthesizer = AVSpeechSynthesizer()
     let currentGame: Game
     
     init(game: Game) {
@@ -35,6 +37,10 @@ struct DictView: View {
                 HStack {
                     Text(answer)
                         .font(.custom("EBSHMJESaeronR", fixedSize: 28))
+                    Button(action: { speakAnswer() }, label: {
+                        Image(systemName: "speaker.wave.2.bubble")
+                            .foregroundColor(.hBlack)
+                    })
                     Spacer()
                     Button {
                         presentShareActionSheet()
@@ -43,7 +49,10 @@ struct DictView: View {
                     }
                 }
                 HStack {
-                    dictMeaning
+                    ScrollView {
+                        dictMeaning
+                    }
+                    .frame(height: 55)
                     Spacer()
                 }
             }
@@ -51,22 +60,11 @@ struct DictView: View {
         .padding(.horizontal, 35)
     }
     
-//    private func initDict() {
-//        _ = game.wordDict.map { wordDict in
-//            if wordDict.jamo == game.answer {
-//                self.answer = wordDict.word
-//                self.meaning = wordDict.meaning
-//            }
-//        }
-//    }
-    
     var dictMeaning: some View {
         Text(meaning)
             .font(.custom("EBSHMJESaeronL", fixedSize: 15))
             .multilineTextAlignment(.leading)
-            .lineLimit(2)
-            .truncationMode(.tail)
-            .frame(minHeight: 35)
+            .lineLimit(nil)
     }
     
     var shareButton: some View {
@@ -88,5 +86,18 @@ struct DictView: View {
         let sharedString = generateSharedGameResultString(game: currentGame)
         let activityVC = UIActivityViewController(activityItems: [sharedString], applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+    }
+    
+    func speakAnswer() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Failed to set up AVAudioSession: \(error)")
+        }
+        let utterance = AVSpeechUtterance(string: answer)
+        utterance.voice = AVSpeechSynthesisVoice(language: "ko-KR") // 한국어로 설정
+        utterance.rate = 0.4
+        synthesizer.speak(utterance)
     }
 }
