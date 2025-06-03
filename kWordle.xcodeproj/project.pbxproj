@@ -40,7 +40,10 @@
 		73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B027EDCF920041036F /* kWordleApp.swift */; };
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
+		980E70052CF6AD7100E37D3D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 980E70042CF6AD7100E37D3D /* Realm */; };
+		980E70072CF6AD7100E37D3D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 980E70062CF6AD7100E37D3D /* RealmSwift */; };
 		983949312B3C4C5200C87348 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 983949302B3C4C5200C87348 /* GoogleMobileAds */; };
+		985934932CF69A0F00A687A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 985934922CF69A0F00A687A6 /* GoogleService-Info.plist */; };
 		CC1BB899281AE13800BAA6FA /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1BB898281AE13800BAA6FA /* HapticsManager.swift */; };
 		CC29723229AB4C46006D2E44 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CC29723129AB4C46006D2E44 /* Lottie */; };
 		CC29723929AB510B006D2E44 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29723829AB510B006D2E44 /* LottieView.swift */; };
@@ -60,8 +63,6 @@
 		CC7C517D280E753200B739F3 /* Color+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517C280E753200B739F3 /* Color+CustomColor.swift */; };
 		CC7C517F280EB51300B739F3 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C517E280EB51300B739F3 /* MenuBar.swift */; };
 		CC7C5181280ECB6200B739F3 /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C5180280ECB6200B739F3 /* HowToPlayView.swift */; };
-		CC7D1D4828169AAB00CD7BFD /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = CC7D1D4728169AAB00CD7BFD /* Realm */; };
-		CC7D1D4A28169AAB00CD7BFD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CC7D1D4928169AAB00CD7BFD /* RealmSwift */; };
 		CC802751281266D600686A3A /* String+getChar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC802750281266D600686A3A /* String+getChar.swift */; };
 		CCA23973281A682000CCAD0E /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA23972281A682000CCAD0E /* MailView.swift */; };
 		CCCA07C629AF4ECC004F0881 /* SettingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA07C529AF4ECC004F0881 /* SettingButtonView.swift */; };
@@ -77,7 +78,6 @@
 		CCFBDB442817C62E006674A3 /* Game+Persisted.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB432817C62E006674A3 /* Game+Persisted.swift */; };
 		CCFBDB462817D022006674A3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB452817D022006674A3 /* RealmManager.swift */; };
 		CCFBDB482817F42B006674A3 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFBDB472817F42B006674A3 /* Statistics.swift */; };
-		DB92E2E629C85ECD00A3D1F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB92E2E529C85ECD00A3D1F5 /* GoogleService-Info.plist */; };
 		DBBBF407299617F600ADBAEF /* GoogleService-Info.plist.template in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */; };
 		DBBBF4092996199C00ADBAEF /* ci_pre_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */; };
 		DBDE27AF299F600C00841CF7 /* LifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE27AE299F600C00841CF7 /* LifeView.swift */; };
@@ -117,6 +117,7 @@
 		73FD63B027EDCF920041036F /* kWordleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kWordleApp.swift; sourceTree = "<group>"; };
 		73FD63B427EDCF940041036F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73FD63B727EDCF940041036F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		985934922CF69A0F00A687A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC1BB898281AE13800BAA6FA /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		CC29723829AB510B006D2E44 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		CC29723B29AB516B006D2E44 /* win.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = win.json; sourceTree = "<group>"; };
@@ -151,7 +152,6 @@
 		CCFBDB432817C62E006674A3 /* Game+Persisted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+Persisted.swift"; sourceTree = "<group>"; };
 		CCFBDB452817D022006674A3 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		CCFBDB472817F42B006674A3 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
-		DB92E2E529C85ECD00A3D1F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DBBBF406299617F600ADBAEF /* GoogleService-Info.plist.template */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "GoogleService-Info.plist.template"; sourceTree = "<group>"; };
 		DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		DBDE27AE299F600C00841CF7 /* LifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeView.swift; sourceTree = "<group>"; };
@@ -162,12 +162,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				980E70072CF6AD7100E37D3D /* RealmSwift in Frameworks */,
 				983949312B3C4C5200C87348 /* GoogleMobileAds in Frameworks */,
-				CC7D1D4A28169AAB00CD7BFD /* RealmSwift in Frameworks */,
-				CC7D1D4828169AAB00CD7BFD /* Realm in Frameworks */,
 				733A74CB281290F900B49310 /* FirebaseAnalytics in Frameworks */,
 				733A74CD281290F900B49310 /* FirebaseFirestore in Frameworks */,
 				CC29723229AB4C46006D2E44 /* Lottie in Frameworks */,
+				980E70052CF6AD7100E37D3D /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +292,7 @@
 				73FD63B627EDCF940041036F /* Preview Content */,
 				73D66DBD280EA31000313A7F /* Launch Screen.storyboard */,
 				CC49B36B2819628A000CDC34 /* .gitattributes */,
-				DB92E2E529C85ECD00A3D1F5 /* GoogleService-Info.plist */,
+				985934922CF69A0F00A687A6 /* GoogleService-Info.plist */,
 			);
 			path = kWordle;
 			sourceTree = "<group>";
@@ -414,10 +414,10 @@
 			packageProductDependencies = (
 				733A74CA281290F900B49310 /* FirebaseAnalytics */,
 				733A74CC281290F900B49310 /* FirebaseFirestore */,
-				CC7D1D4728169AAB00CD7BFD /* Realm */,
-				CC7D1D4928169AAB00CD7BFD /* RealmSwift */,
 				CC29723129AB4C46006D2E44 /* Lottie */,
 				983949302B3C4C5200C87348 /* GoogleMobileAds */,
+				980E70042CF6AD7100E37D3D /* Realm */,
+				980E70062CF6AD7100E37D3D /* RealmSwift */,
 			);
 			productName = kWordle;
 			productReference = 73FD63AD27EDCF920041036F /* Handeul.app */;
@@ -431,7 +431,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					73FD63AC27EDCF920041036F = {
 						CreatedOnToolsVersion = 13.1;
@@ -450,10 +450,10 @@
 			mainGroup = 73FD63A427EDCF920041036F;
 			packageReferences = (
 				733A74C9281290F900B49310 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				CC7D1D4628169AAB00CD7BFD /* XCRemoteSwiftPackageReference "realm-swift" */,
 				CC29723029AB4C46006D2E44 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				CC29723529AB4F98006D2E44 /* XCRemoteSwiftPackageReference "Lottie-SwiftUI" */,
 				9839492F2B3C4C5200C87348 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				980E70032CF6AD7100E37D3D /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 73FD63AE27EDCF920041036F /* Products */;
 			projectDirPath = "";
@@ -480,8 +480,8 @@
 				73D66DBE280EA31000313A7F /* Launch Screen.storyboard in Resources */,
 				73D66DBA280E973300313A7F /* EBS훈민정음새론R.ttf in Resources */,
 				DBBBF4092996199C00ADBAEF /* ci_pre_xcodebuild.sh in Resources */,
+				985934932CF69A0F00A687A6 /* GoogleService-Info.plist in Resources */,
 				73D66DBB280E973300313A7F /* EBS훈민정음새론SB.ttf in Resources */,
-				DB92E2E629C85ECD00A3D1F5 /* GoogleService-Info.plist in Resources */,
 				73FD63B527EDCF940041036F /* Assets.xcassets in Resources */,
 				CC49B36C2819628A000CDC34 /* .gitattributes in Resources */,
 				73D66DB8280E973300313A7F /* EBSL.ttf in Resources */,
@@ -589,6 +589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -652,6 +653,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -804,7 +806,15 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
+				minimumVersion = 11.0.0;
+			};
+		};
+		980E70032CF6AD7100E37D3D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 10.33.0;
 			};
 		};
 		9839492F2B3C4C5200C87348 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
@@ -812,7 +822,7 @@
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.14.0;
+				minimumVersion = 11.0.0;
 			};
 		};
 		CC29723029AB4C46006D2E44 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
@@ -831,14 +841,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		CC7D1D4628169AAB00CD7BFD /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -852,6 +854,16 @@
 			package = 733A74C9281290F900B49310 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
+		980E70042CF6AD7100E37D3D /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 980E70032CF6AD7100E37D3D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		980E70062CF6AD7100E37D3D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 980E70032CF6AD7100E37D3D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		983949302B3C4C5200C87348 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9839492F2B3C4C5200C87348 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
@@ -861,16 +873,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CC29723029AB4C46006D2E44 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		CC7D1D4728169AAB00CD7BFD /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CC7D1D4628169AAB00CD7BFD /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		CC7D1D4928169AAB00CD7BFD /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CC7D1D4628169AAB00CD7BFD /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

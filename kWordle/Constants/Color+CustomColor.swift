@@ -9,14 +9,14 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    static let hOrange = Color("h_orange")
-    static let hRed = Color("h_red")
-    static let hGreen = Color("h_green")
-    static let hGray = Color("h_gray")
+//    static let hOrange = Color("h_orange")
+//    static let hRed = Color("h_red")
+//    static let hGreen = Color("h_green")
+//    static let hGray = Color("h_gray")
     static let hLigthGray = Color("h_lightGray")
-    static let hWhite = Color("h_white")
-    static let hBlack = Color("h_black")
-    static let hSkyblue = Color("h_skyblue")
+//    static let hWhite = Color("h_white")
+//    static let hBlack = Color("h_black")
+//    static let hSkyblue = Color("h_skyblue")
 }
 
 enum Status: Int, Codable {

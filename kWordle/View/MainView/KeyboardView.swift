@@ -79,6 +79,7 @@ struct KeyboardView: View {
                     .padding([.horizontal], widthPadding)
                 }
             }
+            .buttonStyle(.plain)
         }
     }
     

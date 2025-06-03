@@ -98,6 +98,7 @@ extension MainView {
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 8)
+        .buttonStyle(.plain)
     }
     
     private var newGameWithADButtonLabel: some View {

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1058868287861-8cj00dt0brucm71t9smp9bthiv7r0etp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1058868287861-8cj00dt0brucm71t9smp9bthiv7r0etp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB6_kOCS6n8rV5Pf9HAb7UoCHhC6EPWiek</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1058868287861</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.game.handeul</string>
+	<key>PROJECT_ID</key>
+	<string>handeul-4399e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>handeul-4399e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1058868287861:ios:9f3d61d88db3eedd2e9b3c</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-3856199712576441~7039555028</string>
+</dict>
+</plist>
