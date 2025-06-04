@@ -2,12 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3856199712576441~7039555028</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
-	<key>NSAppTransportSecurity</key>
-	<dict/>
+    <key>GADApplicationIdentifier</key>
+    <string>ca-app-pub-3856199712576441~7039555028</string>
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
+    <key>NSAppTransportSecurity</key>
+    <dict/>
     <key>SKAdNetworkItems</key>
     <array>
       <dict>
@@ -206,18 +206,46 @@
         <key>SKAdNetworkIdentifier</key>
         <string>3qcr597p9d.skadnetwork</string>
       </dict>
+        <dict>
+            <key>SKAdNetworkIdentifier</key>
+            <string>su67r6k2v3.skadnetwork</string>
+        </dict>
+        <dict>
+            <key>SKAdNetworkIdentifier</key>
+            <string>44jx6755aq.skadnetwork</string>
+        </dict>
+        <dict>
+            <key>SKAdNetworkIdentifier</key>
+            <string>k674qkevps.skadnetwork</string>
+        </dict>
+        <dict>
+            <key>SKAdNetworkIdentifier</key>
+            <string>kbmxgpxpgc.skadnetwork</string>
+        </dict>
+        <dict>
+            <key>SKAdNetworkIdentifier</key>
+            <string>tl55sbb4fm.skadnetwork</string>
+        </dict>
+        <dict>
+            <key>SKAdNetworkIdentifier</key>
+            <string>c3frkrj4fj.skadnetwork</string>
+        </dict>
+        <dict>
+            <key>SKAdNetworkIdentifier</key>
+            <string>97r2b46745.skadnetwork</string>
+        </dict>
     </array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>EBS훈민정음새론R.ttf</string>
-		<string>EBSL.ttf</string>
-		<string>EBS훈민정음새론SB.ttf</string>
-		<string>EBS훈민정음SB.ttf</string>
-	</array>
-	<key>UILaunchScreen</key>
-	<dict>
-		<key>UIImageName</key>
-		<string></string>
-	</dict>
+    <key>UIAppFonts</key>
+    <array>
+        <string>EBS훈민정음새론R.ttf</string>
+        <string>EBSL.ttf</string>
+        <string>EBS훈민정음새론SB.ttf</string>
+        <string>EBS훈민정음SB.ttf</string>
+    </array>
+    <key>UILaunchScreen</key>
+    <dict>
+        <key>UIImageName</key>
+        <string></string>
+    </dict>
 </dict>
 </plist>
