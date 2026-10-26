@@ -40,7 +40,6 @@
 		73FD63B127EDCF920041036F /* kWordleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD63B027EDCF920041036F /* kWordleApp.swift */; };
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
-		980E70052CF6AD7100E37D3D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 980E70042CF6AD7100E37D3D /* Realm */; };
 		980E70072CF6AD7100E37D3D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 980E70062CF6AD7100E37D3D /* RealmSwift */; };
 		983949312B3C4C5200C87348 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 983949302B3C4C5200C87348 /* GoogleMobileAds */; };
 		985934932CF69A0F00A687A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 985934922CF69A0F00A687A6 /* GoogleService-Info.plist */; };
@@ -101,7 +100,7 @@
 		738C80D6280D61D600D8FCA5 /* WordDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDict.swift; sourceTree = "<group>"; };
 		738C80DA280D634C00D8FCA5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		73C3CE95281A4FCE008DA8AA /* StatisticsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatisticsView.swift; path = kWordle/View/SettingView/StatisticsView.swift; sourceTree = SOURCE_ROOT; };
-		73CB2E4028197C6700EB87B6 /* SettingToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingToggleStyle.swift; sourceTree = "<group>"; };
+		73CB2E4028197C6700EB87B6 /* SettingToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 2; path = SettingToggleStyle.swift; sourceTree = "<group>"; };
 		73D66DB1280E825000313A7F /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		73D66DB4280E973300313A7F /* EBSL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = EBSL.ttf; path = Font/EBSL.ttf; sourceTree = SOURCE_ROOT; };
 		73D66DB5280E973300313A7F /* EBS훈민정음SB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "EBS훈민정음SB.ttf"; path = "Font/EBS훈민정음SB.ttf"; sourceTree = SOURCE_ROOT; };
@@ -167,7 +166,6 @@
 				733A74CB281290F900B49310 /* FirebaseAnalytics in Frameworks */,
 				733A74CD281290F900B49310 /* FirebaseFirestore in Frameworks */,
 				CC29723229AB4C46006D2E44 /* Lottie in Frameworks */,
-				980E70052CF6AD7100E37D3D /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +414,6 @@
 				733A74CC281290F900B49310 /* FirebaseFirestore */,
 				CC29723129AB4C46006D2E44 /* Lottie */,
 				983949302B3C4C5200C87348 /* GoogleMobileAds */,
-				980E70042CF6AD7100E37D3D /* Realm */,
 				980E70062CF6AD7100E37D3D /* RealmSwift */,
 			);
 			productName = kWordle;
@@ -712,8 +709,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240615;
+				CURRENT_PROJECT_VERSION = 20261026;
 				DEVELOPMENT_ASSET_PATHS = "\"kWordle/Preview Content\"";
 				DEVELOPMENT_TEAM = 9TH57H8UP9;
 				ENABLE_PREVIEWS = YES;
@@ -727,12 +725,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
+				MTL_ENABLE_DEBUG_INFO = "DWARF with dSYM File";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.game.handeul;
 				PRODUCT_NAME = Handeul;
@@ -747,8 +746,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240615;
+				CURRENT_PROJECT_VERSION = 20261026;
 				DEVELOPMENT_ASSET_PATHS = "\"kWordle/Preview Content\"";
 				DEVELOPMENT_TEAM = 9TH57H8UP9;
 				ENABLE_PREVIEWS = YES;
@@ -762,12 +762,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
+				MTL_ENABLE_DEBUG_INFO = "DWARF with dSYM File";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.game.handeul;
 				PRODUCT_NAME = Handeul;
@@ -814,7 +815,7 @@
 			repositoryURL = "https://github.com/realm/realm-swift";
 			requirement = {
 				kind = exactVersion;
-				version = 10.45.3;
+				version = 20.0.6;
 			};
 		};
 		9839492F2B3C4C5200C87348 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
@@ -853,11 +854,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 733A74C9281290F900B49310 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
-		};
-		980E70042CF6AD7100E37D3D /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 980E70032CF6AD7100E37D3D /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
 		};
 		980E70062CF6AD7100E37D3D /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;

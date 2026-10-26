@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AnswerBoardView: View {
+    @Environment(\.layout) private var layout
     let answerBoard: [[Key]]
     let currentColumn: Int
     let currentRow: Int
@@ -27,13 +28,14 @@ struct AnswerBoardView: View {
             Image("Filcrow")
                 .resizable()
                 .frame(width: 12, height: 16)
-                .offset(x: (Double(currentColumn + 1) - 2.5) * (keyButtonWidth - 2) - 43,
-                        y: (Double(currentRow) - 2.5) * keyButtonWidth + 10)
+                .offset(x: (Double(currentColumn + 1) - 2.5) * (layout.answerBlockSize - 2) - 43,
+                        y: (Double(currentRow) - 2.5) * layout.answerBlockSize + 10)
         }
     }
 }
 
 struct AnswerBoardRow: View {
+    @Environment(\.layout) private var layout
     let row: [Key]
     
     var body: some View {
@@ -41,7 +43,7 @@ struct AnswerBoardRow: View {
             Horline(height: 2)
             HStack(spacing: -2) {
                 ForEach(row) { btn in
-                    AnswerBoardBlock(key:btn, blockSize: keyButtonWidth)
+                    AnswerBoardBlock(key:btn, blockSize: layout.answerBlockSize)
                 }
             }
             Horline(height: 2)

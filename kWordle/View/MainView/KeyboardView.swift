@@ -9,11 +9,10 @@ import SwiftUI
 
 struct KeyboardView: View {
     @EnvironmentObject var viewModel: MainViewModel
+    @Environment(\.layout) private var layout
     
-    let buttonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44,
-                                    height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
-    private let extraButtonSize: CGSize = CGSize(width: Double(uiSize.width - 88) / 9.44 * 1.44,
-                                                 height: Double(uiSize.width - 88) / 9.44 / 8 * 11)
+    private var buttonSize: CGSize { layout.keyboardButtonSize }
+    private var extraButtonSize: CGSize { layout.keyboardExtraButtonSize }
     private let widthPadding: Double = -1.5
     
     var body: some View {

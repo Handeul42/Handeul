@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct TitleView: View {
+    @Environment(\.layout) private var layout
+    
     var body: some View {
         Text("한들")
-            .font(.custom("EBSHunminjeongeumSB", fixedSize: 35 * currentScreenRatio()))
+            .font(.custom("EBSHunminjeongeumSB", fixedSize: 35 * layout.screenRatio))
             .bold()
     }
 }

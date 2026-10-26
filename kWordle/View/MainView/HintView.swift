@@ -17,6 +17,7 @@ struct HintView: View {
     let handleHintSelection: ((Int) -> Void)?
     
     let hintRowScaleFactor: Double = 0.75
+    @Environment(\.layout) private var layout
     
     init(isHintPresented: Binding<Bool>,
          isHintRevealed: Binding<Bool>,
@@ -103,7 +104,7 @@ struct HintView: View {
             Horline(height: 2)
             HStack {
                 ForEach(hintRow.indices, id: \.self) { idx in
-                    AnswerBoardBlock(key: hintRow[idx], blockSize: keyButtonWidth)
+                    AnswerBoardBlock(key: hintRow[idx], blockSize: layout.answerBlockSize)
                         .onTapGesture {
                             if hintRow[idx].status != .green {
                                 handleHintSelection?(idx)

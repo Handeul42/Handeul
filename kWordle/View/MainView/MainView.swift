@@ -15,8 +15,17 @@ struct MainView: View {
     @State var isHintPresented: Bool = false
         
     var body: some View {
+        GeometryReader { proxy in
+            let layout = LayoutMetrics(size: proxy.size, safeAreaInsets: proxy.safeAreaInsets)
+            content(layout: layout)
+                .frame(width: proxy.size.width, height: proxy.size.height)
+                .environment(\.layout, layout)
+        }
+    }
+    
+    private func content(layout: LayoutMetrics) -> some View {
         ZStack {
-            mainView
+            mainView(layout: layout)
                 .onChange(of: scenePhase) { newScenePhase in
                     handleScenePhaseChange(newScenePhase)
                 }
@@ -56,12 +65,12 @@ struct MainView: View {
 // MARK: Subviews
 extension MainView {
     
-    var mainView: some View {
+    func mainView(layout: LayoutMetrics) -> some View {
         VStack(spacing: 0) {
-            if screenHasSpaceForTitle {
+            if layout.showsTitle {
                 TitleView()
-                    .padding(.top, 20 * currentScreenRatio())
-                    .padding(.bottom, 8 * currentHeightRatio())
+                    .padding(.top, 20 * layout.screenRatio)
+                    .padding(.bottom, 8 * layout.heightRatio)
             }
             HeaderMenuBar()
             AnswerBoardView(answerBoard: vm.game.answerBoard,
@@ -80,6 +89,7 @@ extension MainView {
             }
             Spacer()
         }
+        .frame(width: layout.contentWidth)
         .environmentObject(vm)
         .onAppear {
             requestPermission()
@@ -171,10 +181,6 @@ extension MainView {
 
 //MARK: Utils
 extension MainView {
-    private var screenHasSpaceForTitle: Bool {
-        return round(UIHeight/UIWidth * 10) > round(16/9 * 10)
-    }
-    
     private func handleScenePhaseChange(_ newScenePhase: ScenePhase) {
         if newScenePhase == .inactive {
             if !vm.game.isGameFinished {
