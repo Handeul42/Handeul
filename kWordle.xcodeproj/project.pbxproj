@@ -41,6 +41,7 @@
 		73FD63B527EDCF940041036F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B427EDCF940041036F /* Assets.xcassets */; };
 		73FD63B827EDCF940041036F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FD63B727EDCF940041036F /* Preview Assets.xcassets */; };
 		980E70072CF6AD7100E37D3D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 980E70062CF6AD7100E37D3D /* RealmSwift */; };
+		980E70082CF6AD7100E37D3D /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 980E70062CF6AD7100E37D3D /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		983949312B3C4C5200C87348 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 983949302B3C4C5200C87348 /* GoogleMobileAds */; };
 		985934932CF69A0F00A687A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 985934922CF69A0F00A687A6 /* GoogleService-Info.plist */; };
 		CC1BB899281AE13800BAA6FA /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1BB898281AE13800BAA6FA /* HapticsManager.swift */; };
@@ -81,6 +82,20 @@
 		DBBBF4092996199C00ADBAEF /* ci_pre_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = DBBBF4082996199C00ADBAEF /* ci_pre_xcodebuild.sh */; };
 		DBDE27AF299F600C00841CF7 /* LifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDE27AE299F600C00841CF7 /* LifeView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		980E70092CF6AD7100E37D3D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				980E70082CF6AD7100E37D3D /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		73036274281261E8002DCE6B /* DictView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictView.swift; sourceTree = "<group>"; };
@@ -402,6 +417,7 @@
 				73FD63A927EDCF920041036F /* Sources */,
 				73FD63AA27EDCF920041036F /* Frameworks */,
 				73FD63AB27EDCF920041036F /* Resources */,
+				980E70092CF6AD7100E37D3D /* Embed Frameworks */,
 				737D4CCD28092DC100CD8CBD /* ShellScript */,
 			);
 			buildRules = (
@@ -711,7 +727,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20261026;
+				CURRENT_PROJECT_VERSION = 20261026.1;
 				DEVELOPMENT_ASSET_PATHS = "\"kWordle/Preview Content\"";
 				DEVELOPMENT_TEAM = 9TH57H8UP9;
 				ENABLE_PREVIEWS = YES;
@@ -748,7 +764,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20261026;
+				CURRENT_PROJECT_VERSION = 20261026.1;
 				DEVELOPMENT_ASSET_PATHS = "\"kWordle/Preview Content\"";
 				DEVELOPMENT_TEAM = 9TH57H8UP9;
 				ENABLE_PREVIEWS = YES;
